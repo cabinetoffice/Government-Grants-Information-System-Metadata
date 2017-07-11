@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Intermediary</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Intermediaries</value>
+    </caseValues>
+    <fields>
+        <label><!-- Grant Award Name --></label>
+        <name>Grant_Award_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- System Award Reference No --></label>
+        <name>Grant_Award__c</name>
+        <relationshipLabel><!-- Intermediaries --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Grant Scheme Name --></label>
+        <name>Grant_Scheme_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- System Scheme Reference No --></label>
+        <name>Grant_Scheme__c</name>
+        <relationshipLabel><!-- Intermediaries --></relationshipLabel>
+    </fields>
+    <fields>
+        <help><!-- Organisations who distribute or administer grants on behalf of a government department i.e. a government agency, NDPB, charity or business. In some cases, a government department can act as an intermediary for another government department. --></help>
+        <label><!-- Intermediary Organisation --></label>
+        <name>Intermediary_Organisation__c</name>
+        <relationshipLabel><!-- Intermediaries --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Is My Department Data --></label>
+        <name>Is_My_Department_Data__c</name>
+    </fields>
+    <fields>
+        <help><!-- The role that an intermediary plays in the grant administration process. You can choose multiple roles. --></help>
+        <label><!-- Role --></label>
+        <name>Role__c</name>
+        <picklistValues>
+            <masterLabel>Application Assessment</masterLabel>
+            <translation><!-- Application Assessment --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Due Diligence</masterLabel>
+            <translation><!-- Due Diligence --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Evaluation</masterLabel>
+            <translation><!-- Evaluation --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Final Reconciliation</masterLabel>
+            <translation><!-- Final Reconciliation --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Grant Award</masterLabel>
+            <translation><!-- Grant Award --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Market Engagement Advertising</masterLabel>
+            <translation><!-- Market Engagement Advertising --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Payment</masterLabel>
+            <translation><!-- Payment --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Performance Monitoring</masterLabel>
+            <translation><!-- Performance Monitoring --></translation>
+        </picklistValues>
+    </fields>
+    <layouts>
+        <layout>Intermediary Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Warning --></label>
+            <section>Warning</section>
+        </sections>
+    </layouts>
+    <startsWith>Vowel</startsWith>
+    <validationRules>
+        <errorMessage><!-- You don&apos;t have update privilege on the related Grant Award record. --></errorMessage>
+        <name>Department_Check_on_create</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- You don&apos;t have update privilege on this record. --></errorMessage>
+        <name>Department_Check_on_update</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Intermediary has to be related either to a Grant Scheme or a Grant Award --></errorMessage>
+        <name>Grant_Scheme_Or_Grant_Award_is_mandatory</name>
+    </validationRules>
+</CustomObjectTranslation>

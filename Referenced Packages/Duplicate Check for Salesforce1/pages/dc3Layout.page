@@ -1,0 +1,3 @@
+<apex:page docType="html-5.0" controller="dupcheck.dc3ControllerLayout" sidebar="false" showHeader="false" title="Duplicate Check - Duplicate Check for Salesforce" action="{!janitor}" tabstyle="dc3Search__tab">
+	<c:dc3Layout recordId="{!objectId}"/> 
+</apex:page>

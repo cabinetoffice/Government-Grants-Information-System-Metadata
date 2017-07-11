@@ -1,0 +1,11 @@
+Hi Admin,
+
+A new user has requested an access. Please see requestor's details below:
+    User: {!Contact.FirstName} {!Contact.LastName}
+    Email: {!Contact.Email}
+    Department: {!Account.Name}
+    Role: {!Contact.User_Role__c}
+    Business Area: {!Contact.Business_Area__c}
+
+Thanks,
+GGIS Team

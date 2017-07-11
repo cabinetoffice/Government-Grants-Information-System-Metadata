@@ -1,0 +1,14 @@
+<apex:page showHeader="false" sidebar="false">
+	<apex:pageBlock title="Welcome">
+		<apex:outputText escape="false" value="{!$Label.Data_Solution_Home_Page_Text}"/>
+		<br/>
+		<br/>
+		<apex:outputLink target="_blank" value="{!URLFOR($Resource.CSV_Upload_Resources, 'how-to-guide.pdf')}">{!$Label.How_to_Guide_URL_Text}</apex:outputLink>
+		<br/>
+		<br/>		
+		<apex:outputLink target="_blank" value="{!URLFOR($Resource.CSV_Upload_Resources, 'glossary-of-terms.xlsx')}">{!$Label.Glossary_of_Terms_URL_Text}</apex:outputLink>
+		<br/>
+		<br/>		
+		<apex:outputLink target="_blank" value="{!$Label.The_Grants_Centre_of_Expertise_URL}">{!$Label.The_Grants_Centre_of_Expertise_Text}</apex:outputLink>
+	</apex:pageBlock>
+</apex:page>

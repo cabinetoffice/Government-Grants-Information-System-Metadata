@@ -1,0 +1,1 @@
+<apex:page action="{!URLFOR($Resource.CSV_Upload_Resources, 'how-to-guide.pdf')}"/>
