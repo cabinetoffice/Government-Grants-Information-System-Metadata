@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <block>
+        <blockInfo>
+            <blockId>B1</blockId>
+            <joinTable>x</joinTable>
+        </blockInfo>
+        <columns>
+            <aggregateTypes>Sum</aggregateTypes>
+            <field>Grant_Scheme__c.Scheme_Value_per_year__c</field>
+        </columns>
+        <filter>
+            <criteriaItems>
+                <column>Grant_Scheme__c.Financial_Year_Multi__c</column>
+                <isUnlocked>true</isUnlocked>
+                <operator>includes</operator>
+                <value>FY 15/16</value>
+            </criteriaItems>
+            <criteriaItems>
+                <column>CUST_RECORDTYPE</column>
+                <isUnlocked>true</isUnlocked>
+                <operator>equals</operator>
+                <value>Grant_Scheme__c.Approved_Grant_Scheme</value>
+            </criteriaItems>
+            <criteriaItems>
+                <column>Grant_Scheme__c.Allocation_Method__c</column>
+                <isUnlocked>true</isUnlocked>
+                <operator>excludes</operator>
+                <value>Grant in Aid</value>
+            </criteriaItems>
+        </filter>
+        <format>Summary</format>
+        <name>Grant Schemes</name>
+        <params>
+            <name>co</name>
+            <value>1</value>
+        </params>
+        <reportType>CustomEntityCustomEntity$Grant_Scheme__c$Grant_Award__c</reportType>
+        <scope>organization</scope>
+        <timeFrameFilter>
+            <dateColumn>Grant_Scheme__c.Start_Date__c</dateColumn>
+            <interval>INTERVAL_CUSTOM</interval>
+        </timeFrameFilter>
+    </block>
+    <block>
+        <blockInfo>
+            <blockId>B0</blockId>
+            <joinTable>x</joinTable>
+        </blockInfo>
+        <columns>
+            <field>Grant_Award__c.Grant_Award_Name_Link__c</field>
+        </columns>
+        <columns>
+            <aggregateTypes>Sum</aggregateTypes>
+            <field>Grant_Award__c.Total_amount_per_year__c</field>
+        </columns>
+        <columns>
+            <aggregateTypes>Sum</aggregateTypes>
+            <field>Grant_Award__c.Total_value_per_year__c</field>
+        </columns>
+        <filter>
+            <criteriaItems>
+                <column>Grant_Award__c.Financial_Year__c</column>
+                <isUnlocked>true</isUnlocked>
+                <operator>includes</operator>
+                <value>FY 15/16</value>
+            </criteriaItems>
+            <criteriaItems>
+                <column>CUST_RECORDTYPE</column>
+                <isUnlocked>true</isUnlocked>
+                <operator>equals</operator>
+                <value>Grant_Scheme__c.Approved_Grant_Scheme</value>
+            </criteriaItems>
+            <criteriaItems>
+                <column>Grant_Scheme__c.Allocation_Method__c</column>
+                <isUnlocked>true</isUnlocked>
+                <operator>excludes</operator>
+                <value>Grant in Aid</value>
+            </criteriaItems>
+            <criteriaItems>
+                <column>Grant_Scheme__c.Financial_Year_Multi__c</column>
+                <isUnlocked>true</isUnlocked>
+                <operator>includes</operator>
+                <value>FY 15/16</value>
+            </criteriaItems>
+            <criteriaItems>
+                <column>Grant_Award__c.Allocation_Method__c</column>
+                <isUnlocked>true</isUnlocked>
+                <operator>notContain</operator>
+                <value>Grant in Aid</value>
+            </criteriaItems>
+        </filter>
+        <format>Summary</format>
+        <name>Grant Awards</name>
+        <params>
+            <name>co</name>
+            <value>1</value>
+        </params>
+        <reportType>CustomEntityCustomEntity$Grant_Scheme__c$Grant_Award__c</reportType>
+        <scope>organization</scope>
+        <timeFrameFilter>
+            <dateColumn>Grant_Scheme__c.Start_Date__c</dateColumn>
+            <interval>INTERVAL_CUSTOM</interval>
+        </timeFrameFilter>
+    </block>
+    <blockInfo>
+        <blockId xsi:nil="true"/>
+        <joinTable>x</joinTable>
+    </blockInfo>
+    <chart>
+        <backgroundColor1>#FFFFFF</backgroundColor1>
+        <backgroundColor2>#FFFFFF</backgroundColor2>
+        <backgroundFadeDir>Diagonal</backgroundFadeDir>
+        <chartSummaries>
+            <aggregate>Sum</aggregate>
+            <axisBinding>y</axisBinding>
+            <column>B1#Grant_Scheme__c.Scheme_Value_per_year__c</column>
+        </chartSummaries>
+        <chartType>VerticalColumn</chartType>
+        <enableHoverLabels>true</enableHoverLabels>
+        <expandOthers>true</expandOthers>
+        <groupingColumn>Grant_Scheme__c.Funder__c</groupingColumn>
+        <location>CHART_BOTTOM</location>
+        <showAxisLabels>true</showAxisLabels>
+        <showPercentage>false</showPercentage>
+        <showTotal>false</showTotal>
+        <showValues>false</showValues>
+        <size>Large</size>
+        <summaryAxisRange>Auto</summaryAxisRange>
+        <textColor>#000000</textColor>
+        <textSize>8</textSize>
+        <titleColor>#000000</titleColor>
+        <titleSize>18</titleSize>
+    </chart>
+    <format>MultiBlock</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>Grant_Scheme__c.Funder__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>15/16 Scheme vs Award by Funder</name>
+    <reportType>CustomEntityCustomEntity$Grant_Scheme__c$Grant_Award__c</reportType>
+    <showDetails>false</showDetails>
+</Report>

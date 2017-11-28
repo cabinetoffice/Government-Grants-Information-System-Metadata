@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Network xmlns="http://soap.sforce.com/2006/04/metadata">
+    <allowMembersToFlag>false</allowMembersToFlag>
+    <branding>
+        <loginFooterText>gov.uk</loginFooterText>
+        <loginLogo>Communities_Shared_Document_Folder1/HMGovernment_png.png</loginLogo>
+        <pageFooter>Communities_Shared_Document_Folder/The_Cabinet_Office_Footer_HTML.html</pageFooter>
+        <pageHeader>Communities_Shared_Document_Folder/HM_Government_Logo_Black.png</pageHeader>
+        <primaryColor>#0B0C0C</primaryColor>
+        <primaryComplementColor>#FFFFFF</primaryComplementColor>
+        <quaternaryColor>#DEE0E2</quaternaryColor>
+        <quaternaryComplementColor>#222222</quaternaryComplementColor>
+        <secondaryColor>#0B0C0C</secondaryColor>
+        <tertiaryColor>#0B0C0C</tertiaryColor>
+        <tertiaryComplementColor>#FFFFFF</tertiaryComplementColor>
+        <zeronaryColor>#DEE0E2</zeronaryColor>
+        <zeronaryComplementColor>#222222</zeronaryComplementColor>
+    </branding>
+    <changePasswordTemplate>unfiled$public/DataSolutionChangePasswordEmailTemplate</changePasswordTemplate>
+    <emailSenderAddress>grantshubsupport@cabinetoffice.gov.uk</emailSenderAddress>
+    <emailSenderName>Government Grants Information System</emailSenderName>
+    <enableGuestChatter>false</enableGuestChatter>
+    <enableInvitation>false</enableInvitation>
+    <enableKnowledgeable>false</enableKnowledgeable>
+    <enableNicknameDisplay>false</enableNicknameDisplay>
+    <enablePrivateMessages>false</enablePrivateMessages>
+    <enableReputation>false</enableReputation>
+    <enableSiteAsContainer>false</enableSiteAsContainer>
+    <forgotPasswordTemplate>unfiled$public/DataSolutionForgotPasswordEmailTemplate</forgotPasswordTemplate>
+    <navigationLinkSet>
+        <navigationMenuItem>
+            <label>Topics</label>
+            <position>1</position>
+            <publiclyAvailable>true</publiclyAvailable>
+            <target>Topics</target>
+            <type>NavigationalTopic</type>
+        </navigationMenuItem>
+    </navigationLinkSet>
+    <networkMemberGroups>
+        <profile>Admin</profile>
+        <profile>Data Solution Portal - User</profile>
+        <profile>Data Solution Portal - Centre User</profile>
+        <profile>Data Solution Portal - Super User</profile>
+    </networkMemberGroups>
+    <picassoSite>Grants_Efficiency_Programme_GGIS_C</picassoSite>
+    <selfRegistration>false</selfRegistration>
+    <sendWelcomeEmail>false</sendWelcomeEmail>
+    <site>Grants_Efficiency_Programme_GGIS</site>
+    <status>Live</status>
+    <tabs>
+        <customTab>Grant_Awards_Heat_Map</customTab>
+        <customTab>Programme__c</customTab>
+        <customTab>Grant_Scheme__c</customTab>
+        <customTab>Grant_Award__c</customTab>
+        <customTab>CSV_Upload__c</customTab>
+        <customTab>Proposed_Grant__c</customTab>
+        <defaultTab>home</defaultTab>
+        <standardTab>home</standardTab>
+        <standardTab>Dashboard</standardTab>
+        <standardTab>report</standardTab>
+        <standardTab>Account</standardTab>
+        <standardTab>Case</standardTab>
+    </tabs>
+    <urlPathPrefix>datasolution</urlPathPrefix>
+    <welcomeTemplate>unfiled$public/CommunityWelcomeEmailTemplate</welcomeTemplate>
+</Network>

@@ -1,0 +1,372 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>User Contact</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>User Contacts</value>
+    </caseValues>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>User Contact Access</value>
+        </caseValues>
+        <name>contact_access</name>
+        <startsWith>Vowel</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>User Contact Access Level</value>
+        </caseValues>
+        <name>contact_access_level</name>
+        <startsWith>Vowel</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>User Contact Account</value>
+        </caseValues>
+        <name>contact_account</name>
+        <startsWith>Vowel</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>User Contact Currency</value>
+        </caseValues>
+        <name>contact_currency</name>
+        <startsWith>Vowel</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>User Contact Description</value>
+        </caseValues>
+        <name>contact_description</name>
+        <startsWith>Vowel</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>User Contact Division</value>
+        </caseValues>
+        <name>contact_division</name>
+        <startsWith>Vowel</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>User Contact Edit</value>
+        </caseValues>
+        <name>contact_edit</name>
+        <startsWith>Vowel</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>User Contact Email</value>
+        </caseValues>
+        <name>contact_email</name>
+        <startsWith>Vowel</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>User Contact Fax</value>
+        </caseValues>
+        <name>contact_fax</name>
+        <startsWith>Vowel</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>User Contact Field</value>
+        </caseValues>
+        <caseValues>
+            <plural>true</plural>
+            <value>User Contact Fields</value>
+        </caseValues>
+        <name>contact_field</name>
+        <startsWith>Vowel</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>User Contact History</value>
+        </caseValues>
+        <name>contact_history</name>
+        <startsWith>Vowel</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>User Contact History Report</value>
+        </caseValues>
+        <name>contact_history_report</name>
+        <startsWith>Vowel</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>User Contact ID</value>
+        </caseValues>
+        <name>contact_id</name>
+        <startsWith>Vowel</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>User Contact Information</value>
+        </caseValues>
+        <name>contact_information</name>
+        <startsWith>Vowel</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>User Contact Mobile</value>
+        </caseValues>
+        <name>contact_mobile</name>
+        <startsWith>Vowel</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>User Contact Name</value>
+        </caseValues>
+        <caseValues>
+            <plural>true</plural>
+            <value>User Contact Names</value>
+        </caseValues>
+        <name>contact_name</name>
+        <startsWith>Vowel</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>User Contact Note</value>
+        </caseValues>
+        <name>contact_note</name>
+        <startsWith>Vowel</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>User Contact Number</value>
+        </caseValues>
+        <name>contact_number</name>
+        <startsWith>Vowel</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>User Contact Owner</value>
+        </caseValues>
+        <name>contact_owner</name>
+        <startsWith>Vowel</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>User Contact Owner Alias</value>
+        </caseValues>
+        <name>contact_owner_alias</name>
+        <startsWith>Vowel</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>User Contact Phone</value>
+        </caseValues>
+        <name>contact_phone</name>
+        <startsWith>Vowel</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>User Contact Record</value>
+        </caseValues>
+        <caseValues>
+            <plural>true</plural>
+            <value>User Contact Records</value>
+        </caseValues>
+        <name>contact_record</name>
+        <startsWith>Vowel</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>User Contact Record Type</value>
+        </caseValues>
+        <caseValues>
+            <plural>true</plural>
+            <value>User Contact Record Types</value>
+        </caseValues>
+        <name>contact_record_type</name>
+        <startsWith>Vowel</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>Reports To User Contact</value>
+        </caseValues>
+        <name>contact_reports_to</name>
+        <startsWith>Vowel</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>User Contact Role</value>
+        </caseValues>
+        <caseValues>
+            <plural>true</plural>
+            <value>User Contact Roles</value>
+        </caseValues>
+        <name>contact_role</name>
+        <startsWith>Vowel</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>User Contact Role ID</value>
+        </caseValues>
+        <name>contact_role_id</name>
+        <startsWith>Vowel</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>User Contact Role Report</value>
+        </caseValues>
+        <caseValues>
+            <plural>true</plural>
+            <value>User Contact Role Reports</value>
+        </caseValues>
+        <name>contact_role_report</name>
+        <startsWith>Vowel</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>User Contact Stage ID</value>
+        </caseValues>
+        <name>contact_stage_id</name>
+        <startsWith>Vowel</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>User Contact Status</value>
+        </caseValues>
+        <name>contact_status</name>
+        <startsWith>Vowel</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>User Contact Type</value>
+        </caseValues>
+        <caseValues>
+            <plural>true</plural>
+            <value>User Contact Types</value>
+        </caseValues>
+        <name>contact_type</name>
+        <startsWith>Vowel</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>User Contact View</value>
+        </caseValues>
+        <caseValues>
+            <plural>true</plural>
+            <value>User Contact Views</value>
+        </caseValues>
+        <name>contact_view</name>
+        <startsWith>Vowel</startsWith>
+    </fields>
+    <fields>
+        <label><!-- Business Area --></label>
+        <name>Business_Area__c</name>
+        <picklistValues>
+            <masterLabel>Commercial</masterLabel>
+            <translation><!-- Commercial --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Finance</masterLabel>
+            <translation><!-- Finance --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Grants</masterLabel>
+            <translation><!-- Grants --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Policy</masterLabel>
+            <translation><!-- Policy --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Procurement</masterLabel>
+            <translation><!-- Procurement --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- ExternalId --></label>
+        <name>ExternalId__c</name>
+    </fields>
+    <fields>
+        <label><!-- User Organisation Type --></label>
+        <name>User_Organisation_Type__c</name>
+        <picklistValues>
+            <masterLabel>Government Department</masterLabel>
+            <translation><!-- Government Department --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intermediary</masterLabel>
+            <translation><!-- Intermediary --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Local Authority</masterLabel>
+            <translation><!-- Local Authority --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- User Role --></label>
+        <name>User_Role__c</name>
+        <picklistValues>
+            <masterLabel>Central User</masterLabel>
+            <translation><!-- Central User --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Standard User</masterLabel>
+            <translation><!-- Standard User --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Super User</masterLabel>
+            <translation><!-- Super User --></translation>
+        </picklistValues>
+    </fields>
+    <startsWith>Vowel</startsWith>
+    <webLinks>
+        <label><!-- GoogleMaps --></label>
+        <name>GoogleMaps</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- GoogleSearch --></label>
+        <name>GoogleSearch</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- SendGmail --></label>
+        <name>SendGmail</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- YahooMaps --></label>
+        <name>YahooMaps</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- YahooWeather --></label>
+        <name>YahooWeather</name>
+    </webLinks>
+</CustomObjectTranslation>

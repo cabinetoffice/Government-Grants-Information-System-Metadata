@@ -1,0 +1,48 @@
+<apex:page standardController="Account">
+    <script>
+    	var fromURL = document.referrer;
+    	var regPat = /\/001\/e/;
+		var expRes = regPat.test(fromURL);
+    	var regComPat = /\/datasolution\//;
+    	
+    	if(expRes == true) {
+            window.location.href = '{!URLFOR($Action.Account.tab, $ObjectType.Account)}';
+        }
+    	
+    	function navCH() {
+            if(regComPat.test(location.pathname)) {
+            	window.location.href = location.protocol + '//' + location.host + '/datasolution/CH_CompanySearch';
+            } else {
+                window.location.href = '{!URLFOR("apex/CH_CompanySearch")}';
+            }
+		}
+    	
+        function navStd() {
+			window.location.href = '{!URLFOR($Action.Account.New, NULL, NULL, TRUE)}';
+		}
+    </script>
+    
+    <style>
+        .custom1 .pbSubheader {
+            background-color: #1797c0;
+        }
+    </style>
+    
+    <apex:form >
+        <apex:actionFunction name="gotoCH" onComplete="navCH();" />
+        <apex:actionFunction name="gotoStd" onComplete="navStd();" />
+        <apex:pageBlock >
+            <apex:outputPanel styleclass="custom1">
+                <apex:pageBlockSection title="Help/Directions" columns="1">
+                    <apex:panelGrid columns="1">
+                        <apex:outputText value="{!$Label.CH_Organisation_Help_Direction}" />
+                    </apex:panelGrid>
+                </apex:pageBlockSection>
+            </apex:outputPanel>
+            <apex:pageBlockButtons location="bottom">
+                <apex:commandButton value="Companies House" onClick="gotoCH();" style="width: 120px;" />
+                <apex:commandButton value="Other Organisation" onClick="gotoStd();" style="width: 120px;" />
+            </apex:pageBlockButtons>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

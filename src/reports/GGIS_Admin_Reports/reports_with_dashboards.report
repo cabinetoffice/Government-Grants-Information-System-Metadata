@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>Report.DashboardComponents$Dashboard</field>
+    </columns>
+    <columns>
+        <field>Report$Name</field>
+    </columns>
+    <columns>
+        <field>Report$Owner</field>
+    </columns>
+    <columns>
+        <field>Report.DashboardComponents$Title</field>
+    </columns>
+    <filter>
+        <criteriaItems>
+            <column>Report.DashboardComponents$Dashboard</column>
+            <isUnlocked>true</isUnlocked>
+            <operator>notEqual</operator>
+            <value>Sales Manager Dashboard</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Report.DashboardComponents$Dashboard</column>
+            <isUnlocked>true</isUnlocked>
+            <operator>notEqual</operator>
+            <value>Sales Executive Dashboard</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Report.DashboardComponents$Dashboard</column>
+            <isUnlocked>true</isUnlocked>
+            <operator>notEqual</operator>
+            <value>Marketing Executive Dashboard</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Report.DashboardComponents$Dashboard</column>
+            <isUnlocked>true</isUnlocked>
+            <operator>notEqual</operator>
+            <value>Salesperson Dashboard</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Report.DashboardComponents$Dashboard</column>
+            <isUnlocked>true</isUnlocked>
+            <operator>notContain</operator>
+            <value>Knowledge</value>
+        </criteriaItems>
+    </filter>
+    <format>Tabular</format>
+    <name>reports with dashboards</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Reports_with_dashboards__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <sortColumn>Report.DashboardComponents$Dashboard</sortColumn>
+    <sortOrder>Desc</sortOrder>
+    <timeFrameFilter>
+        <dateColumn>Report$CreatedDate</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

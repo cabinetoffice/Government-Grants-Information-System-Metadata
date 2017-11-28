@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>COA L5</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>COA L5</value>
+    </caseValues>
+    <fields>
+        <label><!-- Account L1 Long Name --></label>
+        <name>Account_L1_Long_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Account L2 Long Name --></label>
+        <name>Account_L2_Long_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Account L3 Long Name --></label>
+        <name>Account_L3_Long_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Account L4 Long Name --></label>
+        <name>Account_L4_Long_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Account L5 Description --></label>
+        <name>Account_L5_Description__c</name>
+    </fields>
+    <fields>
+        <label><!-- Account L5 Long Name --></label>
+        <name>Account_L5_Long_Name__c</name>
+    </fields>
+    <layouts>
+        <layout>CoA L5 Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

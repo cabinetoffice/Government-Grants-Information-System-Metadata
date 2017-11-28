@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <block>
+        <blockInfo>
+            <blockId>B1</blockId>
+            <joinTable>Contact</joinTable>
+        </blockInfo>
+        <columns>
+            <field>Contact$Name</field>
+        </columns>
+        <columns>
+            <field>Contact$Account</field>
+        </columns>
+        <format>Summary</format>
+        <name>User Contact block 1</name>
+        <params>
+            <name>co</name>
+            <value>1</value>
+        </params>
+        <reportType>User_Contacts__c</reportType>
+        <scope>organization</scope>
+        <timeFrameFilter>
+            <dateColumn>Contact$Birthdate</dateColumn>
+            <interval>INTERVAL_CUSTOM</interval>
+        </timeFrameFilter>
+    </block>
+    <block>
+        <blockInfo>
+            <blockId>B0</blockId>
+            <joinTable>c</joinTable>
+        </blockInfo>
+        <columns>
+            <field>FULL_NAME</field>
+        </columns>
+        <columns>
+            <field>ACCOUNT.NAME</field>
+        </columns>
+        <format>Summary</format>
+        <name>Users block 2</name>
+        <params>
+            <name>active</name>
+            <value>all</value>
+        </params>
+        <params>
+            <name>co</name>
+            <value>1</value>
+        </params>
+        <reportType>User</reportType>
+        <timeFrameFilter>
+            <dateColumn>LAST_LOGIN</dateColumn>
+            <interval>INTERVAL_CUSTOM</interval>
+        </timeFrameFilter>
+    </block>
+    <blockInfo>
+        <blockId xsi:nil="true"/>
+        <joinTable>Contact</joinTable>
+    </blockInfo>
+    <format>MultiBlock</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>Contact$Id</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>Created User Contacts But Not Activated</name>
+    <reportType>User_Contacts__c</reportType>
+    <showDetails>true</showDetails>
+</Report>

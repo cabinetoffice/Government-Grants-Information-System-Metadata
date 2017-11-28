@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomSite xmlns="http://soap.sforce.com/2006/04/metadata">
+    <active>true</active>
+    <allowHomePage>false</allowHomePage>
+    <allowStandardAnswersPages>false</allowStandardAnswersPages>
+    <allowStandardIdeasPages>false</allowStandardIdeasPages>
+    <allowStandardLookups>false</allowStandardLookups>
+    <allowStandardSearch>false</allowStandardSearch>
+    <authorizationRequiredPage>DataSolutionLogin</authorizationRequiredPage>
+    <bandwidthExceededPage>DataSolutionServerError</bandwidthExceededPage>
+    <clickjackProtectionLevel>SameOriginOnly</clickjackProtectionLevel>
+    <customWebAddresses>
+        <certificate>GrantsHub_Domain_Certification</certificate>
+        <domainName>grantshub.civilservice.gov.uk</domainName>
+        <primary>true</primary>
+    </customWebAddresses>
+    <fileNotFoundPage>DataSolutionPageNotFound</fileNotFoundPage>
+    <genericErrorPage>DataSolutionServerError</genericErrorPage>
+    <inMaintenancePage>DataSolutionServerError</inMaintenancePage>
+    <indexPage>DataSolutionLogin</indexPage>
+    <masterLabel>Grants Efficiency Programme - GGIS</masterLabel>
+    <requireHttps>true</requireHttps>
+    <requireInsecurePortalAccess>false</requireInsecurePortalAccess>
+    <siteAdmin>hamed.izadpanah@cabinetoffice.gov.uk</siteAdmin>
+    <siteRedirectMappings>
+        <action>Permanent</action>
+        <isActive>true</isActive>
+        <source>/</source>
+        <target>/datasolution</target>
+    </siteRedirectMappings>
+    <siteRedirectMappings>
+        <action>Permanent</action>
+        <isActive>true</isActive>
+        <source>/datasolution</source>
+        <target>/datasolution/home/home.jsp</target>
+    </siteRedirectMappings>
+    <siteType>ChatterNetwork</siteType>
+    <subdomain>cabinetoffice</subdomain>
+    <urlPathPrefix>datasolution</urlPathPrefix>
+</CustomSite>

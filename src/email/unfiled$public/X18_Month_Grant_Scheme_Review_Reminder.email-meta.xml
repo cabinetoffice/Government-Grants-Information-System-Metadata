@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>18 Month Grant Scheme Review Reminder</name>
+    <style>none</style>
+    <subject>18 Month Grant Scheme Review Reminder</subject>
+    <textOnly>Dear {!User.Name},
+
+You have created the following grant schemes 18 months ago and as best practice, you are due to review all your grants every year. Your review is now overdue, so can you please review your schemes by choosing one of the options in the &quot;Review outcome&quot; field and adding any necessary details in the &quot;Review outcome details&quot; field. These fields are in the section called &quot;Review/ Evaluation Details&quot;
+
+https://grantshub.civilservice.gov.uk/datasolution/00O24000004hse2
+
+Regards,
+GGIS Team</textOnly>
+    <type>custom</type>
+</EmailTemplate>
