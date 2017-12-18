@@ -1,0 +1,3 @@
+<apex:page standardController="Programme__c" showHeader="false" sidebar="false" >
+	<apex:pageMessage rendered="{!!Programme__c.Is_My_Department_Data__c}" summary="{!$Label.Record_Privilege_Warning_Message}" severity="warning" strength="1"/>
+</apex:page>

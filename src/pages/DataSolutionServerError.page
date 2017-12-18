@@ -1,0 +1,3 @@
+<apex:page showHeader="true" sidebar="true">
+    <apex:pageMessage strength="3" severity="WARNING" summary="{!$Label.Data_Solution_Portal_500_Error_Message}"/>
+</apex:page>

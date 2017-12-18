@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Bypass</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Bypass</value>
+    </caseValues>
+    <fields>
+        <help><!-- This checkbox allows users to bypass the business rules for edit or delete records on the system. --></help>
+        <label><!-- Business Rules for Edit and Delete --></label>
+        <name>Business_Rules_for_Edit_and_Delete__c</name>
+    </fields>
+    <fields>
+        <help><!-- This flag should be checked to turn off the Grant Reminder functionality. By default this will be unchecked (i.e, Grant Reminders will be sent). --></help>
+        <label><!-- Grant Reminders --></label>
+        <name>Grant_Reminders__c</name>
+    </fields>
+    <fields>
+        <help><!-- This flag turns off custom triggers for the specified user/profile. --></help>
+        <label><!-- Triggers --></label>
+        <name>Triggers__c</name>
+    </fields>
+    <fields>
+        <help><!-- This flag turns off custom validation rules for the specified user/profile. --></help>
+        <label><!-- Validation Rules --></label>
+        <name>Validation_Rules__c</name>
+    </fields>
+    <fields>
+        <help><!-- This flag turns off custom workflow rules for the specified user/profile. --></help>
+        <label><!-- Workflow Rules --></label>
+        <name>Workflow_Rules__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>
