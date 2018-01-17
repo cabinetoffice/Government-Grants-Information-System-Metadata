@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>Grant_Scheme__c.Grant_Awards__r$Grant_Award_Name__c</field>
+    </columns>
+    <columns>
+        <field>Grant_Scheme__c.Grant_Awards__r$Total_Amount_in_funding_agreement__c</field>
+    </columns>
+    <columns>
+        <field>Grant_Scheme__c.Grant_Awards__r$Recipient__c</field>
+    </columns>
+    <columns>
+        <field>Grant_Scheme__c.Grant_Awards__r$Contact_Email__c</field>
+    </columns>
+    <columns>
+        <field>Grant_Scheme__c$Target_Location__c</field>
+    </columns>
+    <columns>
+        <field>Grant_Scheme__c$Scheme_Name__c</field>
+    </columns>
+    <columns>
+        <field>Grant_Scheme__c$Funder__c</field>
+    </columns>
+    <columns>
+        <field>Grant_Scheme__c$Scheme_Value__c</field>
+    </columns>
+    <description>Same as &quot;Grants awards awarded above £5m&quot;</description>
+    <filter>
+        <criteriaItems>
+            <column>Grant_Scheme__c.Grant_Awards__r$Total_Amount_in_funding_agreement__c</column>
+            <isUnlocked>false</isUnlocked>
+            <operator>greaterOrEqual</operator>
+            <value>5000000</value>
+        </criteriaItems>
+    </filter>
+    <format>Tabular</format>
+    <name>Awards above £5m this FY</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Grant_Scheme_with_Grant_Awards__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <timeFrameFilter>
+        <dateColumn>Grant_Scheme__c.Grant_Awards__r$Award_Start_Date__c</dateColumn>
+        <interval>INTERVAL_CURFY</interval>
+    </timeFrameFilter>
+</Report>

@@ -1,0 +1,68 @@
+<apex:page showHeader="false" sidebar="false" controller="DataSolutionLoginController" standardStylesheets="false" docType="HTML-5.0" applyBodyTag="false">
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<link rel="stylesheet" href="{!URLFOR($Resource.DT_Custom_App_Launcher, 'css/applauncher.css')}"/>
+	</head>
+	<body id="co-body-wrapper">
+        <div id="co-row-wrapper">
+            <div id="co-content">
+                <div class="container ">
+                    <div class="row">
+						<div id="co-login-form-wrapper" class="col-xs-10 col-xs-offset-1 col-sm-10 col-sm-offset-1 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2 box-shadow--6dp">
+							<div class="col-xs-12">
+								<div class="row">
+									<div class="text-center col-xs-12 col-md-4" style="height:110px;">
+										<div id="co-logo-wrapper" class="row">
+											<img width="210" height="80" src="{!URLFOR($Resource.DT_Custom_App_Launcher, 'img/co-logo.png')}" alt=""/>
+										</div>
+									</div>
+								</div>
+								<div class="row" style="text-align:center;">
+									<apex:outputText escape="false" value="{!$Label.App_Launcher_Text}"/>
+								</div>
+								<!-- <apex:pageBlock rendered="{!showGCOE}"> -->
+									<!-- <div class="row" style="text-align:center;">
+										<apex:outputText escape="false" value="{!$Label.App_Launcher_GGIS_Text}"/>
+									</div>
+									<div class="row" style="text-align:center;">
+										<a href="{!$Label.DT_Community_Home_URL}" target="_self" class="thumbnail">
+											<img width="80" height="80" src="{!URLFOR($Resource.DT_Custom_App_Launcher, 'img/dashboard-icon.png')}" alt="GGIS"/>
+											<button type="button" class="btn btn-primary btn-lg btn-block">{!$Label.App_Launcher_GGIS_Label}</button>
+										</a>
+									</div>
+								</apex:pageBlock> -->
+								<!-- <apex:pageBlock rendered="{!!showGCOE}"> -->
+									<div class="row" style="text-align:center;">
+										<div class="col-sm-6" >
+											<apex:outputText escape="false" value="{!$Label.App_Launcher_GGIS_Text}"/>
+										</div>
+										<div class="col-sm-6" >
+											<apex:outputText escape="false" value="{!$Label.App_Launcher_GCOE_Text}"/>
+										</div>
+									</div>
+									<div class="row" style="text-align:center;">
+										<div class="col-sm-6" >
+											<a href="{!$Label.DT_Community_Home_URL}" target="_self" class="thumbnail">
+												<img width="80" height="80" src="{!URLFOR($Resource.DT_Custom_App_Launcher, 'img/dashboard-icon.png')}" alt="GGIS"/>
+												<button type="button" class="btn btn-primary btn-lg btn-block">{!$Label.App_Launcher_GGIS_Label}</button>
+											</a>
+										</div>
+										<div class="col-sm-6" >
+											<a href="{!$Label.The_Grants_Hub_Home_URL}" target="_self" class="thumbnail">
+												<img width="80" height="80" src="{!URLFOR($Resource.DT_Custom_App_Launcher, 'img/grants-hub.png')}" alt="The Grants Hub"/>
+												<button type="button" class="btn btn-primary btn-lg btn-block">{!$Label.App_Launcher_The_Grants_Hub_Label}</button>
+											</a>
+										</div>
+									</div>
+								<!-- </apex:pageBlock> -->
+							</div>
+						</div>
+                    </div>
+                    <div id="co-footer-wrapper" class="row">
+                        <apex:outputText value="{!$Label.Data_Solution_Login_Footer_Text}" escape="false"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</apex:page>

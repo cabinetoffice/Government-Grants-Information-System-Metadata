@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>Grant_Scheme__c$Funder__c.Name</field>
+    </columns>
+    <columns>
+        <field>Grant_Scheme__c$Scheme_Name__c</field>
+    </columns>
+    <columns>
+        <field>Grant_Scheme__c.Grant_Awards__r$Grant_Award_Name__c</field>
+    </columns>
+    <columns>
+        <field>Grant_Scheme__c.Grant_Awards__r$Recipient__c</field>
+    </columns>
+    <columns>
+        <field>Grant_Scheme__c.Grant_Awards__r$Total_Amount_in_funding_agreement__c</field>
+    </columns>
+    <format>Tabular</format>
+    <name>Grants with their Funders and Recipients</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Grant_Scheme_with_Grant_Awards__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <timeFrameFilter>
+        <dateColumn>Grant_Scheme__c$CreatedDate</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

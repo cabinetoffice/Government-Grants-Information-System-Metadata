@@ -1,0 +1,11 @@
+Hi Admin,
+
+A new case has been create with the below details:
+
+Type: {!Case.Type}
+Number: {!Case.CaseNumber}
+Subject: {!Case.Subject}
+Description: {!Case.Description}
+
+Thanks,
+GGIS Team

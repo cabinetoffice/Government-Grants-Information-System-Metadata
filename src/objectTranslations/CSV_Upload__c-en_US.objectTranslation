@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Data Upload</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Data Uploads</value>
+    </caseValues>
+    <fields>
+        <label><!-- Apex Batch Id --></label>
+        <name>Apex_Batch_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- Processing Status --></label>
+        <name>Processing_Status__c</name>
+        <picklistValues>
+            <masterLabel>Finished</masterLabel>
+            <translation><!-- Finished --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>In Progress</masterLabel>
+            <translation><!-- In Progress --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Queued</masterLabel>
+            <translation><!-- Queued --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Started</masterLabel>
+            <translation><!-- Started --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Validated</masterLabel>
+            <translation><!-- Validated --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Recipient Type --></label>
+        <name>Recipient_Type__c</name>
+        <picklistValues>
+            <masterLabel>Individual</masterLabel>
+            <translation><!-- Individual --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Organisation</masterLabel>
+            <translation><!-- Organisation --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- Total number of records inserted in by this csv upload process. --></help>
+        <label><!-- Records Created Count --></label>
+        <name>Records_Created_Count__c</name>
+    </fields>
+    <fields>
+        <help><!-- Total number of records updated in by this csv upload process. --></help>
+        <label><!-- Records Updated Count --></label>
+        <name>Records_Updated_Count__c</name>
+    </fields>
+    <fields>
+        <help><!-- This is the id of the attachment that will be used to be uploaded. --></help>
+        <label><!-- Source Attachment Id --></label>
+        <name>Source_Attachment_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- Total Records Failed --></label>
+        <name>Total_Records_Failed__c</name>
+    </fields>
+    <fields>
+        <help><!-- This is the total number of records that have been processed without any error. --></help>
+        <label><!-- Total Records Processed Without Error --></label>
+        <name>Total_Records_Processed_Without_Error__c</name>
+    </fields>
+    <fields>
+        <label><!-- Total Records To Be Processed --></label>
+        <name>Total_Records_To_Be_Processed__c</name>
+    </fields>
+    <fields>
+        <help><!-- This is the process type for this data upload. --></help>
+        <label><!-- Type --></label>
+        <name>Type__c</name>
+    </fields>
+    <fields>
+        <help><!-- This is the status of the upload process. --></help>
+        <label><!-- Upload Status --></label>
+        <name>Upload_Status__c</name>
+    </fields>
+    <recordTypes>
+        <label><!-- Grant Award --></label>
+        <name>Grant_Award</name>
+    </recordTypes>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

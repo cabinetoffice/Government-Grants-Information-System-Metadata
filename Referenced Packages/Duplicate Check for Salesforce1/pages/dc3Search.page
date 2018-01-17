@@ -1,0 +1,191 @@
+<apex:page docType="html-5.0" sidebar="false" title="Search - Duplicate Check for Salesforce" controller="dupcheck.dc3ControllerSearch" action="{!janitor}" tabstyle="dc3Search__tab">
+    
+    <apex:stylesheet value="{!URLFOR($Resource.dupcheck__slds, '/assets/styles/salesforce-lightning-design-system-vf.min.css')}" />
+    <apex:stylesheet value="{!IF(isDev,AssetsUrl,URLFOR($Resource.dupcheck__dupcheckAssets,'/dupcheckAssets'))}/lightning/style/dupcheckApp.css" />
+
+    <apex:includeScript value="//assets-plautibv.netdna-ssl.com/moment/2.15.2/moment.min.js"/>
+    <apex:includeScript value="//assets-plautibv.netdna-ssl.com/jquery/1.11.1/jquery.min.js" />
+    <apex:includeScript value="//assets-plautibv.netdna-ssl.com/angularjs/1.4.9/angular.min.js" />
+    <apex:includeScript value="//assets-plautibv.netdna-ssl.com/angularjs/1.4.9/angular-sanitize.min.js" />
+    <apex:includeScript value="{!IF(isDev,AssetsUrl,URLFOR($Resource.dupcheck__dupcheckAssets,'/dupcheckAssets'))}/lightning/js/plauti-ng-slds.min.js" />
+	
+	<apex:includeScript value="//assets-plautibv.netdna-ssl.com/angular-local-storage/0.2.2/angular-local-storage.min.js" />
+    <apex:includeScript value="{!IF(isDev,AssetsUrl,URLFOR($Resource.dupcheck__dupcheckAssets,'/dupcheckAssets'))}/lightning/js/dupcheck.js" />
+    <apex:includeScript value="{!IF(isDev,AssetsUrl,URLFOR($Resource.dupcheck__dupcheckAssets,'/dupcheckAssets'))}/lightning/js/dupcheck.ng.directives.js" />
+    <apex:includeScript value="{!IF(isDev,AssetsUrl,URLFOR($Resource.dupcheck__dupcheckAssets,'/dupcheckAssets'))}/lightning/js/dupcheck.ng.services.js" />
+    <apex:includeScript value="{!IF(isDev,AssetsUrl,URLFOR($Resource.dupcheck__dupcheckAssets,'/dupcheckAssets'))}/lightning/js/dupcheck.ng.search.js" /> 
+     
+    <apex:includeScript value="/support/console/37.0/integration.js"/>
+    
+    <c:dc3TranslationJS />
+    <c:dc3Welcome version="LIGHTNING"/>
+    
+    <div class="plauti dc-body" id="dataStore" ng-app="dcApp" ng-controller="searchController" data-sf-typeahead="{!$RemoteAction.dc3ControllerSearch.getRelatedTypeAheadAdvanced}" data-sf-get-layout="{!$RemoteAction.dc3ControllerSearch.getLayout}" data-sf-search="{!$RemoteAction.dc3ControllerSearch.search}">
+                                                                    
+        <div class="slds-page-header" role="banner"> 
+            <div class="slds-grid slds-wrap">
+                <div class="slds-col slds-size--1-of-1 slds-medium-size--4-of-6 slds-large-size--4-of-6">
+                    <div class="slds-media">
+                        <div class="slds-media__figure">
+                            <img class="slds-icon slds-icon--large" ng-src="{!IF(isDev,AssetsUrl,URLFOR($Resource.dupcheckAssets,'/dupcheckAssets'))}/lightning/app/app_icon_48.png" />
+                        </div>
+                        <div class="slds-media__body">
+                             <p class="slds-text-heading--label">Duplicate Check</p>
+                            <div class="slds-grid">
+                                <h1 class="slds-text-heading--medium slds-m-right--small slds-truncate slds-align-middle">Search</h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="slds-col slds-size--1-of-1 slds-medium-size--2-of-6 slds-large-size--2-of-6 slds-align-bottom">
+                    <div class="slds-grid slds-float--right">
+                        <div class="slds-button-group slds-float--right slds-button-space-left" role="group">
+                            <c:dc3WelcomeLink version="LIGHTNING" helpLink="https://support.duplicatecheck.com/article/usage-guide/dc-search?utm_source=dcApp&utm_medium=app&utm_campaign=help_link"/>
+						</div>
+                    </div>
+                </div> 
+            </div>
+          </div> 
+        
+        
+        <apex:repeat value="{!objectConfig}" var="config">
+            <script type="text/ng-template" id="{!config}"> 
+            <div class="slds-tabs__content slds-show" ng-controller="templateController" data-object="{!JSINHTMLENCODE(objectConfig[config].objectPrefix)}">
+
+			<div ng-if="meta.isLoading" class="slds-m-around--large">
+				<div class="slds-grid slds-grid--align-center">
+					<div class="slds-spinner--large">
+						<img src="{!URLFOR($Resource.slds,'')}/assets/images/spinners/slds_spinner_brand.gif" alt="{!$label.LOADING}" />
+					</div>
+				</div>
+			</div>
+
+            <form name="search" ng-if="!meta.isLoading"> 
+                <div class="slds-form--stacked">
+                    <div class="slds-grid slds-grid--align-spread slds-wrap slds-m-bottom--medium">
+                        <div class="slds-col--padded slds-size--1-of-1 slds-medium-size--1-of-2 container--right slds-m-top--small" ng-if="meta.objectMeta.isRecordType && meta.showRecordType">
+                            <div class="slds-form-element">
+                                <label class="slds-form-element__label" for="RecordTypeId">Record Type</label>
+                                    <div class="slds-form-element__control">
+										<div class="slds-select_container">
+                                        	<select id="RecordTypeId" ng-model="data.recordTypeId" name="RecordTypeId" class="slds-select" ng-init="data.recordTypeId=('{!JSINHTMLENCODE(objectConfig[config].objectPrefix)}' == '001P' ? '012000000000000AAB' : 'empty')">
+                                            	<option ng-if="meta.objectMeta.Prefix != '001P'" value="empty">All Record Types</option>
+                                            	<option ng-if="meta.objectMeta.Prefix == '001P'" value="012000000000000AAB">{!$label.ALL_RECORD_TYPES}</option>
+                                            	<option value="{{rt.recordTypeId}}" ng-repeat="rt in meta.RecordTypeList | filter:{isActive:true}" ng-bind-html="rt.Name"/>
+                                        	</select>       
+										</div>
+                                    </div>
+                                </div>  
+                            </div>
+                        <div class="slds-col--padded slds-size--1-of-1 slds-medium-size--1-of-2 container--right slds-m-top--small" ng-repeat="field in meta.fieldSet"> 
+                            <div class="slds-form-element" ng-class="{'slds-has-error':search[field].$invalid}">
+                                <label class="slds-form-element__label" for="{{field}}" ng-bind-html="meta.fieldMeta[field].Label"></label>                             
+									<div class="slds-form-element__control" ng-switch="meta.fieldMeta[field].Type">
+                                        <div ng-switch-when="BOOLEAN">
+                                            <input plauti-checkbox-toggle="plauti-checkbox-toggle" id="{{field}}" name="{{field}}" ng-model="data[field]" type="checkbox"/>
+                                        </div>
+                                        <div ng-switch-when="CURRENCY">
+                                            <input id="{{field}}" ng-enter="doSearch()" name="{{field}}" class="slds-input" type="text" ng-model="data[field]"/>
+                                        </div>
+                                        <div ng-switch-when="DATE">
+                                            <plauti-datepicker date-format="dd MMMM yyyy" name="{{field}}" id="{{field}}" ng-model="data[field]" start-year="1800" end-year="2099" svg-path="{!URLFOR($Resource.slds,'')}/assets/icons/utility-sprite/svg/symbols.svg"></plauti-datepicker>
+                                        </div>
+                                        <div ng-switch-when="DATETIME">
+                                            <plauti-datepicker date-format="dd MMMM yyyy" name="{{field}}" id="{{field}}" ng-model="data[field]" start-year="1800" end-year="2099" svg-path="{!URLFOR($Resource.slds,'')}/assets/icons/utility-sprite/svg/symbols.svg" is-meridian-format="true" min-step="1"></plauti-datetimepicker>
+                                        </div>  
+                                        <div ng-switch-when="DOUBLE">
+                                            <input name="{{field}}" ng-enter="doSearch()" id="{{field}}" class="slds-input"  type="number" ng-model="data[field]"/>
+                                        </div>
+                                        <div ng-switch-when="EMAIL">
+                                            <input name="{{field}}" ng-enter="doSearch()" id="{{field}}" class="slds-input"  type="email" maxlength="{{meta.fieldMeta[field].Length}}" ng-model="data[field]"/> 
+                                        </div>
+                                        <div ng-switch-when="ID">
+                                            <input name="{{field}}" ng-enter="doSearch()" id="{{field}}" class="slds-input" type="text" maxlength="18" minlength="15" ng-model="data[field]"/>
+                                        </div>
+                                        <div ng-switch-when="INTEGER">
+                                            <input name="{{field}}" ng-enter="doSearch()" id="{{field}}" class="slds-input" min="0" type="number" maxlength="10" ng-model="data[field]" ng-pattern="meta.integerPattern"/>
+                                            <span class="slds-form-element__help" ng-if="search[field].$invalid">{!$label.PLEASE_ENTER_A_NUMBER}</span> 
+                                        </div>
+                                        <div ng-switch-when="MULTIPICKLIST">
+                                            <plauti-multi-select id="{{field}}" name="{{field}}" default-text="{!$label.NOTHING_SELECTED}" svg-path="{!URLFOR($Resource.slds,'')}/assets/icons/utility-sprite/svg/symbols.svg" ng-model="data[field]" options="meta.fieldMeta[field].selectList" name-attr="label" value-attr="value"/>
+                                        </div>
+                                        <div ng-switch-when="PERCENT">
+                                            <input name="{{field}}" ng-enter="doSearch()" id="{{field}}" class="slds-input"  type="text" ng-model="data[field]"/>
+                                        </div>
+                                        <div ng-switch-when="PHONE">
+                                            <input name="{{field}}" ng-enter="doSearch()" id="{{field}}" class="slds-input" type="tel" maxlength="{{meta.fieldMeta[field].Length}}" ng-model="data[field]"/> 
+                                        </div> 
+                                        <div ng-switch-when="REFERENCE">                                                                                                                                                                  
+                                            <plauti-typeahead local-storage-name="plautitypeahead-{!$User.id}" object-list-meta="meta.fieldMeta[field].RelatedObjectMeta" object-label="meta.fieldMeta[field].Label" name="{{field}}" id="{{field}}" typeahead-min-length="2" typeahead-wait-ms="0" options="referenceOptions[field]" typeahead-options-method="getLookup(objectItem, searchText, field, fields)" ng-model="data[field]" ng-model-display="" name-attr="name" value-attr="id" typeahead-select-on-blur="true" svg-path="{!URLFOR($Resource.slds,'')}"></plauti-typeahead>
+										</div>
+                                        <div ng-switch-when="URL">
+                                            <input ng-enter="doSearch()" name="{{field}}" id="{{field}}" class="slds-input"  type="text" maxlength="{{meta.fieldMeta[field].Length}}" ng-model="data[field]"/>
+                                        </div>
+                                        <div ng-switch-when="PICKLIST">
+											 <div class="slds-select_container">
+                                            	<select name="{{field}}" id="{{field}}" class="slds-select"  ng-model="data[field]"  ng-options="field.value as field.label for field in {{meta.fieldMeta[field].selectList}}"/>
+                                        	</div>
+										</div>
+                                        <div ng-switch-when="TEXTAREA">
+                                            <textarea ng-enter="doSearch()" name="{{field}}" id="{{field}}" class="slds-textarea" ng-model="data[field]"  maxlength="{{meta.fieldMeta[field].Length}}" rows="**displayLines**"></textarea>    
+                                        </div>
+										<div ng-switch-when="STRING">
+                                            <input ng-enter="doSearch()" name="{{field}}" id="{{field}}" class="slds-input" type="text" maxlength="{{meta.fieldMeta[field].Length}}" ng-model="data[field]"/>
+                                        </div>
+                                        <div ng-switch-default="ng-switch-default">
+                                            <input ng-enter="doSearch()" name="{{field}}" id="{{field}}" class="slds-input" type="text"  ng-model="data[field]"/>
+                                        </div>
+                                    </div>
+
+                                </div>  
+                            </div>              
+                        </div>  
+                    </div>
+                </form> 
+
+
+                <div class="slds-grid slds-wrap slds-m-top--medium slds-m-bottom--large" ng-if="meta.fieldSet">
+                    <div class="slds-col--padded slds-size--1-of-1">
+
+                        <button class="slds-button slds-button--brand" ng-click="doSearch()" ng-enter="doSearch()" ng-disabled="meta.isSearching">
+                            <span class="slds-icon__container slds-icon-utility-search">
+                                <svg aria-hidden="true" class="slds-button__icon slds-button__icon--inverse slds-button__icon--left">
+                                    <use xlink:href="{!URLFOR($Resource.slds, '/assets/icons/utility-sprite/svg/symbols.svg#search')}"></use>
+                                </svg>
+                            </span>                     
+                            {!$label.SEARCH}&nbsp;<apex:outputText value="{!objectConfig[config].objectLabel}"/>
+                        </button>
+    
+                        <button ng-if="meta.hasSearched && !meta.isSearching" class="slds-button slds-button--neutral" ng-click="doCreateRecord();">{!$label.CREATE} <span ng-bind-html="meta.objectMeta.Label"/></button>
+
+                    </div>
+                </div>
+
+				<div ng-if="meta.isSearching && (undefined === result.resultData.duplicateCount)" class="slds-m-horizontal--small slds-notify slds-notify--alert slds-theme--info" role="alert">
+					<h2>
+						<img class="slds-icon slds-icon--small" src="{!URLFOR($Resource.slds,'')}/assets/images/spinners/slds_spinner_inverse.gif" alt="{!$label.LOADING}" />
+						{!$label.SEARCHING_FOR_DUPLICATES}
+					</h2>
+				</div>
+
+                <div ng-if="result.resultData.duplicateCount > 0 || meta.hasSearched" class="slds-col--padded"> 
+                  	<div plauti-duplicate-result="plauti-duplicate-result" search-text="Searching for duplicates" searching="meta.isSearching" resource="{!URLFOR($Resource.slds,'')}" duplicate-data="result.resultData" base-prefix="{!config}" alert-style="slds-theme--info" check-box="true" merge-url="{!URLFOR($Page.dc3Merge,null)}" open-target="{!settings.OpenTarget}"> 
+                    </div> 
+				</div> 
+            </div>
+
+        </script>
+        </apex:repeat>
+        
+        <plauti-tabset class="dc-search-navigation-scoped" scoped="true" active-tab="'{!activeObject}'"> 
+			<apex:repeat value="{!objectConfig}" var="config">
+			    <plauti-tab title="{!objectConfig[config].objectLabel}" name="{!config}" template-url="{!config}" /> 
+			</apex:repeat> 
+        </plauti-tabset>
+        
+
+
+    </div>
+    
+
+</apex:page>

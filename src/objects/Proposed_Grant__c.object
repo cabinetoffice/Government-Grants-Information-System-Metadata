@@ -1,0 +1,423 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <enableActivities>false</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <externalSharingModel>ReadWrite</externalSharingModel>
+    <fields>
+        <fullName>Advice_for_Departments__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Advice provided by &apos;New Grants Advice Panel&apos; to grant making department.</inlineHelpText>
+        <label>Advice for Departments</label>
+        <length>32768</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Contact_Email_of_Policy_Team__c</fullName>
+        <externalId>false</externalId>
+        <label>Contact Email of Policy Team</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Email</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Contact_Telephone_Number_of_Policy_Team__c</fullName>
+        <externalId>false</externalId>
+        <label>Contact Telephone Number of Policy Team</label>
+        <length>80</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Deadline_Date_for_action_to_be_completed__c</fullName>
+        <externalId>false</externalId>
+        <label>Deadline-Date for action to be completed</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Done_Fraud_Error_Risk_Assessment__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Undertaken Fraud&amp;Error Risk Assessment?</label>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Expected_Amount__c</fullName>
+        <externalId>false</externalId>
+        <label>Expected Amount</label>
+        <precision>16</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Expected_End_Beneficiary_Type__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Who will be the end beneficiary of the grant funding? e.g. sector, population, segment.</inlineHelpText>
+        <label>Expected End Beneficiary Type</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Expected_End_Recipient_Type__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>The expected end recipient to receive grant funding (after having passed through a possible number of intermediaries).</inlineHelpText>
+        <label>Expected End Recipient Type</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Expected_Number_of_Recipients__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Expected total number of recipients to receive grant funding.</inlineHelpText>
+        <label>Expected Number of Recipients</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Expected_Start_Date__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>The date the Grant (Scheme or Award) is expected to commence, or be awarded.</inlineHelpText>
+        <label>Expected Start Date</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Funder__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <inlineHelpText>The entity that is funding a grant (this could be a government department or an agency or a 3rd party)</inlineHelpText>
+        <label>Funder</label>
+        <lookupFilter>
+            <active>true</active>
+            <filterItems>
+                <field>Account.Is_Funder__c</field>
+                <operation>equals</operation>
+                <value>True</value>
+            </filterItems>
+            <isOptional>false</isOptional>
+        </lookupFilter>
+        <referenceTo>Account</referenceTo>
+        <relationshipLabel>Proposed Grants</relationshipLabel>
+        <relationshipName>Proposed_Grants</relationshipName>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Intermediary_Considered__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Intermediary Considered?</label>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Is_Grant_Sensitive__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Is Grant Sensitive?</label>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Is_My_Department_Data__c</fullName>
+        <externalId>false</externalId>
+        <formula>LEFT( 
+Owner:User.UserRole.Name , 
+IF( 
+RIGHT(Owner:User.UserRole.Name , 8) == &apos; Manager&apos; 
+, LEN(Owner:User.UserRole.Name ) - 8 
+, LEN(Owner:User.UserRole.Name ) - 5 
+) 
+) == LEFT( 
+$UserRole.Name, 
+IF( 
+RIGHT($UserRole.Name, 8) == &apos; Manager&apos; 
+, LEN($UserRole.Name) - 8 
+, LEN($UserRole.Name) - 5 
+) 
+)</formula>
+        <label>Is My Department Data</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>NGAP_notes_on_follow_up_with_departments__c</fullName>
+        <externalId>false</externalId>
+        <label>NGAP notes on follow-up with departments</label>
+        <length>32768</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>New_Grants_Advice_Panel_Notes__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Any notes that are put forward as a result of grant passing through &apos;New Grants Advice Panel&apos;.</inlineHelpText>
+        <label>New Grants Advice Panel Notes</label>
+        <length>32768</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Notes__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Any notes or details that may be relevant to this proposed grant.</inlineHelpText>
+        <label>Notes</label>
+        <length>32768</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>4</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Please_specify_other_funding_model__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>If &quot;Progressed to other funding model
+&quot; is selected above, then use this freetext field to specify other funding model.</inlineHelpText>
+        <label>Please specify other funding model</label>
+        <length>32768</length>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Policy_Outcome__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>The expected policy effects expected as a result of awarding this proposed grant.</inlineHelpText>
+        <label>Policy Outcome</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Proposed_Grant_Category__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>This is related to the grants register. The grant categories can be one of either:
+-Ad-Hoc
+-Capital grant
+-Criteria
+-Formula grant
+-General grant
+-Grant-in-Aid
+-Intermediated grant
+-Resource grant
+-unknown</inlineHelpText>
+        <label>Proposed Grant Category</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Proposed_Grant_Objective__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>The objective of awarding this grant.</inlineHelpText>
+        <label>Proposed Grant Objective</label>
+        <length>32768</length>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Proposed_Grant_Reference_No__c</fullName>
+        <externalId>true</externalId>
+        <inlineHelpText>This is a reference number that can be used to link back to the data supplier&apos;s source system.</inlineHelpText>
+        <label>Proposed Grant Reference No</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Proposed_Grant_Status__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>The staus of the grant should fall under the following picklist options:
+Under review
+Progressed to a grant
+Progressed to a loan
+Progressed to a contract
+Progressed to other funding model
+Never made active</inlineHelpText>
+        <label>Proposed Grant Status</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Under Review</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Progressed to a Grant</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Progressed to Loan</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Progressed to Contract</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Progressed to other funding model</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Never made active</fullName>
+                    <default>false</default>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Response_from_Departments__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Departments&apos; responses to any issues arising from &apos;New Grants Advice Panel&apos;.</inlineHelpText>
+        <label>Response from Departments</label>
+        <length>32768</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <label>Proposed Grant</label>
+    <nameField>
+        <label>Proposed Grant Name</label>
+        <trackHistory>true</trackHistory>
+        <type>Text</type>
+    </nameField>
+    <pluralLabel>Proposed Grants</pluralLabel>
+    <searchLayouts/>
+    <sharingModel>ReadWrite</sharingModel>
+    <validationRules>
+        <fullName>Department_Check_on_update</fullName>
+        <active>true</active>
+        <description>This is a global validation rule to stop users from updating other department&apos;s record.</description>
+        <errorConditionFormula>AND ( 
+NOT($Setup.Bypass__c.Validation_Rules__c) 
+, ISPICKVAL($Profile.UserType, &apos;PowerCustomerSuccess&apos;) 
+, NOT(ISNEW()) 
+, Owner:User.UserRoleId &lt;&gt; $User.UserRoleId 
+)</errorConditionFormula>
+        <errorMessage>You don&apos;t have update privilege on this record.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Other_Funding_Model_field_is_mandatory</fullName>
+        <active>true</active>
+        <description>Please specify other funding model field is mandatory if and only if  Status field value is equal to &apos;Progressed to other funding model&apos;</description>
+        <errorConditionFormula>AND( 
+NOT($Setup.Bypass__c.Validation_Rules__c) 
+, ISPICKVAL( Proposed_Grant_Status__c , &apos;Progressed to other funding model&apos;) 
+, ISBLANK( Please_specify_other_funding_model__c ) 
+)</errorConditionFormula>
+        <errorDisplayField>Please_specify_other_funding_model__c</errorDisplayField>
+        <errorMessage>&apos;Please specify other funding model&apos; field is mandatory if and only if  &apos;Proposed Grant Status&apos; field value is equal to &apos;Progressed to other funding model&apos;.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Other_Funding_Model_field_shouldbe_blank</fullName>
+        <active>true</active>
+        <description>&apos;Please specify other funding model&apos; should be blank if and only if  &apos;Proposed Grant Status&apos; field value is NOT equal to &apos;Progressed to other funding model&apos;.</description>
+        <errorConditionFormula>AND( 
+NOT($Setup.Bypass__c.Validation_Rules__c) 
+, AND(NOT(ISPICKVAL( Proposed_Grant_Status__c , &apos;Progressed to other funding model&apos;)),
+  NOT(ISBLANK(TEXT(Proposed_Grant_Status__c)))
+  )
+, NOT(ISBLANK(  Please_specify_other_funding_model__c )) 
+)</errorConditionFormula>
+        <errorDisplayField>Please_specify_other_funding_model__c</errorDisplayField>
+        <errorMessage>&apos;Please specify other funding model&apos; should be blank if &apos;Proposed Grant Status&apos; field value is NOT equal to &apos;Progressed to other funding model&apos;.</errorMessage>
+    </validationRules>
+</CustomObject>

@@ -1,0 +1,6 @@
+<aura:component >
+    <aura:attribute name="recordId" type="Id" />
+	<a onclick="{!c.openRecord}" >
+    	<lightning:icon iconName="utility:open" size="x-small" alternativeText="Open Record"/>
+    </a>
+</aura:component>
