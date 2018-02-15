@@ -1,0 +1,76 @@
+<apex:page docType="html-5.0" title="Company Search" controller="CH_CompanySearchPageExtClass">
+    <script>
+		function confirmCreate() {
+			var c = confirm('You are about to be redirected to the Organisations Creation screen');
+            
+			if(c == true) {
+                completeCreate();
+			}
+		}
+	</script>
+	
+	<style>
+        .custom1 .pbSubheader {
+            background-color: #1797c0;
+        }
+    </style>
+	
+	<apex:pageMessages id="messagePanel" />
+	
+	<apex:sectionHeader title="Companies House" subtitle="Company Search" />
+	
+	<apex:form >
+		<apex:actionFunction name="initiateCreate" onComplete="confirmCreate();" />
+		<apex:actionFunction name="completeCreate" action="{!createCS}" />
+		<apex:pageBlock >
+		    <apex:outputPanel styleclass="custom1">
+    			<apex:pageBlockSection title="Companies House Search" columns="1">
+    				<apex:panelGroup >
+    					<apex:inputText label="Search for Company Name/Number: " value="{!strSearchTerm}" size="40" html-placeholder="enter company name / number"/>
+    					<apex:commandButton value="Search" action="{!searchCS}" style="width: 80px;" />
+    				</apex:panelGroup>
+    			</apex:pageBlockSection>
+			</apex:outputPanel>
+		</apex:pageBlock>
+		<apex:pageBlock rendered="{!(blnHasResults && blnCallSuccess && blnRenderResults)}" id="resultBlock">
+		    <apex:outputPanel styleclass="custom1">
+    			<apex:pageBlockSection title="Companies House Results" columns="1">
+    				<apex:pageBlockTable value="{!ListItems}" var="i">
+    					<apex:column >
+    						<apex:actionsupport action="{!setComp}" event="onclick" reRender="FALSE">
+    							<input type="radio" name="selectCN">
+    								<apex:param name="selected" value="{!i.company_number}" />
+    							</input>
+    						</apex:actionsupport>
+    					</apex:column>
+    					<apex:column headerValue="Name">
+    						<apex:outputText value="{!i.title}" />
+    					</apex:column>
+    					<apex:column headerValue="Company Number">
+    						<apex:outputText value="{!i.company_number}" />
+    					</apex:column>
+    					<apex:column headerValue="status">
+    						<apex:outputText value="{!i.company_status}" />
+    					</apex:column>
+    					<apex:column headerValue="Registered Address">
+    						<apex:outputText value="{!i.address.premises + ' ' + i.address.address_line_1 + ', ' + i.address.locality + ', ' + i.address.postal_code}" />
+    					</apex:column>
+    				</apex:pageBlockTable>
+    			</apex:pageBlockSection>
+    		</apex:outputPanel>
+		</apex:pageBlock>
+		<apex:pageBlock rendered="{!(NOT(blnHasResults) && blnCallSuccess && blnRenderResults)}" id="noResultBlock">
+		    <apex:outputPanel styleclass="custom1">
+    			<apex:pageBlockSection title="Companies House Results" columns="1">
+    				<apex:outputText value="No Results Where Returned By Your Search" />
+    			</apex:pageBlockSection>
+			</apex:outputPanel>
+		</apex:pageBlock>
+		<apex:pageBlock id="buttonBlock">
+			<apex:pageBlockButtons location="bottom">
+				<apex:commandButton value="Create Company" onClick="initiateCreate(); return false;" style="width: 120px;" disabled="{!blnDisableCreate}" />
+				<apex:commandButton value="Cancel" action="{!cancelCS}" style="width: 80px;" />
+			</apex:pageBlockButtons>
+		</apex:pageBlock>
+	</apex:form>
+</apex:page>
