@@ -1,0 +1,2 @@
+<apex:page docType="html-5.0" controller="dupcheck.dc3ControllerFrequent" cache="false" Title="Frequent Words - Duplicate Check for Salesforce" sidebar="false" action="{!directSetup}" tabstyle="dc3Setup__tab">
+</apex:page>

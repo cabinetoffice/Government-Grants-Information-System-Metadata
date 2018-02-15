@@ -1,0 +1,124 @@
+<apex:page id="registrationPage" showHeader="false" sidebar="false" controller="DataSolutionRegistrationController" standardStylesheets="false" docType="HTML-5.0" applyBodyTag="false">
+    <head>
+    	<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    	<meta http-equiv="X-UA-Compatible" content="IE=8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+        <link rel="stylesheet" href="{!URLFOR($Resource.DT_Custom_Register_Bundle, 'css/registration.css')}"/>
+        <link rel="stylesheet" href="{!URLFOR($Resource.DT_Custom_Register_Bundle, 'css/easy-autocomplete.min.css')}"/>
+        <apex:includeScript value="{!URLFOR($Resource.DT_Custom_Register_Bundle, 'js/jquery-1.11.2.min.js')}" />
+		<apex:includeScript value="{!URLFOR($Resource.DT_Custom_Register_Bundle, 'js/jquery.easy-autocomplete.min.js')}" />
+		<!-- included as an override for IE 8 compatability, this will not allow responsive design for IE 8 -->
+		<!--[if lt IE 9]>  
+        <style type="text/css">
+            .col-md-8 {
+                width: 33.33333%;
+            }
+            .col-md-4 {
+                width: 66.66667%;
+                float: right;
+            }
+        </style>
+        < ![endif]--> 
+    </head>
+    <body id="co-body-wrapper">
+        <div id="co-row-wrapper">
+            <div id="co-content">
+                <div class="container ">
+                    <div class="row">
+                    	<c:PageMessagesBootstrap />
+                        <div id="co-register-form-wrapper" class="col-xs-10 col-xs-offset-1 col-sm-10 col-sm-offset-1 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2 box-shadow--6dp" style="height:610px;">
+                            <div id="co-portal-register-text-wrapper" class="hidden-xs hidden-sm col-md-8">
+                                <apex:outputText value="{!$Label.DT_User_Registration_Text}" escape="false"/>
+                                <apex:outputText value="{!$Label.DT_User_Registration_Text_2}" escape="false"/>
+                            </div>
+                            <div class="text-center col-xs-12 col-md-4">
+                                <div id="co-logo-wrapper" class="row">
+                                    <img width="210" height="80" src="{!URLFOR($Resource.DT_Custom_Login_Bundle, 'img/co-logo.png')}" alt=""/>
+                                </div>
+                                <div id="co-register-form" class="row">
+									<apex:form id="registrationForm">
+										<div class="form-group">
+											<apex:input html-placeholder="First Name" type="text" styleClass="form-control" id="firstName" value="{!firstName}" required="true"/>								
+										</div>
+										<div class="form-group">
+											<apex:input html-placeholder="Last Name" type="text" styleClass="form-control" id="lastName" value="{!lastName}" required="true"/>											
+										</div>
+										<div class="form-group">
+											<apex:input html-placeholder="Email Address" type="email" styleClass="form-control" id="email" value="{!emailAddress}" required="true" title="Please use your work email address."/>											
+										</div>
+										<div class="form-group">											
+											<input placeholder="Department" id="department-name" type="text"  class="form-control" required="true"/>											
+											<apex:inputHidden id="selectedDepartmentId" value="{!selectedDepartmentId}" />
+										</div>
+										<div class="form-group">
+											<apex:selectList value="{!ggisRole}" multiselect="false" styleClass="form-control" size="1">
+           										<apex:selectOptions value="{!roles}" />
+        									</apex:selectList>
+										</div>
+										<div class="form-group">
+											<apex:selectList value="{!businessArea}" multiselect="false" styleClass="form-control" size="1">
+           										<apex:selectOptions value="{!businessAreas}"/>
+        									</apex:selectList>
+										</div>
+										<apex:commandButton styleClass="btn btn-primary btn-lg btn-block" action="{!saveUser}" value="Register" id="registerButton"/>
+										<apex:outputLink value="{!$Label.DT_Community_Home_URL}">Already registered?</apex:outputLink>
+									</apex:form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="co-footer-wrapper" class="row">
+                        <apex:outputText value="{!$Label.Data_Solution_Login_Footer_Text}" escape="false"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+	<style>
+		.co-auto-complete-wrapper{
+			width: 100% !important;
+			text-align: justify;
+		}
+/*		.easy-autocomplete-container {
+			
+		}*/
+	</style>
+	<script type="text/javascript">
+		var options = {
+			url: "/datasolution/AvailableDeptForRegistration",
+			getValue: "name",
+			cssClasses: "co-auto-complete-wrapper",
+			list: {
+				showAnimation: {
+					type: "fade", //normal|slide|fade
+					time: 400,
+					callback: function() {}
+				},
+				hideAnimation: {
+					type: "slide", //normal|slide|fade
+					time: 400,
+					callback: function() {}
+				},
+				match: {
+					enabled: true
+				},
+				onSelectItemEvent: function() {
+					var selectedDepartment = $("#department-name").getSelectedItemData();
+					var selectedDepartmentIdElement = document.getElementById('{!$Component.registrationPage.registrationForm.selectedDepartmentId}');
+					selectedDepartmentIdElement.value = selectedDepartment.id;
+					$("#department-name").val(selectedDepartment.name).trigger("change");
+					return true;
+				}
+			},
+		};
+		$("#department-name").easyAutocomplete(options);
+	</script>
+	<script>
+      $(function(){
+         $('.placeholder').each(function(index, elem){
+             $(elem).prop('placeholder',$(elem).prop('title'));
+         });
+      });  
+      !function(a){"use strict";function b(){}function c(){try{return document.activeElement}catch(a){}}function d(a,b){for(var c=0,d=a.length;d>c;c++)if(a[c]===b)return!0;return!1}function e(a,b,c){return a.addEventListener?a.addEventListener(b,c,!1):a.attachEvent?a.attachEvent("on"+b,c):void 0}function f(a,b){var c;a.createTextRange?(c=a.createTextRange(),c.move("character",b),c.select()):a.selectionStart&&(a.focus(),a.setSelectionRange(b,b))}function g(a,b){try{return a.type=b,!0}catch(c){return!1}}function h(a,b){if(a&&a.getAttribute(B))b(a);else for(var c,d=a?a.getElementsByTagName("input"):N,e=a?a.getElementsByTagName("textarea"):O,f=d?d.length:0,g=e?e.length:0,h=f+g,i=0;h>i;i++)c=f>i?d[i]:e[i-f],b(c)}function i(a){h(a,k)}function j(a){h(a,l)}function k(a,b){var c=!!b&&a.value!==b,d=a.value===a.getAttribute(B);if((c||d)&&"true"===a.getAttribute(C)){a.removeAttribute(C),a.value=a.value.replace(a.getAttribute(B),""),a.className=a.className.replace(A,"");var e=a.getAttribute(I);parseInt(e,10)>=0&&(a.setAttribute("maxLength",e),a.removeAttribute(I));var f=a.getAttribute(D);return f&&(a.type=f),!0}return!1}function l(a){var b=a.getAttribute(B);if(""===a.value&&b){a.setAttribute(C,"true"),a.value=b,a.className+=" "+z;var c=a.getAttribute(I);c||(a.setAttribute(I,a.maxLength),a.removeAttribute("maxLength"));var d=a.getAttribute(D);return d?a.type="text":"password"===a.type&&g(a,"text")&&a.setAttribute(D,"password"),!0}return!1}function m(a){return function(){P&&a.value===a.getAttribute(B)&&"true"===a.getAttribute(C)?f(a,0):k(a)}}function n(a){return function(){l(a)}}function o(a){return function(){i(a)}}function p(a){return function(b){return v=a.value,"true"===a.getAttribute(C)&&v===a.getAttribute(B)&&d(x,b.keyCode)?(b.preventDefault&&b.preventDefault(),!1):void 0}}function q(a){return function(){k(a,v),""===a.value&&(a.blur(),f(a,0))}}function r(a){return function(){a===c()&&a.value===a.getAttribute(B)&&"true"===a.getAttribute(C)&&f(a,0)}}function s(a){var b=a.form;b&&"string"==typeof b&&(b=document.getElementById(b),b.getAttribute(E)||(e(b,"submit",o(b)),b.setAttribute(E,"true"))),e(a,"focus",m(a)),e(a,"blur",n(a)),P&&(e(a,"keydown",p(a)),e(a,"keyup",q(a)),e(a,"click",r(a))),a.setAttribute(F,"true"),a.setAttribute(B,T),(P||a!==c())&&l(a)}var t=document.createElement("input"),u=void 0!==t.placeholder;if(a.Placeholders={nativeSupport:u,disable:u?b:i,enable:u?b:j},!u){var v,w=["text","search","url","tel","email","password","number","textarea"],x=[27,33,34,35,36,37,38,39,40,8,46],y="#ccc",z="placeholdersjs",A=new RegExp("(?:^|\\s)"+z+"(?!\\S)"),B="data-placeholder-value",C="data-placeholder-active",D="data-placeholder-type",E="data-placeholder-submit",F="data-placeholder-bound",G="data-placeholder-focus",H="data-placeholder-live",I="data-placeholder-maxlength",J=100,K=document.getElementsByTagName("head")[0],L=document.documentElement,M=a.Placeholders,N=document.getElementsByTagName("input"),O=document.getElementsByTagName("textarea"),P="false"===L.getAttribute(G),Q="false"!==L.getAttribute(H),R=document.createElement("style");R.type="text/css";var S=document.createTextNode("."+z+" {color:"+y+";}");R.styleSheet?R.styleSheet.cssText=S.nodeValue:R.appendChild(S),K.insertBefore(R,K.firstChild);for(var T,U,V=0,W=N.length+O.length;W>V;V++)U=V<N.length?N[V]:O[V-N.length],T=U.attributes.placeholder,T&&(T=T.nodeValue,T&&d(w,U.type)&&s(U));var X=setInterval(function(){for(var a=0,b=N.length+O.length;b>a;a++)U=a<N.length?N[a]:O[a-N.length],T=U.attributes.placeholder,T?(T=T.nodeValue,T&&d(w,U.type)&&(U.getAttribute(F)||s(U),(T!==U.getAttribute(B)||"password"===U.type&&!U.getAttribute(D))&&("password"===U.type&&!U.getAttribute(D)&&g(U,"text")&&U.setAttribute(D,"password"),U.value===U.getAttribute(B)&&(U.value=T),U.setAttribute(B,T)))):U.getAttribute(C)&&(k(U),U.removeAttribute(B));Q||clearInterval(X)},J);e(a,"beforeunload",function(){M.disable()})}}(this);
+  </script>
+</apex:page>

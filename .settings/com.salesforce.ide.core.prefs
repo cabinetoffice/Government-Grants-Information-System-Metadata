@@ -1,5 +1,6 @@
 eclipse.preferences.version=1
 endpointApiVersion=38.0
+<<<<<<< HEAD
 endpointEnvironment=Production/Developer Edition
 endpointServer=login.salesforce.com
 httpsProtocol=true
@@ -13,3 +14,18 @@ projectIdentifier=IDE7840690772770832840
 readTimeout=400
 sessionId=
 username=grantshub.sfadmin@cabinetoffice.gov.uk
+=======
+endpointEnvironment=Sandbox
+endpointServer=login.salesforce.com
+httpsProtocol=true
+ideVersion=38.0
+keependpoint=false
+metadataFormatVersion=38.0
+namespacePrefix=
+packageName=unpackaged
+preferToolingDeployment=true
+projectIdentifier=IDE5660242622128539502
+readTimeout=400
+sessionId=
+username=bhushan.sukumar@cabinetoffice.gov.uk.dev
+>>>>>>> refs/remotes/origin/master

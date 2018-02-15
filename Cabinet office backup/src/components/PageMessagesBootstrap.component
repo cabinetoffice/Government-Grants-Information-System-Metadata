@@ -1,0 +1,5 @@
+<apex:component layout="none" controller="PageMessagesBootstrapController" rendered="{!apexPagesHasMessage}">
+	<div class="col-xs-10 col-xs-offset-1 col-sm-10 col-sm-offset-1 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2 box-shadow--6dp alert alert-danger" role="alert">
+	    <apex:messages />
+	</div>
+</apex:component>

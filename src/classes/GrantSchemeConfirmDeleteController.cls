@@ -23,6 +23,13 @@ public without sharing class GrantSchemeConfirmDeleteController {
             returnPage = stndController.cancel();
         } catch (DmlException exceptionToHandle) {
             ApexPages.addMessages(exceptionToHandle);
+<<<<<<< HEAD
+=======
+            return null;
+        } catch (EmailException emailExceptionHandle) {
+            ApexPages.addMessages(emailExceptionHandle);
+            return null;
+>>>>>>> refs/remotes/origin/master
         }
         return returnPage;
     }

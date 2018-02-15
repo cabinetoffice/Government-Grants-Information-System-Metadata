@@ -1,3 +1,8 @@
+<<<<<<< HEAD
 <apex:page controller="AvailableDeptForRegistrationCtrl" contentType="application/x-JavaScript; charset=utf-8" showHeader="false" standardStylesheets="false" sidebar="false">
 	{!JSON}
+=======
+<apex:page controller="AvailableDeptForRegistrationCtrl" contentType="application/x-JavaScript; charset=utf-8" showHeader="false" standardStylesheets="false" sidebar="false">
+	{!JSON}
+>>>>>>> refs/remotes/origin/master
 </apex:page>

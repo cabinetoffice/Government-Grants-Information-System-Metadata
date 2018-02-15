@@ -16,7 +16,11 @@ trigger AllIntermediaryTriggers on Intermediary__c (before insert,
         return;
     }
 
+<<<<<<< HEAD
     if (Trigger.isBefore &Trigger.isDelete) {
+=======
+    if (Trigger.isBefore && Trigger.isDelete) {
+>>>>>>> refs/remotes/origin/master
         AllIntermediaryTriggersHandler.handleBeforeDelete(Trigger.oldMap);
     }
 

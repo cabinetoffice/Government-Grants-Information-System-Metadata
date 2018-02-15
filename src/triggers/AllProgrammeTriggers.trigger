@@ -17,7 +17,11 @@ trigger AllProgrammeTriggers on Programme__c (
         return;
     }
 
+<<<<<<< HEAD
     if (Trigger.isBefore &Trigger.isDelete) {
+=======
+    if (Trigger.isBefore && Trigger.isDelete) {
+>>>>>>> refs/remotes/origin/master
         AllProgrammeTriggersHandler.handleBeforeDelete(Trigger.oldMap);
     }
 }

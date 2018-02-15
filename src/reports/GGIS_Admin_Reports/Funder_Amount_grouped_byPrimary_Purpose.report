@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>Account.Grant_Schemes__r.Grant_Awards__r$Total_Amount_in_funding_agreement__c</field>
+    </columns>
+    <description>Grant Schemes with Funder&apos;s Primary Scheme Purpose</description>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>Account.Grant_Schemes__r$Primary_Purpose__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>Account.Grant_Schemes__r$Funder__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>Funder Amount grouped byPrimary Purpose</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Organisation_with_Grant_Scheme_with_Grant_Award__c</reportType>
+    <scope>organization</scope>
+    <showDetails>false</showDetails>
+    <timeFrameFilter>
+        <dateColumn>Account$CreatedDate</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

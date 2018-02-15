@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <apex:page standardController="CSV_Upload__c" extensions="CSVUploadDetailController" action="{!checkCSVUploadRecord}" showHeader="true" sidebar="true">
 	<apex:sectionHeader title="Data Upload" subtitle="{!CSV_Upload__c.Name}" />
 	<apex:form id="pageForm">
@@ -44,4 +45,52 @@
 
 		<apex:actionPoller action="{!reset}" reRender="pageForm" interval="5" enabled="{!CSV_Upload__c.Processing_Status__c != 'Finished'}"/>
 	</apex:form>
+=======
+<apex:page standardController="CSV_Upload__c" extensions="CSVUploadDetailController" action="{!checkCSVUploadRecord}" showHeader="true" sidebar="true">
+	<apex:sectionHeader title="Data Upload" subtitle="{!CSV_Upload__c.Name}" />
+	<apex:form id="pageForm">
+		<apex:pageBlock mode="maindetail" id="detailPageBlock" title="Data Upload Process">
+			<apex:pageBlockButtons location="top">
+				
+			</apex:pageBlockButtons>
+			<apex:pageBlockSection collapsible="false">
+				<apex:outputField value="{!CSV_Upload__c.Type__c}"/>
+				<apex:outputField value="{!CSV_Upload__c.Recipient_Type__c}" rendered="{!OR(CSV_Upload__c.Type__c == 'Create Awards', CSV_Upload__c.Type__c == 'Amend Awards')}"/>
+			</apex:pageBlockSection>
+			<apex:pageBlockSection collapsible="false" title="Records Count">
+				<apex:outputField value="{!CSV_Upload__c.Total_Records_To_Be_Processed__c}"/>
+				<apex:outputField value="{!CSV_Upload__c.Upload_Status__c}"/>
+
+				<apex:outputField value="{!CSV_Upload__c.Total_Records_Failed__c}"/>
+				<apex:outputField value="{!CSV_Upload__c.Total_Records_Processed_Without_Error__c}"/>
+				<apex:outputField value="{!CSV_Upload__c.Records_Created_Count__c}" rendered="{!OR(ISBLANK(CSV_Upload__c.Type__c), CSV_Upload__c.Type__c == 'Create Awards')}"/>
+				<apex:outputField value="{!CSV_Upload__c.Records_Updated_Count__c}" rendered="{!NOT(CSV_Upload__c.Type__c == 'Create Awards')}"/>
+				
+				<apex:inputHidden value="{!CSV_Upload__c.Apex_Batch_Id__c}"/>
+			</apex:pageBlockSection>
+			<apex:pageBlockSection collapsible="false" title="Progress">
+				<apex:outputField value="{!CSV_Upload__c.Processing_Status__c}"/>
+				<apex:pageBlockSectionItem >
+					<apex:outputLabel value="Progress"/>
+					<c:ProgressBar completeNumber="{!totalJobItems}" currentNumber="{!jobItemsProcessed}"/>
+				</apex:pageBlockSectionItem>
+			</apex:pageBlockSection>
+			<apex:pageBlockSection collapsible="false" title="System Details">
+				<apex:outputField value="{!CSV_Upload__c.CreatedById}"/>
+				<apex:outputField value="{!CSV_Upload__c.CreatedDate}"/>
+			</apex:pageBlockSection>
+			<apex:pageBlockSection collapsible="false" title="Related Files" columns="1">
+				<apex:pageBlockTable value="{!relatedAttachments}" var="relatedAttachment">
+					<apex:column headerValue="Name">
+						<apex:outputLink target="_blank" value="/servlet/servlet.FileDownload?file={!relatedAttachment.Id}">{!relatedAttachment.Name}</apex:outputLink>
+					</apex:column>
+					<apex:column value="{!relatedAttachment.CreatedDate}"/>
+					<apex:column value="{!relatedAttachment.CreatedById}"/>
+				</apex:pageBlockTable>
+			</apex:pageBlockSection>
+		</apex:pageBlock>
+
+		<apex:actionPoller action="{!reset}" reRender="pageForm" interval="5" enabled="{!CSV_Upload__c.Processing_Status__c != 'Finished'}"/>
+	</apex:form>
+>>>>>>> refs/remotes/origin/master
 </apex:page>

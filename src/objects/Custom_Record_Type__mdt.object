@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>This metadata helps us to create a custom record type object which can replace standard record type and give us order functionality</description>
+    <fields>
+        <fullName>CSV_Template_Name__c</fullName>
+        <description>This field should hold the CSV Template label that the user will see on the Data Upload page when a particular upload type is selected.</description>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <inlineHelpText>This is the CSV Template name shown to the user in the data upload page.</inlineHelpText>
+        <label>Default CSV Template Name</label>
+        <required>false</required>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Default_CSV_Template_Path__c</fullName>
+        <description>This is the path for the CSV template in Static resource.</description>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <inlineHelpText>This is the path for the CSV template in Static resource.</inlineHelpText>
+        <label>Default CSV Template Path</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Description__c</fullName>
+        <description>this is the description of the metadata which will be shown on the page</description>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <inlineHelpText>this is the description of the metadata which will be shown on the page</inlineHelpText>
+        <label>Description</label>
+        <required>true</required>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Individual_CSV_Template_Name__c</fullName>
+        <description>This field should hold the CSV Template label that the user will see on the Data Upload page when a particular upload type is selected.</description>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <inlineHelpText>This is the CSV Template name shown to the user in the data upload page.</inlineHelpText>
+        <label>Individual CSV Template Name</label>
+        <required>false</required>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Individual_CSV_Template_Path__c</fullName>
+        <description>This is the CSV template that will be used for individual type grant awards.</description>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <inlineHelpText>This is the CSV template that will be used for individual type grant awards.</inlineHelpText>
+        <label>Individual CSV Template Path</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Order__c</fullName>
+        <description>Order of the record type on the page.</description>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <inlineHelpText>Order of the record type on the page.</inlineHelpText>
+        <label>Order</label>
+        <precision>18</precision>
+        <required>true</required>
+        <scale>0</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Organisation_CSV_Template_Name__c</fullName>
+        <description>This field should hold the CSV Template label that the user will see on the Data Upload page when a particular upload type is selected.</description>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <inlineHelpText>This is the CSV Template name shown to the user in the data upload page.</inlineHelpText>
+        <label>Organisation CSV Template Name</label>
+        <required>false</required>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Organisation_CSV_Template_Path__c</fullName>
+        <description>This is the CSV template that needs to be used for Organisation type grant award.</description>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <inlineHelpText>This is the CSV template that needs to be used for Organisation type grant award.</inlineHelpText>
+        <label>Organisation CSV Template Path</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Processor__c</fullName>
+        <description>This is the processor for this record type.</description>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <inlineHelpText>This is the processor for this record type.</inlineHelpText>
+        <label>Processor</label>
+        <length>250</length>
+        <required>true</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Requires_Recipient_Type__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>This checkbox indicates if the record type requires a value for recipient type.</description>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <inlineHelpText>This checkbox indicates if the record type requires a value for recipient type.</inlineHelpText>
+        <label>Requires Recipient Type</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>SObject_API_Name__c</fullName>
+        <description>Related SObject API name.</description>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <inlineHelpText>Related SObject API name.</inlineHelpText>
+        <label>SObject API Name</label>
+        <length>50</length>
+        <required>true</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <label>Custom Record Type</label>
+    <pluralLabel>Custom Record Types</pluralLabel>
+    <visibility>Public</visibility>
+</CustomObject>

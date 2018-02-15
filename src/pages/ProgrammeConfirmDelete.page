@@ -1,3 +1,8 @@
+<<<<<<< HEAD
 <apex:page standardController="Programme__c" extensions="ProgrammeConfirmDeleteController" showHeader="true" sidebar="true" action="{!deleteRecord}">
 	<apex:pageMessages />
+=======
+<apex:page standardController="Programme__c" extensions="ProgrammeConfirmDeleteController" showHeader="true" sidebar="true" action="{!deleteRecord}">
+	<apex:pageMessages />
+>>>>>>> refs/remotes/origin/master
 </apex:page>

@@ -15,8 +15,13 @@
                   <apex:outputText styleClass="title" value="{!$Label.site.thank_you_for_registering}"/>
                   <br/>
                   <br/>
+<<<<<<< HEAD
                   <!--<apex:outputLink value="{!$Page.SiteLogin}" rendered="{!$Site.LoginEnabled}">{!$Label.site.go_to_login_page}</apex:outputLink>
                   --><br/>
+=======
+                  <apex:outputLink value="{!$Page.SiteLogin}" rendered="{!$Site.LoginEnabled}">{!$Label.site.go_to_login_page}</apex:outputLink>
+                  <br/>
+>>>>>>> refs/remotes/origin/master
                 </apex:panelGroup>
               </apex:panelGrid> 
             </apex:outputPanel>

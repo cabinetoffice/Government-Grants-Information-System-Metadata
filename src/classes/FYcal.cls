@@ -48,6 +48,7 @@ Public Class FYcal{
                     system.debug('Start_Date__c    ' + GS.Start_Date__c + '     ' +  GS.Start_Date__c.month());
                     system.debug('End Date    ' + GS.End_Date__c + '     ' +  GS.End_Date__c.month());
                     
+<<<<<<< HEAD
                 /** If(i == intED && GS.End_Date__c.month() < 4 && GS.Start_Date__c.month() >= 4){
                         
                         break;
@@ -78,6 +79,32 @@ Public Class FYcal{
                         intSDyear = 0;
                     }
                    //intSDyear++; 
+=======
+                If(i == intED && GS.End_Date__c.month() < 4 && GS.Start_Date__c.month() >= 4){
+                        
+                        break;
+                    }
+                    
+                    If(GS.Start_Date__c.month() >= 4 && GS.End_Date__c.month()<=12){
+                        If(strSD == '1999'){
+                            strFY = strFY + 'FY ' + string.valueOf(intSDyear) + '/' + '00' + ';';
+                        }
+                        Else {
+                            strFY = strFY + 'FY ' + string.valueOf(intSDyear) + '/' + string.valueOf((intSDyear+1)) + ';'; 
+                        }
+                        
+                    }
+                    Else If(GS.Start_Date__c.month() < 4 && GS.End_Date__c.month()<=12){
+                        If(strSD == '1999'){
+                            strFY = strFY + 'FY ' + string.valueOf(intSDyear) + '/' + '00' + ';';
+                        }
+                        Else{
+                            strFY = strFY + 'FY ' + string.valueOf((intSDyear-1)) + '/' + string.valueOf(intSDyear) + ';'; 
+                        }
+                        
+                    }
+                   intSDyear++; 
+>>>>>>> refs/remotes/origin/master
                 }
             }
             system.debug('String FY    ' + strFY);
