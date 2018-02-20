@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Proposed Grant</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Proposed Grants</value>
+    </caseValues>
+    <fields>
+        <help><!-- Advice provided by &apos;New Grants Advice Panel&apos; to grant making department. --></help>
+        <label><!-- Advice for Departments --></label>
+        <name>Advice_for_Departments__c</name>
+    </fields>
+    <fields>
+        <label><!-- Contact Email of Policy Team --></label>
+        <name>Contact_Email_of_Policy_Team__c</name>
+    </fields>
+    <fields>
+        <label><!-- Contact Telephone Number of Policy Team --></label>
+        <name>Contact_Telephone_Number_of_Policy_Team__c</name>
+    </fields>
+    <fields>
+        <label><!-- Deadline-Date for action to be completed --></label>
+        <name>Deadline_Date_for_action_to_be_completed__c</name>
+    </fields>
+    <fields>
+        <label><!-- Undertaken Fraud&amp;Error Risk Assessment? --></label>
+        <name>Done_Fraud_Error_Risk_Assessment__c</name>
+    </fields>
+    <fields>
+        <label><!-- Expected Amount --></label>
+        <name>Expected_Amount__c</name>
+    </fields>
+    <fields>
+        <help><!-- Who will be the end beneficiary of the grant funding? e.g. sector, population, segment. --></help>
+        <label><!-- Expected End Beneficiary Type --></label>
+        <name>Expected_End_Beneficiary_Type__c</name>
+    </fields>
+    <fields>
+        <help><!-- The expected end recipient to receive grant funding (after having passed through a possible number of intermediaries). --></help>
+        <label><!-- Expected End Recipient Type --></label>
+        <name>Expected_End_Recipient_Type__c</name>
+    </fields>
+    <fields>
+        <help><!-- Expected total number of recipients to receive grant funding. --></help>
+        <label><!-- Expected Number of Recipients --></label>
+        <name>Expected_Number_of_Recipients__c</name>
+    </fields>
+    <fields>
+        <help><!-- The date the Grant (Scheme or Award) is expected to commence, or be awarded. --></help>
+        <label><!-- Expected Start Date --></label>
+        <name>Expected_Start_Date__c</name>
+    </fields>
+    <fields>
+        <help><!-- The entity that is funding a grant (this could be a government department or an agency or a 3rd party) --></help>
+        <label><!-- Funder --></label>
+        <name>Funder__c</name>
+        <relationshipLabel><!-- Proposed Grants --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Intermediary Considered? --></label>
+        <name>Intermediary_Considered__c</name>
+    </fields>
+    <fields>
+        <label><!-- Is Grant Sensitive? --></label>
+        <name>Is_Grant_Sensitive__c</name>
+    </fields>
+    <fields>
+        <label><!-- Is My Department Data --></label>
+        <name>Is_My_Department_Data__c</name>
+    </fields>
+    <fields>
+        <label><!-- NGAP notes on follow-up with departments --></label>
+        <name>NGAP_notes_on_follow_up_with_departments__c</name>
+    </fields>
+    <fields>
+        <help><!-- Any notes that are put forward as a result of grant passing through &apos;New Grants Advice Panel&apos;. --></help>
+        <label><!-- New Grants Advice Panel Notes --></label>
+        <name>New_Grants_Advice_Panel_Notes__c</name>
+    </fields>
+    <fields>
+        <help><!-- Any notes or details that may be relevant to this proposed grant. --></help>
+        <label><!-- Notes --></label>
+        <name>Notes__c</name>
+    </fields>
+    <fields>
+        <help><!-- If &quot;Progressed to other funding model
+&quot; is selected above, then use this freetext field to specify other funding model. --></help>
+        <label><!-- Please specify other funding model --></label>
+        <name>Please_specify_other_funding_model__c</name>
+    </fields>
+    <fields>
+        <help><!-- The expected policy effects expected as a result of awarding this proposed grant. --></help>
+        <label><!-- Policy Outcome --></label>
+        <name>Policy_Outcome__c</name>
+    </fields>
+    <fields>
+        <help><!-- This is related to the grants register. The grant categories can be one of either:
+-Ad-Hoc
+-Capital grant
+-Criteria
+-Formula grant
+-General grant
+-Grant-in-Aid
+-Intermediated grant
+-Resource grant
+-unknown --></help>
+        <label><!-- Proposed Grant Category --></label>
+        <name>Proposed_Grant_Category__c</name>
+    </fields>
+    <fields>
+        <help><!-- The objective of awarding this grant. --></help>
+        <label><!-- Proposed Grant Objective --></label>
+        <name>Proposed_Grant_Objective__c</name>
+    </fields>
+    <fields>
+        <help><!-- This is a reference number that can be used to link back to the data supplier&apos;s source system. --></help>
+        <label><!-- Proposed Grant Reference No --></label>
+        <name>Proposed_Grant_Reference_No__c</name>
+    </fields>
+    <fields>
+        <help><!-- The staus of the grant should fall under the following picklist options:
+Under review
+Progressed to a grant
+Progressed to a loan
+Progressed to a contract
+Progressed to other funding model
+Never made active --></help>
+        <label><!-- Proposed Grant Status --></label>
+        <name>Proposed_Grant_Status__c</name>
+        <picklistValues>
+            <masterLabel>Never made active</masterLabel>
+            <translation><!-- Never made active --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Progressed to Contract</masterLabel>
+            <translation><!-- Progressed to Contract --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Progressed to Loan</masterLabel>
+            <translation><!-- Progressed to Loan --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Progressed to a Grant</masterLabel>
+            <translation><!-- Progressed to a Grant --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Progressed to other funding model</masterLabel>
+            <translation><!-- Progressed to other funding model --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Under Review</masterLabel>
+            <translation><!-- Under Review --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- Departments&apos; responses to any issues arising from &apos;New Grants Advice Panel&apos;. --></help>
+        <label><!-- Response from Departments --></label>
+        <name>Response_from_Departments__c</name>
+    </fields>
+    <layouts>
+        <layout>Proposed Grant Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Grants Advice Panel Details --></label>
+            <section>Grants Advice Panel Details</section>
+        </sections>
+        <sections>
+            <label><!-- Policy Details --></label>
+            <section>Policy Details</section>
+        </sections>
+        <sections>
+            <label><!-- Status --></label>
+            <section>Status</section>
+        </sections>
+    </layouts>
+    <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage><!-- You don&apos;t have update privilege on this record. --></errorMessage>
+        <name>Department_Check_on_update</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- &apos;Please specify other funding model&apos; field is mandatory if and only if  &apos;Proposed Grant Status&apos; field value is equal to &apos;Progressed to other funding model&apos;. --></errorMessage>
+        <name>Other_Funding_Model_field_is_mandatory</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- &apos;Please specify other funding model&apos; should be blank if &apos;Proposed Grant Status&apos; field value is NOT equal to &apos;Progressed to other funding model&apos;. --></errorMessage>
+        <name>Other_Funding_Model_field_shouldbe_blank</name>
+    </validationRules>
+</CustomObjectTranslation>

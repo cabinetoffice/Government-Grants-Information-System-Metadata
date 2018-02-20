@@ -1,0 +1,3 @@
+<apex:page standardController="Grant_Award__c" extensions="GrantAwardConfirmDeleteController" showHeader="true" sidebar="true" action="{!deleteRecord}">
+	<apex:pageMessages />
+</apex:page>

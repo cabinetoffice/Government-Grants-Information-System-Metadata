@@ -1,0 +1,247 @@
+<apex:page docType="html-5.0" sidebar="false" controller="dupcheck.dc3ControllerBatch" title="Batch - Duplicate Check for Salesforce" action="{!janitor}" tabstyle="dcBatch__tab">
+
+  <apex:stylesheet value="{!URLFOR($Resource.dupcheck__slds, '/assets/styles/salesforce-lightning-design-system-vf.min.css')}" />
+  <apex:stylesheet value="{!IF(isDev,AssetsUrl,URLFOR($Resource.dupcheck__dupcheckAssets,'/dupcheckAssets'))}/lightning/style/dupcheckApp.css" />
+  <apex:stylesheet value="{!IF(isDev,AssetsUrl,URLFOR($Resource.dupcheck__dupcheckAssets,'/dupcheckAssets'))}/lightning/style/rzslider.css" />  
+  
+  <apex:includeScript value="//assets-plautibv.netdna-ssl.com/moment/2.15.2/moment.min.js"/>
+  <apex:includeScript value="//assets-plautibv.netdna-ssl.com/jquery/1.11.1/jquery.min.js" />
+  <apex:includeScript value="//assets-plautibv.netdna-ssl.com/angularjs/1.3.11/angular.min.js" />
+  <apex:includeScript value="//assets-plautibv.netdna-ssl.com/angularjs/1.3.11/angular-sanitize.min.js" />
+  
+  <apex:includeScript value="//assets-plautibv.netdna-ssl.com/angular-local-storage/0.2.2/angular-local-storage.min.js" />
+  <apex:includeScript value="{!IF(isDev,AssetsUrl,URLFOR($Resource.dupcheck__dupcheckAssets,'/dupcheckAssets'))}/lightning/js/rzslider.js" />
+  <apex:includeScript value="{!IF(isDev,AssetsUrl,URLFOR($Resource.dupcheck__dupcheckAssets,'/dupcheckAssets'))}/lightning/js/plauti-ng-slds.min.js" />
+  <apex:includeScript value="{!IF(isDev,AssetsUrl,URLFOR($Resource.dupcheck__dupcheckAssets,'/dupcheckAssets'))}/lightning/js/angular-csv.min.js" />
+  <apex:includeScript value="{!IF(isDev,AssetsUrl,URLFOR($Resource.dupcheck__dupcheckAssets,'/dupcheckAssets'))}/lightning/js/dupcheck.js" />
+  <apex:includeScript value="{!IF(isDev,AssetsUrl,URLFOR($Resource.dupcheck__dupcheckAssets,'/dupcheckAssets'))}/lightning/js/dupcheck.ng.directives.js" />
+  <apex:includeScript value="{!IF(isDev,AssetsUrl,URLFOR($Resource.dupcheck__dupcheckAssets,'/dupcheckAssets'))}/lightning/js/dupcheck.ng.services.js" />
+  <apex:includeScript value="{!IF(isDev,AssetsUrl,URLFOR($Resource.dupcheck__dupcheckAssets,'/dupcheckAssets'))}/lightning/js/dupcheck.ng.batch.js" />
+
+  <c:dc3TranslationJS />
+  <c:dc3Welcome version="LIGHTNING"/>
+
+  <div id="dataStore" class="plauti" ng-app="dcApp" ng-controller="batchController" data-sf-scenario="{!$RemoteAction.dc3ControllerBatch.getScenarioList}" data-sf-cross-object="{!$RemoteAction.dc3ControllerBatch.getCrossObjectList}" data-sf-filter-field="{!$RemoteAction.dc3ControllerBatch.getFilterFieldList}" data-sf-type-ahead="{!$RemoteAction.dc3ControllerBatch.getRelatedTypeAheadAdvanced}" data-sf-start-job="{!$RemoteAction.dc3ControllerBatch.startBatchSearch}" data-sf-action-delete="{!$RemoteAction.dc3ControllerBatch.deleteBatch}" data-sf-action-merge="{!$RemoteAction.dc3ControllerBatch.quickMerge}" data-sf-scheduled-list="{!$RemoteAction.dc3ControllerBatch.getScheduledListByPage}" data-sf-scheduled-start="{!$RemoteAction.dc3ControllerBatch.startScheduledJob}" data-sf-scheduled-deactivate="{!$RemoteAction.dc3ControllerBatch.deactivateScheduledJob}" data-sf-scheduled-activate="{!$RemoteAction.dc3ControllerBatch.activateScheduledJob}" data-sf-scheduled-delete="{!$RemoteAction.dc3ControllerBatch.deleteScheduledJob}" data-sf-abort-job="{!$RemoteAction.dc3ControllerBatch.abortJob}" data-sf-action-convert="{!$RemoteAction.dc3ControllerBatch.quickConvert}" data-sf-action-delta="{!$RemoteAction.dc3ControllerBatch.startDelta}" data-sf-job-list-filter="{!$RemoteAction.dc3ControllerBatch.getJobListByFilter}">
+      <div class="slds-page-header" role="banner">
+        <div class="slds-grid slds-wrap">
+          <div class="slds-col slds-size--1-of-1 slds-medium-size--1-of-6 slds-large-size-1-of-6">
+                    <div class="slds-media">
+                        <div class="slds-media__figure">
+                            <img class="slds-icon slds-icon--large slds-m-bottom--xxx-small dc-logo-positioning" ng-src="{!IF(isDev,AssetsUrl,URLFOR($Resource.dupcheckAssets,'/dupcheckAssets'))}/lightning/app/app_icon_48.png" />
+                        </div> 
+                        <div class="slds-media__body">
+                            <p class="slds-text-heading--label">Duplicate Check</p>
+                            <div class="slds-grid">
+                                <h1 class="slds-text-heading--medium slds-m-right--small slds-truncate slds-align-middle">{!$label.JOB_OVERVIEW}</h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <div class="slds-col slds-size--1-of-1 slds-medium-size--5-of-6 slds-large-size--5-of-6 ">
+            
+                <div class="slds-grid slds-float--right">
+                  <button class="slds-button slds-button--brand" ng-click="$root.modal.modalStartJob = true;" ng-if="{!license.features.batchDeduplication}">{!$label.ADD_NEW_JOB}</button>
+                    <button class="slds-button slds-button--neutral" ng-if="{!isDelta} && meta.uniqueUpload" ng-click="uniqueUploadJob()">{!$label.UNIQUE_IMPORT}</button>
+                      <div class="slds-button-group " role="group">
+                <button class="slds-button slds-not-selected slds-button--icon-border-filled" ng-if="$root.activeTab == 'Processed'" ng-click="openAllGroups();">
+                  <img class="slds-button__icon " ng-src="{!URLFOR($Resource.slds,'')}/assets/icons/utility/chevrondown_120.png" />
+                </button>
+                <button class="slds-button slds-not-selected slds-button--icon-border-filled" ng-if="$root.activeTab == 'Processed'" ng-click="closeAllGroups();">
+                  <img class="slds-button__icon " ng-src="{!URLFOR($Resource.slds,'')}/assets/icons/utility/chevronup_120.png" />
+                </button>
+              </div>
+              <button class="slds-button slds-not-selected slds-button--icon-border-filled " ng-if="$root.activeTab == 'Processed'" ng-click="meta.modalFilter = true">
+                <img class="slds-button__icon " ng-src="{!URLFOR($Resource.slds,'')}/assets/icons/utility/filter_120.png" />
+              </button>     
+				<div class="slds-button-group slds-float--right slds-button-space-left" role="group">
+            		<c:dc3WelcomeLink version="LIGHTNING" helpLink="https://support.duplicatecheck.com/article/usage-guide/dc-job?utm_source=dcApp&utm_medium=app&utm_campaign=help_link"/>
+            	</div>
+            	
+                  </div>
+              </div>
+          </div>
+    </div>
+
+
+    <div aria-hidden="false" role="dialog" class="slds-modal " ng-class="{'slds-fade-in-open': meta.modalFilter}">
+      <div class="slds-modal__container">
+          <div class="slds-modal__header">
+          <button class="slds-button slds-button--icon-inverse slds-modal__close" ng-click="meta.modalFilter = false">
+            <img class="slds-button__icon slds-button__icon--large" src="{!URLFOR($Resource.slds,'')}/assets/icons/action/close_120.png" /> 
+                  <span class="slds-assistive-text">{!$label.CLOSE}</span>
+              </button>
+              <h2 class="slds-text-heading--medium">{!$label.FILTER_JOB_LIST}</h2>
+            </div>
+            <div class="slds-modal__content slds-p-around--medium">
+          <div class="slds-form--stacked slds-grid slds-grid--align-spread slds-wrap">
+          
+            <div class="slds-col--padded slds-form-element slds-size--1-of-1 slds-m-top--x-small">
+                <span class="slds-form-element__label">{!$label.JOB_NAME_CONTAINS}</span>
+                <div class="slds-form-element__control">
+                    <input class="slds-input" type="text" ng-model="$root.meta.tempDataFilter.jobName" />
+                </div>
+              </div>
+
+            <div class="slds-col--padded slds-form-element slds-size--1-of-1 slds-medium-size--1-of-2">
+              <span class="slds-form-element__label">{!$label.OBJECT}</span>
+              <div class="slds-form-element__control">
+                <div class="slds-select_container">
+                          <select class="slds-select" ng-model="$root.meta.tempDataFilter.objectName">
+                            <option value="None">{!$label.NOTHING_SELECTED}</option>
+                    <apex:repeat value="{!ObjectList}" var="config">
+                      <option value="{!JSINHTMLENCODE(ObjectMeta[config].Prefix)}">
+                        {!JSINHTMLENCODE(ObjectMeta[config].Label)}
+                      </option>
+                    </apex:repeat> 
+                          </select>                 
+                        </div>
+              </div>
+            </div>
+            
+            <div class="slds-col--padded slds-form-element slds-size--1-of-1 slds-medium-size--1-of-2">
+              <span class="slds-form-element__label">{!$Label.dupcheck__match_with}</span>
+              <div class="slds-form-element__control">
+                <div class="slds-select_container">
+                          <select class="slds-select" ng-model="$root.meta.tempDataFilter.objectMatchName">
+                            <option value="None">{!$Label.dupcheck__nothing_selected}</option>
+                    <apex:repeat value="{!ObjectList}" var="config">
+                      <option value="{!JSINHTMLENCODE(ObjectMeta[config].Prefix)}">
+                        {!JSINHTMLENCODE(ObjectMeta[config].Label)}
+                      </option>
+                    </apex:repeat> 
+                          </select>                 
+                        </div>
+              </div>
+            </div>
+                                
+            
+            <div class="slds-col--padded slds-form-element slds-size--1-of-1 slds-medium-size--1-of-2">
+              <label class="slds-form-element__label">{!$label.FILTER}</label>
+              <div class="slds-form-element__control">
+                <div class="slds-select_container">
+                  <select class="slds-select" ng-model="$root.meta.tempDataFilter.filter">
+                    <option value="YES">{!$label.HAS_FILTER}</option>
+                    <option value="NO">{!$label.NO_FILTER}</option>
+                    <option value="ANY">{!$label.NOTHING_SELECTED}</option>              
+                  </select>
+                </div>
+              </div>
+            </div>  
+            
+            <div class="slds-col--padded slds-form-element slds-size--1-of-1 slds-medium-size--1-of-2">
+              <label class="slds-form-element__label">{!$label.AUTO_PROCESS}</label>
+              <div class="slds-form-element__control">              
+                <plauti-multi-select default-text="{!$label.NOTHING_SELECTED}" svg-path="{!URLFOR($Resource.slds,'')}/assets/icons/utility-sprite/svg/symbols.svg" ng-model="$root.meta.tempDataFilter.autoProcess" options="meta.autoProcessMultiSelect" name-attr="Label" value-attr="value">
+                </plauti-multi-select>            
+              </div>
+            </div>  
+                        
+            
+            <div class="slds-col--padded slds-form-element slds-size--1-of-1 slds-medium-size--1-of-2"> 
+              <span class="slds-form-element__label">{!$label.STARTED_AFTER}</span>
+              <div class="slds-form-element__control">
+                 <plauti-datepicker date-format="dd MMMM yyyy" ng-model="$root.meta.tempDataFilter.startedAfter"
+                          start-year="2010" end-year="2099"
+                          svg-path="{!URLFOR($Resource.slds,'')}/assets/icons/utility-sprite/svg/symbols.svg">
+                 </plauti-datepicker>
+              </div>
+            </div>
+            
+            <div class="slds-col--padded slds-form-element slds-size--1-of-1 slds-medium-size--1-of-2">
+              <span class="slds-form-element__label">{!$label.FINISHED_BEFORE}</span>
+              <div class="slds-form-element__control">
+                 <plauti-datepicker date-format="dd MMMM yyyy" ng-model="$root.meta.tempDataFilter.finishedBefore"
+                          start-year="2010" end-year="2099"
+                          svg-path="{!URLFOR($Resource.slds,'')}/assets/icons/utility-sprite/svg/symbols.svg">
+                 </plauti-datepicker>
+              </div>
+            </div>            
+            
+            <div class="slds-col--padded slds-form-element slds-size--1-of-1 slds-medium-size--1-of-2">
+              <span class="slds-form-element__label">{!$label.GROUPS}</span>
+              <div class="slds-form-element__control">
+                <input class="slds-input" type="number" min="0" step="1" ng-model="$root.meta.tempDataFilter.groups" />
+              </div>
+            </div>            
+            
+            <div class="slds-col--padded slds-form-element slds-size--1-of-1 slds-medium-size--1-of-2">
+              <span class="slds-form-element__label">{!$label.PAIRS}</span>
+              <div class="slds-form-element__control">
+                <input class="slds-input" type="number" min="0" step="1" ng-model="$root.meta.tempDataFilter.duplicate" />
+              </div>
+            </div>              
+            
+            <div class="slds-col--padded slds-form-element slds-size--1-of-1 slds-medium-size--1-of-2">
+              <span class="slds-form-element__label">{!$label.RECORDS}</span>
+              <div class="slds-form-element__control">
+                <input class="slds-input" type="number" min="0" step="1" ng-model="$root.meta.tempDataFilter.recordCount" />
+              </div>
+            </div>   
+            
+            <div class="slds-col--padded slds-form-element slds-size--1-of-1 slds-medium-size--1-of-2">
+              <span class="slds-form-element__label">{!$label.AVERAGE_SCORE}</span>
+              <div class="slds-form-element__control">
+                <input class="slds-input" type="number" min="1" max="100" step="1" ng-model="$root.meta.tempDataFilter.averageScore" />
+              </div>
+            </div>
+            
+            <div class="slds-col--padded slds-form-element slds-size--1-of-1 slds-medium-size--1-of-2">
+              <span class="slds-form-element__label">{!$label.ORDER_BY}</span>
+              <div class="slds-form-element__control">
+                <div class="slds-select_container">
+
+                          <select class="slds-select" ng-model="$root.meta.tempDataFilter.orderBy">
+                    <option value="groupCounter__c">{!$label.GROUPS}</option>
+                    <option value="duplicateCount__c">{!$label.PAIRS}</option>
+                    <option value="recordCount__c">{!$label.RECORDS}</option>
+                    <option value="avgScore__c">{!$label.AVERAGE_SCORE}</option>
+                    <option value="Started__c">{!$label.STARTED}</option>
+                    <option value="Ended__c">{!$label.FINISHED}</option>
+                          </select>                 
+                      </div>
+
+              </div>
+            </div>
+
+            <div class="slds-col--padded slds-form-element slds-size--1-of-1 slds-medium-size--1-of-2">
+              <span class="slds-form-element__label">{!$label.SORTING}</span>
+              <div class="slds-form-element__control">
+                <div class="slds-select_container">
+				  <select class="slds-select" ng-model="$root.meta.tempDataFilter.sorting">
+                    <option value="ASC">{!$label.ASCENDING}</option>
+                    <option value="DESC">{!$label.DESCENDING}</option>
+                  </select>                 
+                </div>
+              </div>
+            </div>            
+          </div>          
+            </div>  
+            <div class="slds-modal__footer">
+              <button class="slds-button slds-button--neutral" ng-click="resetFilter(true)">{!$label.CLEAR_FILTER}</button>
+              <button class="slds-button slds-button--neutral slds-button--brand" ng-click="applyFilter()">{!$label.APPLY}</button>
+              <button class="slds-button slds-button--neutral slds-float--left" ng-click="meta.modalFilter = false">{!$label.CANCEL}</button>
+            </div>
+        </div>
+    </div>    
+    <div class="slds-backdrop " ng-class="{'slds-backdrop--open': meta.modalFilter}"></div> 
+    
+    
+    <script type="text/ng-template" id="batchProcess">
+      <c:dc3BatchProcess />
+    </script>
+    
+    
+    <script type="text/ng-template" id="batchScheduled">
+      <c:dc3BatchScheduled />
+    </script>
+    
+    <c:dc3BatchStartJob />
+  
+	<plauti-tabset class="dc-batch-scoped" scoped="true" active-tab="batchProcess"> 
+    	<plauti-tab title="{!$label.PROCESSED}" name="Processed" template-url="batchProcess" /> 
+		<plauti-tab title="{!$label.SCHEDULED}" name="Scheduled" template-url="batchScheduled" /> 
+	</plauti-tabset>
+
+  </div>
+
+</apex:page>

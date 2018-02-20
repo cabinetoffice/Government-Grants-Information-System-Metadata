@@ -1,0 +1,274 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <content>IntermediaryConfirmDelete</content>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Visualforce</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <description>This is the organisation which carries out the intermediary role</description>
+    <enableActivities>false</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableEnhancedLookup>true</enableEnhancedLookup>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>false</enableHistory>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <externalSharingModel>ReadWrite</externalSharingModel>
+    <fields>
+        <fullName>Grant_Award_Name__c</fullName>
+        <externalId>false</externalId>
+        <formula>HYPERLINK(
+ IF(
+  ISPICKVAL($Profile.UserType, &apos;PowerCustomerSuccess&apos;), 
+  &apos;/datasolution/&apos;, &apos;/&apos;
+  ) &amp;  Id, 
+   Grant_Award__r.Grant_Award_Name__c , &apos;_self&apos;
+)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Grant Award Name</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Grant_Award__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>This is the related grant award for this intermediary record</description>
+        <externalId>false</externalId>
+        <label>System Award Reference No</label>
+        <referenceTo>Grant_Award__c</referenceTo>
+        <relationshipLabel>Intermediaries</relationshipLabel>
+        <relationshipName>Intermediaries</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Grant_Scheme_Name__c</fullName>
+        <externalId>false</externalId>
+        <formula>HYPERLINK(
+ IF(
+  ISPICKVAL($Profile.UserType, &apos;PowerCustomerSuccess&apos;), 
+  &apos;/datasolution/&apos;, &apos;/&apos;
+  ) &amp;  Id, 
+   Grant_Scheme__r.Scheme_Name__c , &apos;_self&apos;
+)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Grant Scheme Name</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Grant_Scheme__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>This is the related grant scheme</description>
+        <externalId>false</externalId>
+        <label>System Scheme Reference No</label>
+        <referenceTo>Grant_Scheme__c</referenceTo>
+        <relationshipLabel>Intermediaries</relationshipLabel>
+        <relationshipName>Intermediaries</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Intermediary_Organisation__c</fullName>
+        <deleteConstraint>Restrict</deleteConstraint>
+        <description>Related organisation for this intermediary</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Organisations who distribute or administer grants on behalf of a government department i.e. a government agency, NDPB, charity or business. In some cases, a government department can act as an intermediary for another government department.</inlineHelpText>
+        <label>Intermediary Organisation</label>
+        <referenceTo>Account</referenceTo>
+        <relationshipLabel>Intermediaries</relationshipLabel>
+        <relationshipName>Intermediaries</relationshipName>
+        <required>true</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Is_My_Department_Data__c</fullName>
+        <description>The user needs to have a default list view filtered for their own department, but they can change this</description>
+        <externalId>false</externalId>
+        <formula>LEFT(
+ Owner:User.UserRole.Name , 
+ IF(
+  RIGHT(Owner:User.UserRole.Name, 8) == &apos; Manager&apos;
+  , LEN(Owner:User.UserRole.Name) - 8
+  , LEN(Owner:User.UserRole.Name) - 5
+ )
+)== LEFT(
+ $UserRole.Name, 
+ IF(
+  RIGHT($UserRole.Name, 8) == &apos; Manager&apos;
+  , LEN($UserRole.Name) - 8
+  , LEN($UserRole.Name) - 5
+ )
+)</formula>
+        <label>Is My Department Data</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Role__c</fullName>
+        <description>The intermediary role carried out by the organisation</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The role that an intermediary plays in the grant administration process. You can choose multiple roles.</inlineHelpText>
+        <label>Role</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>MultiselectPicklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Market Engagement Advertising</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Application Assessment</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Due Diligence</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Grant Award</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Payment</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Performance Monitoring</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Final Reconciliation</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Evaluation</fullName>
+                    <default>false</default>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+        <visibleLines>4</visibleLines>
+    </fields>
+    <label>Intermediary</label>
+    <nameField>
+        <displayFormat>INT-{00000000}</displayFormat>
+        <label>Intermediary Ref No</label>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>Intermediaries</pluralLabel>
+    <searchLayouts>
+        <lookupDialogsAdditionalFields>Intermediary_Organisation__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Role__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Grant_Award__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Grant_Scheme__c</lookupDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>Intermediary_Organisation__c</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>Role__c</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>Grant_Award__c</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>Grant_Scheme__c</lookupPhoneDialogsAdditionalFields>
+        <searchFilterFields>Intermediary_Organisation__c</searchFilterFields>
+        <searchFilterFields>Role__c</searchFilterFields>
+        <searchFilterFields>Grant_Award__c</searchFilterFields>
+        <searchFilterFields>Grant_Scheme__c</searchFilterFields>
+    </searchLayouts>
+    <sharingModel>ReadWrite</sharingModel>
+    <startsWith>Vowel</startsWith>
+    <validationRules>
+        <fullName>Department_Check_on_create</fullName>
+        <active>true</active>
+        <description>This is a global validation rule to stop users from updating other department&apos;s record.</description>
+        <errorConditionFormula>AND ( 
+ NOT($Setup.Bypass__c.Validation_Rules__c) 
+ , ISPICKVAL($Profile.UserType, &apos;PowerCustomerSuccess&apos;)
+ , ISNEW()
+ , IF(
+  NOT(ISBLANK(Grant_Award__c)),
+  NOT( Grant_Award__r.Is_My_Department_Data__c ),
+  NOT( Grant_Scheme__r.Is_My_Department_Data__c )
+ )
+)</errorConditionFormula>
+        <errorMessage>You don&apos;t have update privilege on the related Grant Award record.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Department_Check_on_update</fullName>
+        <active>true</active>
+        <description>This is a global validation rule to stop users from updating other department&apos;s record.</description>
+        <errorConditionFormula>AND ( 
+ NOT($Setup.Bypass__c.Validation_Rules__c) 
+ , ISPICKVAL($Profile.UserType, &apos;PowerCustomerSuccess&apos;)
+ , NOT(ISNEW())
+ , Owner:User.UserRoleId &lt;&gt;  $User.UserRoleId 
+)</errorConditionFormula>
+        <errorMessage>You don&apos;t have update privilege on this record.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Grant_Scheme_Or_Grant_Award_is_mandatory</fullName>
+        <active>true</active>
+        <description>The intermediary record has to be connected either to a Grant Scheme or to a Grant Award record</description>
+        <errorConditionFormula>AND(
+ NOT($Setup.Bypass__c.Validation_Rules__c) 
+ , OR(
+  AND(
+   ISBLANK( Grant_Award__c )
+   , ISBLANK( Grant_Scheme__c )
+  )
+  , AND(
+   NOT(ISBLANK( Grant_Award__c ))
+   , NOT(ISBLANK( Grant_Scheme__c ))
+  )
+ )
+)</errorConditionFormula>
+        <errorMessage>Intermediary has to be related either to a Grant Scheme or a Grant Award</errorMessage>
+    </validationRules>
+</CustomObject>

@@ -1,0 +1,794 @@
+<apex:page docType="html-5.0" standardcontroller="Lead" extensions="dupcheck.dc3ControllerConvert" sidebar="false" title="Convert - Duplicate Check for Salesforce" action="{!janitor}" tabstyle="dc3Search__tab">
+ 
+	<apex:stylesheet value="{!URLFOR($Resource.dupcheck__slds, '/assets/styles/salesforce-lightning-design-system-vf.min.css')}" />
+
+	<apex:stylesheet value="{!IF(isDev,AssetsUrl,URLFOR($Resource.dupcheck__dupcheckAssets,'/dupcheckAssets'))}/lightning/style/dupcheckApp.css" />	
+	
+	<apex:includeScript value="//assets-plautibv.netdna-ssl.com/moment/2.15.2/moment.min.js"/>
+	<apex:includeScript value="//assets-plautibv.netdna-ssl.com/jquery/1.12.4/jquery.min.js" />
+	<apex:includeScript value="//assets-plautibv.netdna-ssl.com/angularjs/1.5.7/angular.min.js" />
+	<apex:includeScript value="//assets-plautibv.netdna-ssl.com/angularjs/1.5.7/angular-sanitize.min.js" />
+	
+	<apex:includeScript value="//assets-plautibv.netdna-ssl.com/angular-local-storage/0.2.2/angular-local-storage.min.js" />
+	<apex:includeScript value="{!IF(isDev,AssetsUrl,URLFOR($Resource.dupcheck__dupcheckAssets,'/dupcheckAssets'))}/lightning/js/plauti-ng-slds.min.js" />
+	<apex:includeScript value="{!IF(isDev,AssetsUrl,URLFOR($Resource.dupcheck__dupcheckAssets,'/dupcheckAssets'))}/lightning/js/dupcheck.js" />
+	<apex:includeScript value="{!IF(isDev,AssetsUrl,URLFOR($Resource.dupcheck__dupcheckAssets,'/dupcheckAssets'))}/lightning/js/dupcheck.ng.directives.js" />
+	<apex:includeScript value="{!IF(isDev,AssetsUrl,URLFOR($Resource.dupcheck__dupcheckAssets,'/dupcheckAssets'))}/lightning/js/dupcheck.ng.services.js" />	
+	<apex:includeScript value="{!IF(isDev,AssetsUrl,URLFOR($Resource.dupcheck__dupcheckAssets,'/dupcheckAssets'))}/lightning/js/dupcheck.ng.convert.js" />	
+	 
+	<apex:includeScript value="/soap/ajax/38.0/connection.js" />
+	<apex:includeScript value="/support/console/37.0/integration.js"/>
+	
+	<c:dc3TranslationJS />
+	<c:dc3Welcome version="LIGHTNING"/>
+	
+	<script>
+	    sforce.connection.sessionId='{!GETSESSIONID()}';
+	</script>	    	
+	  
+	<div class="plauti" id="dataStore" ng-app="dcApp" ng-controller="convertController" data-sf-fetch-object-details="{!$RemoteAction.dc3ControllerConvert.fetchObjectDetails}" data-url-return="{!returnUrl}" data-sf-convert="{!$RemoteAction.dc3ControllerConvert.doConvert}" data-sf-fetch-default="{!$RemoteAction.dc3ControllerConvert.fetchDefault}" data-sf-account-by-contact="{!$RemoteAction.dc3ControllerConvert.accountByContact}" data-sf-object-search="{!$RemoteAction.dc3ControllerConvert.objectSearch}" data-sf-contact-id="{!JSINHTMLENCODE(contactId)}" data-sf-account-id="{!JSINHTMLENCODE(accountId)}" data-sf-paccount-id="{!JSINHTMLENCODE(paccountId)}" data-sf-stage="{!JSINHTMLENCODE(stage)}" data-sf-related-object="{!$RemoteAction.dc3ControllerConvert.getRelatedTypeAheadAdvanced}" data-sf-dc-paccount="{!$RemoteAction.dc3ControllerConvert.dcPAccount}" data-sf-dc-account="{!$RemoteAction.dc3ControllerConvert.dcAccount}" data-sf-dc-contact="{!$RemoteAction.dc3ControllerConvert.dcContact}" data-lead-id="{!JSINHTMLENCODE(leadId)}">
+	
+		<div ng-if="{!NOT(license.features.pageConvert)}">
+			<div class="slds-page-header" role="banner"> 
+				<div class="slds-grid slds-wrap"> 
+					<div class="slds-col slds-has-flexi-truncate"> 
+						<div class="slds-media">
+							<div class="slds-media__figure">
+								<img class="slds-icon slds-icon--large slds-icon-action-close" ng-src="{!URLFOR($Resource.slds,'')}/assets/icons/action/close_120.png" />
+							</div>
+							<div class="slds-media__body">
+								<p class="slds-text-heading--label">{!$label.ERROR}</p>
+								<div class="slds-grid">
+									<h1 class="slds-text-heading--medium slds-m-right--small slds-truncate slds-align-middle" title="Record Title">{!$label.NO_ACCESS}</h1>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="slds-grid slds-wrap slds-m-top--medium">
+				<div class="slds-col--padded slds-size--1-of-1">
+					<div class="slds-card slds-card--empty slds-m-bottom--x-large">
+						<div class="slds-card__body slds-p-horizontal--small">
+							<h3 class="slds-text-heading--small slds-p-top--large slds-p-bottom--large">{!$label.YOU_ARE_NOT_LICENSED_TO_USE_THIS_FEATURE}</h3>
+							<button class="slds-button slds-button--neutral slds-button--small slds-m-bottom--x-large" onClick="dcNavigate('{!$Page.dc3License}')">
+								{!$label.SHOW_LICENSE}
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>	
+		
+		
+		<div ng-if="{!license.features.pageConvert}">
+			<div ng-init="data.opportunityInfo.taskSubjectList=[{!taskSubject}]; data.opportunity.userName='{!leadOwner}'; meta.displayValueRecordOwner = '{!leadOwner}'; data.opportunity.opportunityName='{!leadData['Company']} - '; data.opportunity.userId='{!$User.Id}'; data.opportunity.convertStatus='{!convertStatusDefault}'; data.opportunity.taskStatus='{!taskStatusDefault}'; data.opportunity.taskPriority='{!taskPriorityDefault}'" />
+	   		<div class="slds-page-header dc-header-padding" role="banner">
+	   			<div class="slds-grid slds-wrap">
+	   				<div class="slds-col slds-size--1-of-1 slds-medium-size--2-of-6 slds-large-size--2-of-6">
+	                   	<div class="slds-media">
+	                       	<div class="slds-media__figure">
+	                           	<img class="slds-icon slds-icon--large" ng-src="{!IF(isDev,AssetsUrl,URLFOR($Resource.dupcheckAssets,'/dupcheckAssets'))}/lightning/app/app_icon_48.png" />
+	                       	</div>
+	                       	<div class="slds-media__body">
+	                           	<p class="slds-text-heading--label">Duplicate Check</p>
+	                           	<div class="slds-grid">
+	                               	<h1 class="slds-text-heading--medium slds-m-right--small slds-truncate slds-align-middle">{!$label.CONVERT} - {!JSINHTMLENCODE(leadConfig.objectLabel)}</h1>
+	                           	</div>
+	                       	</div>
+	                   	</div>
+	               	</div>
+
+	       			<div class="slds-col slds-size--1-of-1 slds-medium-size--4-of-6 slds-large-size--4-of-6 ">
+	           			<div class="slds-grid slds-float--right">
+	           			
+	           				<img ng-if="meta.isConverting" class="slds-button__icon slds-button__icon--large slds-m-top--xx-small slds-m-right--xx-small" src="{!URLFOR($Resource.slds,'')}/assets/images/spinners/slds_spinner_brand.gif"/>								           			
+	           					           			
+	           				<button class="slds-button slds-not-selected slds-button--icon-border-filled" ng-click="goRecord()" ng-if="endpoint.returnUrl">
+	           					<img class="slds-button__icon " ng-src="{!URLFOR($Resource.slds,'')}/assets/icons/utility/open_120.png" />
+              				</button>
+	           			
+	           				<button class="slds-button slds-not-selected slds-button--icon-border-filled" ng-click="goBack()">
+                				<img class="slds-button__icon " ng-src="{!URLFOR($Resource.slds,'')}/assets/icons/utility/back_120.png" />
+              				</button>
+	           			
+							<div class="slds-button-group slds-button-space-left">	           			 
+                    			<c:dc3WelcomeLink version="LIGHTNING" helpLink="https://support.duplicatecheck.com/article/usage-guide/dc-merge?utm_source=dcApp&utm_medium=app&utm_campaign=help_link"/>         
+						 	</div>			
+	               		</div>
+	           		</div>
+	       		</div> 
+	       	</div>  	
+
+								
+			<!-- DISPLAY DATA FIELDS -->	
+			<div class="slds-grid slds-wrap">
+				<apex:repeat value="{!leadConfig.resultField}" var="rf">
+					<div class="slds-size--1-of-1 slds-medium-size--1-of-2 slds-m-top--medium slds-col--padded slds-no-flex">
+						<Label class="slds-form-element__label dc-no-margin"> 
+							<apex:outputText value="{!rf.fieldLabel}" />
+						</Label>
+						<div class="slds-form-element__control slds-has-divider--bottom">
+							<span class="dc-form-element__static-small">
+								<c:dc3OutputField oName="{!leadConfig.objectName}" fName="{!rf.fieldName}" oData="{!leadData}" /> &nbsp;	
+							</span>
+						</div>
+						
+					</div>
+				</apex:repeat>
+			</div>
+ 			<!-- END DISPLAY DATA FIELDS -->
+ 
+ 
+ 			<div ng-if="meta.isLoading && data.selectedAccountId.length <= 0" class="slds-grid slds-wrap slds-m-vertical--x-large">
+			
+				<div class="slds-size--1-of-1 slds-m-bottom--medium">
+					<div class="slds-grid slds-grid--align-center">
+						<div class="slds-spinner--large slds-m-top--x-large">
+							<img src="{!URLFOR($Resource.slds,'')}/assets/images/spinners/slds_spinner_brand.gif" alt="{!$label.LOADING}" />
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			
+			<div ng-if="data.selectedAccountId.length > 0" class="slds-grid slds-wrap slds-m-vertical--x-large">
+				<!-- ACCOUNT --> 
+				<div ng-init="fetchObjectDetails(data.selectedAccountId)" class="slds-size--1-of-1 slds-col--padded">
+					<article class="slds-card">
+	  					<div class="slds-card__header slds-grid">
+	    					<header class="slds-media slds-media--center slds-has-flexi-truncate">
+	      						<div class="slds-media__figure">		
+			                    	<img class="slds-icon slds-icon-standard-account slds-icon--small" ng-src="{!URLFOR($Resource.slds,'')}/assets/icons/standard/account_120.png"/>
+	      						</div>
+	      						<div class="slds-media__body">
+	        						<h2>
+	            						<span ng-if="data.selectedAccountId != 'NEW'" class="slds-text-heading--small">{!$label.SELECTED_ACCOUNT}</span>
+	        							<span ng-if="data.selectedAccountId == 'NEW'" class="slds-text-heading--small">{!$label.CREATED_NEW_ACCOUNT}</span>
+	        						</h2>
+	      						</div>
+	    					</header>
+	    					<div class="slds-grid slds-wrap slds-no-flex">
+								<button class="slds-button slds-button--brand" ng-click="resetAccount()">{!$label.DESELECT}</button>
+	    					</div>
+	  					</div>
+	  					<div class="slds-card__body">
+	  					
+							<table ng-if="data.selectedAccountId != 'NEW'" class="slds-table slds-table--bordered slds-table--cell-buffer">
+								<thead>
+									<tr class="slds-text-title--caps">
+									
+										<th ng-repeat="(index, result) in meta.accountObjectResultFields" scope="col" ng-bind-html="result.fieldLabel">
+										</th>
+										
+										<th class="slds-cell-shrink">
+										</th>
+									</tr>	
+								</thead>
+								<tbody>
+									<tr>
+										<div ng-repeat="(index, result) in meta.accountObjectResultFields">
+											<td ng-repeat="data in meta.accountObject" ng-bind-html="data">
+											</td>
+										</div>
+		                        		<td class="slds-cell-shrink">
+		                        			<a href="#" ng-click="goDynamicRecord(data.selectedAccountId)">
+			                        			<div class="slds-icon slds-icon--x-small slds-icon-text-default">
+	                            					<img ng-src="{!URLFOR($Resource.slds,'')}/assets/icons/utility/open_120.png"/>
+			                        			</div>
+		                        			</a>
+		                        		</td>
+									</tr>			
+												
+								</tbody>
+							</table>
+		  				</div>
+					</article>
+				</div>
+			</div>
+			<!-- ACCOUNT END -->
+			
+			<!-- ACCOUNT -->
+			<div ng-if="endpoint.stage == 'account'" class="slds-m-top--x-large slds-col--padded slds-m-bottom--medium">
+			
+				<article class="slds-card">
+  					<div class="slds-card__header slds-grid">
+    					<header class="slds-media slds-media--center slds-has-flexi-truncate">
+      						<div class="slds-media__figure">		
+		                    	<img class="slds-icon slds-icon-standard-account slds-icon--small" ng-src="{!URLFOR($Resource.slds,'')}/assets/icons/standard/account_120.png"/>
+      						</div>
+      						<div class="slds-media__body">
+        					<h2>
+            					<span class="slds-text-heading--small">{!JSINHTMLENCODE(accountConfig.objectLabel)}</span>
+        					</h2>
+      					</div>
+    				</header>
+    				<div class="slds-grid slds-wrap slds-no-flex">
+    				
+						<button class="slds-button slds-button--neutral" ng-click="selectAccount('NEW')" ng-disabled="data.accountSearch.status != 'finished'">{!$label.NEW}&nbsp;{!JSINHTMLENCODE(accountConfig.objectLabel)}</button>
+						
+						<div class="slds-form-element slds-m-left--xx-small slds-m-right--xx-small">
+							<input type="text" ng-disabled="data.accountSearch.status != 'finished'" class="slds-input" ng-keypress="$event.which == 13 && accountSearch()" ng-model="data.accountSearch.input" placeholder="{!$label.SEARCH_FOR} {!JSINHTMLENCODE(accountConfig.objectLabel)}..."/>
+						</div>
+							
+						<button class="slds-button slds-button--brand" ng-disabled="data.accountSearch.status != 'finished'" ng-click="accountSearch()">{!$label.SEARCH}</button>				
+
+    				</div>
+  				</div>
+  				<div class="slds-card__body">
+    				<div ng-if="data.accountSearch.status == 'finished' && data.accountList.length > 0">
+						<table class="slds-table slds-table--bordered slds-table--cell-buffer">
+							<thead>
+								<tr class="slds-text-title--caps">
+								
+									<th scope="col" ng-if="meta.accountDc">
+										{!$label.SCORE}
+									</th>
+									
+									<apex:repeat value="{!accountConfig.resultField}" var="rf">
+										<th scope="col">
+											{!rf.fieldLabel}									
+										</th>
+									</apex:repeat>
+									<th scope="col" class="slds-cell-shrink">
+										{!$label.ACTIONS}
+									</th>
+									
+								</tr>	
+							</thead>
+							<tbody>
+								<tr ng-repeat="result in data.accountList">
+									
+									<td ng-if="meta.accountDc">
+										<span ng-bind="data.accountListScore[result.Id]" />%
+									</td>
+									
+	                        		<apex:repeat value="{!accountConfig.resultField}" var="rf">
+	                          			<td ng-bind-html="result['{!rf.fieldName}']"></td>
+	                        		</apex:repeat>
+	
+	                        		<td class="text-right">
+	                          			<button class="slds-button slds-button--neutral rv-table-action slds-x-small=button--stacked" ng-click="selectAccount(result)">{!$Label.dupcheck__select}</button>
+	                        		</td>
+								
+								</tr>					
+							</tbody>
+						</table>
+					</div>
+								
+					<div ng-if="data.accountSearch.status == 'finished' && (data.accountList.length < 1 || data.accountList == undefined)">
+						<h3 class="slds-m-left--large slds-section__title slds-m-bottom--medium">
+							<apex:outputText value="{!$Label.dupcheck__no_associated_object_found}">
+					    		<apex:param value="{!JSINHTMLENCODE(accountConfig.objectLabel)}"/>
+							</apex:outputText>
+						</h3>
+					</div>
+												
+					<div class="slds-text-align--center" ng-if="data.accountSearch.status == 'searching'" style="background-color: #ffffff">
+						<div class="slds-modal__container">
+							<div class="slds-grid slds-grid--align-center">
+								<div class="slds-spinner--large">
+									<img src="{!URLFOR($Resource.slds,'')}/assets/images/spinners/slds_spinner_brand.gif" alt="{!$label.LOADING}" />
+								</div>
+							</div>
+						</div>
+					</div> 					
+					
+  				</div>
+			</article>
+		</div>
+		<!-- ACCOUNT END -->
+		
+					
+			<div ng-if="data.selectedContactId.length > 0" class="slds-grid slds-wrap slds-m-vertical--x-large">	
+				<!-- CONTACT -->
+				<div  ng-init="fetchObjectDetails(data.selectedContactId)" class="slds-size--1-of-1 slds-col--padded">
+					<article class="slds-card">
+	  					<div class="slds-card__header slds-grid">
+	    					<header class="slds-media slds-media--center slds-has-flexi-truncate">
+	      						<div class="slds-media__figure">		
+			                    	<img class="slds-icon slds-icon-standard-contact slds-icon--small" ng-src="{!URLFOR($Resource.slds,'')}/assets/icons/standard/contact_120.png"/>
+	      						</div>
+	      						<div class="slds-media__body">
+	        						<h2>
+    									<span ng-if="data.selectedContactId != 'NEW'" class="slds-text-heading--small">{!$label.SELECTED_CONTACT}</span>
+	        							<span ng-if="data.selectedContactId == 'NEW'" class="slds-text-heading--small">{!$label.CREATE_NEW_CONTACT}</span>
+	        						</h2>
+	      						</div>
+	    					</header> 
+	    					<div class="slds-grid slds-wrap slds-no-flex">
+								<button class="slds-button slds-button--brand" ng-click="resetContact()">{!$label.DESELECT}</button>
+	    					</div>
+	  					</div>
+	  					<div class="slds-card__body">
+							<table ng-if="data.selectedContactId != 'NEW'" class="slds-table slds-table--bordered slds-table--cell-buffer">
+								<thead>
+									<tr class="slds-text-title--caps">
+										
+										<th ng-repeat="(index, result) in meta.contactObjectResultFields" scope="col" ng-bind-html="result.fieldLabel">
+										</th>
+
+										<th scope="col" class="slds-cell-shrink">
+										</th>
+									</tr>	
+								</thead>
+								<tbody>
+									<tr>
+										<div ng-repeat="(index, result) in meta.contactObjectResultFields">
+											<td ng-repeat="data in meta.contactObject" ng-bind-html="data">
+											</td>
+										</div>
+		                        		<td class="slds-cell-shrink">
+		                        			<a href="#" ng-click="goDynamicRecord(data.selectedContactId)">
+			                        			<div class="slds-icon slds-icon--x-small slds-icon-text-default">
+	                            					<img  ng-src="{!URLFOR($Resource.slds,'')}/assets/icons/utility/open_120.png"/>
+			                        			</div>
+		                        			</a>
+		                        		</td>
+									</tr>	
+								</tbody>
+							</table>
+		  				</div>
+					</article>
+				</div>	
+			</div>	
+				<!-- END CONTACT -->
+				
+				<div ng-if="(endpoint.stage == 'contact' || endpoint.stage == 'account') && data.selectedContactId != 'NEW'" class="slds-col--padded slds-m-bottom--medium {{endpoint.stage=='contact' ? 'slds-m-top--medium' : ''}}">
+				
+					<article class="slds-card">
+	  					<div class="slds-card__header slds-grid">
+	    					<header class="slds-media slds-media--center slds-has-flexi-truncate">
+	      						<div class="slds-media__figure">		
+			                    	<img class="slds-icon slds-icon-standard-contact slds-icon--small" ng-src="{!URLFOR($Resource.slds,'')}/assets/icons/standard/contact_120.png"/>
+	      						</div>
+	      						<div class="slds-media__body">
+	        					<h2>
+	            					<span class="slds-text-heading--small">{!JSINHTMLENCODE(contactConfig.objectLabel)}</span>
+	        					</h2>
+	      					</div>
+	    				</header>
+	    				<div class="slds-grid slds-wrap slds-no-flex">
+	    				
+							<button class="slds-button slds-button--neutral" ng-click="selectContact('NEW')" ng-disabled="data.contactSearch.status != 'finished'">{!$label.NEW}&nbsp;{!JSINHTMLENCODE(contactConfig.objectLabel)}</button>
+							
+							<div class="slds-form-element slds-m-left--xx-small slds-m-right--xx-small">
+								<input type="text" ng-disabled="data.contactSearch.status != 'finished'" class="slds-input" ng-keypress="$event.which == 13 && contactSearch()" ng-model="data.contactSearch.input" placeholder="{!$label.SEARCH_FOR} {!JSINHTMLENCODE(contactConfig.objectLabel)}..."/>
+							</div>
+								
+							<button class="slds-button slds-button--brand" ng-disabled="data.contactSearch.status != 'finished'" ng-click="contactSearch()">{!$label.SEARCH}</button>				
+	
+	    				</div>
+	  				</div>
+	  				<div class="slds-card__body">
+	    				<div ng-if="data.contactSearch.status == 'finished' && data.contactList.length > 0">
+							<table class="slds-table slds-table--bordered slds-table--cell-buffer">
+								<thead>
+									<tr class="slds-text-title--caps">
+										
+										<th scope="col" ng-if="meta.contactDc">
+											{!$label.SCORE}
+										</th>										
+										
+										<apex:repeat value="{!contactConfig.resultField}" var="rf">
+											<th scope="col">
+												{!rf.fieldLabel}									
+											</th>
+										</apex:repeat>
+										<th scope="col" class="slds-cell-shrink">
+											{!$label.ACTION}
+										</th>
+										
+									</tr>	
+								</thead>
+								<tbody>
+									<tr ng-repeat="result in data.contactList">
+
+										<td ng-if="meta.contactDc">
+											<span ng-bind="data.contactListScore[result.Id]" />%
+										</td>										
+										
+		                        		<apex:repeat value="{!contactConfig.resultField}" var="rf">
+		                          			<td ng-bind-html="result['{!rf.fieldName}']"></td>
+		                        		</apex:repeat>
+		
+		                        		<td class="text-right">
+		                          			<button class="slds-button slds-button--neutral rv-table-action slds-x-small=button--stacked" ng-click="selectContact(result)">{!$Label.dupcheck__select}</button>
+		                        		</td>
+									
+									</tr>					
+								</tbody>
+							</table>
+						</div>
+						
+						<div ng-if="data.contactSearch.status == 'finished' && (data.contactList.length < 1 || data.contactList == undefined)">
+							<h3 class="slds-m-left--large slds-section__title slds-m-bottom--medium">
+								<apex:outputText value="{!$Label.dupcheck__no_associated_object_found}">
+					    			<apex:param value="{!JSINHTMLENCODE(contactConfig.objectLabel)}"/>
+								</apex:outputText>
+							</h3>
+						
+						</div>
+													
+						<div class="slds-text-align--center" ng-if="data.contactSearch.status == 'searching'" style="background-color: #ffffff">
+							<div class="slds-modal__container">
+								<div class="slds-grid slds-grid--align-center">
+									<div class="slds-spinner--large">
+										<img src="{!URLFOR($Resource.slds,'')}/assets/images/spinners/slds_spinner_brand.gif" alt="{!$label.LOADING}" />
+									</div>
+								</div>
+							</div>
+						</div> 					
+						
+	  				</div>
+				</article>
+	
+			</div>				
+
+			<!-- PERSON ACCOUNT -->
+			<div ng-if="data.selectedPAccountId.length > 0" class="slds-grid slds-wrap slds-m-vertical--x-large">	
+				
+				<div class="slds-size--1-of-1 slds-col--padded" ng-init="fetchObjectDetails(data.selectedPAccountId)">
+					<article class="slds-card">
+				        <div class="slds-card__header slds-grid">
+							<header class="slds-media slds-media--center slds-has-flexi-truncate">
+								<div class="slds-media__figure">
+					  				<img class="slds-icon slds-icon--small slds-icon-standard-person-account" ng-src="{!URLFOR($Resource.slds,'')}/assets/icons/standard/person_account_120.png" alt="person_account" />
+								</div>
+							    <div class="slds-media__body slds-truncate">
+							    	<h2>
+							    		<span ng-if="data.selectedPAccountId != 'NEW'" class="slds-text-heading--small">{!$label.SELECTED_PERSON_ACCOUNT}</span>
+							        	<span ng-if="data.selectedPAccountId == 'NEW'" class="slds-text-heading--small">{!$label.CREATE_NEW_PERSON_ACCOUNT}</span>
+							        </h2>
+								</div>
+							</header>
+	    					<div class="slds-grid slds-wrap slds-no-flex">
+								<button class="slds-button slds-button--brand" ng-click="resetAccount()">{!$label.DESELECT}</button>
+	    					</div>							
+				        </div>
+				       <div class="slds-card__body">
+							<table ng-if="data.selectedPAccountId != 'NEW'" class="slds-table slds-table--bordered slds-table--cell-buffer">
+								<thead>
+									<tr class="slds-text-title--caps">
+
+										<th ng-repeat="(index, result) in meta.PAccountObjectResultFields" scope="col" ng-bind-html="result.fieldLabel">
+										</th>
+
+										<th scope="col" class="slds-cell-shrink">
+										</th>
+									</tr>	
+								</thead>
+								<tbody>
+									<tr>
+										<div ng-repeat="(index, result) in meta.PAccountObjectResultFields">
+											<td ng-repeat="data in meta.PAccountObject" ng-bind-html="data">
+											</td>
+										</div>
+		                        		<td class="slds-cell-shrink">
+		                        			<a href="#" ng-click="goDynamicRecord(data.selectedPAccountId)">
+			                        			<div class="slds-icon slds-icon--x-small slds-icon-text-default">
+	                            					<img ng-src="{!URLFOR($Resource.slds,'')}/assets/icons/utility/open_120.png"/>
+			                        			</div>
+		                        			</a>
+		                        		</td>
+									</tr>				
+								</tbody>
+							</table>
+		  				</div>
+	    			</article>				
+				</div>
+				
+			</div>
+
+			<apex:outputPanel layout="none" rendered="{!NOT(ISBLANK(paccountConfig))}">
+				<div ng-if="endpoint.stage == 'contact' || endpoint.stage == 'account'" class="slds-col--padded slds-m-bottom--medium">
+				
+					<article class="slds-card">
+	  					<div class="slds-card__header slds-grid">
+	    					<header class="slds-media slds-media--center slds-has-flexi-truncate">
+	      						<div class="slds-media__figure">		
+			                    	<img class="slds-icon slds-icon-standard-person-account slds-icon--small" ng-src="{!URLFOR($Resource.slds,'')}/assets/icons/standard/person_account_120.png"/>
+	      						</div>
+	      						<div class="slds-media__body">
+	        					<h2>
+	            					<span class="slds-text-heading--small">{!JSINHTMLENCODE(paccountConfig.objectLabel)}</span>
+	        					</h2>
+	      					</div>
+	    				</header>
+	    				<div class="slds-grid slds-wrap slds-no-flex">
+
+							<button class="slds-button slds-button--neutral" ng-click="selectPAccount('NEW')" ng-disabled="data.PAccountSearch.status != 'finished'">{!$label.NEW}&nbsp;{!JSINHTMLENCODE(paccountConfig.objectLabel)}</button>
+							
+							<div class="slds-form-element slds-m-left--xx-small slds-m-right--xx-small">
+								<input type="text" ng-disabled="data.PAccountSearch.status != 'finished'" class="slds-input" ng-keypress="$event.which == 13 && PAccountSearch()" ng-model="data.PAccountSearch.input" placeholder="{!$label.SEARCH_FOR} {!JSINHTMLENCODE(paccountConfig.objectLabel)}..."/>
+							</div>
+								
+							<button class="slds-button slds-button--brand" ng-disabled="data.PAccountSearch.status != 'finished'" ng-click="PAccountSearch()">{!$label.SEARCH}</button>				
+	
+	    				</div>
+	  				</div>
+	  				<div class="slds-card__body">
+	    				<div ng-if="data.PAccountSearch.status == 'finished' && data.PAccountList.length > 0">
+							<table class="slds-table slds-table--bordered slds-table--cell-buffer">
+								<thead>
+									<tr class="slds-text-title--caps">
+									
+										<th scope="col" ng-if="meta.PAccountDc">
+											{!$label.SCORE}
+										</th>
+										
+										<apex:repeat value="{!paccountConfig.resultField}" var="rf">
+											<th scope="col">
+												{!rf.fieldLabel}									
+											</th>
+										</apex:repeat>
+										<th scope="col" class="slds-cell-shrink">
+											{!$label.ACTION}
+										</th>
+										
+									</tr>	
+								</thead>
+								<tbody>
+									<tr ng-repeat="result in data.PAccountList">
+
+										<td ng-if="meta.PAccountDc">
+											<span ng-bind="data.PAccountListScore[result.Id]" />%
+										</td>											
+										
+		                        		<apex:repeat value="{!paccountConfig.resultField}" var="rf">
+		                          			<td ng-bind-html="result['{!rf.fieldName}']"></td>
+		                        		</apex:repeat>
+		
+		                        		<td class="text-right">
+		                          			<button class="slds-button slds-button--neutral rv-table-action slds-x-small=button--stacked" ng-click="selectPAccount(result)">{!$Label.dupcheck__select}</button>
+		                        		</td>
+									
+									</tr>					
+								</tbody>
+							</table>
+						</div>
+							
+						<div ng-if="data.PAccountSearch.status == 'finished' && (data.PAccountList.length < 1 || data.PAccountList == undefined)">
+							<h3 class="slds-m-left--large slds-section__title slds-m-bottom--medium">
+								<apex:outputText value="{!$Label.dupcheck__no_associated_object_found}">
+					    			<apex:param value="{!JSINHTMLENCODE(paccountConfig.objectLabel)}"/>
+								</apex:outputText>						
+							</h3>
+						</div>
+													
+						<div class="slds-text-align--center" ng-if="data.PAccountSearch.status == 'searching'" style="background-color: #ffffff">
+							<div class="slds-modal__container">
+								<div class="slds-grid slds-grid--align-center">
+									<div class="slds-spinner--large">
+										<img src="{!URLFOR($Resource.slds,'')}/assets/images/spinners/slds_spinner_brand.gif" alt="{!$label.LOADING}" />
+									</div>
+								</div>
+							</div>
+						</div> 					
+						
+	  				</div>
+				</article>
+			</div>			
+		</apex:outputPanel>			
+			
+			
+		<!-- OPPORTUNITY SECTION -->
+		<div class="slds-m-top--medium slds-col--padded slds-m-bottom--medium" ng-if="endpoint.stage == 'opportunity'">
+			<article class="slds-card">
+				<div class="slds-card__header slds-grid">
+  					<header class="slds-media slds-media--center slds-has-flexi-truncate">
+    					<div class="slds-media__figure">		
+                           	<img class="slds-icon slds-icon-standard-opportunity slds-icon--small" ng-src="{!URLFOR($Resource.slds,'')}/assets/icons/standard/opportunity_120.png"/>
+     					</div>
+    					<div class="slds-media__body">
+      						<h2>
+          						<span class="slds-text-heading--small">{!$label.CONVERT_INFORMATION}</span>
+      						</h2>
+    					</div>
+  					</header>
+				</div>
+				<div class="slds-form--horizontal slds-grid slds-wrap" style="background-color:#ffffff">
+					
+					<div class="slds-m-vertical--small slds-size--1-of-1 slds-small-size--1-of-1 slds-medium-size--1-of-1 slds-large-size--1-of-2">
+				
+						<fieldset class="slds-form-element slds-m-bottom--medium slds-m-horizontal--large">
+						    <label class="slds-form-element__label slds-text-heading--label dc-text-align-left">
+						    	<span>{!$label.GENERAL}</span>
+						    </label>
+						</fieldset>						
+																	
+						<div class="slds-form-element slds-m-horizontal--large">
+							<label class="slds-form-element__label dc-text-align-left">&nbsp; {!$label.RECORD_OWNER}</label>
+							<div class="slds-form-element__control">
+								<plauti-typeahead typeahead-min-length="2"
+												  typeahead-wait-ms="0" 
+												  options="meta.referenceOptions"
+												  typeahead-options-method="getLookup(objectItem, searchText, fields)"
+												  ng-model="data.opportunity.userName"
+												  ng-model-display="meta.displayValueRecordOwner"
+												  name-attr="name"
+												  value-attr="id"
+												  typeahead-select-on-blur="true" 
+												  svg-path="{!URLFOR($Resource.slds,'')}"
+												  object-label="meta.recordOwner"
+												  object-list-meta="meta.userLookupObject"
+												  local-storage-name="plautitypeahead-{!$User.id}"
+												  >
+								</plauti-typeahead>	
+														
+							</div>
+						</div>		
+						 
+						<div class="slds-form-element slds-m-horizontal--large">
+							<label class="slds-form-element__label dc-text-align-left">&nbsp; {!$label.SEND_EMAIL_TO_THE_OWNER}</label>
+							<div class="slds-form-element__control">
+								<input plauti-checkbox-toggle="plauti-checkbox-toggle" type="checkbox" ng-model="data.opportunity.emailOwner"/>
+							</div>
+						</div>
+		
+						
+						<div class="slds-form-element slds-m-horizontal--large">
+							<label class="slds-form-element__label dc-text-align-left">&nbsp; {!$label.CONVERSION_STATUS}</label>
+							<div class="slds-form-element__control">
+								<div class="slds-select_container">
+									<select class="slds-select" ng-model="data.opportunity.convertStatus" ng-options="v.MasterLabel as v.MasterLabel for (k,v) in data.leadStatus"/>
+								</div>		
+							</div>
+						</div>
+						
+						<div class="slds-form-element slds-m-horizontal--large">
+							<label class="slds-form-element__label dc-text-align-left">&nbsp; {!$label.OVERRIDE_LEAD_SOURCE}</label>
+							<div class="slds-form-element__control">
+								<input plauti-checkbox-toggle="plauti-checkbox-toggle" type="checkbox" ng-model="data.opportunity.leadSource"/>
+							</div>
+						</div>					
+						
+						<fieldset class="slds-form-element slds-m-bottom--medium slds-m-horizontal--large">
+						    <label class="slds-form-element__label slds-text-heading--label dc-text-align-left">
+						    	<span>Opportunity</span>
+						    </label>
+						</fieldset>						
+						
+						<div class="slds-form-element slds-m-horizontal--large">
+							<label class="slds-form-element__label dc-text-align-left">&nbsp; {!$label.CREATE_OPPORTUNITY}</label>
+							<div class="slds-form-element__control">
+								<input plauti-checkbox-toggle="plauti-checkbox-toggle" type="checkbox" ng-model="data.opportunity.createOpp"/>					
+							</div>
+						</div>					
+						
+						<div ng-show="data.opportunity.createOpp" class="slds-form-element slds-m-horizontal--large">
+							<label class="slds-form-element__label dc-text-align-left">&nbsp; {!$label.OPPORTUNITY_NAME}</label>
+							<div class="slds-form-element__control">
+								<input class="slds-input" type="text" ng-model="data.opportunity.opportunityName"/>
+							</div>
+						</div>
+					</div>
+					
+					<div class="slds-m-vertical--small slds-size--1-of-1 slds-small-size--1-of-1 slds-slds-medium-size--1-of-1 slds-large-size--1-of-2">
+
+						<fieldset class="slds-form-element slds-m-bottom--medium slds-m-horizontal--large">
+						    <label class="slds-form-element__label slds-text-heading--label dc-text-align-left">
+						    	<span>Task</span>
+						    </label>
+						</fieldset>							
+							
+						<div class="slds-form-element slds-m-horizontal--large">
+							<label class="slds-form-element__label dc-text-align-left">&nbsp; {!$label.CREATE_TASK}</label>
+							<div class="slds-form-element__control">
+								<input plauti-checkbox-toggle="plauti-checkbox-toggle" type="checkbox" ng-model="data.opportunity.createTask"/>				
+							</div>
+						</div>							
+						
+						<div ng-show="data.opportunity.createTask">
+			
+							<div class="slds-form-element slds-m-horizontal--large">
+								<label class="slds-form-element__label dc-text-align-left">&nbsp; {!$label.TASK_SUBJECT}</label>
+								<div class="slds-form-element__control">
+									<div class="slds-select_container">	
+										<select ng-options="v.id as v.name for v in data.opportunityInfo.taskSubjectList" class="slds-select" ng-model="data.opportunity.taskSubject">
+										</select>
+									</div>	
+								</div>	
+							</div>			
+							
+							<div ng-show="data.opportunity.taskSubject == 'dc-custom-value'" class="slds-form-element slds-m-horizontal--large">
+								<label class="slds-form-element__label dc-text-align-left">&nbsp; {!$label.CUSTOM_TASK_SUBJECT}</label>
+								<div class="slds-form-element__control">
+									<input class="slds-input" ng-model="data.opportunity.customTaskSubject" />
+								</div>
+							
+							</div>
+							
+								<div class="slds-form-element slds-m-horizontal--large">
+									<label class="slds-form-element__label dc-text-align-left">&nbsp; {!$label.STATUS}</label>
+									<div class="slds-form-element__control">
+										<div class="slds-select_container">	
+											<select class="slds-select" ng-model="data.opportunity.taskStatus">
+												<apex:repeat value="{!taskStatus}" var="stat">
+													<option data-content="{!JSINHTMLENCODE(stat.Label)}" value="{!stat.Value}">
+														{!JSINHTMLENCODE(stat.Label)}
+													</option>
+												</apex:repeat>
+											</select>
+										</div>	
+									</div>	
+								</div>
+								
+								<div class="slds-form-element slds-m-horizontal--large">
+									<label class="slds-form-element__label dc-text-align-left">&nbsp; {!$label.PRIORITY}</label>
+									<div class="slds-form-element__control">
+										<div class="slds-select_container">	
+											<select class="slds-select" ng-model="data.opportunity.taskPriority">
+												<apex:repeat value="{!taskPriority}" var="stat">
+													<option data-content="{!JSINHTMLENCODE(stat.Label)}" value="{!stat.Value}">
+														{!JSINHTMLENCODE(stat.Label)}
+													</option>
+												</apex:repeat>
+											</select>						
+										</div>
+									</div>
+								</div>	
+								
+								<div class="slds-form-element slds-m-horizontal--large">
+									<label class="slds-form-element__label dc-text-align-left">&nbsp; {!$label.DUE_DATE}</label>
+									<div class="slds-form-element__control">
+										<plauti-datepicker position="slds-dropdown--bottom slds-dropdown--left" 
+														   date-format="dd MMMM yyyy" 
+														   ng-model="data.opportunityInfo.taskDueDate" 
+														   start-year="1900" 
+														   end-year="2100" 
+														   svg-path="{!URLFOR($Resource.slds,'')}/assets/icons/utility-sprite/svg/symbols.svg" 
+														   ng-change="selectCustom(field.fieldName)">
+										</plauti-datepicker>						
+									</div>
+								</div>
+								
+								<div class="slds-form-element slds-m-horizontal--large">
+									<label class="slds-form-element__label dc-text-align-left">&nbsp; {!$label.COMMENTS}</label>
+									<div class="slds-form-element__control">
+										<textarea class="slds-textarea" ng-model="data.opportunity.taskComments"></textarea>
+									</div>
+								</div>			
+								
+								<div class="slds-form-element slds-m-horizontal--large">
+									<label class="slds-form-element__label dc-text-align-left">&nbsp; {!$label.SEND_NOTIFICATION}</label>
+									<div class="slds-form-element__control">
+										<input plauti-checkbox-toggle="plauti-checkbox-toggle" type="checkbox" ng-model="data.opportunity.taskNotification"/>				
+									</div>						
+								</div>	
+				
+								<div class="slds-form-element slds-m-horizontal--large">
+									<label class="slds-form-element__label dc-text-align-left">&nbsp; {!$label.SET_REMINDER}</label>
+									<div class="slds-form-element__control">
+										<input plauti-checkbox-toggle="plauti-checkbox-toggle" type="checkbox" ng-model="data.opportunity.taskSetReminder"/>				
+									</div>						
+								</div>				
+								
+								
+								<div class="slds-form-element slds-m-horizontal--large" ng-show="data.opportunity.taskSetReminder">
+									<label class="slds-form-element__label dc-text-align-left">&nbsp; {!$label.REMINDER}</label>
+									<div class="slds-form-element__control">
+										<plauti-datetimepicker position="slds-dropdown--bottom slds-dropdown--left" 
+															   date-format="dd MMMM yyyy" 
+															   ng-model="data.opportunityInfo.taskReminder" 
+															   start-year="1900" 
+															   end-year="2100" 
+															   svg-path="{!URLFOR($Resource.slds,'')}/assets/icons/utility-sprite/svg/symbols.svg" 
+															   is-meridian-format="true" 
+															   min-step="1">
+										</plauti-datetimepicker>
+									</div>	
+								</div>		
+							</div>	
+						</div>	
+					</div>
+					<div class="slds-card__footer dc-card__footer-no-margin" style="background-color: #ffffff">
+						<img ng-if="meta.isConverting" class="slds-button__icon slds-button__icon--large slds-m-top--xx-small slds-m-right--xx-small" src="{!URLFOR($Resource.slds,'')}/assets/images/spinners/slds_spinner_brand.gif"/>								           			
+						<button class="slds-button slds-button--brand" ng-disabled="meta.isConverting" ng-click="doConvert()">{!$label.CONVERT}</button> 							
+					</div>
+			</article>
+		</div>	
+		</div>	
+	</div> 
+	
+</apex:page>

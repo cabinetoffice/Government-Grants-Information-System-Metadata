@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ApexComponent xmlns="http://soap.sforce.com/2006/04/metadata">
+<<<<<<< HEAD
     <apiVersion>35.0</apiVersion>
+=======
+<<<<<<< HEAD
+    <apiVersion>35.0</apiVersion>
+=======
+<<<<<<< HEAD
+    <apiVersion>35.0</apiVersion>
+=======
+    <apiVersion>34.0</apiVersion>
+>>>>>>> refs/remotes/origin/master
+>>>>>>> branch 'master' of https://github.com/cabinetoffice/Government-Grants-Information-System-Metadata
+>>>>>>> branch 'master' of https://github.com/cabinetoffice/Government-Grants-Information-System-Metadata
     <description>Default Force.com site powered by component</description>
     <label>SitePoweredBy</label>
 </ApexComponent>

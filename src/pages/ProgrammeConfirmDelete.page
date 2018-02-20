@@ -1,3 +1,18 @@
+<<<<<<< HEAD
 <apex:page standardController="Programme__c" extensions="ProgrammeConfirmDeleteController" showHeader="true" sidebar="true" action="{!deleteRecord}">
 	<apex:pageMessages />
+=======
+<<<<<<< HEAD
+<apex:page standardController="Programme__c" extensions="ProgrammeConfirmDeleteController" showHeader="true" sidebar="true" action="{!deleteRecord}">
+	<apex:pageMessages />
+=======
+<<<<<<< HEAD
+<apex:page standardController="Programme__c" extensions="ProgrammeConfirmDeleteController" showHeader="true" sidebar="true" action="{!deleteRecord}">
+	<apex:pageMessages />
+=======
+<apex:page standardController="Programme__c" extensions="ProgrammeConfirmDeleteController" showHeader="true" sidebar="true" action="{!deleteRecord}">
+	<apex:pageMessages />
+>>>>>>> refs/remotes/origin/master
+>>>>>>> branch 'master' of https://github.com/cabinetoffice/Government-Grants-Information-System-Metadata
+>>>>>>> branch 'master' of https://github.com/cabinetoffice/Government-Grants-Information-System-Metadata
 </apex:page>

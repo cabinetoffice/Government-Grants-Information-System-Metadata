@@ -1,0 +1,117 @@
+<aura:component access="global" description="DC Live for Lightning Experience" controller="dupcheck.dc3ComponentLayout" implements="force:appHostable,flexipage:availableForAllPageTypes,force:hasRecordId">
+	<aura:attribute name="isLoading" type="Boolean" default="true"/>
+	<aura:attribute name="recordId" type="Id" />
+	<aura:attribute name="DuplicateResult" type="dupcheck.dc3LightningResult" description="Duplicate Result" />
+	<ltng:require styles="{!$Resource.dupcheck__slds + '/assets/styles/salesforce-lightning-design-system-vf.min.css'}" />
+	<aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+	
+	
+	<div class="plauti">
+		<article class="slds-card slds-card--narrow">
+  			<div class="slds-card__header slds-grid">
+  				<header class="slds-media slds-media--center slds-has-flexi-truncate">
+			      <div class="slds-media__figure">
+			        <img class="slds-icon slds-icon--small " src="{!$Resource.dupcheck__dupcheckAssets + '/dupcheckAssets/lightning/app/app_icon_48.png'}" />
+				  </div>
+			      <div class="slds-media__body slds-truncate">
+			        <h2>
+			          <a href="javascript:void(0);" class="slds-text-link--reset">
+			            <span class="slds-text-heading--small">Duplicate Check&nbsp;
+			            	
+			            	<aura:renderIf isTrue="{!v.isLoading == true}">
+								<div class="slds-spinner--small" style="display: inline-table;">
+                    				<img src="{!$Resource.dupcheck__slds + '/assets/images/spinners/slds_spinner_brand.gif'}" alt="Loading..." />
+                    			</div>
+							</aura:renderIf>
+			            	<aura:renderIf isTrue="{!v.isLoading == false}">
+			            		(<ui:outputNumber value="{!v.DuplicateResult.DuplicateCount}" format="0"/>)
+			            	</aura:renderIf>
+			            </span>
+			          </a>
+			        </h2>
+			      </div>
+			    </header> 
+  			</div>
+  			<div class="slds-card__body">
+  				<aura:renderIf isTrue="{!and(v.DuplicateResult.DuplicateCount != 0,v.isLoading == false)}"> 
+					<div class="slds-tabs--default">
+  						<ul class="slds-tabs--default__nav" role="tablist">
+    						<aura:iteration items="{!v.DuplicateResult.ObjectResult}" var="tabName">
+    							<li class="{!tabName.isActive ? 'slds-active slds-tabs--default__item slds-text-title--caps' : 'slds-tabs--default__item slds-text-title--caps'}" title="{!tabName.Label}" role="presentation" >
+    								<a data-tab-name="{!tabName.Prefix}" onclick="{!c.openDCTab}" class="slds-tabs--default__link"  role="tab" tabindex="0" aria-selected="true" aria-controls="{!'tabContent-default-' + tabName.Prefix}" id="{!'tab-default-' + tabName.Prefix}">{!tabName.Label}&nbsp;<span class="slds-badge slds-theme--info"><ui:outputNumber value="{!tabName.DuplicateCount}" format="0"/></span></a>
+    							</li> 
+ 							</aura:iteration>
+    					</ul>
+    					<aura:iteration items="{!v.DuplicateResult.ObjectResult}" var="tabName">
+    						<div id="{!'tabContent-default-' + tabName.Prefix}" class="{!tabName.isActive ? 'slds-show slds-tabs--default__content slds-scrollable--x padding-0' : 'slds-hide slds-tabs--default__content slds-scrollable--x padding-0'}" role="tabpanel" aria-labelledby="{!'tab-default-' + tabName.Prefix}">
+    							
+    							<aura:renderIf isTrue="{!tabName.DuplicateCount == 0}">
+ 									<div class="slds-grid slds-grid--align-spread slds-m-left--medium">
+    									<h3 class="slds-text-heading--small slds-p-bottom--large slds-m-top--large">No Duplicates Found</h3>
+    								</div>
+    							</aura:renderIf>
+    							
+    							<aura:renderIf isTrue="{!tabName.DuplicateCount != 0}">
+    							
+	    							<table class="slds-table slds-table--bordered slds-no-row-hover slds-table--cell-buffer">
+	    								<thead>
+	    									<tr class="slds-text-title--caps">
+	    										<!-- 
+	    										<aura:renderIf isTrue="{!tabName.isMerge == true}">
+	    											<th class="slds-cell-shrink" scope="col">&nbsp;</th>
+	    										</aura:renderIf>
+	    										 -->
+	    										<th scope="col">Score</th>
+	    										<aura:iteration items="{!tabName.ResultFields}" var="field">
+	    											<th scope="col">{!field.value}</th> 
+	    										</aura:iteration>
+	    										<th scope="col"></th>
+	    									</tr>
+	    								</thead> 
+	    								<tbody>
+	    									<aura:iteration items="{!tabName.ResultData}" var="dupData">
+	    										<tr>
+	    											<!-- 
+	    											<aura:renderIf isTrue="{!tabName.isMerge == true}">
+	    												<td class="slds-cell-shrink" scope="col">
+	    													<ui:inputCheckbox name="{!dupData.ObjectData.Id}" class="slds-checkbox" value="{!dupData.isSelected}" text="{!dupData.ObjectData.Id}" click="{!c.selectRecord}"/>
+	    												</td>
+	    											</aura:renderIf>
+	    											 -->
+	    											<td><ui:outputNumber value="{!dupData.score}" format="0"/>%</td>
+	    											<aura:iteration items="{!tabName.ResultFields}" var="field">
+	    												<td>
+	    													<dupcheck:dc3UtilDynamicField data="{!dupData.ObjectData}" field="{!field.key}"/>
+	    												</td>
+	    											</aura:iteration>
+	    											<td> 
+	    												<aura:renderIf isTrue="{!tabName.isMerge == true}">
+	    													<dupcheck:dc3UtilOpenMerge recordId="{!v.recordId}" mergeId="{!dupData.ObjectData.Id}"/>
+	    												</aura:renderIf>
+	    												<aura:renderIf isTrue="{!tabName.isConvert == true}">
+	    													<dupcheck:dc3UtilOpenConvert recordId="{!v.recordId}" mergeId="{!dupData.ObjectData.Id}"/>
+	    												</aura:renderIf>
+	    												&nbsp;
+	    												<dupcheck:dc3UtilOpenRecord recordId="{!dupData.ObjectData.Id}" />
+	    											</td>
+	    										</tr>
+	    									</aura:iteration>
+	    								</tbody>
+	    							</table>
+    							
+    							</aura:renderIf>
+    							
+    						</div>
+  						</aura:iteration>
+    					
+ 					</div>
+				</aura:renderIf>
+  			</div>
+		</article>
+	</div>
+	
+	
+	
+	
+	
+</aura:component>

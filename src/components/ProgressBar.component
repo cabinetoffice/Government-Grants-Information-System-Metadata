@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <apex:component selfClosing="true" layout="none" controller="ProgressBarController">
     <style>
         .progressBar{
@@ -26,4 +27,96 @@
 	        {!progressPercentage}%
 	    </div>
 	</div>
+=======
+<<<<<<< HEAD
+<apex:component selfClosing="true" layout="none" controller="ProgressBarController">
+    <style>
+        .progressBar{
+            background-color: #f8f8f8;
+            border:1px solid #DDDDDD;
+            height: 19px;
+            width: 300px;
+            -moz-border-radius: 5px; 
+            -webkit-border-radius: 5px;
+        }
+        .progress{
+            background-color: #F7B64B;
+            border:1px solid #E78F08;
+            height: 100%;
+            margin: -1px;
+            text-align: center;
+            -moz-border-radius: 5px; 
+            -webkit-border-radius: 5px;
+            line-height: 18px;
+        }
+    </style>
+    <apex:attribute name="completeNumber" type="Integer" assignTo="{!inputCompleteNumber}" description="This is the number for which the progress is cound as complete." required="true"/>
+    <apex:attribute name="currentNumber" type="Integer" assignTo="{!inputCurrentNumber}" description="This is the current number." required="true"/>
+	<div class="progressBar">
+	    <div class="progress" style="width: {!progressPercentage}%;">
+	        {!progressPercentage}%
+	    </div>
+	</div>
+=======
+<<<<<<< HEAD
+<apex:component selfClosing="true" layout="none" controller="ProgressBarController">
+    <style>
+        .progressBar{
+            background-color: #f8f8f8;
+            border:1px solid #DDDDDD;
+            height: 19px;
+            width: 300px;
+            -moz-border-radius: 5px; 
+            -webkit-border-radius: 5px;
+        }
+        .progress{
+            background-color: #F7B64B;
+            border:1px solid #E78F08;
+            height: 100%;
+            margin: -1px;
+            text-align: center;
+            -moz-border-radius: 5px; 
+            -webkit-border-radius: 5px;
+            line-height: 18px;
+        }
+    </style>
+    <apex:attribute name="completeNumber" type="Integer" assignTo="{!inputCompleteNumber}" description="This is the number for which the progress is cound as complete." required="true"/>
+    <apex:attribute name="currentNumber" type="Integer" assignTo="{!inputCurrentNumber}" description="This is the current number." required="true"/>
+	<div class="progressBar">
+	    <div class="progress" style="width: {!progressPercentage}%;">
+	        {!progressPercentage}%
+	    </div>
+	</div>
+=======
+<apex:component selfClosing="true" layout="none" controller="ProgressBarController">
+    <style>
+        .progressBar{
+            background-color: #f8f8f8;
+            border:1px solid #DDDDDD;
+            height: 19px;
+            width: 300px;
+            -moz-border-radius: 5px; 
+            -webkit-border-radius: 5px;
+        }
+        .progress{
+            background-color: #F7B64B;
+            border:1px solid #E78F08;
+            height: 100%;
+            margin: -1px;
+            text-align: center;
+            -moz-border-radius: 5px; 
+            -webkit-border-radius: 5px;
+            line-height: 18px;
+        }
+    </style>
+    <apex:attribute name="completeNumber" type="Integer" assignTo="{!inputCompleteNumber}" description="This is the number for which the progress is cound as complete." required="true"/>
+    <apex:attribute name="currentNumber" type="Integer" assignTo="{!inputCurrentNumber}" description="This is the current number." required="true"/>
+	<div class="progressBar">
+	    <div class="progress" style="width: {!progressPercentage}%;">
+	        {!progressPercentage}%
+	    </div>
+	</div>
+>>>>>>> refs/remotes/origin/master
+>>>>>>> branch 'master' of https://github.com/cabinetoffice/Government-Grants-Information-System-Metadata
+>>>>>>> branch 'master' of https://github.com/cabinetoffice/Government-Grants-Information-System-Metadata
 </apex:component>

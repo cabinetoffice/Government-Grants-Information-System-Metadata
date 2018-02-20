@@ -1,0 +1,7 @@
+<aura:component >
+	<aura:attribute name="recordId" type="Id" />
+	<aura:attribute name="mergeId" type="Id" />
+	<a onclick="{!c.openConvert}" >
+    	<lightning:icon iconName="utility:redo" size="x-small" alternativeText="Convert Record"/>
+    </a>
+</aura:component>

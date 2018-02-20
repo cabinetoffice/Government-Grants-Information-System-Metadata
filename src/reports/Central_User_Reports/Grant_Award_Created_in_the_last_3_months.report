@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>Grant_Scheme__c.Grant_Awards__r$Recipient__c</field>
+    </columns>
+    <columns>
+        <field>Grant_Scheme__c$Programme__c</field>
+    </columns>
+    <columns>
+        <field>Grant_Scheme__c$Scheme_Name__c</field>
+    </columns>
+    <columns>
+        <field>Grant_Scheme__c.Grant_Awards__r$Grant_Award_Name__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>Grant_Scheme__c.Grant_Awards__r$Total_Amount_in_funding_agreement__c</field>
+    </columns>
+    <description>Updated version of
+&quot;frequency of new grant schemes, awards and programmes awarded to recipients in the last 3 months&quot; with recipient&apos;s details</description>
+    <format>Tabular</format>
+    <name>Grant Award Created in the last 3 months</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Grant_Scheme_with_Grant_Awards__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <timeFrameFilter>
+        <dateColumn>Grant_Scheme__c.Grant_Awards__r$CreatedDate</dateColumn>
+        <interval>INTERVAL_LAST90</interval>
+    </timeFrameFilter>
+</Report>

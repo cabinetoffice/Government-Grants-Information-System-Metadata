@@ -48,6 +48,7 @@ Public Class FYcal{
                     system.debug('Start_Date__c    ' + GS.Start_Date__c + '     ' +  GS.Start_Date__c.month());
                     system.debug('End Date    ' + GS.End_Date__c + '     ' +  GS.End_Date__c.month());
                     
+<<<<<<< HEAD
                 /** If(i == intED && GS.End_Date__c.month() < 4 && GS.Start_Date__c.month() >= 4){
                         
                         break;
@@ -78,6 +79,98 @@ Public Class FYcal{
                         intSDyear = 0;
                     }
                    //intSDyear++; 
+=======
+<<<<<<< HEAD
+                /** If(i == intED && GS.End_Date__c.month() < 4 && GS.Start_Date__c.month() >= 4){
+                        
+                        break;
+                    } **/
+                    
+                    If(GS.Start_Date__c.month() >= 4 && GS.End_Date__c.month()<=12){
+                        If(intSDyear == 99){
+                            strFY = strFY + 'FY ' + string.valueOf(intSDyear) + '/' + '00' + ';';
+                        }
+                        Else {
+                            strFY = strFY + 'FY ' + string.valueOf(intSDyear) + '/' + string.valueOf((intSDyear+1)) + ';'; 
+                        }
+                        
+                    }
+                    Else If(GS.Start_Date__c.month() < 4 && GS.End_Date__c.month()<=12){
+                        If(intSDyear == 0){
+                            strFY = strFY + 'FY ' + '99' + '/' + '00' + ';';
+                        }
+                        Else{
+                            strFY = strFY + 'FY ' + string.valueOf((intSDyear-1)) + '/' + string.valueOf(intSDyear) + ';';
+                        }
+                         
+                    }
+                    if(intSDyear < 99){
+                        intSDyear++; 
+                    }
+                    Else{
+                        intSDyear = 0;
+                    }
+                   //intSDyear++; 
+=======
+<<<<<<< HEAD
+                /** If(i == intED && GS.End_Date__c.month() < 4 && GS.Start_Date__c.month() >= 4){
+                        
+                        break;
+                    } **/
+                    
+                    If(GS.Start_Date__c.month() >= 4 && GS.End_Date__c.month()<=12){
+                        If(intSDyear == 99){
+                            strFY = strFY + 'FY ' + string.valueOf(intSDyear) + '/' + '00' + ';';
+                        }
+                        Else {
+                            strFY = strFY + 'FY ' + string.valueOf(intSDyear) + '/' + string.valueOf((intSDyear+1)) + ';'; 
+                        }
+                        
+                    }
+                    Else If(GS.Start_Date__c.month() < 4 && GS.End_Date__c.month()<=12){
+                        If(intSDyear == 0){
+                            strFY = strFY + 'FY ' + '99' + '/' + '00' + ';';
+                        }
+                        Else{
+                            strFY = strFY + 'FY ' + string.valueOf((intSDyear-1)) + '/' + string.valueOf(intSDyear) + ';';
+                        }
+                         
+                    }
+                    if(intSDyear < 99){
+                        intSDyear++; 
+                    }
+                    Else{
+                        intSDyear = 0;
+                    }
+                   //intSDyear++; 
+=======
+                If(i == intED && GS.End_Date__c.month() < 4 && GS.Start_Date__c.month() >= 4){
+                        
+                        break;
+                    }
+                    
+                    If(GS.Start_Date__c.month() >= 4 && GS.End_Date__c.month()<=12){
+                        If(strSD == '1999'){
+                            strFY = strFY + 'FY ' + string.valueOf(intSDyear) + '/' + '00' + ';';
+                        }
+                        Else {
+                            strFY = strFY + 'FY ' + string.valueOf(intSDyear) + '/' + string.valueOf((intSDyear+1)) + ';'; 
+                        }
+                        
+                    }
+                    Else If(GS.Start_Date__c.month() < 4 && GS.End_Date__c.month()<=12){
+                        If(strSD == '1999'){
+                            strFY = strFY + 'FY ' + string.valueOf(intSDyear) + '/' + '00' + ';';
+                        }
+                        Else{
+                            strFY = strFY + 'FY ' + string.valueOf((intSDyear-1)) + '/' + string.valueOf(intSDyear) + ';'; 
+                        }
+                        
+                    }
+                   intSDyear++; 
+>>>>>>> refs/remotes/origin/master
+>>>>>>> branch 'master' of https://github.com/cabinetoffice/Government-Grants-Information-System-Metadata
+>>>>>>> branch 'master' of https://github.com/cabinetoffice/Government-Grants-Information-System-Metadata
                 }
             }
             system.debug('String FY    ' + strFY);

@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <aggregates>
+        <calculatedFormula>B0#Grant_Scheme__c.Duration_Numeric__c:SUM +B0#FK_Grant_Scheme__c.Duration_Numeric__c:SUM</calculatedFormula>
+        <datatype>number</datatype>
+        <description>Total Duration</description>
+        <developerName>FORMULA2</developerName>
+        <downGroupingContext>Grant_Scheme__c$Parent_Grant_Name__c</downGroupingContext>
+        <isActive>true</isActive>
+        <isCrossBlock>true</isCrossBlock>
+        <masterLabel>Total Duration</masterLabel>
+        <scale>0</scale>
+    </aggregates>
+    <aggregates>
+        <calculatedFormula>B0#FK_Grant_Scheme__c.Duration_Numeric__c:SUM</calculatedFormula>
+        <datatype>number</datatype>
+        <description>Parent Duration</description>
+        <developerName>FORMULA3</developerName>
+        <downGroupingContext>Grant_Scheme__c$Parent_Grant_Name__c</downGroupingContext>
+        <isActive>true</isActive>
+        <isCrossBlock>true</isCrossBlock>
+        <masterLabel>Parent Duration</masterLabel>
+        <scale>0</scale>
+    </aggregates>
+    <block>
+        <blockInfo>
+            <blockId>B1</blockId>
+            <joinTable>Grant_Scheme__c</joinTable>
+        </blockInfo>
+        <columns>
+            <field>Grant_Scheme__c$Name</field>
+        </columns>
+        <columns>
+            <field>Grant_Scheme__c$Scheme_Name__c</field>
+        </columns>
+        <columns>
+            <field>Grant_Scheme__c$Scheme_Parent_Child__c</field>
+        </columns>
+        <columns>
+            <field>Grant_Scheme__c$Duration_Numeric__c</field>
+        </columns>
+        <filter>
+            <criteriaItems>
+                <column>Grant_Scheme__c$Scheme_Parent_Child__c</column>
+                <isUnlocked>true</isUnlocked>
+                <operator>equals</operator>
+                <value>N/A</value>
+            </criteriaItems>
+        </filter>
+        <format>Summary</format>
+        <name>Grant Schemes with or without Pa block 1</name>
+        <params>
+            <name>co</name>
+            <value>1</value>
+        </params>
+        <reportType>Grant_Schemes_with_or_without_Parent_Grant_Schemes__c</reportType>
+        <scope>organization</scope>
+        <sortColumn>Grant_Scheme__c$Name</sortColumn>
+        <sortOrder>Asc</sortOrder>
+        <timeFrameFilter>
+            <dateColumn>Grant_Scheme__c$CreatedDate</dateColumn>
+            <interval>INTERVAL_CUSTOM</interval>
+        </timeFrameFilter>
+    </block>
+    <block>
+        <blockInfo>
+            <aggregateReferences>
+                <aggregate>FORMULA3</aggregate>
+            </aggregateReferences>
+            <aggregateReferences>
+                <aggregate>FORMULA2</aggregate>
+            </aggregateReferences>
+            <blockId>B0</blockId>
+            <joinTable>x</joinTable>
+        </blockInfo>
+        <columns>
+            <field>FK_NAME</field>
+        </columns>
+        <columns>
+            <field>FK_$Grant_Scheme__c.Scheme_Name__c</field>
+        </columns>
+        <columns>
+            <field>CUST_NAME</field>
+        </columns>
+        <columns>
+            <field>Grant_Scheme__c.Scheme_Name__c</field>
+        </columns>
+        <columns>
+            <field>Grant_Scheme__c.Duration_Numeric__c</field>
+        </columns>
+        <format>Summary</format>
+        <name>Grant Schemes with Parent Grant block 2</name>
+        <params>
+            <name>co</name>
+            <value>1</value>
+        </params>
+        <reportType>CustomEntity$Grant_Scheme__c@Grant_Scheme__c.Parent_Grant_Scheme__c</reportType>
+        <scope>organization</scope>
+        <timeFrameFilter>
+            <dateColumn>Grant_Scheme__c.End_Date__c</dateColumn>
+            <interval>INTERVAL_CUSTOM</interval>
+        </timeFrameFilter>
+    </block>
+    <blockInfo>
+        <blockId xsi:nil="true"/>
+        <joinTable>Grant_Scheme__c</joinTable>
+    </blockInfo>
+    <description>Grant Schemes with and without Grant Scheme parents and total duration as Grant Scheme and Parent Grant Scheme level</description>
+    <format>MultiBlock</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>Grant_Scheme__c$Parent_Grant_Name__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>Grant Schemes with Duration by Parent</name>
+    <reportType>Grant_Schemes_with_or_without_Parent_Grant_Schemes__c</reportType>
+    <showDetails>false</showDetails>
+</Report>

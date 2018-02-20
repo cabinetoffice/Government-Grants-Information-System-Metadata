@@ -175,6 +175,7 @@ public without sharing class NotifyGrantDeletions {
         //Instantiating new email message
         Messaging.SingleEmailMessage email = new Messaging.SingleEmailMessage();
         //Retrieving all the email address to which the notifications should be sent
+<<<<<<< HEAD
            List<Grant_Hub_Email_Address__mdt> addresses = [SELECT Email__c FROM Grant_Hub_Email_Address__mdt];
            List<String> toAddress = new List<String>();
            for (Grant_Hub_Email_Address__mdt address : addresses) {
@@ -184,6 +185,41 @@ public without sharing class NotifyGrantDeletions {
             if (!toAddress.isEmpty()) {
             String emailSubject = Label.Deletion_Notification_Email_Subject;
             email.setSenderDisplayName(label.Deletion_Notification);
+=======
+<<<<<<< HEAD
+           List<Grant_Hub_Email_Address__mdt> addresses = [SELECT Email__c FROM Grant_Hub_Email_Address__mdt];
+           List<String> toAddress = new List<String>();
+           for (Grant_Hub_Email_Address__mdt address : addresses) {
+           toAddress.add(address.Email__c);       
+        }
+        //building the email content and body
+            if (!toAddress.isEmpty()) {
+            String emailSubject = Label.Deletion_Notification_Email_Subject;
+            email.setSenderDisplayName(label.Deletion_Notification);
+=======
+<<<<<<< HEAD
+           List<Grant_Hub_Email_Address__mdt> addresses = [SELECT Email__c FROM Grant_Hub_Email_Address__mdt];
+           List<String> toAddress = new List<String>();
+           for (Grant_Hub_Email_Address__mdt address : addresses) {
+           toAddress.add(address.Email__c);       
+        }
+        //building the email content and body
+            if (!toAddress.isEmpty()) {
+            String emailSubject = Label.Deletion_Notification_Email_Subject;
+            email.setSenderDisplayName(label.Deletion_Notification);
+=======
+        List<Grant_Hub_Email_Address__mdt> addresses = [SELECT Email__c FROM Grant_Hub_Email_Address__mdt];
+        List<String> toAddress = new List<String>();
+        for (Grant_Hub_Email_Address__mdt address : addresses) {
+            toAddress.add(address.Email__c);
+        }
+
+        //building the email content and body
+        if (!toAddress.isEmpty()) {
+            String emailSubject = Label.Deletion_Notification_Email_Subject;
+>>>>>>> refs/remotes/origin/master
+>>>>>>> branch 'master' of https://github.com/cabinetoffice/Government-Grants-Information-System-Metadata
+>>>>>>> branch 'master' of https://github.com/cabinetoffice/Government-Grants-Information-System-Metadata
             email.setSubject(emailSubject);
             email.setToAddresses(toAddress);
             email.setHTMLBody(Label.Deletion_Notification_Email_Body);

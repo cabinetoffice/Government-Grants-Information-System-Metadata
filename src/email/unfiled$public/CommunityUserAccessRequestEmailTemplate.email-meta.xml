@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Notification for the Approver about the request for the new user access</description>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Communities: New User Request Access Email</name>
+    <style>none</style>
+    <subject>New User Access Request</subject>
+    <type>text</type>
+</EmailTemplate>
