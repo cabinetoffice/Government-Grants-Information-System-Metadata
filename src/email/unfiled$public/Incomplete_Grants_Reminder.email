@@ -1,0 +1,12 @@
+Dear {!User.Name},
+<br/>
+<p>Some awards that you created on the Government Grants Information System (GGIS) are incomplete and need updating. Please <a href="https://dev-cabinetoffice.cs81.force.com/datasolution">log in to the GGIS first</a>, then come back to this email and click on the links below to view reports on your incomplete grant awards. Your username is your email address and if you don't know your password, please use the 'Forgot Password' option.</p>
+
+<p><a href="https://dev-cabinetoffice.cs81.force.com/datasolution/00O26000000G0Tp"> Grant Awards with no Actual Payment and Payment Frequency as Upfront Payment </a></P>
+
+<p><a href="https://dev-cabinetoffice.cs81.force.com/datasolution/00O26000000G0Ui"> Grant Awards with no Actual Payment and Payment Frequency as Instalment/ End or Ad-hoc Payments</a></p>
+
+<p><a href="https://dev-cabinetoffice.cs81.force.com/datasolution/00O26000000G0Xm"> Grant Awards with no Evaluation information</a></p>
+
+Regards,<br>
+GGIS Team

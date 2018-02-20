@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customSettingsType>Hierarchy</customSettingsType>
+    <description>This custom setting allows users to bypass functionalities - E.G: Triggers, Validation Rules, Workflow rules and etc...</description>
+    <enableFeeds>false</enableFeeds>
+    <fields>
+        <fullName>Business_Rules_for_Edit_and_Delete__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>This checkbox allows users to bypass the business rules for edit or delete records on the system.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>This checkbox allows users to bypass the business rules for edit or delete records on the system.</inlineHelpText>
+        <label>Business Rules for Edit and Delete</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Grant_Reminders__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>This flag should be checked to turn off the Grant Reminder functionality. By default this will be unchecked (i.e, Grant Reminders will be sent).</description>
+        <externalId>false</externalId>
+        <inlineHelpText>This flag should be checked to turn off the Grant Reminder functionality. By default this will be unchecked (i.e, Grant Reminders will be sent).</inlineHelpText>
+        <label>Grant Reminders</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Triggers__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>This flag turns off custom triggers for the specified user/profile.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>This flag turns off custom triggers for the specified user/profile.</inlineHelpText>
+        <label>Triggers</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Validation_Rules__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>This flag turns off custom validation rules for the specified user/profile.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>This flag turns off custom validation rules for the specified user/profile.</inlineHelpText>
+        <label>Validation Rules</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Workflow_Rules__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>This flag turns off custom workflow rules for the specified user/profile.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>This flag turns off custom workflow rules for the specified user/profile.</inlineHelpText>
+        <label>Workflow Rules</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <label>Bypass</label>
+    <visibility>Protected</visibility>
+</CustomObject>

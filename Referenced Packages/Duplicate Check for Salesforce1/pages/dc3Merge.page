@@ -1,0 +1,566 @@
+<apex:page docType="html-5.0" controller="dupcheck.dc3ControllerMerge" sidebar="false" title="Merge - Duplicate Check for Salesforce" action="{!janitor}" tabstyle="dc3Search__tab" readOnly="true">
+
+	<apex:stylesheet value="{!URLFOR($Resource.dupcheck__slds, '/assets/styles/salesforce-lightning-design-system-vf.min.css')}" />
+	<apex:stylesheet value="{!IF(isDev,AssetsUrl,URLFOR($Resource.dupcheck__dupcheckAssets,'/dupcheckAssets'))}/lightning/style/dupcheckApp.css" />	
+	
+	<apex:includeScript value="//assets-plautibv.netdna-ssl.com/moment/2.15.2/moment.min.js"/>
+	<!--  <apex:includeScript value="//assets-plautibv.netdna-ssl.com/moment-timezone/0.5.10/moment-timezone-with-data-2010-2020.min.js" /> -->
+	<apex:includeScript value="//assets-plautibv.netdna-ssl.com/jquery/1.11.1/jquery.min.js" />
+	<apex:includeScript value="//assets-plautibv.netdna-ssl.com/angularjs/1.3.11/angular.min.js" />
+	<apex:includeScript value="//assets-plautibv.netdna-ssl.com/angularjs/1.3.11/angular-sanitize.min.js" />
+	<apex:includeScript value="//assets-plautibv.netdna-ssl.com/angularjs/1.3.11/angular-cookies.min.js" />
+
+	<apex:includeScript value="//cdnjs.cloudflare.com/ajax/libs/angular-local-storage/0.2.2/angular-local-storage.min.js" />
+	<apex:includeScript value="{!IF(isDev,AssetsUrl,URLFOR($Resource.dupcheck__dupcheckAssets,'/dupcheckAssets'))}/lightning/js/plauti-ng-slds.min.js" />
+	<apex:includeScript value="{!IF(isDev,AssetsUrl,URLFOR($Resource.dupcheck__dupcheckAssets,'/dupcheckAssets'))}/lightning/js/dupcheck.js" />
+	<apex:includeScript value="{!IF(isDev,AssetsUrl,URLFOR($Resource.dupcheck__dupcheckAssets,'/dupcheckAssets'))}/lightning/js/dupcheck.ng.directives.js" />
+	<apex:includeScript value="{!IF(isDev,AssetsUrl,URLFOR($Resource.dupcheck__dupcheckAssets,'/dupcheckAssets'))}/lightning/js/dupcheck.ng.services.js" />
+	<apex:includeScript value="{!IF(isDev,AssetsUrl,URLFOR($Resource.dupcheck__dupcheckAssets,'/dupcheckAssets'))}/lightning/js/dupcheck.ng.merge.js" />	
+	
+	<apex:includeScript value="/support/console/37.0/integration.js"/>
+	
+	<c:dc3TranslationJS />
+	<c:dc3Welcome version="LIGHTNING"/>
+			
+	<div id="dataStore" data-merge-page-url="{!$Page.dc3Merge}" data-master-id="{!masterId}" data-job-id="{!jobId}" data-object-prefix="{!objectConfig.objectPrefix}" data-object-list="{!objectListString}" data-group-id="{!grpId}" data-sf-typeahead="{!$RemoteAction.dc3ControllerMerge.getRelatedTypeAheadAdvanced}" data-url-return="{!returnUrl}" data-sf-set-for-merge="{!$RemoteAction.dc3ControllerMerge.doSetForMerge}" data-sf-record-set-for-merge="{!$RemoteAction.dc3ControllerMerge.doRecordSetForMerge}" data-sf-merge="{!$RemoteAction.dc3ControllerMerge.doMerge}"/>
+	
+ 	<div class="plauti dc-body" ng-app="dcApp" ng-controller="mergeController">
+		<apex:outputPanel layout="none" rendered="{!NOT(license.features.pageMerge)}">
+		<div>
+			<div class="slds-page-header" role="banner">
+				<div class="slds-grid slds-wrap"> 
+					<div class="slds-col slds-has-flexi-truncate ">
+						<div class="slds-media">
+							<div class="slds-media__figure">
+								<img class="slds-icon slds-icon--large slds-icon-action-close" ng-src="{!URLFOR($Resource.slds,'')}/assets/icons/action/close_120.png" />
+							</div>
+							<div class="slds-media__body">
+								<p class="slds-text-heading--label">{!$label.ERROR}</p>
+								<div class="slds-grid">
+									<h1 class="slds-text-heading--medium slds-m-right--small slds-truncate slds-align-middle" title="Record Title">{!$label.NO_ACCESS}</h1>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="slds-grid slds-wrap slds-m-top--medium">
+				<div class="slds-col--padded slds-size--1-of-1">
+					<div class="slds-card slds-card--empty slds-m-bottom--x-large">
+						<div class="slds-card__body slds-p-horizontal--small">
+							<h3 class="slds-text-heading--small slds-p-top--large slds-p-bottom--large">{!$label.YOU_ARE_NOT_LICENSED_TO_USE_THIS_FEATURE}</h3>
+							<button class="slds-button slds-button--neutral slds-button--small slds-m-bottom--x-large" onClick="dcNavigate('{!$Page.dc3License}')">
+								{!$label.SHOW_LICENSE}
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>	
+		</apex:outputPanel>
+		<apex:outputPanel layout="none" rendered="{!license.features.pageMerge}">
+		<div >
+	   		<div class="slds-page-header dc-header-padding" role="banner">
+	   			<div class="slds-grid slds-wrap">
+	   				<div class="slds-col slds-size--1-of-1 slds-medium-size--2-of-6 slds-large-size--1-of-6">
+	                   	<div class="slds-media">
+	                       	<div class="slds-media__figure">
+	                           	<img class="slds-icon slds-icon--large" ng-src="{!IF(isDev,AssetsUrl,URLFOR($Resource.dupcheckAssets,'/dupcheckAssets'))}/lightning/app/app_icon_48.png" />
+	                       	</div>
+	                       	<div class="slds-media__body">
+	                           	<p class="slds-text-heading--label">Duplicate Check</p>
+	                           	<div class="slds-grid">
+	                               	<h1 class="slds-text-heading--medium slds-m-right--small slds-truncate slds-align-middle">Merge</h1>
+	                           	</div>
+	                       	</div>
+	                   	</div>
+	               	</div>
+	       			<div class="slds-col slds-size--1-of-1 slds-medium-size--4-of-6 slds-large-size--5-of-6 ">
+	           			<div class="slds-grid slds-float--right">
+
+							<img class="slds-button__icon slds-button__icon--large slds-m-top--xx-small" ng-show="meta.isLoading"  src="{!URLFOR($Resource.slds,'')}/assets/images/spinners/slds_spinner_brand.gif" />		           			
+			           		
+			           		<apex:outputpanel layout="none" rendered="{!settings.MergeShowReadOnly}">
+							<button ng-click="toggleShow('readonly')" ng-disabled="meta.isLoading" class="slds-button slds-button--neutral" ng-class="meta.readOnly ? 'slds-is-selected' : 'slds-not-selected'">
+								<div class="slds-icon__container slds-icon-utility-search">
+									<div class="slds-text-not-selected">
+								    	<span class="slds-button__icon--stateful slds-button__icon slds-button__icon--inverse slds-button__icon--left">
+								        	<img class="slds-button__icon slds-buton__icon--large slds-button__icon--small" ng-src="{!URLFOR($Resource.slds,'')}/assets/icons/utility/add_60.png"/>
+								      	</span>{!$label.READ_ONLY}
+								    </div> 
+							    </div>
+							    <div class="slds-icon__container slds-icon-utility-search">
+								    <div class="slds-text-selected">
+								    	<span class="slds-button__icon--stateful slds-button__icon slds-button__icon--inverse slds-button__icon--left">
+								        	<img class="slds-button__icon slds-button__icon--large slds-button__icon--small" ng-src="{!URLFOR($Resource.slds,'')}/assets/icons/utility/check_60.png"/>
+								      	</span>{!$label.READ_ONLY}
+								    </div>
+							    </div>
+							    <div class="slds-icon__container slds-icon-utility-search">
+								    <div class="slds-text-selected-focus">
+								    	<span class="slds-button__icon--stateful slds-button__icon slds-button__icon--inverse slds-button__icon--left">
+								        	<img class="slds-button__icon slds-button__icon--large slds-button__icon--small" ng-src="{!URLFOR($Resource.slds,'')}/assets/icons/utility/clear_60.png"/>
+								      	</span>{!$label.READ_ONLY}
+									</div>
+								</div>							
+							</button>
+							</apex:outputpanel>
+							<button ng-click="toggleShow('empty')" ng-disabled="meta.isLoading" class="slds-button slds-button--neutral" ng-class="meta.empty ? 'slds-is-selected' : 'slds-not-selected'">
+								<div class="slds-icon__container slds-icon-utility-search">
+									<div class="slds-text-not-selected">
+								    	<span class="slds-button__icon--stateful slds-button__icon slds-button__icon--inverse slds-button__icon--left">
+								        	<img class="slds-button__icon slds-buton__icon--large slds-button__icon--small" ng-src="{!URLFOR($Resource.slds,'')}/assets/icons/utility/add_60.png"/>
+								      	</span>{!$label.EMPTY}
+								    </div> 
+							    </div>
+							    <div class="slds-icon__container slds-icon-utility-search">
+								    <div class="slds-text-selected">
+								    	<span class="slds-button__icon--stateful slds-button__icon slds-button__icon--inverse slds-button__icon--left">
+								        	<img class="slds-button__icon slds-button__icon--large slds-button__icon--small" ng-src="{!URLFOR($Resource.slds,'')}/assets/icons/utility/check_60.png"/>
+								      	</span>{!$label.EMPTY}
+								    </div>
+							    </div>
+							    <div class="slds-icon__container slds-icon-utility-search">
+								    <div class="slds-text-selected-focus">
+								    	<span class="slds-button__icon--stateful slds-button__icon slds-button__icon--inverse slds-button__icon--left">
+								        	<img class="slds-button__icon slds-button__icon--large slds-button__icon--small" ng-src="{!URLFOR($Resource.slds,'')}/assets/icons/utility/clear_60.png"/>
+								      	</span>{!$label.EMPTY}
+									</div>
+								</div>							
+							</button>				
+						
+							<button ng-click="toggleShow('equal')" ng-disabled="meta.isLoading" class="slds-button slds-button--neutral slds-m-right--medium" ng-class="meta.equal ? 'slds-is-selected' : 'slds-not-selected'">
+								<div class="slds-icon__container slds-icon-utility-search">
+									<div class="slds-text-not-selected">
+								    	<span class="slds-button__icon--stateful slds-button__icon slds-button__icon--inverse slds-button__icon--left">
+								        	<img class="slds-button__icon slds-buton__icon--large slds-button__icon--small" ng-src="{!URLFOR($Resource.slds,'')}/assets/icons/utility/add_60.png"/>
+								      	</span>{!$label.EQUAL}
+								    </div> 
+							    </div>
+							    <div class="slds-icon__container slds-icon-utility-search">
+								    <div class="slds-text-selected">
+								    	<span class="slds-button__icon--stateful slds-button__icon slds-button__icon--inverse slds-button__icon--left">
+								        	<img class="slds-button__icon slds-button__icon--large slds-button__icon--small" ng-src="{!URLFOR($Resource.slds,'')}/assets/icons/utility/check_60.png"/>
+								      	</span>{!$label.EQUAL}
+								    </div>
+							    </div>
+							    <div class="slds-icon__container slds-icon-utility-search">
+								    <div class="slds-text-selected-focus">
+								    	<span class="slds-button__icon--stateful slds-button__icon slds-button__icon--inverse slds-button__icon--left">
+								        	<img class="slds-button__icon slds-button__icon--large slds-button__icon--small" ng-src="{!URLFOR($Resource.slds,'')}/assets/icons/utility/clear_60.png"/>
+								      	</span>{!$label.EQUAL}
+									</div>
+								</div>							
+							</button>
+			           		
+			           		<button class="slds-button slds-not-selected slds-button--icon-border-filled" ng-click="openMergeCheck('{!mergeCheckUrl}', '{!settings.OpenTarget}');">
+								<img class="slds-button__icon " ng-src="{!URLFOR($Resource.slds,'')}/assets/icons/utility/shield_120.png" />
+							</button>	
+
+	           				<button class="slds-button slds-not-selected slds-button--icon-border-filled" ng-click="doReturn()">
+								<img class="slds-button__icon " ng-src="{!URLFOR($Resource.slds,'')}/assets/icons/utility/back_120.png" />
+							</button>
+	           			
+							<div class="slds-button-group slds-button-space-left">	           			 
+                    			<c:dc3WelcomeLink version="LIGHTNING" helpLink="https://support.duplicatecheck.com/article/usage-guide/dc-merge?utm_source=dcApp&utm_medium=app&utm_campaign=help_link"/>         
+						 	</div>			
+
+
+	               		</div>
+	           		</div>
+	       		</div> 
+	       	</div>  	
+       	
+       	  <apex:outputPanel layout="none" rendered="{!hasNoAccess}">
+       		<div >
+       			<div class="slds-grid slds-wrap">
+					<div class="slds-col--padded slds-m-top--large">
+						<p class="slds-text-heading--small slds-grid slds-grid--align-center"> 
+							{!$label.NOT_ALLOWED_TO_VIEW_ALL_RECORD_IN_MERGE}
+						</p>
+						<p ng-if="{!license.features.setForMerge}" class="slds-text-heading--small slds-grid slds-grid--align-center">
+							{!$label.HOWEVER_YOU_CAN_SET_RECORD_MERGE_BY_ADMIN_CLICK_SET_FOR_MERGE}
+						</p>
+								
+						<div class="slds-float--right slds-m-bottom--medium">		
+							<img class="slds-button__icon slds-button__icon--large" ng-show="meta.isMerging" src="{!URLFOR($Resource.slds,'')}/assets/images/spinners/slds_spinner_brand.gif" />
+							<button class="slds-button slds-button--neutral" ng-disabled="meta.isMerging" ng-click="doCancel()">{!$label.CANCEL}</button>
+							<button class="slds-button slds-button--brand" ng-click="doRecordSetForMerge()" ng-if="{!license.features.setForMerge}" ng-disabled="meta.isMerging">{!$label.SET_FOR_MERGE}</button> 	
+						</div>
+					</div>
+       			</div>
+       		</div>
+       		</apex:outputPanel>
+		  <apex:outputPanel layout="none" rendered="{!NOT(hasNoAccess)}">
+			<div >
+				<div style="max-height: {{meta.viewportHeight}}" id="scrollableDiv" class="{{meta.sfVersion == true ? '' : 'dc-display-inline'}}">
+				<div class="slds-grid slds-wrap">
+				<div class="slds-col--padded slds-m-top--medium slds-m-bottom--medium">
+				
+					<div class="slds-float--right slds-m-bottom--medium" ng-hide="meta.isLoading">		
+						<img class="slds-button__icon slds-button__icon--large" ng-show="meta.isMerging || meta.showMerge" src="{!URLFOR($Resource.slds,'')}/assets/images/spinners/slds_spinner_brand.gif" /> 
+						<button class="slds-button slds-button--neutral" ng-disabled="meta.isMerging" ng-click="resetPage()">{!$label.RESET}</button>
+						<button class="slds-button slds-button--brand" ng-click="doSetForMerge(false)" ng-if="{!isSetForMerge}" ng-disabled="meta.isMerging || meta.showMerge">{!$label.SET_FOR_MERGE}</button>
+						<button class="slds-button slds-button--brand" ng-click="doSetForMerge(true)" ng-if="{!isSetForMerge} && meta.nextMerge" ng-disabled="meta.isMerging || meta.showMerge">{!$label.SET_FOR_MERGE_AND_NEXT}</button>
+						<button class="slds-button slds-button--brand" ng-click="doMerge(false)" ng-if="{!NOT(isSetForMerge)}" ng-disabled="meta.isMerging || meta.showMerge">{!$label.MERGE}</button> 	
+						<button class="slds-button slds-button--brand" ng-click="doMerge(true)" ng-if="{!NOT(isSetForMerge)} && meta.nextMerge" ng-disabled="meta.isMerging || meta.showMerge">{!$label.MERGE_AND_NEXT}</button>
+					</div>
+								
+					<div ng-hide="meta.isLoading" class="slds-medium-show">														  
+						<table class="slds-table slds-table--bordered slds-no-row-hover slds-m-bottom--medium slds-m-top--large slds-max-medium-table--stacked-horizontal">
+							<thead>
+								<tr class="slds-text-heading--label">
+									<th>
+										{!$label.FIELD}
+									</th>
+									<th width="10">&nbsp;</th>
+									<th>&nbsp;</th>							
+									<apex:repeat value="{!objectMap}" var="record">
+										<th class="slds-cell-shrink {{data.selected['masterRecord'] == '{!record}' ? 'dc-merge-selectedField' : ''}}">
+											<div class="slds-form-element">
+												<div class="slds-form-element__control">
+													<label class="slds-checkbox"> 
+														<input type="checkbox" ng-click="clickInclude('{!JSINHTMLENCODE(objectMap[record].Id)}')" ng-model="data.objectIncludeList['{!JSINHTMLENCODE(objectMap[record].Id)}']"/>	
+														<span class="slds-checkbox--faux"></span>
+													</label>
+												</div>
+											</div>
+										</th>
+										<th class="{{data.selected['masterRecord'] == '{!record}' ? 'dc-merge-selectedField' : ''}}">
+											<a ng-click="openRecord('{!objectMap[record].Id}')"><apex:outputField value="{!objectMap[record].Id}"/></a>&nbsp;
+											<a ng-click="openRecord('{!objectMap[record].Id}')"><img class="slds-icon slds-icon--x-small slds-icon-text-default" ng-src="{!URLFOR($Resource.slds,'')}/assets/icons/utility/open_120.png"/></a>
+										</th>
+									</apex:repeat>
+								</tr>
+							</thead>
+							
+							<tbody>
+								<tr>
+									<td class="slds-text-heading--label">{!$label.MASTER_RECORD}</td>
+									<td>&nbsp;</td>
+									<td>
+										<div class="slds-form-element">
+											<div class="slds-form-element__control">
+												<input class="slds-input" style="width: 100%;" ng-show="never" />
+											</div>
+										</div>
+									</td>							
+									<apex:repeat value="{!objectMap}" var="record">
+										 <td class="{{data.selected['masterRecord'] == '{!record}' ? 'dc-merge-selectedField' : ''}}">
+										</td>
+										 
+										<td class="{{data.selected['masterRecord'] == '{!record}' ? 'dc-merge-selectedField' : ''}}">
+											<button ng-if="!(data.selected['masterRecord'] == '{!record}')" class="slds-button slds-button--neutral {{data.selected['masterRecord'] == '{!record}' ? 'dc-merge-selectedField' : ''}}" ng-click="selectMaster('{!record}')">{!$label.MASTER}</button>
+											<img ng-if="data.selected['masterRecord'] == '{!record}'" class="slds-icon dc-icon--x-small slds-icon-text-default slds-m-bottom--xx-small" ng-src="{!URLFOR($Resource.slds,'')}/assets/icons/utility/favorite_120.png"/>	
+											<span ng-if="data.selected['masterRecord'] == '{!record}'">{!$label.MASTER}</span>
+										</td>
+									</apex:repeat>
+								</tr>
+								
+								<tr>
+									<td class="slds-text-heading--label">{!$label.LAST_MODIFIED_DATE}</td>
+									<td>&nbsp;</td>
+									<td>&nbsp;</td>
+									<apex:repeat value="{!objectMap}" var="record">
+										<td class="{{data.selected['masterRecord'] == '{!record}' ? 'dc-merge-selectedField' : ''}}">&nbsp;</td>
+										<td class="{{data.selected['masterRecord'] == '{!record}' ? 'dc-merge-selectedField' : ''}}">
+											<c:dc3OutputField oName="{!objectConfig.objectName}" fName="LastModifiedById" oData="{!objectMap[record]}" />,&nbsp; 
+											<c:dc3OutputField oName="{!objectConfig.objectName}" fName="LastModifiedDate" oData="{!objectMap[record]}" />
+										</td>
+									</apex:repeat>
+								</tr>						
+								
+								<tr>
+									<td class="slds-text-heading--label">{!$label.CREATED_DATE}</td>
+									<td>&nbsp;</td>
+									<td>&nbsp;</td>
+									<apex:repeat value="{!objectMap}" var="record">
+										<td class="{{data.selected['masterRecord'] == '{!record}' ? 'dc-merge-selectedField' : ''}}">&nbsp;</td>
+										<td class="{{data.selected['masterRecord'] == '{!record}' ? 'dc-merge-selectedField' : ''}}">
+											<c:dc3OutputField oName="{!objectConfig.objectName}" fName="CreatedById" oData="{!objectMap[record]}" />,&nbsp; 
+											<c:dc3OutputField oName="{!objectConfig.objectName}" fName="CreatedDate" oData="{!objectMap[record]}" />
+										</td>
+									</apex:repeat>
+								</tr>
+													
+								<apex:repeat value="{!displayMap}" var="display">
+									<apex:outputpanel layout="none" rendered="{!displayMap[display]}">
+										<tr>
+											<td class="slds-text-heading--label">{!$ObjectType[objectConfig.objectNameCorrect].Fields[display].Label}</td>
+											<td>&nbsp;</td>
+											<td>&nbsp;</td>
+											<apex:repeat value="{!objectMap}" var="record">
+												<td class="{{data.selected['masterRecord'] == '{!record}' ? 'dc-merge-selectedField' : ''}}">&nbsp;</td>
+												<td class="{{data.selected['masterRecord'] == '{!record}' ? 'dc-merge-selectedField' : ''}}">
+													<c:dc3OutputField oName="{!objectConfig.objectName}" fName="{!display}" oData="{!objectMap[record]}" />
+												</td>
+											</apex:repeat>
+										</tr>											
+									</apex:outputpanel>
+								</apex:repeat>
+								
+								<tr>
+									<td>&nbsp;</td>
+									<td>&nbsp;</td>
+									<td><strong>{!$label.CUSTOM}</strong></td>
+									<apex:repeat value="{!objectMap}" var="record">
+										<td>&nbsp;</td>
+										<td> <!-- {{data.selected['masterRecord'] == '{!record}' ? 'slds-button--brand' : 'slds-button--neutral'}} -->
+											<a style="display:inline!important" class="" ng-click="selectAllFields('{!record}')">{!$label.SELECT_ALL_FIELDS}</a>
+										</td>
+									</apex:repeat>
+								</tr>					
+								
+								<apex:repeat value="{!mergeList}" var="row">
+									<tr ng-init="data.selected['{!mergeList[row].fieldName}'] = '{!mergeList[row].selectedId}'; setMergeData('{!mergeList[row].fieldName}', '{!mergeList[row].jsonData}');" data-type="{!mergeList[row].fieldType}" ng-show="showRow({!mergeList[row].isEmpty}, {!mergeList[row].isEqual}, {!mergeList[row].isReadonly})">
+										<td class="slds-text-heading--label">{!mergeList[row].fieldLabel}</td>
+										<td>
+											<input type="radio" name="{!mergeList[row].fieldName}" value="custom" class="hidden" ng-model="data.selected['{!mergeList[row].fieldName}']" />
+										</td>
+										<td style="min-width:25em" class="{{data.selected['{!mergeList[row].fieldName}'] == 'custom' ? 'dc-merge-selectedField' : ''}}">
+											
+											<div class="slds-form-element">
+												<apex:outputPanel rendered="{!NOT(mergeList[row].isReadonly)}" layout="none">	
+													<div class="slds-form-element__control">
+														
+				  										<apex:outputPanel layout="none" rendered="{!mergeList[row].fieldType == 'BOOLEAN'}">							
+															<label class="slds-checkbox">
+																<input type="checkbox" ng-change="selectCustom('{!mergeList[row].fieldName}')" ng-model="data.custom['{!mergeList[row].fieldName}']" ng-init="data.custom['{!mergeList[row].fieldName}'] = ('{!IF(mergeList[row].selectedId == 'custom', mergeList[row].fieldValue, mergeList[row].recordValues[mergeList[row].selectedId].value)}' | customTextToBool)"/>
+																<span class="slds-checkbox--faux"></span>	 
+															</label>
+													    </apex:outputPanel>
+													    
+													    <apex:outputPanel layout="none" rendered="{!mergeList[row].fieldType == 'ID'}">
+															<input class="slds-input" maxlength="18" type="text" ng-change="selectCustom('{!mergeList[row].fieldName}')" ng-model="data.custom['{!mergeList[row].fieldName}']" ng-init="data.custom['{!mergeList[row].fieldName}'] = '{!IF(mergeList[row].selectedId == 'custom', mergeList[row].fieldValue, mergeList[row].recordValues[mergeList[row].selectedId].value)}'"/> 
+														</apex:outputPanel>								
+														
+														<apex:outputPanel layout="none" rendered="{!mergeList[row].fieldType == 'EMAIL'}">
+															<input class="slds-input" type="email" ng-change="selectCustom('{!mergeList[row].fieldName}')" ng-model="data.custom['{!mergeList[row].fieldName}']" ng-init="data.custom['{!mergeList[row].fieldName}'] = '{!IF(mergeList[row].selectedId == 'custom', mergeList[row].fieldValue, mergeList[row].recordValues[mergeList[row].selectedId].value)}'"/>
+														</apex:outputPanel>											    
+													    
+													    <apex:outputPanel layout="none" rendered="{!mergeList[row].fieldType == 'TEXTAREA'}">
+															<textarea class="slds-textarea" ng-change="selectCustom('{!mergeList[row].fieldName}')" ng-model="data.custom['{!JSENCODE(mergeList[row].fieldName)}']" ng-init="data.custom['{!JSENCODE(mergeList[row].fieldName)}'] = '{!JSENCODE(IF(mergeList[row].selectedId == 'custom', 'hoi', mergeList[row].recordValues[mergeList[row].selectedId].value))}'"></textarea>
+														</apex:outputPanel>
+														
+														<apex:outputPanel layout="none" rendered="{!mergeList[row].fieldType == 'CURRENCY'}">
+															<input class="slds-input" type="number" step="any" ng-change="selectCustom('{!mergeList[row].fieldName}')" ng-model="data.custom['{!mergeList[row].fieldName}']" ng-init="data.custom['{!mergeList[row].fieldName}'] = ('{!IF(mergeList[row].selectedId == 'custom', mergeList[row].fieldValue, mergeList[row].recordValues[mergeList[row].selectedId].value)}' | customNum)"/>
+														</apex:outputPanel>
+														
+														<apex:outputPanel layout="none" rendered="{!mergeList[row].fieldType == 'DOUBLE'}">
+															<input class="slds-input" type="number" step="any" ng-change="selectCustom('{!mergeList[row].fieldName}')" ng-model="data.custom['{!mergeList[row].fieldName}']" ng-init="data.custom['{!mergeList[row].fieldName}'] = ('{!IF(mergeList[row].selectedId == 'custom', mergeList[row].fieldValue, mergeList[row].recordValues[mergeList[row].selectedId].value)}' | customNum)"/>
+														</apex:outputPanel>
+														
+														<apex:outputPanel layout="none" rendered="{!mergeList[row].fieldType == 'INTEGER'}">
+															<input class="slds-input" type="number" step="any" ng-change="selectCustom('{!mergeList[row].fieldName}')" ng-model="data.custom['{!mergeList[row].fieldName}']" ng-init="data.custom['{!mergeList[row].fieldName}'] = ('{!IF(mergeList[row].selectedId == 'custom', mergeList[row].fieldValue, mergeList[row].recordValues[mergeList[row].selectedId].value)}' | customNum)"/>		
+														</apex:outputPanel>
+														
+														<apex:outputPanel layout="none" rendered="{!mergeList[row].fieldType == 'PERCENT'}">
+															<input class="slds-input" type="number" step="any" ng-change="selectCustom('{!mergeList[row].fieldName}')" ng-model="data.custom['{!mergeList[row].fieldName}']" ng-init="data.custom['{!mergeList[row].fieldName}'] = ('{!IF(mergeList[row].selectedId == 'custom', mergeList[row].fieldValue, mergeList[row].recordValues[mergeList[row].selectedId].value)}' | customNum)"/>			
+														</apex:outputPanel>		
+												
+														<apex:outputPanel layout="none" rendered="{!mergeList[row].fieldType == 'PHONE'}">
+															<input class="slds-input" type="tel" ng-change="selectCustom('{!mergeList[row].fieldName}')" ng-model="data.custom['{!mergeList[row].fieldName}']" ng-init="data.custom['{!mergeList[row].fieldName}'] = '{!IF(mergeList[row].selectedId == 'custom', mergeList[row].fieldValue, mergeList[row].recordValues[mergeList[row].selectedId].value)}'"/>
+														</apex:outputPanel>
+												
+														<apex:outputPanel layout="none" rendered="{!mergeList[row].fieldType == 'URL'}">
+															<input class="slds-input" ng-change="selectCustom('{!mergeList[row].fieldName}')" ng-model="data.custom['{!mergeList[row].fieldName}']" ng-init="data.custom['{!mergeList[row].fieldName}'] = '{!IF(mergeList[row].selectedId == 'custom', mergeList[row].fieldValue, mergeList[row].recordValues[mergeList[row].selectedId].value)}'"/>
+														</apex:outputPanel>
+														
+														<apex:outputPanel layout="none" rendered="{!mergeList[row].fieldType == 'BASE64'}">
+															<textarea ng-change="selectCustom('{!mergeList[row].fieldName}')" ng-model="data.custom['{!mergeList[row].fieldName}']" ng-init="data.custom['{!mergeList[row].fieldName}'] = '{!IF(mergeList[row].selectedId == 'custom', mergeList[row].fieldValue, mergeList[row].recordValues[mergeList[row].selectedId].value)}'"></textarea> 	
+														</apex:outputPanel>
+														
+														<apex:outputPanel layout="none" rendered="{!mergeList[row].fieldType == 'TIME'}">	
+															<input type="time" ng-change="selectCustom('{!mergeList[row].fieldName}')" ng-model="data.custom['{!mergeList[row].fieldName}']" ng-init="data.custom['{!mergeList[row].fieldName}'] = ('{!IF(mergeList[row].selectedId == 'custom', mergeList[row].fieldValue, mergeList[row].recordValues[mergeList[row].selectedId].value)}' | customDate)"/>
+														</apex:outputPanel>		
+												
+														<apex:outputPanel layout="none" rendered="{!mergeList[row].fieldType == 'ENCRYPTEDSTRING'}">
+															<input type="text" ng-change="selectCustom('{!mergeList[row].fieldName}')" ng-model="data.custom['{!mergeList[row].fieldName}']" ng-init="data.custom['{!mergeList[row].fieldName}'] = '{!IF(mergeList[row].selectedId == 'custom', mergeList[row].fieldValue, mergeList[row].recordValues[mergeList[row].selectedId].value)}'"/>
+														</apex:outputPanel>
+														  
+														<apex:outputPanel layout="none" rendered="{!mergeList[row].fieldType == 'PICKLIST'}">  
+														  	<div class="slds-select_container">
+																<select class="slds-select" 
+																		ng-change="selectCustom('{!mergeList[row].fieldName}')" 
+																		ng-model="data.custom['{!mergeList[row].fieldName}']" 
+																		ng-init="data.custom['{!mergeList[row].fieldName}'] = '{!IF(mergeList[row].selectedId == 'custom', mergeList[row].fieldValue, mergeList[row].recordValues[mergeList[row].selectedId].value)}'">
+																		<apex:repeat value="{!mergeList[row].picklistValues}" var="pick">
+																			<option value="{!pick.value}">{!pick.label}</option>
+																		</apex:repeat>
+																		
+																</select>	
+															</div>
+														
+														</apex:outputPanel>
+														
+														<apex:outputPanel layout="none" rendered="{!mergeList[row].fieldType == 'MULTIPICKLIST'}">
+															<plauti-multi-select  default-text="{!$label.NOTHING_SELECTED}"   
+																				  svg-path="{!URLFOR($Resource.slds,'')}/assets/icons/utility-sprite/svg/symbols.svg" 
+																				  ng-change="selectCustom('{!mergeList[row].fieldName}')" 
+																				  ng-model="data.custom['{!mergeList[row].fieldName}']" 
+																				  options="data.mergeFieldList['{!mergeList[row].fieldName}'].picklistValues" 
+																				  name-attr="label" 
+																			  	  value-attr="value" 
+																			  	  ng-init="data.custom['{!mergeList[row].fieldName}'] = ('{!IF(mergeList[row].selectedId == 'custom', mergeList[row].fieldValue, mergeList[row].recordValues[mergeList[row].selectedId].value)}' | customSplit:';')">
+															</plauti-multi-select>  
+														</apex:outputPanel>		
+															
+												
+														<apex:outputPanel layout="none" rendered="{!mergeList[row].fieldType == 'REFERENCE'}">
+															<plauti-typeahead typeahead-min-length="3" 
+																			  typeahead-wait-ms="0" 
+																			  options="data.referenceOptions['{!mergeList[row].fieldName}']" 
+																			  typeahead-options-method="getLookup(objectItem, searchText, '{!mergeList[row].fieldName}', fields)"
+																			  ng-change="selectCustom('{!mergeList[row].fieldName}')"
+																			  ng-model="data.custom['{!mergeList[row].fieldName}']"
+																			  ng-model-display="meta.referenceDisplay['{!mergeList[row].fieldName}']"
+															     			  name-attr="name"
+																		  	  value-attr="id"
+																		  	  typeahead-select-on-blur="true"
+																		  	  svg-path="{!URLFOR($Resource.slds,'')}"
+																		  	  ng-init="data.custom['{!mergeList[row].fieldName}'] = '{!IF(mergeList[row].selectedId == 'custom', mergeList[row].fieldValue, mergeList[row].recordValues[mergeList[row].selectedId].value)}'; meta.referenceDisplay['{!mergeList[row].fieldName}'] = '{!IF(mergeList[row].selectedId == 'custom', mergeList[row].fieldValue, mergeList[row].recordValues[mergeList[row].selectedId].label)}';"
+																		  	  object-list-meta="data.mergeFieldList['{!mergeList[row].fieldName}'].referenceObjectsMeta"
+																		  	  object-label="'{!JSENCODE(mergeList[row].fieldLabel)}'"
+																			  local-storage-name="plautitypeahead-{!$User.id}"
+																		  	  >
+															</plauti-typeahead>
+														</apex:outputPanel>
+																
+														<apex:outputPanel layout="none" rendered="{!mergeList[row].fieldType == 'DATE'}">	
+																			
+															<plauti-datepicker  
+																			   position="slds-dropdown--bottom slds-dropdown--left" 
+																			   date-format="dd MMMM yyyy" 
+																			   ng-model="data.custom['{!mergeList[row].fieldName}']" 
+																			   start-year="1970" 
+																		   	   end-year="2050" 
+																		   	   svg-path="{!URLFOR($Resource.slds,'')}/assets/icons/utility-sprite/svg/symbols.svg" 
+																		   	   ng-change="selectCustom('{!mergeList[row].fieldName}')" 
+																		       ng-init="data.custom['{!mergeList[row].fieldName}'] = ('{!IF(mergeList[row].selectedId == 'custom', mergeList[row].fieldValue, mergeList[row].recordValues[mergeList[row].selectedId].value)}' | customDate)">
+															</plauti-datepicker>
+														
+														</apex:outputPanel>
+														
+														<apex:outputPanel layout="none" rendered="{!mergeList[row].fieldType == 'DATETIME'}">
+															<plauti-datetimepicker 
+																			   	position="slds-dropdown--bottom slds-dropdown--left" 
+																			   	date-format="dd MMMM yyyy" 
+																			   	ng-model="data.custom['{!mergeList[row].fieldName}']" 
+																			   	start-year="1970" 
+																			   	end-year="2050" 
+																			   	svg-path="{!URLFOR($Resource.slds,'')}/assets/icons/utility-sprite/svg/symbols.svg" 
+																			   	is-meridian-format="true" 
+																			   	min-step="1"
+																			   	ng-change="selectCustom('{!mergeList[row].fieldName}', '{!mergeList[row].fieldType}')"
+																			   	ng-init="data.custom['{!mergeList[row].fieldName}'] = ('{!IF(mergeList[row].selectedId == 'custom', mergeList[row].fieldValue, mergeList[row].recordValues[mergeList[row].selectedId].value)}' | customDate)">
+															</plauti-datetimepicker>
+														</apex:outputPanel>
+														
+														<apex:outputPanel layout="none" rendered="{!mergeList[row].fieldType == 'STRING'}">
+															<input class="slds-input" type="text" ng-change="selectCustom('{!mergeList[row].fieldName}', '{!mergeList[row].fieldType}')" ng-model="data.custom['{!mergeList[row].fieldName}']" ng-init="data.custom['{!JSENCODE(mergeList[row].fieldName)}'] = '{!JSENCODE(IF(mergeList[row].selectedId == 'custom', mergeList[row].fieldValue, mergeList[row].recordValues[mergeList[row].selectedId].value))}'"/>
+														</apex:outputPanel>					
+													</div>
+					                            </apex:outputPanel>
+				                            </div> 
+				                            
+										</td>
+										<apex:repeat value="{!objectMap}" var="record">
+											<td class="{{data.selected['{!mergeList[row].fieldName}'] == '{!record}' ? 'dc-merge-selectedField' : ''}}">
+												<apex:outputPanel rendered="{!NOT(mergeList[row].isReadonly)}" layout="none">
+												<div class="slds-form-element">
+													<div class="slds-form-element__control">
+														<label class="slds-radio">
+															<input type="radio" name="{!mergeList[row].fieldName}" value="{!record}" ng-model="data.selected['{!mergeList[row].fieldName}']" ng-change="selectField('{!mergeList[row].fieldName}', '{!mergeList[row].fieldType}')" />
+															<span class="slds-radio--faux "></span>			
+														</label>
+													
+													</div>
+												</div>
+												</apex:outputPanel>
+											</td>
+	
+											<td class="slds-form-element {{data.selected['{!mergeList[row].fieldName}'] == '{!record}' ? 'dc-merge-selectedField' : ''}}" ng-click="selectField('{!mergeList[row].fieldName}', '{!mergeList[row].fieldType}')">
+													<apex:outputPanel rendered="{!mergeList[row].fieldType == 'BOOLEAN'}" layout="none">
+														<div class="slds-form-element__control">
+															<img class="slds-icon slds-icon slds-icon--x-small slds-icon-utility-right" ng-src="{!URLFOR($Resource.slds,'')}/assets/icons/utility/{!IF(mergeList[row].recordValues[record].value == 'true', 'check','clear')}_60.png" />
+														</div>
+													</apex:outputPanel>
+													<apex:outputPanel rendered="{!mergeList[row].fieldType == 'TEXTAREA'}" layout="none">
+														<div class="slds-form-element__control">
+															<textarea style="padding: 0px; resize: none; border: 0px; background: inherit; box-shadow: none;" class="slds-textarea" disabled="disabled">{!mergeList[row].recordValues[record].label}</textarea>
+														</div>
+													</apex:outputPanel>
+													<apex:outputPanel rendered="{!AND(mergeList[row].fieldType != 'BOOLEAN',mergeList[row].fieldType != 'TEXTAREA')}" layout="none">
+														<div>{!mergeList[row].recordValues[record].label}</div>
+													</apex:outputPanel>
+											</td>
+										</apex:repeat>
+									</tr>
+								</apex:repeat> 
+								
+								
+								
+							</tbody>
+						</table>
+						
+					</div>
+					
+					<div ng-if="!meta.isLoading" class="dc-xx-small-show slds-x-small-show-only slds-small-show-only">
+
+					 	<div class="slds-form-element slds-m-top--medium">
+					 		<label class="slds-form-element__label">{!$label.MASTER}</label>
+					 		<div class="slds-form-element__control">
+					 			<div class="slds-select_container">
+									<select ng-change="selectMaster(data.selected['masterRecord'])" class="slds-select" ng-model="data.selected['masterRecord']">
+										<apex:repeat value="{!objectMap}" var="record">
+											<option value="{!record}">{!record}</option>
+										</apex:repeat>
+					 				</select>
+					 			</div>
+					 		</div>
+					 	
+					 	</div>
+					 				
+					 	<!--  ng-init="data.selected[field.fieldName] = field.selectedId;" -->
+					 	<apex:repeat value="{!mergeList}" var="row">
+				 			<div class="slds-m-top--x-small" data-type="{!mergeList[row].fieldType}" ng-show="showRow({!mergeList[row].isEmpty}, {!mergeList[row].isEqual}, {!mergeList[row].isReadonly})">
+								<div class="slds-form-element">
+									<label class="slds-form-element__label">{!mergeList[row].fieldLabel}</label>
+									<div class="slds-form-element__control">
+										<div class="slds-select_container">
+											<select ng-change="selectField('{!mergeList[row].fieldName}', '{!mergeList[row].fieldType}')" class="slds-select"  ng-model="data.selected['{!mergeList[row].fieldName}']" ng-disabled="{!mergeList[row].isReadonly}">
+												<apex:repeat value="{!mergeList[row].recordValues}" var="record">
+													<option value="{!record}">
+														{!IF(mergeList[row].fieldType =='BOOLEAN', IF(mergeList[row].recordValues[record].value == 'true','Selected','Not Selected'),mergeList[row].recordValues[record].label)}
+													</option>	
+												</apex:repeat>
+											</select>
+										</div>
+									</div>	
+								</div>	
+							</div>
+						</apex:repeat>
+						<div class="slds-m-bottom--medium"></div>
+					</div>
+					
+												  
+					<div class="slds-float--right slds-m-bottom--medium" ng-hide="meta.isLoading">
+						<img class="slds-button__icon slds-button__icon--large" ng-show="meta.isMerging || meta.showMerge" src="{!URLFOR($Resource.slds,'')}/assets/images/spinners/slds_spinner_brand.gif" /> 				
+						<button class="slds-button slds-button--neutral" ng-disabled="meta.isMerging" ng-click="init()">{!$label.RESET}</button>
+						<button class="slds-button slds-button--brand" ng-click="doSetForMerge(false)" ng-if="{!isSetForMerge}" ng-disabled="meta.isMerging || meta.showMerge">{!$label.SET_FOR_MERGE}</button>
+						<button class="slds-button slds-button--brand" ng-click="doSetForMerge(true)" ng-if="{!isSetForMerge} && meta.nextMerge" ng-disabled="meta.isMerging || meta.showMerge">{!$label.SET_FOR_MERGE_AND_NEXT}</button>
+						<button class="slds-button slds-button--brand" ng-click="doMerge(false)" ng-if="{!NOT(isSetForMerge)}" ng-disabled="meta.isMerging || meta.showMerge">{!$label.MERGE}</button> 	
+						<button class="slds-button slds-button--brand" ng-click="doMerge(true)" ng-if="{!NOT(isSetForMerge)} && meta.nextMerge" ng-disabled="meta.isMerging || meta.showMerge">{!$label.MERGE_AND_NEXT}</button>
+					</div>
+
+				</div>
+			</div>
+		</div>
+		</div>
+		  </apex:outputPanel>
+		</div>
+		</apex:outputPanel>
+	</div>
+
+
+</apex:page>

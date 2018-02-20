@@ -1,0 +1,3 @@
+<apex:page docType="html-5.0" controller="dupcheck.dc3ControllerCheck" sidebar="false" title="Duplicate Check - Duplicate Check for Salesforce" action="{!janitor}" tabstyle="dc3Search__tab">
+	<c:dc3Check recordId="{!objectId}" assetsUrl="{!URLFOR($Resource.dupcheck__dupcheckAssets,'/dupcheckAssets')}"/> 
+</apex:page>

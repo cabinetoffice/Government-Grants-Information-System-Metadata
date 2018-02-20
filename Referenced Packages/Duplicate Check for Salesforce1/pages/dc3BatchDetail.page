@@ -1,0 +1,736 @@
+<apex:page docType="html-5.0" sidebar="false" title="Batch Detail - Duplicate Check for Salesforce" standardController="dupcheck__dcJob__c" extensions="dupcheck.dc3ControllerBatchDetail" action="{!janitor}" tabstyle="dcBatch__tab">
+
+  <apex:stylesheet value="{!URLFOR($Resource.dupcheck__slds, '/assets/styles/salesforce-lightning-design-system-vf.min.css')}" />
+  <apex:stylesheet value="{!IF(isDev,AssetsUrl,URLFOR($Resource.dupcheck__dupcheckAssets,'/dupcheckAssets'))}/lightning/style/dupcheckApp.css" />
+  <apex:stylesheet value="{!IF(isDev,AssetsUrl,URLFOR($Resource.dupcheck__dupcheckAssets,'/dupcheckAssets'))}/lightning/style/rzslider.css" /> 
+  <apex:includeScript value="//assets-plautibv.netdna-ssl.com/jquery/1.11.1/jquery.min.js" />
+  <apex:includeScript value="//assets-plautibv.netdna-ssl.com/angularjs/1.3.11/angular.min.js" />
+  <apex:includeScript value="//assets-plautibv.netdna-ssl.com/angularjs/1.3.11/angular-sanitize.min.js" />
+  <apex:includeScript value="//assets-plautibv.netdna-ssl.com/moment/2.10.6/moment.min.js" />
+  <apex:includeScript value="//assets-plautibv.netdna-ssl.com/angular-local-storage/0.2.2/angular-local-storage.min.js" />
+  <apex:includeScript value="{!IF(isDev,AssetsUrl,URLFOR($Resource.dupcheck__dupcheckAssets,'/dupcheckAssets'))}/lightning/js/rzslider.js" />
+  <apex:includeScript value="{!IF(isDev,AssetsUrl,URLFOR($Resource.dupcheck__dupcheckAssets,'/dupcheckAssets'))}/lightning/js/plauti-ng-slds.min.js" />
+  <apex:includeScript value="{!IF(isDev,AssetsUrl,URLFOR($Resource.dupcheck__dupcheckAssets,'/dupcheckAssets'))}/lightning/js/angular-csv.min.js" />
+  <apex:includeScript value="{!IF(isDev,AssetsUrl,URLFOR($Resource.dupcheck__dupcheckAssets,'/dupcheckAssets'))}/lightning/js/dupcheck.js" />
+  <apex:includeScript value="{!IF(isDev,AssetsUrl,URLFOR($Resource.dupcheck__dupcheckAssets,'/dupcheckAssets'))}/lightning/js/dupcheck.ng.directives.js" />
+  <apex:includeScript value="{!IF(isDev,AssetsUrl,URLFOR($Resource.dupcheck__dupcheckAssets,'/dupcheckAssets'))}/lightning/js/dupcheck.ng.services.js" />
+  <apex:includeScript value="{!IF(isDev,AssetsUrl,URLFOR($Resource.dupcheck__dupcheckAssets,'/dupcheckAssets'))}/lightning/js/dupcheck.ng.job-detail.js" />   
+  
+  <c:dc3TranslationJS />
+  <c:dc3Welcome version="LIGHTNING"/>
+  
+  <div id="dataStore" 
+  	data-job-name="{!job.jobName}" 
+  	data-job-id="{!job.jobId}" 
+  	data-job-status="{!jobStatus}" 
+  	data-source-object-name="{!sourceObjectName}" 
+  	data-match-object-name="{!matchObjectName}" 
+  	data-page-job="{!$Page.dc3Batch}" 
+  	data-batch-overview="{!URLFOR($Page.dc3Batch,null)}" 
+  	data-sf-delete-record="{!$RemoteAction.dc3ControllerBatchDetail.deleteRecord}" 
+  	data-sf-delete-job="{!$RemoteAction.dc3ControllerBatchDetail.deleteJob}" 
+  	data-sf-abort-job="{!$RemoteAction.dc3ControllerBatchDetail.abortJob}" 
+  	data-sf-get-job="{!$RemoteAction.dc3ControllerBatchDetail.getJobData}" 
+  	data-sf-fetch-data="{!$RemoteAction.dc3ControllerBatchDetail.fetchData}" 
+  	data-sf-fetch-group-data="{!$RemoteAction.dc3ControllerBatchDetail.fetchGroupData}" 
+  	data-sf-quick-convert="{!$RemoteAction.dc3ControllerBatchDetail.quickConvert}" 
+  	data-sf-not-duplicate="{!$RemoteAction.dc3ControllerBatchDetail.notduplicate}" 
+  	data-sf-not-duplicate-relation="{!$RemoteAction.dc3ControllerBatchDetail.notduplicateRelation}" 
+  	data-convert-url="{!URLFOR($Page.dc3Convert,null)}" 
+  	data-merge-url="{!URLFOR($Page.dc3Merge,null)}" 
+  	data-sf-quick-merge="{!$RemoteAction.dc3ControllerBatchDetail.quickMerge}" 
+  	data-self-url="{!URLFOR($Page.dc3BatchDetail,null)}" 
+  	data-sf-related-object="{!$RemoteAction.dc3ControllerBatchDetail.getRelatedTypeAheadAdvanced}" 
+  	data-sf-convert-owner="{!$ObjectType.Lead.Label}" 
+  	data-sf-convert-status="{!convertStatus}" 
+  	data-sf-auto-convert="{!$RemoteAction.dc3ControllerBatchDetail.autoConvert}" 
+  	data-sf-auto-merge="{!$RemoteAction.dc3ControllerBatchDetail.autoMerge}"
+  	data-sf-session-id="{!sessionId}"/>
+   
+  <div class="plauti dc-body" ng-app="dcApp" ng-controller="jobController" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"> 
+     
+    <c:dc3BatchExport jobId="meta.jobId" exportModal="meta.exportJobModal" jobName="$root.ds.jobName"/> 
+     
+    <div aria-hidden="false" role="dialog" class="slds-modal " ng-class="{'slds-fade-in-open': meta.ModalDelete}">
+      <div class="slds-modal__container">
+        <div class="slds-modal__header">
+          <h2 class="slds-text-heading--medium">{!$Label.DELETE_JOB}</h2>
+          <button class="slds-button slds-button--icon-inverse slds-modal__close" ng-click="meta.ModalDelete = false;">
+            <img class="slds-button__icon slds-button__icon--large" src="{!URLFOR($Resource.slds,'')}/assets/icons/action/close_120.png" /><span class="slds-assistive-text">{!$label.CLOSE}</span>
+          </button>
+        </div>
+        <div class="slds-modal__content slds-p-around--small">
+          <div class="slds-m-vertical--x-small slds-p-horizontal--small">
+            <p>{!$label.PROMPT_DELETE_JOB}</p>
+            <p class="slds-text-body--small">{!$LABEL.PROMPT_DELETE_JOB_GATHERED_INFORMATION}</p>    
+          </div>
+        </div>
+        <div class="slds-modal__footer">
+          <div class="slds-grid">
+            <div class="slds-col slds-text-align--left">
+              <button class="slds-button slds-button--neutral" ng-click="meta.ModalDelete = false;">{!$label.BUTTON_CANCEL}</button>
+            </div>
+            <div class="slds-col slds-text-align--right">
+              <button class="slds-button slds-button--destructive" ng-click="deleteJob();">{!$label.BUTTON_DELETE}</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="slds-backdrop " ng-class="{'slds-backdrop--open': meta.ModalDelete}"></div>
+
+
+    <div aria-hidden="false" role="dialog" class="slds-modal " ng-class="{'slds-fade-in-open': meta.modalDeleteRecord}">
+      <div class="slds-modal__container">
+        <div class="slds-modal__header">
+          <h2 class="slds-text-heading--medium">{!$label.DELETE_RECORD}</h2>
+          <button class="slds-button slds-button--icon-inverse slds-modal__close" ng-click="meta.modalDeleteRecord = false;">
+            <img class="slds-button__icon slds-button__icon--large" src="{!URLFOR($Resource.slds,'')}/assets/icons/action/close_120.png" /> <span class="slds-assistive-text">{!$label.CLOSE}</span>
+          </button>
+        </div>
+        <div class="slds-modal__content slds-p-around--small">
+          <div class="slds-m-vertical--x-small slds-p-horizontal--small">
+            <p>{!$label.PROMPT_DELETE_RECORD}</p>
+            <p class="slds-text-body--small">{!$label.PROMPT_DELETE_RECORD_ALL_INFORMATION}</p>    
+          </div>
+        </div>
+        <div class="slds-modal__footer">
+          <div class="slds-grid">
+            <div class="slds-col slds-text-align--left">
+              <button class="slds-button slds-button--neutral" ng-click="meta.modalDeleteRecord = false;">{!$label.BUTTON_CANCEL}</button>
+            </div>
+            <div class="slds-col slds-text-align--right">
+              <button class="slds-button slds-button--destructive" ng-click="deleteRecord()">{!$label.BUTTON_DELETE}</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="slds-backdrop " ng-class="{'slds-backdrop--open': meta.modalDeleteRecord}"></div>
+
+
+
+
+
+    
+	<div aria-hidden="false" role="dialog" class="slds-modal " ng-class="{'slds-fade-in-open': meta.ModalFilter}">
+	    <div class="slds-modal__container">
+	        <div class="slds-modal__header">
+	            <h2 class="slds-text-heading--medium">{!$label.FILTER_DUPLICATE_GROUPS}</h2>
+	            <button class="slds-button slds-button--icon-inverse slds-modal__close" ng-click="meta.ModalFilter = false;">
+	            <img class="slds-button__icon slds-button__icon--large" src="{!URLFOR($Resource.slds,'')}/assets/icons/action/close_120.png" /> <span class="slds-assistive-text">{!$label.CLOSE}</span>
+	          </button>
+	        </div>
+	        <div class="slds-modal__content slds-p-around--medium">
+	            <div class="slds-form--stacked slds-grid slds-wrap">
+	                <div class="slds-col--padded slds-form-element slds-size--1-of-1 slds-medium-size--1-of-2">
+	                    <label class="slds-form-element__label" for="startGroup">{!$label.DISPLAY_FROM_GROUP_NUMBER}</label>
+	                    <div class="slds-form-element__control">
+	                        <input class="slds-input dc-input-count" id="startGroup" name="startGroup" type="number" min="0" step="1" ng-model="dataFilter.startGroup" />
+	                    </div>
+	                </div>
+	                <div class="slds-col--padded slds-form-element slds-size--1-of-1 slds-medium-size--1-of-2" style="margin-top: 0px;">
+	                    <label class="slds-form-element__label" for="endGroup">{!$label.DISPLAY_UNTIL_GROUP_NUMBER}</label>
+	                    <div class="slds-form-element__control">
+	                        <input class="slds-input dc-input-count" id="endGroup" name="endGroup" type="number" min="0" step="1" ng-model="dataFilter.endGroup" />
+	                    </div>
+	                </div>
+	                <div class="slds-col--padded slds-form-element slds-size--1-of-1 slds-medium-size--1-of-2">
+	                    <label class="slds-form-element__label" for="duplicateCount">{!$label.DUPLICATE_COUNT_IS}</label>
+	                    <div class="slds-form-element__control">
+	                        <input class="slds-input dc-input-count" id="duplicateCount" name="duplicateCount" type="number" min="1" step="1" ng-model="dataFilter.duplicateCount" />
+	                    </div>
+	                </div>
+	                <div class="slds-col--padded slds-form-element slds-size--1-of-1 slds-medium-size--1-of-2">
+	                    <label class="slds-form-element__label" for="recordCount">{!$label.RECORD_COUNT_IS}</label>
+	                    <div class="slds-form-element__control">
+	                        <input class="slds-input dc-input-count" id="recordCount" name="recordCount" type="number" min="1" step="1" ng-model="dataFilter.recordCount" />
+	                    </div>
+	                </div>
+	                <div class="slds-col--padded slds-form-element slds-size--1-of-1 slds-medium-size--1-of-2">
+	                    <label class="slds-form-element__label" for="averageScore">{!$label.AVERAGE_SCORE_IS_OR_IS_HIGHER_THAN}</label>
+	                    <div class="slds-form-element__control">
+	                        <input class="slds-input dc-input-count" id="averageScore" name="averageScore" type="number" min="1" max="100" step="1" ng-model="dataFilter.averageScore" />
+	                    </div>
+	                </div>
+	                <div class="slds-col--padded slds-form-element slds-size--1-of-1 slds-medium-size--1-of-2">
+	                </div>
+	                <div class="slds-col--padded slds-form-element slds-size--1-of-1  slds-medium-size--1-of-2">
+	                    <label class="slds-form-element__label" for="orderBy">{!$label.ORDER_BY}</label>
+	                    <div class="slds-form-element__control">
+	                        <div class="slds-select_container">
+	                            <select id="orderBy" class="slds-select" ng-model="dataFilter.orderBy">
+	                    <option value="{!managed}group__c">{!$label.GROUP_NUMBER}</option>
+	                    <option value="{!managed}duplicateCount__c">{!$label.PAIR_COUNT}</option>
+	                    <option value="{!managed}recordCount__c">{!$label.RECORD_COUNT}</option>
+	                    <option value="{!managed}avgScore__c">{!$label.AVERAGE_SCORE}</option>
+	                    <option value="{!managed}highScore__c">{!$label.HIGH_SCORE}</option>
+	                    <option value="{!managed}lowScore__c">{!$label.LOW_SCORE}</option>
+	                  </select>
+	                        </div>
+	                    </div>
+	                </div>
+	                <div class="slds-col--padded slds-form-element slds-size--1-of-1 slds-medium-size--1-of-1 slds-large-size--1-of-2">
+	                    <label class="slds-form-element__label" for="orderSort">{!$label.SORTING}</label>
+	                    <div class="slds-form-element__control">
+	                        <div class="slds-select_container">
+	                            <select id="orderSort" class="slds-select" ng-model="dataFilter.orderSort">
+	                    <option value="ASC">{!$label.ASCENDING}</option>
+	                    <option value="DESC">{!$label.DESCENDING}</option>
+	                  </select>
+	                        </div>
+	                    </div>
+	                </div>
+	            </div>
+	        </div>
+	        <div class="slds-modal__footer">
+	            <div class="slds-grid">
+	                <div class="slds-col slds-text-align--left">
+	                    <button class="slds-button slds-button--neutral" ng-click="meta.ModalFilter = false;">{!$label.CANCEL}</button>
+	                </div>
+	                <div class="slds-col slds-text-align--right">
+	                    <button class="slds-button slds-button--neutral" ng-click="clearFilter();">{!$label.CLEAR_FILTER}</button>
+	                    <button class="slds-button slds-button--neutral slds-button--brand" ng-click="applyFilter()">{!$label.APPLY}</button>
+	                </div>
+	            </div>
+	        </div>
+	    </div>
+	</div>
+	<div class="slds-backdrop " ng-class="{'slds-backdrop--open': meta.ModalFilter}"></div>
+    
+    <!--  
+    <div aria-hidden="false" role="dialog" class="slds-modal " ng-class="{'slds-fade-in-open': meta.ModalAuto}">
+      <div class="slds-modal__container">
+        <div class="slds-modal__header">
+          <button class="slds-button slds-button--icon-inverse slds-modal__close" ng-click="meta.ModalAuto = false;">
+            <img class="slds-button__icon slds-button__icon--large" src="{!URLFOR($Resource.slds,'')}/assets/icons/action/close_120.png" /> <span class="slds-assistive-text">Close</span>
+          </button>
+          <h2 class="slds-text-heading--medium" ng-if="data.job.isMerge">Start an Auto Merge</h2>
+          <h2 class="slds-text-heading--medium" ng-if="data.job.isConvert"> Start an Auto Convert</h2>
+          <div class="slds-box--x-small slds-theme--info slds-m-top--small" ng-if="{!license.information.isTrial && NOT(license.information.isSandbox)}"> 
+            <p>Trial license detected. You can only merge/convert up to 20 records.</p>
+          </div>
+        </div>  
+        <div class="slds-modal__content">
+			<div class="slds-form--stacked slds-p-around--medium slds-m-bottom--large">
+          
+             <div class="slds-form-element slds-m-bottom--medium">
+               <span class="slds-form-element__label">Job</span>
+               <div class="slds-form-element__control slds-has-divider--bottom">
+                 <span class="slds-form-element__static" ng-bind-html="data.job.jobName"></span>
+               </div>
+             </div>
+            
+            <div class="slds-form-element">
+              <div  class="slds-m-bottom--small slds-size--1-of-1" ng-if="{!license.information.isTrial && NOT(license.information.isSandbox)}">
+				Trial license detected. You are only allowed to merge/convert up to 20 records.
+              </div>
+              
+              <label class="slds-form-element__label slds-size--1-of-1">
+                Threshold               
+                <div class="slds-form-element__icon">
+                  <a ng-click="openUrlIH(meta.helpUrl)">
+                    <div class="slds-icon slds-icon--x-small slds-icon-text-default">
+                      <img ng-src="{!URLFOR($Resource.slds,'')}/assets/icons/utility/info_60.png" />
+                    </div>
+                  </a>
+                </div>                  
+              </label>
+              <div class="slds-form-element__control">
+                
+                <div class="slds-size--1-of-1 slds-medium-size--1-of-12 slds-float--left">    
+                  {{ds.autoScore}}%
+                </div>
+                
+                <div class="slds-size--1-of-1 slds-medium-size--11-of-12 slds-float--right">
+                  <rzslider rz-slider-model="ds.autoScore" rz-slider-options="meta.slider.options"></rzslider>  
+                </div>
+
+              </div>                  
+            </div>
+              
+
+            <div ng-if="data.job.isConvert">
+              <div class="slds-form-element">
+                <label class="slds-form-element__label">Convert Status</label>
+                      <div class="slds-select_container">
+                          <select class="slds-select" id="convertStatus" ng-model="ds.convertStatus" ng-init="ds.convertStatus = '{!convertStatus[0].Value}'">
+                    <apex:repeat value="{!convertStatus}" var="stat">
+                      <option value="{!stat.Value}">{!JSINHTMLENCODE(stat.Label)}</option>
+                    </apex:repeat>
+                          </select>
+                      </div>
+              </div>
+              <div class="slds-form-element">
+                <label class="slds-form-element__label">Owner for new records</label>
+					<div class="slds-select_container">
+                    	<select id="select-01" class="slds-select" ng-model="ds.convertOwner" ng-init="ds.convertOwner = 'LEAD'">
+                        	<option value="LEAD">Current {!$ObjectType.Lead.Label} Owner</option>
+                    		<option value="CONTACT">Current {!$ObjectType.Contact.Label} Owner</option>
+                    		<option value="ACCOUNT">Current {!$ObjectType.Account.Label} Owner</option>
+                    		<option value="{!$User.Id}">{!$User.FirstName} {!$User.LastName}</option>
+                    		<option value="OTHER">Other: Specify..</option>
+                        </select>
+				  </div>
+              </div>
+              <div ng-show="ds.convertOwner == 'OTHER'" class="slds-m-top--small">				
+                <div class="slds-form-element">																																										<!-- 'User' --/
+                  <plauti-typeahead no-modal="true" object-list-meta="meta.userLookupObject" object-label="meta.ownerId" typeahead-min-length="2" typeahead-wait-ms="0" options="ds.referenceOptions" typeahead-options-method="getLookup(objectItem, searchText, fields)" ng-model="meta.convertOwnerAlt" ng-model-display="meta.convertOwnerDisplay" name-attr="name" value-attr="id" typeahead-select-on-blur="true" svg-path="{!URLFOR($Resource.slds,'')}">
+                  </plauti-typeahead>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+		  
+		<div class="slds-text-heading--label slds-box slds-theme--default slds-theme--alert-texture dc-no-border-radius">
+            <p class="slds-grid slds-grid--align-center">Warning! Merging/Converting records can not be undone.</p>
+            <p class="slds-grid slds-grid--align-center">Manually review your results first.</p>
+          </div> 
+          
+          <div ng-show="meta.filtering" class="slds-text-heading--label slds-box slds-theme--shade slds-theme--alert-texture dc-no-border-radius">
+          	<p class="slds-grid slds-grid--align-center">
+          		Please note that the Auto {{data.job.isMerge ? 'Merge' : 'Convert'}} will process your entire job,
+          	</p>
+          	<p class="slds-grid slds-grid--align-center">
+          		 regardless of filter.
+          	</p>
+          	<p class="slds-grid slds-grid--align-center">
+          		To process a select number of duplicate groups,
+          	</p>
+          	<p class="slds-grid slds-grid--align-center">
+          		 please use the Quick {{data.job.isMerge ? 'Merge' : 'Convert'}}.
+          	</p>
+          </div>          
+          
+        </div>
+        <div class="slds-modal__footer">
+          <button class="slds-button slds-button--neutral" ng-click="meta.ModalAuto = false;">Cancel</button> 	<!-- startMergeNew() --/
+          <button class="slds-button slds-button--neutral slds-button--brand" ng-if="data.job.isMerge" ng-disabled="meta.merging" ng-click="startMerge()" >Start Job</button>
+          <button class="slds-button slds-button--neutral slds-button--brand" ng-if="data.job.isConvert" ng-disabled="meta.converting" ng-click="startConvert()" >Start Job</button>
+        </div>
+      </div> 
+    </div>
+    
+    <div class="slds-backdrop " ng-class="{'slds-backdrop--open': meta.ModalAuto}"></div>
+    --> 
+
+    <div class="slds-page-header" role="banner">
+      <div class="slds-grid slds-wrap">
+        <div class="slds-col slds-size--1-of-1 slds-medium-size--2-of-6 slds-large-size--3-of-6">
+          <div class="slds-media">
+            <div class="slds-media__figure">
+              <img class="slds-icon slds-icon--large" src="{!IF(isDev,AssetsUrl,URLFOR($Resource.dupcheckAssets,'/dupcheckAssets'))}/lightning/app/app_icon_48.png" /> 
+            </div>
+            <div class="slds-media__body">
+              <p class="slds-text-heading--label">Duplicate Check</p>
+              <div class="slds-grid">
+                <h1 class="slds-text-heading--medium slds-m-right--small slds-align-middle">
+                	<apex:outputPanel layout="none" rendered="{!jobStatus}">{!job.jobName}</apex:outputPanel>
+                	<apex:outputPanel layout="none" rendered="{!NOT(jobStatus)}">{!$Label.dupcheck__job_detail}</apex:outputPanel>
+                </h1>
+              </div>
+            </div>
+          </div>
+        </div>  
+        <div class="slds-col slds-size--1-of-1 slds-medium-size--4-of-6 slds-large-size--3-of-6 slds-align-bottom"> 
+          <div class="slds-grid slds-float--right">
+            <apex:outputPanel layout="none" rendered="{!jobStatus}">
+	            <!--  
+	            <button class="slds-button slds-button--neutral dc-color--info" ng-click="meta.ModalAuto = true" ng-if="{!license.features.batchMerge} && data.job.isMerge && (data.job.status == 'Aborted' || data.job.status == 'Failed' || data.job.status == 'Completed') && (data.job.duplicateCount != 0) && (data.job.groupCount != 0)">
+	              Auto Merge
+	            </button>
+	            
+	            <button class="slds-button slds-button--neutral dc-color--info" ng-click="meta.ModalAuto = true" ng-if="{!license.features.batchConvert} && data.job.isConvert && (data.job.status == 'Aborted' || data.job.status == 'Failed' || data.job.status == 'Completed') && (data.job.duplicateCount != 0) && (data.job.groupCount != 0)">
+	              Auto Convert
+	            </button> 
+	            -->
+	            <button class="slds-button slds-button--destructive" ng-click="abortJob();" ng-if="data.job.status != 'Aborted' && data.job.status != 'Failed' && data.job.status != 'Completed' && !meta.loadingData">
+	              {!$label.ABORT}
+	            </button>
+	            
+	            <div class="slds-button-group " role="group">
+	              <button class="slds-button slds-not-selected slds-button--icon-border-filled " ng-click="openAllGroups();" ng-if="!meta.loadingData && (data.job.duplicateCount != 0) && (data.job.groupCount != 0)">
+	                <img class="slds-button__icon " ng-src="{!URLFOR($Resource.slds,'')}/assets/icons/utility/chevrondown_120.png" />
+	              </button>
+	              <button class="slds-button slds-not-selected slds-button--icon-border-filled " ng-click="closeAllGroups();" ng-if="!meta.loadingData && (data.job.duplicateCount != 0) && (data.job.groupCount != 0)">
+	                <img class="slds-button__icon " ng-src="{!URLFOR($Resource.slds,'')}/assets/icons/utility/chevronup_120.png" />
+	              </button>
+	            
+	            </div>
+	            
+	            
+	            <div class="slds-button-group " role="group">
+	              <button class="slds-button slds-not-selected slds-button--icon-border-filled " ng-click="refreshPage();" ng-if="!meta.loadingData && (data.job.duplicateCount != 0) && (data.job.groupCount != 0)">
+	                <img class="slds-button__icon " ng-src="{!URLFOR($Resource.slds,'')}/assets/icons/utility/refresh_120.png" />
+	              </button>
+	              <button class="slds-button slds-not-selected slds-button--icon-border-filled " ng-click="meta.ModalFilter = true" ng-if="!meta.loadingData && (data.job.duplicateCount != 0) && (data.job.groupCount != 0)">
+	                <img class="slds-button__icon " ng-src="{!URLFOR($Resource.slds,'')}/assets/icons/utility/filter_120.png" />
+	              </button>
+	              <button class="slds-button slds-button--icon-border-filled" ng-click="meta.ModalDelete = true;" ng-if="!meta.loadingData && (data.job.status == 'Aborted' || data.job.status == 'Failed' || data.job.status == 'Completed')">
+	                <img class="slds-button__icon " ng-src="{!URLFOR($Resource.slds,'')}/assets/icons/utility/delete_120.png" />
+	              </button>
+	              <apex:outputPanel layout="none" rendered="{!license.features.batchExport}">
+		              <button class="slds-button slds-button--icon-border-filled" ng-click="openExportModal()" ng-if="!meta.loadingData && (data.job.duplicateCount != 0) && (data.job.groupCount != 0)">
+		              	<img class="slds-button__icon " ng-src="{!URLFOR($Resource.slds,'')}/assets/icons/utility/download_120.png" />
+		              </button>
+	              </apex:outputPanel>
+	            </div>
+            </apex:outputPanel>
+            <div class="slds-button-group" role="group">              
+              <button class="slds-button slds-not-selected slds-button--icon-border-filled" ng-click="openUrl('{!URLFOR($Page.dc3Batch, null)}', '')">
+                <img class="slds-button__icon " ng-src="{!URLFOR($Resource.slds,'')}/assets/icons/utility/back_120.png" />
+              </button>
+            </div>
+            
+            <div class="slds-button-group slds-float--right slds-button-space-left" role="group">
+              <c:dc3WelcomeLink version="LIGHTNING" helpLink="https://support.duplicatecheck.com/article/usage-guide/dc-job#Job details?utm_source=dcApp&utm_medium=app&utm_campaign=help_link"/>
+            </div>
+          </div>
+        </div>
+      </div>
+      <apex:outputPanel layout="none" rendered="{!jobStatus}">
+	      <div class="slds-grid slds-m-top--medium">
+	        <div class="slds-size--1-of-12 slds-large-size--1-of-12 slds-medium-size--2-of-12 slds-small-size--1-of-1 slds-m-right--medium">
+	          <p class="slds-text-heading--label slds-truncate" title="Status">{!$label.STATUS}</p>
+	          <plauti-progress-bar class="slds-m-top--xx-small" status="{{data.job.status}}" percentage="{{data.job.progress}}"/>
+	        </div>
+	        <div class="slds-size--1-of-12 slds-large-size--1-of-12 slds-medium-size--2-of-12 slds-small-size--1-of-1 slds-m-right--x-large">
+	          <p class="slds-text-heading--label slds-truncate" title="Average Score">{!$label.AVERAGE_SCORE}</p>
+	          <p class="slds-text-body--regular slds-m-top--xx-small"><span ng-bind-html="data.job.averageScore"/>%</p>
+	        </div>
+	        <div class="slds-size--1-of-12 slds-large-size--1-of-12 slds-medium-size--2-of-12 slds-small-size--1-of-1">
+	          <p class="slds-text-heading--label slds-truncate" title="Groups">{!$label.GROUPS}</p>
+	          <p class="slds-text-body--regular slds-m-top--xx-small"><span ng-bind-html="data.job.groupCount"/></p> 
+	        </div>
+	        <div class="slds-size--1-of-12 slds-large-size--1-of-12 slds-medium-size--2-of-12 slds-small-size--1-of-1">
+	          <p class="slds-text-heading--label slds-truncate" title="Pairs">{!$label.PAIRS}</p>
+	          <p class="slds-text-body--regular slds-m-top--xx-small"><span ng-bind-html="data.job.duplicateCount"/></p>
+	        </div>
+	        <div class="slds-size--1-of-12 slds-large-size--1-of-12 slds-medium-size--2-of-12 slds-small-size--1-of-1">
+	          <p class="slds-text-heading--label slds-truncate" title="Records">{!$label.RECORDS}</p>
+	          <p class="slds-text-body--regular slds-m-top--xx-small"><span ng-bind-html="data.job.recordCount"/></p>
+	        </div>
+	        <div class="slds-size--7-of-12 slds-large-size--7-of-12 slds-medium-size--2-of-12 slds-small-size--1-of-1">
+	        </div>
+	      </div>
+      </apex:outputPanel>
+    </div>
+    
+    <table class="slds-table slds-table--bordered slds-no-row-hover slds-max-medium-table--stacked-horizontal">
+
+      <thead>
+        <tr class="slds-text-heading--label">
+          <th scope="col">{!$label.GROUP}</th> 
+          <th scope="col">{!$label.MINIMUM_SCORE}</th>
+          <th scope="col">{!$label.MAXIMUM_SCORE}</th>
+          <th scope="col">{!$label.AVERAGE_SCORE}</th>
+          <th scope="col">{!$label.PAIR_COUNT}</th>
+          <th scope="col">{!$label.RECORD_COUNT}</th>
+          <th scope="col" class="slds-cell-shrink"></th>
+          <th scope="col" class="slds-cell-shrink"></th>
+          <th scope="col" class="slds-cell-shrink"></th>
+        </tr>
+      </thead>
+      <tbody>
+      	<apex:outputPanel layout="none" rendered="{!NOT(jobStatus)}">
+      		<tr>
+      			<td colspan="8">{!$Label.dupcheck__job_no_longer_exists}</td>
+      		</tr>
+      	</apex:outputPanel>
+        <tr ng-repeat-start="(grpId, grp) in data.groupList">
+          <td data-label="{!$label.GROUP}" ng-click="openGroup($index)"><img ng-if="!grp.isOpen" class="slds-icon slds-icon slds-icon--x-small slds-icon-utility-right" ng-src="{!URLFOR($Resource.slds,'')}/assets/icons/utility/right_120.png" /> <img ng-if="grp.isOpen" class="slds-icon slds-icon slds-icon--x-small slds-icon-utility-down" ng-src="{!URLFOR($Resource.slds,'')}/assets/icons/utility/down_120.png" /> <span ng-bind-html="grp.{!managed}group__c" /></td>
+          <td data-label="{!$label.MINIMUM_SCORE}" ng-click="openGroup($index)"><span ng-bind-html="grp.{!managed}lowScore__c" />%</td>
+          <td data-label="{!$label.MAXIMUM_SCORE}" ng-click="openGroup($index)"><span ng-bind-html="grp.{!managed}highScore__c" />%</td>
+          <td data-label="{!$label.AVERAGE_SCORE}" ng-click="openGroup($index)"><span ng-bind-html="grp.{!managed}avgScore__c" />%</td>
+          <td data-label="{!$label.PAIR_COUNT}" ng-click="openGroup($index)"><span ng-bind-html="grp.{!managed}duplicateCount__c" /></td>
+          <td data-label="{!$label.RECORD_COUNT}" ng-click="openGroup($index)"><span ng-bind-html="grp.{!managed}recordCount__c" /></td>
+          <td class="slds-cell-shrink">
+          	<span ng-if="grp.{!managed}ErrorCount__c > 0">
+              	<span class="slds-badge slds-theme--error">
+              		<span ng-bind-html="grp.{!managed}ErrorCount__c"/>
+              		<span ng-if="data.job.isMerge">{!$label.MERGE}</span>
+              		<span ng-if="data.job.isConvert">{!$label.CONVERT}</span>
+              		<span ng-show="grp.{!managed}ErrorCount__c == 1">{!$label.ERROR}</span>
+              		<span ng-show="grp.{!managed}ErrorCount__c > 1">{!$label.ERRORS}</span>
+              	</span>
+              </span>
+          </td>
+          <td class="slds-cell-shrink" ng-init="meta.inprocess[grp.Id] = false;">
+            <div class="slds-button-group" role="group" ng-if="data.job.isMerge">
+			  <!-- {{grp.Id}}  -->
+              <button class="slds-button slds-button--neutral dc-button--small dc-color--info" ng-disabled="meta.inprocess[grp.Id]" ng-click="mergeGroup(grp.Id)">
+              	{!$label.MERGE}
+              </button>
+              <apex:outputPanel layout="none" rendered="{!license.features.quickMerge}">
+              	<button class="slds-button slds-button--neutral dc-button--small dc-color--info" ng-disabled="meta.inprocess[grp.Id]" ng-click="quickMerge(grp.Id)">{!$label.QUICK_MERGE}</button>
+              </apex:outputPanel>	
+            </div>
+            <apex:outputPanel layout="none" rendered="{!license.features.quickConvert}">
+            <div class="slds-button-group" role="group" ng-if="data.job.isConvert">
+              <button class="slds-button slds-button--neutral dc-button--small dc-color--info" ng-disabled="meta.inprocess[grp.Id]" ng-click="quickConvert(grp.Id)">{!$label.QUICK_CONVERT}</button>
+            </div>
+            </apex:outputPanel>
+          </td>
+          <td class="slds-cell-shrink">
+            <plauti-menu menu-icon="down" menu-size="small" position="bottomRight" svg-path="{!URLFOR($Resource.slds,'')}/assets/icons/utility-sprite/svg/symbols.svg"> 
+              <plauti-menu-item ng-disabled="meta.inprocess[grp.Id]" title="{!$label.DISCARD}" ng-click="notduplicate(grp.Id)" href="#"></plauti-menu-item>  
+              <plauti-menu-item ng-disabled="meta.inprocess[grp.Id]" title="{!$label.FALSE_DUPLICATE_DO_NOT_SHOW_AGAIN}" ng-click="notDuplicateRelation(grp.Id, 'False Duplicate')" href="#"></plauti-menu-item> 
+              <plauti-menu-item ng-disabled="meta.inprocess[grp.Id]" title="{!$label.DUPLICATE_DO_NOT_SHOW_AGAIN}" ng-click="notDuplicateRelation(grp.Id, 'Duplicate')" href="#"></plauti-menu-item> 
+              <plauti-menu-item ng-disabled="meta.inprocess[grp.Id]" title="{!$label.CHILD_PARENT_DO_NOT_SHOW_AGAIN}" ng-click="notDuplicateRelation(grp.Id, 'Parent - Child')" href="#"></plauti-menu-item> 
+            </plauti-menu>
+          </td>
+        </tr>
+        <tr ng-show="grp.isOpen" ng-repeat-end="ng-repeat-end">
+          <td colspan="9" class="dc-job-detail-grp-data dc-p-around--none ">
+            <div class="slds-spinner--small slds-m-left--large" ng-if="grp.isLoading">
+              <img ng-src="{!URLFOR($Resource.slds,'')}/assets/images/spinners/slds_spinner_brand.gif" alt="{!$label.LOADING}" />
+            </div>
+            <div ng-if="!grp.isLoading && grp.isFetched">
+              <div ng-init="selectList[grpId]={};" />
+                <div class="slds-tabs--scoped" ng-init="grp.openTab = 'record'">
+                  <ul class="slds-tabs--scoped__nav" role="tablist">
+                    <li class="slds-tabs--scoped__item slds-text-heading--label" ng-class="{'slds-active': grp.openTab == 'record'}" title="Record" role="presentation"><a class="slds-tabs--scoped__link dc-tab-link-small" ng-click="grp.openTab = 'record'" href="#void" role="tab" tabindex="0" aria-selected="true" aria-controls="{{grp.Id}}_record_view" id="{{grp.Id}}_record_view__item">{!$label.RECORDS}</a></li>
+                    <li class="slds-tabs--scoped__item slds-text-heading--label" ng-class="{'slds-active': grp.openTab == 'pair'}" title="Pair" role="presentation"><a class="slds-tabs--scoped__link dc-tab-link-small" ng-click="grp.openTab = 'pair'" href="#void" role="tab" tabindex="-1" aria-selected="false" aria-controls="{{grp.Id}}_pair_view" id="{{grp.Id}}_pair_view__item">{!$label.PAIR_VIEW}</a></li>
+                  </ul>
+
+<!-- RECORD VIEW -->
+
+				<div id="{{grp.Id}}_record_view" class="slds-tabs--scoped__content slds-p-around--none " ng-class="(grp.openTab == 'record' ? 'slds-show' : 'slds-hide')" role="tabpanel" aria-labelledby="{{grp.Id}}_record_view__item">
+                    
+                    <div class="slds-notify slds-notify--alert slds-theme--error slds-theme--alert-texture" role="alert" ng-if="data.groupData[grp.Id].errorList.length > 0">
+						<span class="slds-assistive-text">{!$label.ERROR}</span>
+					    <ol>
+					    	<li style="white-space: normal;" ng-repeat="e in data.groupData[grp.Id].errorList" ng-bind-html="e"></li>
+					    </ol>
+					 </div>
+                    
+                    
+                    <div class="dc-pair-view slds-grid" ng-if="data.groupData[grp.Id].sourcePrefix != data.groupData[grp.Id].matchPrefix">
+                      <div class="slds-col--padded slds-p-left--large slds-p-right--large slds-p-around--x-small">
+                        <span class="dc-pair-view-id" ng-bind-html="data.groupData[grp.Id].sourceObjectLabel"></span>
+                      </div>
+                    </div>
+                    <div class="slds-grid" ng-show="selectCount[grpId] && selectCount[grpId] > 0">
+                      <div class="slds-col--padded slds-p-left--large slds-p-right--large">
+                        <button class="slds-button slds-button--neutral dc-button--small dc-color--info slds-m-vertical--x-small" ng-disabled="selectCount[grpId] < 2" ng-click="mergeSelection(grp.Id, grpId)">{!$label.MERGE}</button>
+                        <button class="slds-button slds-button--neutral dc-button--small dc-color--info slds-m-vertical--x-small" ng-click="discardSelection(grp.Id, grpId)">{!$label.DISCARD}</button>                        
+                      </div>
+                    </div>
+                    <div class="slds-scrollable--x" style="width: {{meta.tableWidth}}px;">
+                    <table class="slds-table dc-table-grey slds-no-row-hover" >
+                      <thead>
+                        <tr class="slds-text-heading--label">
+                          <th class="slds-cell-shrink" ng-if="data.groupData[grp.Id].sourcePrefix == data.groupData[grp.Id].matchPrefix">
+              				<label class="slds-checkbox">
+                            	<input name="group_select_{{grpId}}" type="checkbox" id="group_select_{{grpId}}" ng-model="masterCheck[grpId]" ng-change="selectMaster(grpId);" />
+                				<span class="slds-checkbox--faux"></span>
+                				<span class="slds-assistive-text">{!$label.SELECT_ALL}</span>
+              				</label>        
+                          </th>
+
+                          <th scope="col" class="slds-truncate" ng-if="data.groupData[grp.Id].resultField[data.groupData[grp.Id].sourcePrefix].length > 0" ng-repeat="field in data.groupData[grp.Id].resultField[data.groupData[grp.Id].sourcePrefix]" ng-bind-html="field.fieldLabel"></th>
+                          <th colspan="1" scope="col" class="slds-truncate" ng-if="data.groupData[grp.Id].resultField[data.groupData[grp.Id].sourcePrefix].length == 0"></th>
+                          <th scope="col" class="slds-cell-shrink"></th>
+                          <th ng-if="data.groupData[grp.Id].resultField[data.groupData[grp.Id].sourcePrefix].length >= 1" scope="col" class="slds-cell-shrink"></th> 
+                        </tr>                                               
+                      </thead>
+                      <tbody>
+                        <tr ng-repeat="(rowId, row) in data.groupData[grp.Id].objectList[data.groupData[grp.Id].sourcePrefix]">
+                          <td class="slds-cell-shrink" ng-if="data.groupData[grp.Id].sourcePrefix == data.groupData[grp.Id].matchPrefix">
+                            <label class="slds-checkbox">
+                            	<input name="record_select_{{rowId}}" type="checkbox" id="record_select_{{rowId}}" ng-model="selectList[grpId][rowId]" ng-change="selectItem(grpId, rowId);" ng-init="selectList[grpId][rowId] = false;"/>
+                        		<span class="slds-checkbox--faux"></span>
+                        		<span class="slds-assistive-text">{!$label.SELECT_ROW}</span>
+                        	</label>	
+                          </td>  
+                          <td data-label="{{field.fieldLabel}}" ng-repeat="field in data.groupData[grp.Id].resultField[data.groupData[grp.Id].sourcePrefix]" ng-bind-html="row[field.fieldName]"></td> 
+                          <td class="slds-cell-shrink">
+                          	<div class="slds-icon slds-icon--x-small slds-icon-text-default">
+                          		<img ng-click="openRecord(rowId);" ng-src="{!URLFOR($Resource.slds,'')}/assets/icons/utility/open_120.png"/>
+                          	</div>
+                          </td>
+                          
+                        <apex:outputPanel layout="none" rendered="{!$ObjectType[sourceObjectName].deletable}">   
+                          	<td class="slds-cell-shrink">
+                          		<div class="slds-icon slds-icon--x-small slds-icon-text-default">
+                          			<img ng-click="ModaldeleteRecord(rowId, grpId);" ng-src="{!URLFOR($Resource.dupcheck__slds,'')}/assets/icons/utility/delete_120.png"/>
+                          		</div>
+							</td>
+						</apex:outputPanel>
+						
+                        </tr>
+                      </tbody>
+                    </table>
+                    </div>
+                    <div ng-if="data.groupData[grp.Id].sourcePrefix != data.groupData[grp.Id].matchPrefix">
+                      <div class="dc-pair-view slds-grid">
+                      <div class="slds-col--padded slds-p-left--large slds-p-right--large slds-p-around--x-small">
+                        <span class="dc-pair-view-id" ng-bind-html="data.groupData[grp.Id].matchObjectLabel"></span>
+                      </div>
+                    </div>
+                    <div class="slds-scrollable--x" style="width: {{meta.tableWidth}}px;">
+                      <table class="slds-table dc-table-grey slds-no-row-hover">
+                      <thead>
+                        <tr class="slds-text-heading--label">
+                          <th scope="col" class="slds-truncate" ng-repeat="field in data.groupData[grp.Id].resultField[data.groupData[grp.Id].matchPrefix]" ng-bind-html="field.fieldLabel"></th>
+                          <th scope="col" class="slds-cell-shrink"></th>
+                          <th scope="col" class="slds-cell-shrink"></th>  
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr ng-repeat="(rowId, row)  in data.groupData[grp.Id].objectList[data.groupData[grp.Id].matchPrefix]">
+                          <td data-label="{{field.fieldLabel}}" ng-repeat="field in data.groupData[grp.Id].resultField[data.groupData[grp.Id].matchPrefix]" ng-bind-html="row[field.fieldName]"></td>
+                          <td class="slds-cell-shrink"><div class="slds-icon slds-icon--x-small slds-icon-text-default"><img ng-click="openRecord(rowId);" ng-src="{!URLFOR($Resource.slds,'')}/assets/icons/utility/open_120.png"/></div></td>
+                          
+                          <apex:outputPanel layout="none" rendered="{!$ObjectType[matchObjectName].deletable}">  
+                          	<td class="slds-cell-shrink"><div class="slds-icon slds-icon--x-small slds-icon-text-default"><img ng-click="ModaldeleteRecord(rowId, grpId);" ng-src="{!URLFOR($Resource.dupcheck__slds,'')}/assets/icons/utility/delete_120.png"/></div></td>	
+                          </apex:outputPanel>
+                        
+                        </tr>
+                      </tbody>
+                    </table>
+                    </div>
+                    </div>
+
+                  </div>
+                  
+<!-- PAIR VIEW -->
+                  
+                  <div id="{{grp.Id}}_pair_view" class="slds-tabs--scoped__content slds-p-around--none" ng-class="(grp.openTab == 'pair' ? 'slds-show' : 'slds-hide')" role="tabpanel" aria-labelledby="{{grp.Id}}_pair_view__item">
+                    
+                    <div ng-repeat="pair in data.groupData[grp.Id].pairList">
+                    	
+                        <table class="slds-table slds-no-row-hover dc-pair-view dc-pair-header">
+                          <tbody>
+                            <tr >
+                              <td>
+                                <span class="dc-pair-view-id">
+                                  <span ng-bind-html="pair.Name"></span>&nbsp;-&nbsp;
+                                  <span ng-bind-html="pair.{!managed}Score__c"></span>%
+                                </span>
+                              </td>
+                              <td class="slds-cell-shrink" ng-init="meta.inprocess[pair.Id] = false;">
+                                <div class="slds-button-group" role="group" ng-if="data.job.isMerge">
+                                  <button class="slds-button slds-button--neutral dc-color--info dc-button--small" ng-disabled="meta.inprocess[pair.Id]" ng-click="mergePair(pair.Id)">{!$label.MERGE}</button>
+                                  <apex:outputPanel layout="none" rendered="{!license.features.quickMerge}">
+                                  	<button class="slds-button slds-button--neutral dc-color--info dc-button--small" ng-disabled="meta.inprocess[pair.Id]" ng-click="quickMergePair(pair.Id, grp.Id)">{!$label.QUICK_MERGE}</button> 
+                               	  </apex:outputPanel>
+                                </div>
+                                <div class="slds-button-group" role="group" ng-if="data.job.isConvert">
+                                  <button class="slds-button slds-button--neutral dc-color--info dc-button--small" ng-disabled="meta.inprocess[pair.Id]" ng-click="convert(pair.{!managed}SourceObject__c, pair.{!managed}MatchObject__c)">{!$label.CONVERT}</button>
+                                  <apex:outputPanel layout="none" rendered="{!license.features.quickConvert}">
+                                  	<button class="slds-button slds-button--neutral dc-color--info dc-button--small" ng-disabled="meta.inprocess[pair.Id]" ng-click="quickConvertPair(pair.Id, grp.Id)">{!$label.QUICK_CONVERT}</button>
+                                  </apex:outputPanel>
+                                </div>
+                                
+                              </td>
+                              <td class="slds-cell-shrink">
+                                <plauti-menu menu-icon="down" menu-size="small" position="bottomRight" svg-path="{!URLFOR($Resource.slds,'')}/assets/icons/utility-sprite/svg/symbols.svg"> 
+                                  <plauti-menu-item ng-disabled="meta.inprocess[pair.Id]" title="{!$label.DISCARD}" ng-click="notDuplicatePair(pair.Id, grp.Id)" href="#"></plauti-menu-item>
+                                  <plauti-menu-item ng-disabled="meta.inprocess[pair.Id]" title="{!$label.FALSE_DUPLICATE_DO_NOT_SHOW_AGAIN}" ng-click="notDuplicatePairRelation(pair.Id, grp.Id, 'False Duplicate')" href="#"></plauti-menu-item> 
+                                  <plauti-menu-item ng-disabled="meta.inprocess[pair.Id]" title="{!$label.DUPLICATE_DO_NOT_SHOW_AGAIN}" ng-click="notDuplicatePairRelation(pair.Id, grp.Id, 'Duplicate')" href="#"></plauti-menu-item> 
+                                  <plauti-menu-item ng-disabled="meta.inprocess[pair.Id]" title="{!$label.CHILD_PARENT_DO_NOT_SHOW_AGAIN}" ng-click="notDuplicatePairRelation(pair.Id, grp.Id, 'Parent - Child')" href="#"></plauti-menu-item> 
+                                </plauti-menu>                          
+                              </td>
+                            </tr>
+                            <tr ng-if="pair.{!managed}Error__c">
+                            	<td colspan="3" class="dc-no-padding dc-no-border">
+                            		  <div class="slds-notify slds-notify--alert slds-theme--error slds-theme--alert-texture" role="alert">
+									    <span class="slds-assistive-text">{!$label.ERROR}</span>
+									    <h2 style="white-space: normal;" ng-bind-html="pair.{!managed}Error__c">
+									    
+									    </h2>
+									  </div>
+									
+                            	</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                        <div class="slds-scrollable--x" style="width: {{meta.tableWidth}}px;">
+                      <table class="slds-table dc-table-grey slds-no-row-hover">
+                        <thead>
+                          <tr class="slds-text-heading--label">
+                            <th scope="col" class="slds-truncate" ng-repeat="field in data.groupData[grp.Id].resultField[data.groupData[grp.Id].sourcePrefix]" ng-bind-html="field.fieldLabel"></th>
+                            <th scope="col" class="slds-cell-shrink"></th> 
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr> 
+                            <td ng-repeat="field in data.groupData[grp.Id].resultField[data.groupData[grp.Id].sourcePrefix]" data-label="{{field.fieldLabel}}"  ng-bind-html="data.groupData[grp.Id].objectList[data.groupData[grp.Id].sourcePrefix][pair.{!managed}SourceObject__c][field.fieldName]"></td>
+                            <td class="slds-cell-shrink"><div class="slds-icon slds-icon--x-small slds-icon-text-default"><img ng-click="openRecord(pair.{!managed}SourceObject__c);" ng-src="{!URLFOR($Resource.slds,'')}/assets/icons/utility/open_120.png"/></div></td>
+                            <apex:outputPanel layout="none" rendered="{!$ObjectType[sourceObjectName].deletable}">  
+                            	<td class="slds-cell-shrink"><div class="slds-icon slds-icon--x-small slds-icon-text-default"><img ng-click="ModaldeleteRecord(pair.{!managed}SourceObject__c, grpId);" ng-src="{!URLFOR($Resource.dupcheck__slds,'')}/assets/icons/utility/delete_120.png"/></div></td>
+                          	</apex:outputPanel>
+                          </tr>
+                          <tr ng-if="data.groupData[grp.Id].sourcePrefix == data.groupData[grp.Id].matchPrefix">
+                            <td ng-repeat="field in data.groupData[grp.Id].resultField[data.groupData[grp.Id].matchPrefix]" data-label="{{field.fieldLabel}}"  ng-bind-html="data.groupData[grp.Id].objectList[data.groupData[grp.Id].matchPrefix][pair.{!managed}MatchObject__c][field.fieldName]"></td>
+                            <td class="slds-cell-shrink"><div class="slds-icon slds-icon--x-small slds-icon-text-default"><img ng-click="openRecord(pair.{!managed}MatchObject__c);" ng-src="{!URLFOR($Resource.slds,'')}/assets/icons/utility/open_120.png"/></div></td>
+                            <apex:outputPanel layout="none" rendered="{!$ObjectType[matchObjectName].deletable}">  
+                            	<td class="slds-cell-shrink"><div class="slds-icon slds-icon--x-small slds-icon-text-default"><img ng-click="ModaldeleteRecord(pair.{!managed}MatchObject__c, grpId);" ng-src="{!URLFOR($Resource.dupcheck__slds,'')}/assets/icons/utility/delete_120.png"/></div></td>
+                          	</apex:outputPanel>
+                          </tr>
+                        </tbody>
+                      </table>
+                      </div>
+                      
+                      <div ng-if="data.groupData[grp.Id].sourcePrefix != data.groupData[grp.Id].matchPrefix">
+                      <div class="slds-scrollable--x" style="width: {{meta.tableWidth}}px;">
+                        <table class="slds-table dc-table-grey slds-no-row-hover">
+                        <thead>
+                          <tr class="slds-text-heading--label">
+                            <th scope="col" class="slds-truncate" ng-repeat="field in data.groupData[grp.Id].resultField[data.groupData[grp.Id].matchPrefix]" ng-bind-html="field.fieldLabel"></th>
+                            <th scope="col" class="slds-cell-shrink"></th> 
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td ng-repeat="field in data.groupData[grp.Id].resultField[data.groupData[grp.Id].matchPrefix]" data-label="{{field.fieldLabel}}" ng-bind-html="data.groupData[grp.Id].objectList[data.groupData[grp.Id].matchPrefix][pair.{!managed}MatchObject__c][field.fieldName]"></td>
+                            <td class="slds-cell-shrink"><div class="slds-icon slds-icon--x-small slds-icon-text-default"><img ng-click="openRecord(pair.{!managed}MatchObject__c);" ng-src="{!URLFOR($Resource.slds,'')}/assets/icons/utility/open_120.png"/></div></td>
+                            <apex:outputPanel layout="none" rendered="{!$ObjectType[matchObjectName].deletable}">  	
+                            	<td class="slds-cell-shrink"><div class="slds-icon slds-icon--x-small slds-icon-text-default"><img ng-click="ModaldeleteRecord(pair.{!managed}MatchObject__c, grpId);" ng-src="{!URLFOR($Resource.dupcheck__slds,'')}/assets/icons/utility/delete_120.png"/></div></td>
+                          	</apex:outputPanel>
+                          </tr>
+                        </tbody>
+                      </table>
+                      </div>
+                      
+                      
+                      </div>
+                      
+                      
+                    </div>
+                    
+                  </div>
+                </div> 
+              
+            </div>
+          </td>
+        </tr>
+        
+      </tbody>
+    </table>
+    <div class="slds-grid slds-grid--align-spread slds-col--padded slds-m-top--large slds-m-left--small" ng-if="!meta.loadingData && (data.job.duplicateCount == 0) && (data.job.groupCount == 0)">
+      <h3 class="slds-text-heading--small">{!$label.NO_MORE_DUPLICATES_FOUND_YOU_CAN_DELETE_THIS_JOB}</h3>
+    </div>
+    
+    
+    <div class="slds-m-top--small" ng-if="!meta.loadingData">
+      <div class="slds-grid slds-grid--align-center">
+        <div class="slds-col">
+          <button class="slds-button slds-button--brand" ng-click="fetchMore();" ng-if="data.isMore && meta.maxPageNumber > dataFilter.pageNumber">{!$label.LOAD_MORE}</button>
+          <h2 class="slds-text-heading--label" ng-if="data.isMore && meta.maxPageNumber <= dataFilter.pageNumber">{!$label.THERE_ARE_MORE_GROUPS_AVAILABLE_PLEASE_USE_FILTERS_TO_LIMIT_RECORDS}</h2>
+        </div>
+      </div>
+    </div>
+    <div class="slds-grid slds-grid--align-center" ng-if="meta.loadingData">
+      <div class="slds-col slds-spinner--medium slds-m-top--medium">
+        <img src="{!URLFOR($Resource.slds,'')}/assets/images/spinners/slds_spinner_brand.gif" alt="{!$label.LOADING}" />
+      </div>
+    </div>
+
+
+
+  </div>
+
+</apex:page>

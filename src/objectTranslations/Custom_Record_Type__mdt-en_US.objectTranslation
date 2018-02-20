@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Custom Record Type</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Custom Record Types</value>
+    </caseValues>
+    <fields>
+        <help><!-- This is the CSV Template name shown to the user in the data upload page. --></help>
+        <label><!-- Default CSV Template Name --></label>
+        <name>CSV_Template_Name__c</name>
+    </fields>
+    <fields>
+        <help><!-- This is the path for the CSV template in Static resource. --></help>
+        <label><!-- Default CSV Template Path --></label>
+        <name>Default_CSV_Template_Path__c</name>
+    </fields>
+    <fields>
+        <help><!-- this is the description of the metadata which will be shown on the page --></help>
+        <label><!-- Description --></label>
+        <name>Description__c</name>
+    </fields>
+    <fields>
+        <help><!-- This is the CSV Template name shown to the user in the data upload page. --></help>
+        <label><!-- Individual CSV Template Name --></label>
+        <name>Individual_CSV_Template_Name__c</name>
+    </fields>
+    <fields>
+        <help><!-- This is the CSV template that will be used for individual type grant awards. --></help>
+        <label><!-- Individual CSV Template Path --></label>
+        <name>Individual_CSV_Template_Path__c</name>
+    </fields>
+    <fields>
+        <help><!-- Order of the record type on the page. --></help>
+        <label><!-- Order --></label>
+        <name>Order__c</name>
+    </fields>
+    <fields>
+        <help><!-- This is the CSV Template name shown to the user in the data upload page. --></help>
+        <label><!-- Organisation CSV Template Name --></label>
+        <name>Organisation_CSV_Template_Name__c</name>
+    </fields>
+    <fields>
+        <help><!-- This is the CSV template that needs to be used for Organisation type grant award. --></help>
+        <label><!-- Organisation CSV Template Path --></label>
+        <name>Organisation_CSV_Template_Path__c</name>
+    </fields>
+    <fields>
+        <help><!-- This is the processor for this record type. --></help>
+        <label><!-- Processor --></label>
+        <name>Processor__c</name>
+    </fields>
+    <fields>
+        <help><!-- This checkbox indicates if the record type requires a value for recipient type. --></help>
+        <label><!-- Requires Recipient Type --></label>
+        <name>Requires_Recipient_Type__c</name>
+    </fields>
+    <fields>
+        <help><!-- Related SObject API name. --></help>
+        <label><!-- SObject API Name --></label>
+        <name>SObject_API_Name__c</name>
+    </fields>
+    <layouts>
+        <layout>Custom Record Type Layout</layout>
+        <sections>
+            <label><!-- CSV Template Details --></label>
+            <section>CSV Template Details</section>
+        </sections>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

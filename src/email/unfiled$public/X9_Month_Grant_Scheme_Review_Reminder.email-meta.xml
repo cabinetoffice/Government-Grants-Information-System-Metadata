@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>9 Month Grant Scheme Review Reminder</name>
+    <style>none</style>
+    <subject>9 Month Grant Scheme Review Reminder</subject>
+    <textOnly>Dear {!User.Name},
+
+You have created the following grant schemes 9 months ago and as best practice, you are due to review all your grants every year. Can you please prepare your review of these schemes and update your schemes in the next 3 months, by choosing one the of options in the &quot;Review outcome&quot; field and adding any necessary details in the &quot;Review outcome details&quot; field. These fields are in the section called &quot;Review/ Evaluation Details&quot;
+
+https://cabinetofficeidp--dev.cs81.my.salesforce.com/00O26000000PdXL
+
+Regards,
+GGIS Team</textOnly>
+    <type>custom</type>
+</EmailTemplate>

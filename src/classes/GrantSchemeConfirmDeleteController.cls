@@ -23,6 +23,16 @@ public without sharing class GrantSchemeConfirmDeleteController {
             returnPage = stndController.cancel();
         } catch (DmlException exceptionToHandle) {
             ApexPages.addMessages(exceptionToHandle);
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+            return null;
+        } catch (EmailException emailExceptionHandle) {
+            ApexPages.addMessages(emailExceptionHandle);
+            return null;
+>>>>>>> refs/remotes/origin/master
+>>>>>>> branch 'master' of https://github.com/cabinetoffice/Government-Grants-Information-System-Metadata
         }
         return returnPage;
     }

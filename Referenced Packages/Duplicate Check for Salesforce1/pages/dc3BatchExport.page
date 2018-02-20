@@ -1,0 +1,2 @@
+<apex:page docType="html-5.0" sidebar="false" title="Batch Export - Duplicate Check for Salesforce" controller="dupcheck.dc3ControllerBatchExport" action="{!directBatch}" tabstyle="dcBatch__tab">
+</apex:page>
