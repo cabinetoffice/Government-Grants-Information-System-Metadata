@@ -1,4 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ReportFolder xmlns="http://soap.sforce.com/2006/04/metadata">
+<<<<<<< HEAD
     <name>Service Reports - Best Practice</name>
+=======
+    <name>Best Practice Service Reports</name>
+>>>>>>> branch 'master' of https://github.com/cabinetoffice/Government-Grants-Information-System-Metadata
 </ReportFolder>

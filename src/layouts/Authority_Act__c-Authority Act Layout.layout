@@ -53,6 +53,7 @@
         <layoutColumns/>
         <style>CustomLinks</style>
     </layoutSections>
+<<<<<<< HEAD
     <relatedLists>
         <fields>NAME</fields>
         <fields>Scheme_Reference_No__c</fields>
@@ -62,6 +63,8 @@
         <fields>Funder__c</fields>
         <relatedList>Grant_Scheme__c.Authority_Act__c</relatedList>
     </relatedLists>
+=======
+>>>>>>> branch 'master' of https://github.com/cabinetoffice/Government-Grants-Information-System-Metadata
     <showEmailCheckbox>false</showEmailCheckbox>
     <showHighlightsPanel>false</showHighlightsPanel>
     <showInteractionLogPanel>false</showInteractionLogPanel>

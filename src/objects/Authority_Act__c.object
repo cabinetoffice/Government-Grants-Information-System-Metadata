@@ -54,7 +54,11 @@
     <externalSharingModel>ReadWrite</externalSharingModel>
     <fields>
         <fullName>Is_Active__c</fullName>
+<<<<<<< HEAD
         <defaultValue>false</defaultValue>
+=======
+        <defaultValue>true</defaultValue>
+>>>>>>> branch 'master' of https://github.com/cabinetoffice/Government-Grants-Information-System-Metadata
         <externalId>false</externalId>
         <label>Is Active</label>
         <trackTrending>false</trackTrending>

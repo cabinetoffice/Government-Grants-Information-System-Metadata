@@ -66,11 +66,14 @@
             <field>User_Type__c</field>
             <table>User</table>
         </columns>
+<<<<<<< HEAD
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>Id</field>
             <table>User</table>
         </columns>
+=======
+>>>>>>> branch 'master' of https://github.com/cabinetoffice/Government-Grants-Information-System-Metadata
         <masterLabel>Users</masterLabel>
     </sections>
 </ReportType>

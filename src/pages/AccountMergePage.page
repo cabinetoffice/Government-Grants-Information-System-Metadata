@@ -1,5 +1,6 @@
 <apex:page standardcontroller="Account" extensions="AccountMergeController">
     <script>
+<<<<<<< HEAD
         function confirmCreate() {
             var c = confirm('You are about re-parent all grant schemes, awards and Intermediaries from the current Organisation to the Organisation you have selected, this change is permanent. Do you wish to continue?');
             
@@ -37,6 +38,157 @@
                     <apex:column headervalue="ISNI" value="{!AL.ISNI__c}"/>
                     <apex:column headerValue="International ID" value="{!AL.International_ID__c}"/>
                     <apex:column headervalue="Other ID" value="{!AL.Other_ID__c}"/>
+=======
+<<<<<<< HEAD
+        function confirmCreate() {
+            var c = confirm('You are about re-parent all grant schemes, awards and Intermediaries from the current Organisation to the Organisation you have selected, this change is permanent. Do you wish to continue?');
+            
+            if(c == true) {
+                initiateCreate();
+            }
+        }
+    </script>
+     <apex:sectionHeader title="Organisation" subtitle="Re-Parent"/> 
+    <apex:pageMessages id="messagePanel"/>
+    <apex:form >
+        <apex:pageblock >
+            <apex:actionFunction name="initiateCreate" action="{!reParent}" />
+            <apex:outputtext >Search Parent Organisation</apex:outputtext>
+            <apex:inputtext value="{!accName}" id="NameImput"/>
+            <apex:commandbutton value="Search" action="{!searchAccount}" rerender="accounttable"/>
+            <apex:outputpanel id="accounttable">
+                <apex:pageblocktable value="{!accountList}" var="AL">
+                    <apex:column headervalue="Select">
+                        <apex:actionsupport action="{!setComp}" event="onclick" rerender="false">
+                            <input type="radio" name="selectCN"/>
+                            <apex:param name="selected" value="{!AL.id}"/>
+                        </apex:actionsupport>
+                    </apex:column>
+                    <apex:column headervalue="Name" value="{!AL.name}"/>
+                    <apex:column headervalue="Type" value="{!AL.Type__c}"/>
+                    <apex:column headervalue="Address">
+                        <apex:outputtext value="{!AL.Primary_Address_1__c + ', ' + AL.Primary_City__c + ', ' + AL.Primary_County__c + ', ' + AL.Primary_Postal_Code__c}"/>
+                    </apex:column>
+                    <apex:column headervalue="CPID (from OSCAR)" value="{!AL.CPID_from_OSCAR__c}"/>
+                    <apex:column headerValue="Companies House Number" value="{!AL.Companies_House_Number__c}"/>
+                    <apex:column headervalue="Charities Commission Number" value="{!AL.Charities_Commission_Number__c}"/>
+                    <apex:column headervalue="VAT Reg no" value="{!AL.VAT_Reg_no__c}"/>
+                    <apex:column headervalue="DUNS Number" value="{!AL.DUNS_Number__c}"/>
+                    <apex:column headervalue="ISNI" value="{!AL.ISNI__c}"/>
+                    <apex:column headerValue="International ID" value="{!AL.International_ID__c}"/>
+                    <apex:column headervalue="Other ID" value="{!AL.Other_ID__c}"/>
+=======
+<<<<<<< HEAD
+        function confirmCreate() {
+            var c = confirm('You are about re-parent all grant schemes, awards and Intermediaries from the current Organisation to the Organisation you have selected, this change is permanent. Do you wish to continue?');
+            
+            if(c == true) {
+                initiateCreate();
+            }
+        }
+    </script>
+     <apex:sectionHeader title="Organisation" subtitle="Re-Parent"/> 
+    <apex:pageMessages id="messagePanel"/>
+    <apex:form >
+        <apex:pageblock >
+            <apex:actionFunction name="initiateCreate" action="{!reParent}" />
+            <apex:outputtext >Search Parent Organisation</apex:outputtext>
+            <apex:inputtext value="{!accName}" id="NameImput"/>
+            <apex:commandbutton value="Search" action="{!searchAccount}" rerender="accounttable"/>
+            <apex:outputpanel id="accounttable">
+                <apex:pageblocktable value="{!accountList}" var="AL">
+                    <apex:column headervalue="Select">
+                        <apex:actionsupport action="{!setComp}" event="onclick" rerender="false">
+                            <input type="radio" name="selectCN"/>
+                            <apex:param name="selected" value="{!AL.id}"/>
+                        </apex:actionsupport>
+                    </apex:column>
+                    <apex:column headervalue="Name" value="{!AL.name}"/>
+                    <apex:column headervalue="Type" value="{!AL.Type__c}"/>
+                    <apex:column headervalue="Address">
+                        <apex:outputtext value="{!AL.Primary_Address_1__c + ', ' + AL.Primary_City__c + ', ' + AL.Primary_County__c + ', ' + AL.Primary_Postal_Code__c}"/>
+                    </apex:column>
+                    <apex:column headervalue="CPID (from OSCAR)" value="{!AL.CPID_from_OSCAR__c}"/>
+                    <apex:column headerValue="Companies House Number" value="{!AL.Companies_House_Number__c}"/>
+                    <apex:column headervalue="Charities Commission Number" value="{!AL.Charities_Commission_Number__c}"/>
+                    <apex:column headervalue="VAT Reg no" value="{!AL.VAT_Reg_no__c}"/>
+                    <apex:column headervalue="DUNS Number" value="{!AL.DUNS_Number__c}"/>
+                    <apex:column headervalue="ISNI" value="{!AL.ISNI__c}"/>
+                    <apex:column headerValue="International ID" value="{!AL.International_ID__c}"/>
+                    <apex:column headervalue="Other ID" value="{!AL.Other_ID__c}"/>
+=======
+<<<<<<< HEAD
+        function confirmCreate() {
+            var c = confirm('You are about re-parent all grant schemes, awards and Intermediaries from the current Organisation to the Organisation you have selected, this change is permanent. Do you wish to continue?');
+            
+            if(c == true) {
+                initiateCreate();
+            }
+        }
+    </script>
+     <apex:sectionHeader title="Organisation" subtitle="Re-Parent"/> 
+    <apex:pageMessages id="messagePanel"/>
+    <apex:form >
+        <apex:pageblock >
+            <apex:actionFunction name="initiateCreate" action="{!reParent}" />
+            <apex:outputtext >Search Parent Organisation</apex:outputtext>
+            <apex:inputtext value="{!accName}" id="NameImput"/>
+            <apex:commandbutton value="Search" action="{!searchAccount}" rerender="accounttable"/>
+            <apex:outputpanel id="accounttable">
+                <apex:pageblocktable value="{!accountList}" var="AL">
+                    <apex:column headervalue="Select">
+                        <apex:actionsupport action="{!setComp}" event="onclick" rerender="false">
+                            <input type="radio" name="selectCN"/>
+                            <apex:param name="selected" value="{!AL.id}"/>
+                        </apex:actionsupport>
+                    </apex:column>
+                    <apex:column headervalue="Name" value="{!AL.name}"/>
+                    <apex:column headervalue="Type" value="{!AL.Type__c}"/>
+                    <apex:column headervalue="Address">
+                        <apex:outputtext value="{!AL.Primary_Address_1__c + ', ' + AL.Primary_City__c + ', ' + AL.Primary_County__c + ', ' + AL.Primary_Postal_Code__c}"/>
+                    </apex:column>
+                    <apex:column headervalue="CPID (from OSCAR)" value="{!AL.CPID_from_OSCAR__c}"/>
+                    <apex:column headerValue="Companies House Number" value="{!AL.Companies_House_Number__c}"/>
+                    <apex:column headervalue="Charities Commission Number" value="{!AL.Charities_Commission_Number__c}"/>
+                    <apex:column headervalue="VAT Reg no" value="{!AL.VAT_Reg_no__c}"/>
+                    <apex:column headervalue="DUNS Number" value="{!AL.DUNS_Number__c}"/>
+                    <apex:column headervalue="ISNI" value="{!AL.ISNI__c}"/>
+                    <apex:column headerValue="International ID" value="{!AL.International_ID__c}"/>
+                    <apex:column headervalue="Other ID" value="{!AL.Other_ID__c}"/>
+=======
+		function confirmCreate() {
+			var c = confirm('You are about re-parent all grant schemes, awards and Intermediaries from the current Organisation to the Organisation you have selected, this change is permanent. Do you wish to continue?');
+            
+			if(c == true) {
+                initiateCreate();
+			}
+		}
+	</script>
+	 <apex:sectionHeader title="Organisation" subtitle="Re-Parent"/> 
+    <apex:pageMessages id="messagePanel"/>
+    <apex:form >
+        <apex:pageblock >
+            <apex:actionFunction name="initiateCreate" action="{!reParent}" />
+            <apex:outputtext >Search Parent Organisation</apex:outputtext>
+            <apex:inputtext value="{!accName}" id="NameImput"/>
+            <apex:commandbutton value="Search" action="{!searchAccount}" rerender="accounttable"/>
+            <apex:outputpanel id="accounttable">
+                <apex:pageblocktable value="{!accountList}" var="AL">
+                    <apex:column headervalue="Select">
+                        <apex:actionsupport action="{!setComp}" event="onclick" rerender="false">
+                            <input type="radio" name="selectCN"/>
+                            <apex:param name="selected" value="{!AL.id}"/>
+                        </apex:actionsupport>
+                    </apex:column>
+                    <apex:column headervalue="Name" value="{!AL.name}"/>
+                    <apex:column headervalue="Type" value="{!AL.Type__c}"/>
+                    <apex:column headervalue="Address">
+                        <apex:outputtext value="{!AL.Primary_Address_1__c + ', ' + AL.Primary_City__c + ', ' + AL.Primary_County__c + ', ' + AL.Primary_Postal_Code__c}"/>
+                    </apex:column>
+>>>>>>> refs/remotes/origin/master
+>>>>>>> branch 'master' of https://github.com/cabinetoffice/Government-Grants-Information-System-Metadata
+>>>>>>> branch 'master' of https://github.com/cabinetoffice/Government-Grants-Information-System-Metadata
+>>>>>>> branch 'master' of https://github.com/cabinetoffice/Government-Grants-Information-System-Metadata
                 </apex:pageblocktable>
                 <div align="center" draggable="false" >
                     <apex:commandbutton value="Reparent" onClick="confirmCreate(); return false;" disabled="{!MergeRendered}"/>

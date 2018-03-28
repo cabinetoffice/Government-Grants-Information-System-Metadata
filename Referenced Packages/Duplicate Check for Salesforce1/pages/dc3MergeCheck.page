@@ -1,0 +1,247 @@
+<apex:page docType="html-5.0" sidebar="false"
+	controller="dupcheck.dc3ControllerMergeCheck"
+	title="Merge Check - Duplicate Check for Salesforce"
+	action="{!janitor}" tabstyle="dc3Setup__tab" readOnly="true">
+
+	<apex:stylesheet value="{!URLFOR($Resource.dupcheck__slds, '/assets/styles/salesforce-lightning-design-system-vf.min.css')}" />
+	<apex:stylesheet value="{!IF(isDev,AssetsUrl,URLFOR($Resource.dupcheck__dupcheckAssets,'/dupcheckAssets'))}/lightning/style/dupcheckApp.css" />
+
+	<apex:includeScript value="//assets-plautibv.netdna-ssl.com/jquery/1.11.1/jquery.min.js" />
+	<apex:includeScript value="//assets-plautibv.netdna-ssl.com/angularjs/1.3.11/angular.min.js" />
+	<apex:includeScript value="//assets-plautibv.netdna-ssl.com/angularjs/1.3.11/angular-sanitize.min.js" />
+	<apex:includeScript value="{!IF(isDev,AssetsUrl,URLFOR($Resource.dupcheck__dupcheckAssets,'/dupcheckAssets'))}/lightning/js/plauti-ng-slds.min.js" />
+
+	<apex:includeScript value="//cdnjs.cloudflare.com/ajax/libs/angular-local-storage/0.2.2/angular-local-storage.min.js" />
+	<apex:includeScript value="{!IF(isDev,AssetsUrl,URLFOR($Resource.dupcheck__dupcheckAssets,'/dupcheckAssets'))}/lightning/js/dupcheck.js" />
+	<apex:includeScript value="{!IF(isDev,AssetsUrl,URLFOR($Resource.dupcheck__dupcheckAssets,'/dupcheckAssets'))}/lightning/js/dupcheck.ng.app.js" />
+	<apex:includeScript value="{!IF(isDev,AssetsUrl,URLFOR($Resource.dupcheck__dupcheckAssets,'/dupcheckAssets'))}/lightning/js/dupcheck.ng.directives.js" />
+	<apex:includeScript value="{!IF(isDev,AssetsUrl,URLFOR($Resource.dupcheck__dupcheckAssets,'/dupcheckAssets'))}/lightning/js/dupcheck.ng.services.js" />
+	<apex:includeScript value="{!IF(isDev,AssetsUrl,URLFOR($Resource.dupcheck__dupcheckAssets,'/dupcheckAssets'))}/lightning/js/dupcheck.ng.merge-check.js" />
+
+	<div id="dataStore" data-sf-id-list="{!idListString}" data-sf-related-list="{!relateldListString}" data-sf-related-count="{!$RemoteAction.dc3ControllerMergeCheck.getRelatedCount}"/>
+ 
+ 	<c:dc3TranslationJS />
+	<c:dc3Welcome version="LIGHTNING" />
+
+	<div class="plauti dc-body" ng-app="dcApp"
+		ng-controller="mergeCheckController">
+		<div class="slds-page-header slds-m-bottom--medium " role="banner">
+			<div class="slds-grid slds-wrap">
+				<div
+					class="slds-col slds-size--1-of-1 slds-medium-size--2-of-6 slds-large-size--1-of-6">
+					<div class="slds-media">
+						<div class="slds-media__figure">
+							<img class="slds-icon slds-icon--large "
+								ng-src="{!IF(isDev,AssetsUrl,URLFOR($Resource.dupcheckAssets,'/dupcheckAssets'))}/lightning/app/app_icon_48.png" />
+						</div>
+						<div class="slds-media__body">
+							<p class="slds-text-heading--label">Duplicate Check</p>
+							<div class="slds-grid">
+								<h1
+									class="slds-text-heading--medium slds-m-right--small slds-truncate slds-align-middle">Merge Check</h1>
+							</div>
+						</div> 
+					</div>
+				</div>
+				<div class="slds-col slds-size--1-of-1 slds-medium-size--4-of-6 slds-large-size--5-of-6 slds-align-bottom">
+
+					<div class="slds-grid slds-float--right">
+						<div class="slds-button-group" role="group" ng-if="data.showReturn">              
+	              			<button class="slds-button slds-not-selected slds-button--icon-border-filled" ng-click="doReturn()">
+	                			<img class="slds-button__icon " ng-src="{!URLFOR($Resource.slds,'')}/assets/icons/utility/back_120.png" />
+	              			</button>
+	            		</div>
+
+						<div class="slds-button-group slds-float--right slds-button-space-left" role="group">
+							<c:dc3WelcomeLink version="LIGHTNING" helpLink="https://support.duplicatecheck.com/article/usage-guide/dc-audit?utm_source=dcApp&utm_medium=app&utm_campaign=help_link" />
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+		<h3 class="slds-section-title--divider">{!$ObjectType[ObjectName].Label} {!$label.SETTINGS}</h3>
+		<div class="slds-grid slds-wrap slds-m-bottom--medium slds-m-top--small">
+			<div class="slds-p-horizontal--small slds-size--1-of-1 slds-medium-size--1-of-1 slds-large-size--1-of-2 slds-m-bottom--small">
+				<div class="slds-form-element">
+			  		<span class="slds-form-element__label">{!$label.OBJECT_LABEL}</span>
+			  		<div class="slds-form-element__control slds-has-divider--bottom">
+			    		<span class="slds-form-element__static">{!$ObjectType[ObjectName].Label}</span>
+			  		</div>
+				</div>
+			</div>
+			<div class="slds-p-horizontal--small slds-size--1-of-1 slds-medium-size--1-of-1 slds-large-size--1-of-2 slds-m-bottom--small">
+				<div class="slds-form-element">
+			  		<span class="slds-form-element__label">{!$label.OBJECT_NAME}</span>
+			  		<div class="slds-form-element__control slds-has-divider--bottom">
+			    		<span class="slds-form-element__static">{!$ObjectType[ObjectName].Name}</span>
+			  		</div>
+				</div>
+			</div>
+			<div class="slds-p-horizontal--small slds-size--1-of-1 slds-medium-size--1-of-1 slds-large-size--3-of-12 slds-m-bottom--small">
+				<div class="slds-form-element">
+			  		<span class="slds-form-element__label">{!$label.ACCESSIBLE}</span>
+			  		<div class="slds-form-element__control slds-has-divider--bottom">
+			    		<span class="slds-form-element__static">
+			    			<img class="slds-button__icon " src="{!URLFOR($Resource.slds,'')}/assets/icons/utility/{!IF($ObjectType[ObjectName].accessible, 'check','clear')}_120.png" />
+						</span>
+			  		</div>
+				</div>
+			</div>
+			<div class="slds-p-horizontal--small slds-size--1-of-1 slds-medium-size--1-of-1 slds-large-size--3-of-12 slds-m-bottom--small">
+				<div class="slds-form-element">
+			  		<span class="slds-form-element__label">{!$label.CREATABLE}</span>
+			  		<div class="slds-form-element__control slds-has-divider--bottom">
+			    		<span class="slds-form-element__static">
+			    			<img class="slds-button__icon " src="{!URLFOR($Resource.slds,'')}/assets/icons/utility/{!IF($ObjectType[ObjectName].createable, 'check','clear')}_120.png" />
+						</span>
+			  		</div>
+				</div>
+			</div>
+			<div class="slds-p-horizontal--small slds-size--1-of-1 slds-medium-size--1-of-1 slds-large-size--3-of-12 slds-m-bottom--small">
+				<div class="slds-form-element">
+			  		<span class="slds-form-element__label">{!$label.UPDATABLE}</span>
+			  		<div class="slds-form-element__control slds-has-divider--bottom">
+			    		<span class="slds-form-element__static">
+			    			<img class="slds-button__icon " src="{!URLFOR($Resource.slds,'')}/assets/icons/utility/{!IF($ObjectType[ObjectName].updateable, 'check','clear')}_120.png" />
+						</span>
+			  		</div>
+				</div>
+			</div>
+			<div class="slds-p-horizontal--small slds-size--1-of-1 slds-medium-size--1-of-1 slds-large-size--3-of-12 slds-m-bottom--small">
+				<div class="slds-form-element">
+			  		<span class="slds-form-element__label">{!$label.DELETABLE}</span>
+			  		<div class="slds-form-element__control slds-has-divider--bottom">
+			    		<span class="slds-form-element__static">
+			    			<img class="slds-button__icon " src="{!URLFOR($Resource.slds,'')}/assets/icons/utility/{!IF($ObjectType[ObjectName].deletable, 'check','clear')}_120.png" />
+						</span>
+			  		</div>
+				</div>
+			</div>	
+		</div>
+		
+		
+		<h3 class="slds-section-title--divider">{!$label.SHARING_SETTINGS}</h3>
+		<table class="slds-table slds-table--bordered slds-m-bottom--medium slds-max-medium-table--stacked-horizontal">
+			<thead>
+				<tr class="slds-text-heading--label">
+					<th>{!$label.RECORD}</th>
+					<th>{!$label.NAME}</th>
+					<th>{!$label.OWNER}</th>
+					<th>{!$label.OWNER_ID}</th>
+					<th>{!$label.SHARING_RULES}</th>
+				</tr>
+			</thead>
+			<tbody>
+				<apex:repeat value="{!ObjectList}" var="object">
+					<tr>
+						<td data-label="Record">
+							{!object.Id}
+						</td>
+						<td data-label="{!$Label.dupcheck__name}">
+							{!object['Name']}
+						</td>
+						<td data-label="{!$Label.dupcheck__owner}">{!object['Owner.Name']}</td>
+						<td data-label="{!$Label.dupcheck__owner_id}">{!object['OwnerId']}</td>
+						<td data-label="{!$Label.dupcheck__sharing_rules}">
+							{!object['UserRecordAccess.MaxAccessLevel']}
+						</td>
+					</tr>
+				</apex:repeat>
+			</tbody>
+			</table>
+				
+		<h3 class="slds-section-title--divider">{!$Label.dupcheck__field_information}</h3>
+		<table class="slds-table slds-table--bordered slds-m-bottom--medium slds-max-medium-table--stacked-horizontal">
+			<thead>
+				<tr class="slds-text-heading--label">
+					<th>{!$Label.dupcheck__label}</th>
+					<th>{!$Label.dupcheck__field_name}</th>
+					<th>{!$Label.dupcheck__type}</th>
+					<th>{!$Label.dupcheck__accessible}</th>
+					<th>{!$Label.dupcheck__updatable}</th>
+					<th>{!$Label.dupcheck__creatable}</th>
+				</tr>
+			</thead>
+			<tbody>
+				
+					<apex:repeat value="{!FieldList}" var="field">
+					<tr>
+						<td data-label="{!$label.LABEL}">
+							{!field.Label}
+						</td>
+						<td data-label="{!$label.FIELD_NAME}">
+							{!field.Name}
+						</td>
+						<td data-label="{!$label.TYPE}">
+							{!field.Type}
+						</td>
+						<td data-label="{!$label.ACCESSIBLE}">
+							<img class="slds-button__icon " src="{!URLFOR($Resource.slds,'')}/assets/icons/utility/{!IF(field.isAccessible, 'check','clear')}_120.png" />
+						</td>
+						<td data-label="{!$label.UPDATABLE}">
+							<img class="slds-button__icon " src="{!URLFOR($Resource.slds,'')}/assets/icons/utility/{!IF(field.isUpdateable, 'check','clear')}_120.png" />
+						</td>
+						<td data-label="{!$label.CREATABLE}">
+							<img class="slds-button__icon " src="{!URLFOR($Resource.slds,'')}/assets/icons/utility/{!IF(field.isCreateable, 'check','clear')}_120.png" />
+						</td>
+					</tr>
+					</apex:repeat>
+				
+			</tbody>
+			</table>
+			<h3 class="slds-section-title--divider">{!$Label.dupcheck__related_records}</h3>
+			<table class="slds-table slds-table--bordered slds-m-bottom--medium slds-max-medium-table--stacked-horizontal">
+				<thead>
+					<tr class="slds-text-heading--label">
+						<th>{!$Label.dupcheck__object_label}</th>
+						<th>{!$Label.dupcheck__object_name}</th>
+						<th>{!$Label.dupcheck__accessible}</th>
+						<th>{!$Label.dupcheck__creatable}</th>
+						<th>{!$Label.dupcheck__updatable}</th> 
+						<th>{!$Label.dupcheck__deletable}</th>
+						<th>{!$Label.dupcheck__field_label}</th>
+						<th>{!$Label.dupcheck__field_name}</th>
+						<th>{!$Label.dupcheck__accessible}</th>
+						<th>{!$Label.dupcheck__updatable}</th>
+						<th>{!$Label.dupcheck__creatable}</th>
+						<th>{!$Label.dupcheck__record_count}</th>
+					</tr>
+				</thead>
+				<tbody>
+					<apex:repeat value="{!RelatedList}" var="rel">
+						<tr>
+							<td data-label="{!$label.OBJECT_LABEL}">{!rel.ObjectLabel}</td>
+							<td data-label="{!$label.OBJECT_NAME}">{!rel.ObjectName}</td>
+							<td data-label="{!$label.ACCESSIBLE}">
+								<img class="slds-button__icon " src="{!URLFOR($Resource.slds,'')}/assets/icons/utility/{!IF(rel.ObjectIsAccessible, 'check','clear')}_120.png" />
+							</td>
+							<td data-label="{!$label.CREATABLE}">
+								<img class="slds-button__icon " src="{!URLFOR($Resource.slds,'')}/assets/icons/utility/{!IF(rel.ObjectIsCreateable, 'check','clear')}_120.png" />
+							</td>
+							<td data-label="{!$label.UPDATABLE}">
+								<img class="slds-button__icon " src="{!URLFOR($Resource.slds,'')}/assets/icons/utility/{!IF(rel.ObjectIsUpdateable, 'check','clear')}_120.png" />
+							</td>
+							<td data-label="{!$label.DELETABLE}">
+								<img class="slds-button__icon " src="{!URLFOR($Resource.slds,'')}/assets/icons/utility/{!IF(rel.ObjectIsDeleteable, 'check','clear')}_120.png" />
+							</td>
+							<td data-label="{!$label.FIELD_LABEL}">{!rel.FieldLabel}</td>
+							<td data-label="{!$label.FIELD_NAME}">{!rel.FieldName}</td>
+							<td data-label="{!$label.ACCESSIBLE}">
+								<img class="slds-button__icon " src="{!URLFOR($Resource.slds,'')}/assets/icons/utility/{!IF(rel.FieldIsAccessible, 'check','clear')}_120.png" />
+							</td>
+							<td data-label="{!$label.UPDATABLE}">
+								<img class="slds-button__icon " src="{!URLFOR($Resource.slds,'')}/assets/icons/utility/{!IF(rel.FieldIsCreateable, 'check','clear')}_120.png" />
+							</td>
+							<td data-label="{!$label.CREATABLE}">
+								<img class="slds-button__icon " src="{!URLFOR($Resource.slds,'')}/assets/icons/utility/{!IF(rel.FieldIsUpdateable, 'check','clear')}_120.png" />
+							</td>
+							<td data-label="{!$label.RECORD_COUNT}">
+								<span ng-bind-html="data.count['{!rel.ObjectName}#{!rel.FieldName}']"/>
+							</td>
+						</tr>
+					</apex:repeat>
+				</tbody>
+			</table>
+	</div>
+</apex:page>

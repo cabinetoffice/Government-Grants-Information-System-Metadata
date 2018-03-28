@@ -9,4 +9,8 @@
     <tab>standard-report</tab>
     <tab>standard-Dashboard</tab>
     <tab>standard-Chatter</tab>
+<<<<<<< HEAD
+=======
+    <tab>Authority_Act__c</tab>
+>>>>>>> branch 'master' of https://github.com/cabinetoffice/Government-Grants-Information-System-Metadata
 </CustomApplication>

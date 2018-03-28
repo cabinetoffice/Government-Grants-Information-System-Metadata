@@ -48,7 +48,19 @@
             <type>FieldUpdate</type>
         </actions>
         <active>false</active>
+<<<<<<< HEAD
         <formula>AND(ISPICKVAL($Profile.UserType, &apos;PowerCustomerSuccess&apos;)   , OR(      AND(ISBLANK(Evaluation_Modified_Date_by_Portal_User__c)       , ISCHANGED(Scheme_Objective__c)        , ISCHANGED(If_No_Reasons__c))      , AND(NOT(ISBLANK(Evaluation_Modified_Date_by_Portal_User__c))       ,  Max_Grant_Award_End_Date__c &lt; DATEVALUE(Evaluation_Modified_Date_by_Portal_User__c))   ) )</formula>
+=======
+        <formula>AND(ISPICKVAL($Profile.UserType, &apos;PowerCustomerSuccess&apos;)
+  , OR(
+     AND(ISBLANK(Evaluation_Modified_Date_by_Portal_User__c)
+      , ISCHANGED(Scheme_Objective__c) 
+      , ISCHANGED(If_No_Reasons__c))
+     , AND(NOT(ISBLANK(Evaluation_Modified_Date_by_Portal_User__c))
+      ,  Max_Grant_Award_End_Date__c &lt; DATEVALUE(Evaluation_Modified_Date_by_Portal_User__c))
+  )
+)</formula>
+>>>>>>> branch 'master' of https://github.com/cabinetoffice/Government-Grants-Information-System-Metadata
         <triggerType>onAllChanges</triggerType>
     </rules>
     <rules>

@@ -17,7 +17,23 @@ trigger AllProgrammeTriggers on Programme__c (
         return;
     }
 
+<<<<<<< HEAD
     if (Trigger.isBefore &Trigger.isDelete) {
+=======
+<<<<<<< HEAD
+    if (Trigger.isBefore &Trigger.isDelete) {
+=======
+<<<<<<< HEAD
+    if (Trigger.isBefore &Trigger.isDelete) {
+=======
+<<<<<<< HEAD
+    if (Trigger.isBefore &Trigger.isDelete) {
+=======
+    if (Trigger.isBefore && Trigger.isDelete) {
+>>>>>>> refs/remotes/origin/master
+>>>>>>> branch 'master' of https://github.com/cabinetoffice/Government-Grants-Information-System-Metadata
+>>>>>>> branch 'master' of https://github.com/cabinetoffice/Government-Grants-Information-System-Metadata
+>>>>>>> branch 'master' of https://github.com/cabinetoffice/Government-Grants-Information-System-Metadata
         AllProgrammeTriggersHandler.handleBeforeDelete(Trigger.oldMap);
     }
 }

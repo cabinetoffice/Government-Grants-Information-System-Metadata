@@ -79,6 +79,13 @@
             <label><!-- Custom Links --></label>
             <section>Custom Links</section>
         </sections>
+<<<<<<< HEAD
+=======
+        <sections>
+            <label><!-- Warning --></label>
+            <section>Warning</section>
+        </sections>
+>>>>>>> branch 'master' of https://github.com/cabinetoffice/Government-Grants-Information-System-Metadata
     </layouts>
     <startsWith>Vowel</startsWith>
     <validationRules>

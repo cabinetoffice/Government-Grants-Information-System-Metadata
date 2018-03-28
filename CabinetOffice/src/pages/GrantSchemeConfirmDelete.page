@@ -1,0 +1,24 @@
+<apex:page standardController="Grant_Scheme__c" extensions="GrantSchemeConfirmDeleteController" showHeader="true" sidebar="true">
+	<apex:pageMessages id="pms"/>
+	<apex:pageMessage severity="WARNING" strength="2" summary="You cannot delete this record. Please create a case or contact grant hub admin to delete this record." rendered="{!Grant_Scheme__c.Portal_User_Cannot_Delete_This_Record__c}"/>
+	<apex:pageMessage severity="WARNING" strength="2" summary="The following Grant Awards will be deleted as part of Grant Scheme delete process." rendered="{!NOT(Grant_Scheme__c.Portal_User_Cannot_Delete_This_Record__c)}"/>
+	<apex:sectionHeader title="Grant Scheme Overview" subtitle="{!Grant_Scheme__c.Name}" />
+	<apex:form >
+		<apex:pageBlock id="detailPageBlock">
+			<apex:pageBlockButtons location="top">
+				<apex:commandButton action="{!cancel}" value="Cancel"/>
+				<!-- GEPDS-867 - 12 Apr 2016 - Updated render criteria -->
+				<apex:commandButton action="{!deleteAll}" value="Delete" rendered="{!ShowDeleteButton}"/>
+			</apex:pageBlockButtons>
+			<apex:pageBlockSection title="Grant Sceheme" columns="2" collapsible="false">
+				<apex:outputField value="{!Grant_Scheme__c.Name}" />
+				<apex:pageBlockSectionItem >
+					<apex:outputLabel value="Count of relate Grant Award(s)" for="countOfRelatedGrantAwards"/>
+					<apex:outputText id="countOfRelatedGrantAwards" value="{!countOfRelatedGrantAwards}"/>
+				</apex:pageBlockSectionItem>
+			</apex:pageBlockSection>
+		</apex:pageBlock>
+	</apex:form>
+	<apex:relatedList list="Grant_Awards__r" >
+	</apex:relatedList>
+</apex:page>

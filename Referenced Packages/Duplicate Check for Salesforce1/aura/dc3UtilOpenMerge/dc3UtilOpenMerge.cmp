@@ -1,0 +1,7 @@
+<aura:component >
+	<aura:attribute name="recordId" type="Id" />
+	<aura:attribute name="mergeId" type="Id" />
+	<a onclick="{!c.openMerge}" >
+    	<lightning:icon iconName="utility:merge" size="x-small" alternativeText="Merge Record"/>
+    </a>
+</aura:component>

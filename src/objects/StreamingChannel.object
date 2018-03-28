@@ -38,5 +38,9 @@
     </actionOverrides>
     <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
     <enableFeeds>false</enableFeeds>
+<<<<<<< HEAD
     <sharingModel>ReadWrite</sharingModel>
+=======
+    <sharingModel>Private</sharingModel>
+>>>>>>> branch 'master' of https://github.com/cabinetoffice/Government-Grants-Information-System-Metadata
 </CustomObject>

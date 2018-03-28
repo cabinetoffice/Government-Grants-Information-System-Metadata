@@ -18,6 +18,7 @@
                 <behavior>Edit</behavior>
                 <field>Description</field>
             </layoutItems>
+<<<<<<< HEAD
             <layoutItems>
                 <behavior>Edit</behavior>
                 <field>StartingContext</field>
@@ -35,6 +36,18 @@
     <miniLayout>
         <fields>StartingContext</fields>
     </miniLayout>
+=======
+        </layoutColumns>
+        <style>OneColumn</style>
+    </layoutSections>
+    <layoutSections>
+        <customLabel>false</customLabel>
+        <detailHeading>false</detailHeading>
+        <editHeading>false</editHeading>
+        <layoutColumns/>
+        <style>CustomLinks</style>
+    </layoutSections>
+>>>>>>> branch 'master' of https://github.com/cabinetoffice/Government-Grants-Information-System-Metadata
     <showEmailCheckbox>false</showEmailCheckbox>
     <showRunAssignmentRulesCheckbox>false</showRunAssignmentRulesCheckbox>
     <showSubmitAndAttachButton>false</showSubmitAndAttachButton>

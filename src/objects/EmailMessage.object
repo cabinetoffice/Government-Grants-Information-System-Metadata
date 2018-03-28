@@ -82,6 +82,7 @@
     <fields>
         <fullName>ValidatedFromAddress</fullName>
     </fields>
+<<<<<<< HEAD
     <searchLayouts>
         <customTabListAdditionalFields>Status</customTabListAdditionalFields>
         <customTabListAdditionalFields>HasAttachment</customTabListAdditionalFields>
@@ -103,4 +104,6 @@
         <searchResultsAdditionalFields>Subject</searchResultsAdditionalFields>
         <searchResultsAdditionalFields>MessageDate</searchResultsAdditionalFields>
     </searchLayouts>
+=======
+>>>>>>> branch 'master' of https://github.com/cabinetoffice/Government-Grants-Information-System-Metadata
 </CustomObject>

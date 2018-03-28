@@ -35,6 +35,7 @@
         <fullName>AreWeFollowing</fullName>
     </fields>
     <fields>
+<<<<<<< HEAD
         <fullName>AuthorLabels</fullName>
     </fields>
     <fields>
@@ -63,6 +64,27 @@
     </fields>
     <fields>
         <fullName>IsVerified</fullName>
+=======
+        <fullName>Bio</fullName>
+    </fields>
+    <fields>
+        <fullName>ExternalId</fullName>
+    </fields>
+    <fields>
+        <fullName>ExternalPictureURL</fullName>
+    </fields>
+    <fields>
+        <fullName>Followers</fullName>
+    </fields>
+    <fields>
+        <fullName>Following</fullName>
+    </fields>
+    <fields>
+        <fullName>IsBlacklisted</fullName>
+    </fields>
+    <fields>
+        <fullName>IsFollowingUs</fullName>
+>>>>>>> branch 'master' of https://github.com/cabinetoffice/Government-Grants-Information-System-Metadata
     </fields>
     <fields>
         <fullName>Klout</fullName>

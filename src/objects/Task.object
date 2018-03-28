@@ -59,9 +59,12 @@
         <fullName>IsRecurrence</fullName>
     </fields>
     <fields>
+<<<<<<< HEAD
         <fullName>IsReminderSet</fullName>
     </fields>
     <fields>
+=======
+>>>>>>> branch 'master' of https://github.com/cabinetoffice/Government-Grants-Information-System-Metadata
         <fullName>IsVisibleInSelfService</fullName>
     </fields>
     <fields>

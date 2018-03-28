@@ -2,8 +2,20 @@
 <ReportFolder xmlns="http://soap.sforce.com/2006/04/metadata">
     <folderShares>
         <accessLevel>View</accessLevel>
+<<<<<<< HEAD
         <sharedTo>AllCustomerPortalUsers</sharedTo>
         <sharedToType>AllCspUsers</sharedToType>
     </folderShares>
     <name>GGIS Reports for Dashboard</name>
+=======
+        <sharedTo>AllInternalUsers</sharedTo>
+        <sharedToType>Organization</sharedToType>
+    </folderShares>
+    <folderShares>
+        <accessLevel>View</accessLevel>
+        <sharedTo>AllCustomerPortalUsers</sharedTo>
+        <sharedToType>AllCspUsers</sharedToType>
+    </folderShares>
+    <name>Reports for Dashboard</name>
+>>>>>>> branch 'master' of https://github.com/cabinetoffice/Government-Grants-Information-System-Metadata
 </ReportFolder>

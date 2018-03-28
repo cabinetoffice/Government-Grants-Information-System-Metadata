@@ -7,9 +7,15 @@
         <feedItemType>EmailMessageEvent</feedItemType>
     </caseFeedItemSettings>
     <closeCaseThroughStatusChange>false</closeCaseThroughStatusChange>
+<<<<<<< HEAD
     <defaultCaseOwner>wasim.akhtar@cabinetoffice.gov.uk.admin</defaultCaseOwner>
     <defaultCaseOwnerType>User</defaultCaseOwnerType>
     <defaultCaseUser>wasim.akhtar@cabinetoffice.gov.uk.admin</defaultCaseUser>
+=======
+    <defaultCaseOwner>grantshub.sfadmin@cabinetoffice.gov.uk</defaultCaseOwner>
+    <defaultCaseOwnerType>User</defaultCaseOwnerType>
+    <defaultCaseUser>grantshub.sfadmin@cabinetoffice.gov.uk</defaultCaseUser>
+>>>>>>> branch 'master' of https://github.com/cabinetoffice/Government-Grants-Information-System-Metadata
     <emailToCase>
         <enableEmailToCase>true</enableEmailToCase>
         <enableHtmlEmail>false</enableHtmlEmail>

@@ -121,9 +121,12 @@
         <type>Picklist</type>
     </fields>
     <fields>
+<<<<<<< HEAD
         <fullName>StockKeepingUnit</fullName>
     </fields>
     <fields>
+=======
+>>>>>>> branch 'master' of https://github.com/cabinetoffice/Government-Grants-Information-System-Metadata
         <fullName>UsageEndDate</fullName>
         <trackHistory>false</trackHistory>
     </fields>

@@ -50,6 +50,7 @@
         <operation>Formula</operation>
         <protected>false</protected>
     </fieldUpdates>
+<<<<<<< HEAD
     <fieldUpdates>
         <fullName>Update_Total_Amount_in_funding_agreement</fullName>
         <field>Total_Amount_in_funding_agreement__c</field>
@@ -122,6 +123,75 @@
         </actions>
         <active>true</active>
         <formula>AND(  NOT($Setup.Bypass__c.Workflow_Rules__c),  Potential_Issue_With_Grant_Delivery__c = TRUE )</formula>
+=======
+    <rules>
+        <fullName>Grant Award Evaluation fields have been Modified</fullName>
+        <actions>
+            <name>Update_Evaluation_Modified_Date</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <formula>AND(ISPICKVAL($Profile.UserType, &apos;PowerCustomerSuccess&apos;)
+  , OR(
+    AND(ISCHANGED(Award_End_Date__c)
+     , ISBLANK(Evaluation_Modified_Date_by_Portal_User__c)
+     , ISCHANGED(Award_Objectives_Achieved__c) 
+     , ISCHANGED(Reason_for_Given_Answer__c))
+    , AND(ISCHANGED(Award_End_Date__c)
+     , NOT(ISBLANK(Evaluation_Modified_Date_by_Portal_User__c)))
+    , AND(NOT(ISCHANGED(Award_End_Date__c))
+     , ISBLANK(Evaluation_Modified_Date_by_Portal_User__c)
+     , ISCHANGED(Award_Objectives_Achieved__c) 
+     , ISCHANGED(Reason_for_Given_Answer__c))
+  )
+)</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>Grant Award Postal Code Has Changed</fullName>
+        <actions>
+            <name>Uncheck_Has_Postal_Code_Been_Checked</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>Uncheck_Is_Postal_Code_Valid</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <formula>AND(
+ NOT($Setup.Bypass__c.Workflow_Rules__c),
+ NOT(ISNEW()),
+ ISCHANGED( Recipient_Secondary_Postal_Code__c ) 
+)</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>New Grant Awards for Organisation with empty recipient name</fullName>
+        <actions>
+            <name>Update_Recipient_Name</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <description>This is the workflow rule for new grant awards for organisations</description>
+        <formula>AND(
+ NOT($Setup.Bypass__c.Workflow_Rules__c)
+ ,  RecordType.Name == &apos;Organisation Award&apos;
+ , ISBLANK( Recipient_Name_at_Award_Creation__c )
+)</formula>
+        <triggerType>onCreateOnly</triggerType>
+    </rules>
+    <rules>
+        <fullName>Potential Issue Has Changed</fullName>
+        <actions>
+            <name>Update_Flag_Last_Modified_By</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <formula>AND(
+ NOT($Setup.Bypass__c.Workflow_Rules__c),
+ Potential_Issue_With_Grant_Delivery__c = TRUE
+)</formula>
+>>>>>>> branch 'master' of https://github.com/cabinetoffice/Government-Grants-Information-System-Metadata
         <triggerType>onCreateOrTriggeringUpdate</triggerType>
     </rules>
 </Workflow>

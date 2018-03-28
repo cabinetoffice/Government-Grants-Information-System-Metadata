@@ -23,10 +23,13 @@
                 <behavior>Edit</behavior>
                 <field>Type</field>
             </layoutItems>
+<<<<<<< HEAD
             <layoutItems>
                 <behavior>Edit</behavior>
                 <field>CampaignId</field>
             </layoutItems>
+=======
+>>>>>>> branch 'master' of https://github.com/cabinetoffice/Government-Grants-Information-System-Metadata
         </layoutColumns>
         <layoutColumns>
             <layoutItems>

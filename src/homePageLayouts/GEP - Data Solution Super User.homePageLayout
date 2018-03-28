@@ -3,7 +3,10 @@
     <narrowComponents>standard-PortalWelcome</narrowComponents>
     <narrowComponents>standard-RecentItems</narrowComponents>
     <narrowComponents>standard-UsefulLinks</narrowComponents>
+<<<<<<< HEAD
     <narrowComponents>Organisation Links</narrowComponents>
+=======
+>>>>>>> branch 'master' of https://github.com/cabinetoffice/Government-Grants-Information-System-Metadata
     <wideComponents>Data Solution Portal Home Text</wideComponents>
     <wideComponents>standard-Dashboard</wideComponents>
     <wideComponents>standard-Calendar</wideComponents>

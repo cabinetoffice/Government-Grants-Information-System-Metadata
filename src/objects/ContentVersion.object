@@ -40,6 +40,7 @@
         <trackHistory>true</trackHistory>
     </fields>
     <fields>
+<<<<<<< HEAD
         <fullName>SharingPrivacy</fullName>
         <trackHistory>true</trackHistory>
     </fields>
@@ -57,4 +58,12 @@
         <searchResultsAdditionalFields>VERSION.LAST_UPDATE</searchResultsAdditionalFields>
         <searchResultsAdditionalFields>VERSION.OWNER</searchResultsAdditionalFields>
     </searchLayouts>
+=======
+        <fullName>TagCsv</fullName>
+    </fields>
+    <fields>
+        <fullName>Title</fullName>
+        <trackHistory>false</trackHistory>
+    </fields>
+>>>>>>> branch 'master' of https://github.com/cabinetoffice/Government-Grants-Information-System-Metadata
 </CustomObject>

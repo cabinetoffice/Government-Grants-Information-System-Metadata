@@ -170,6 +170,7 @@
     <relatedContent>
         <relatedContentItems>
             <layoutItem>
+<<<<<<< HEAD
                 <behavior>Readonly</behavior>
                 <field>CampaignId</field>
             </layoutItem>
@@ -213,6 +214,36 @@
         <fields>CM.RESPONDED</fields>
         <fields>CM.LAST_UPDATE</fields>
         <relatedList>RelatedCampaignList</relatedList>
+=======
+                <component>runtime_sales_social:socialPanel</component>
+            </layoutItem>
+        </relatedContentItems>
+    </relatedContent>
+    <relatedLists>
+        <fields>TASK.SUBJECT</fields>
+        <fields>ACTIVITY.TASK</fields>
+        <fields>TASK.DUE_DATE</fields>
+        <fields>TASK.STATUS</fields>
+        <fields>TASK.PRIORITY</fields>
+        <fields>CORE.USERS.FULL_NAME</fields>
+        <relatedList>RelatedActivityList</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <fields>TASK.SUBJECT</fields>
+        <fields>ACTIVITY.TASK</fields>
+        <fields>TASK.DUE_DATE</fields>
+        <fields>CORE.USERS.FULL_NAME</fields>
+        <fields>TASK.LAST_UPDATE</fields>
+        <relatedList>RelatedHistoryList</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <fields>ACTIVITY.SUBJECT</fields>
+        <fields>EMAIL_STATUS.CREATED_DATE</fields>
+        <fields>EMAIL_STATUS.FIRST_OPEN_DATE</fields>
+        <fields>EMAIL_STATUS.TIMES_OPENED</fields>
+        <fields>EMAIL_STATUS.LAST_OPEN_DATE</fields>
+        <relatedList>RelatedEmailStatusList</relatedList>
+>>>>>>> branch 'master' of https://github.com/cabinetoffice/Government-Grants-Information-System-Metadata
     </relatedLists>
     <runAssignmentRulesDefault>false</runAssignmentRulesDefault>
     <showEmailCheckbox>false</showEmailCheckbox>

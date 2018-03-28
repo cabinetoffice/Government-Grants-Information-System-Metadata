@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 eclipse.preferences.version=1
 endpointApiVersion=38.0
 endpointEnvironment=Other (Specify)
@@ -13,3 +14,88 @@ projectIdentifier=IDE7851732169258847234
 readTimeout=400
 sessionId=
 username=grantshub.sfadmin@cabinetoffice.gov.uk
+=======
+<<<<<<< HEAD
+eclipse.preferences.version=1
+endpointApiVersion=38.0
+endpointEnvironment=Production/Developer Edition
+endpointServer=login.salesforce.com
+httpsProtocol=true
+ideVersion=38.0
+keependpoint=false
+metadataFormatVersion=38.0
+namespacePrefix=
+packageName=unpackaged
+preferToolingDeployment=true
+projectIdentifier=IDE-3073665412280204958
+readTimeout=400
+sessionId=
+username=grantshub.sfadmin@cabinetoffice.gov.uk
+=======
+<<<<<<< HEAD
+ExecuteAnonymousApex_code=Debug
+ExecuteAnonymousApex_profiling=Info
+ExecuteAnonymousCallout=Info
+ExecuteAnonymousDb=Info
+ExecuteAnonymousSystem=Debug
+ExecuteAnonymousValidation=Info
+ExecuteAnonymousVisualforce=Info
+ExecuteAnonymousWorkflow=Info
+RunTestApex_code=Debug
+RunTestApex_profiling=Info
+RunTestCallout=Info
+RunTestDb=Info
+RunTestSystem=Debug
+RunTestValidation=Info
+RunTestVisualforce=Info
+RunTestWorkflow=Info
+eclipse.preferences.version=1
+endpointApiVersion=38.0
+endpointEnvironment=Production/Developer Edition
+endpointServer=login.salesforce.com
+httpsProtocol=true
+ideVersion=38.0
+keependpoint=false
+metadataFormatVersion=38.0
+namespacePrefix=
+packageName=unpackaged
+preferToolingDeployment=true
+projectIdentifier=IDE5865628969463270832
+readTimeout=400
+sessionId=
+username=grantshub.sfadmin@cabinetoffice.gov.uk
+=======
+eclipse.preferences.version=1
+endpointApiVersion=38.0
+<<<<<<< HEAD
+endpointEnvironment=Production/Developer Edition
+endpointServer=login.salesforce.com
+httpsProtocol=true
+ideVersion=38.0
+keependpoint=false
+metadataFormatVersion=38.0
+namespacePrefix=
+packageName=unpackaged
+preferToolingDeployment=true
+projectIdentifier=IDE7840690772770832840
+readTimeout=400
+sessionId=
+username=grantshub.sfadmin@cabinetoffice.gov.uk
+=======
+endpointEnvironment=Sandbox
+endpointServer=login.salesforce.com
+httpsProtocol=true
+ideVersion=38.0
+keependpoint=false
+metadataFormatVersion=38.0
+namespacePrefix=
+packageName=unpackaged
+preferToolingDeployment=true
+projectIdentifier=IDE5660242622128539502
+readTimeout=400
+sessionId=
+username=bhushan.sukumar@cabinetoffice.gov.uk.dev
+>>>>>>> refs/remotes/origin/master
+>>>>>>> branch 'master' of https://github.com/cabinetoffice/Government-Grants-Information-System-Metadata
+>>>>>>> branch 'master' of https://github.com/cabinetoffice/Government-Grants-Information-System-Metadata
+>>>>>>> branch 'master' of https://github.com/cabinetoffice/Government-Grants-Information-System-Metadata

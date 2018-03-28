@@ -1,0 +1,62 @@
+<apex:page showHeader="false" sidebar="false" controller="DataSolutionLoginController" standardStylesheets="false" docType="HTML-5.0" applyBodyTag="false">
+    <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+        <link rel="stylesheet" href="{!URLFOR($Resource.DT_Custom_Login_Bundle, 'css/main.css')}"/>
+        <!-- included as an override for IE 8 compatability, this will not allow responsive design for IE 8 -->
+        <!--[if lt IE 9]>  
+        <style type="text/css">
+            .col-md-4 {
+                width: 33.33333%;
+            }
+            .col-md-8 {
+                width: 66.66667%;
+                float: right;
+            }
+        </style>
+        < ![endif]--> 
+    </head>
+    <body id="co-body-wrapper">
+        <div id="co-row-wrapper">
+            <div id="co-content">
+                <div class="container ">
+                    <div class="row">
+                        <c:PageMessagesBootstrap />
+                        <div id="co-login-form-wrapper" class="col-xs-10 col-xs-offset-1 col-sm-10 col-sm-offset-1 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2 box-shadow--6dp">
+                            <div class="text-center col-xs-12 col-md-4">
+                                <div id="co-logo-wrapper" class="row">
+                                    <img width="210" height="80" src="{!URLFOR($Resource.DT_Custom_Login_Bundle, 'img/co-logo.png')}" alt=""/>
+                                </div>
+                                <div id="co-login-form" class="row">
+                                    <apex:form >
+                                        <div class="form-group">
+                                            <!-- <label for="exampleInputEmail1">Username</label> -->
+                                            <apex:input html-placeholder="Username" type="email" styleClass="form-control" id="username" value="{!username}"/>
+                                        </div>
+                                        <div class="form-group">
+                                            <!-- <label for="exampleInputPassword1">Password</label> -->
+                                            <apex:inputSecret html-placeholder="Password" styleClass="form-control" id="password" value="{!password}"/>
+                                        </div>
+                                        <apex:commandButton styleClass="btn btn-primary btn-lg btn-block" action="{!login}" value="Login" id="loginButton"/>
+                                    </apex:form>
+                                    <br/>
+                                    <apex:outputLink value="{!$Label.DT_Forgot_Password_URL}">{!$Label.DT_Forgot_Password_Text}</apex:outputLink>
+                                    <br/>
+                                    <apex:outputLink value="{!$Label.DT_New_User_Registration_URL}">{!$Label.DT_New_User_Registration_Text}</apex:outputLink>
+                                </div>
+                            </div>
+                            <div id="co-portal-login-text-wrapper" class="hidden-xs hidden-sm col-md-8">
+                                <apex:outputText value="{!$Label.Data_Solution_Login_Text}" escape="false"/>
+                                <apex:outputText value="{!$Label.Data_Solution_Login_Text_2}" escape="false"/>
+                                <apex:outputText value="{!$Label.Data_Solution_Login_Text_Email}" escape="false"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="co-footer-wrapper" class="row">
+                        <apex:outputText value="{!$Label.Data_Solution_Login_Footer_Text}" escape="false"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</apex:page>

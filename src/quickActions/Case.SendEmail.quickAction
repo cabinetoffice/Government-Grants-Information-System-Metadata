@@ -10,6 +10,7 @@
         <quickActionLayoutColumns>
             <quickActionLayoutItems>
                 <emptySpace>false</emptySpace>
+<<<<<<< HEAD
                 <field>ValidatedFromAddress</field>
                 <uiBehavior>Edit</uiBehavior>
             </quickActionLayoutItems>
@@ -36,6 +37,19 @@
             <quickActionLayoutItems>
                 <emptySpace>false</emptySpace>
                 <field>HtmlBody</field>
+=======
+                <field>ToAddress</field>
+                <uiBehavior>Edit</uiBehavior>
+            </quickActionLayoutItems>
+            <quickActionLayoutItems>
+                <emptySpace>false</emptySpace>
+                <field>Subject</field>
+                <uiBehavior>Edit</uiBehavior>
+            </quickActionLayoutItems>
+            <quickActionLayoutItems>
+                <emptySpace>false</emptySpace>
+                <field>TextBody</field>
+>>>>>>> branch 'master' of https://github.com/cabinetoffice/Government-Grants-Information-System-Metadata
                 <uiBehavior>Edit</uiBehavior>
             </quickActionLayoutItems>
         </quickActionLayoutColumns>

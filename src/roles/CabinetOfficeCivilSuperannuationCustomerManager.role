@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Role xmlns="http://soap.sforce.com/2006/04/metadata">
+<<<<<<< HEAD
     <caseAccessLevel>None</caseAccessLevel>
+=======
+    <caseAccessLevel>Edit</caseAccessLevel>
+>>>>>>> branch 'master' of https://github.com/cabinetoffice/Government-Grants-Information-System-Metadata
     <contactAccessLevel>Edit</contactAccessLevel>
     <description>Cabinet Office: Civil Superannuation Customer Manager</description>
     <mayForecastManagerShare>false</mayForecastManagerShare>

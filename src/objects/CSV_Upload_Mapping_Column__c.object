@@ -16,6 +16,7 @@
     <fields>
         <fullName>CSV_Upload_Recipient_Type__c</fullName>
         <description>This is the recipient type for csv upload process.</description>
+<<<<<<< HEAD
         <encrypted>false</encrypted>
         <externalId>false</externalId>
         <inlineHelpText>This is the recipient type for csv upload process.</inlineHelpText>
@@ -186,6 +187,167 @@
         <fullName>Value_Parser__c</fullName>
         <description>This is the name of the class which will parse the value for this column.</description>
         <encrypted>false</encrypted>
+=======
+        <externalId>false</externalId>
+        <inlineHelpText>This is the recipient type for csv upload process.</inlineHelpText>
+        <label>CSV Upload Recipient Type</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CSV_Upload_Type__c</fullName>
+        <description>This is the type of CSV upload that needs to be performed. Possible option is Grant Award</description>
+        <externalId>false</externalId>
+        <inlineHelpText>This is the type of CSV upload that needs to be performed. Possible option is Grant Award</inlineHelpText>
+        <label>CSV Upload Type</label>
+        <length>255</length>
+        <required>true</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>External_Id_Type_Column__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>This column is used as external id type column and should not be mapped directly to another field.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>This column is used as external id type column and should not be mapped directly to another field.</inlineHelpText>
+        <label>External Id Type Column</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Group__c</fullName>
+        <description>This is the group value for the specified column. This field was created initially to group Intermediaries.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>This is the group value for the specified column. This field was created initially to group Intermediaries.</inlineHelpText>
+        <label>Group</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Mapped_From_Field__c</fullName>
+        <description>This is the From field in the CSV file. This value needs to be exactly the same as it appears on CSV.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>This is the From field in the CSV file. This value needs to be exactly the same as it appears on CSV.</inlineHelpText>
+        <label>Mapped From Field</label>
+        <length>255</length>
+        <required>true</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Mapped_To_Field__c</fullName>
+        <description>This is the From to in the CSV file. This value needs to be exactly the same as it is on the Target Object</description>
+        <externalId>false</externalId>
+        <inlineHelpText>This is the From to in the CSV file. This value needs to be exactly the same as it is on the Target Object</inlineHelpText>
+        <label>Mapped To Field</label>
+        <length>255</length>
+        <required>true</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Not_Found_Error_Message__c</fullName>
+        <description>This error message is shown when the Record Locator Query doesn&apos;t return any records.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>This error message is shown when the Record Locator Query doesn&apos;t return any records.</inlineHelpText>
+        <label>Not Found Error Message</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Query_Result_Id_Mapped_to_Field__c</fullName>
+        <description>This is the field that will be used to replace the Mapped to field.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>This is the field that will be used to replace the Mapped to field.</inlineHelpText>
+        <label>Query Result Id Mapped to Field</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Read_Only__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>This field indicates if the value of this column is a read only field on Salesforce or not. If the value is read only (e.g. Grant_Award__c.Name) then the value is saved in a temporary map on the SObject creator.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>This field indicates if the value of this column is a read only field on Salesforce or not. If the value is read only (e.g. Grant_Award__c.Name) then the value is saved in a temporary map on the SObject creator.</inlineHelpText>
+        <label>Read Only</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Record_Locator_Query__c</fullName>
+        <description>This field holds the query string to retrieve the related record from the database.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>This field holds the query string to retrieve the related record from the database.</inlineHelpText>
+        <label>Record Locator Query</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Required__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>This checkbox shows if the column is a mandatory field for the input CSV file.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>This checkbox shows if the column is a mandatory field for the input CSV file.</inlineHelpText>
+        <label>Required</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Run_SObject_Creator_On_Record_Not_Found__c</fullName>
+        <description>This field records the creator that needs to be run when the record locator query doesn&apos;t return any value.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>This field records the creator that needs to be run when the record locator query doesn&apos;t return any value.</inlineHelpText>
+        <label>Run SObject Creator On Record Not Found</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>SObject_Creator__c</fullName>
+        <description>This is the SObject creator for this column mapping</description>
+        <externalId>false</externalId>
+        <inlineHelpText>This is the SObject creator for this column mapping</inlineHelpText>
+        <label>SObject Creator</label>
+        <length>255</length>
+        <required>true</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>SObject_Type__c</fullName>
+        <description>This is the Target SObject type through the CSV upload process</description>
+        <externalId>false</externalId>
+        <inlineHelpText>This is the Target SObject type through the CSV upload process. Valid values are (Grant_Award__c)</inlineHelpText>
+        <label>SObject Type</label>
+        <length>255</length>
+        <required>true</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Value_Parser__c</fullName>
+        <description>This is the name of the class which will parse the value for this column.</description>
+>>>>>>> branch 'master' of https://github.com/cabinetoffice/Government-Grants-Information-System-Metadata
         <externalId>false</externalId>
         <inlineHelpText>This is the name of the class which will parse the value for this column.</inlineHelpText>
         <label>Value Parser</label>

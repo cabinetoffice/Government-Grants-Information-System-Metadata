@@ -3,7 +3,11 @@
     <fieldUpdates>
         <fullName>Change_Account_Owner_to_System_Admin</fullName>
         <field>OwnerId</field>
+<<<<<<< HEAD
         <lookupValue>wasim.akhtar@cabinetoffice.gov.uk.admin</lookupValue>
+=======
+        <lookupValue>grantshub.sfadmin@cabinetoffice.gov.uk</lookupValue>
+>>>>>>> branch 'master' of https://github.com/cabinetoffice/Government-Grants-Information-System-Metadata
         <lookupValueType>User</lookupValueType>
         <name>Change Account Owner to System Admin</name>
         <notifyAssignee>false</notifyAssignee>

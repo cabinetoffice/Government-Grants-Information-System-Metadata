@@ -6,7 +6,11 @@
     </caseValues>
     <caseValues>
         <plural>true</plural>
+<<<<<<< HEAD
         <value>CSV Upload Mapping Column</value>
+=======
+        <value>CSV Upload Mapping</value>
+>>>>>>> branch 'master' of https://github.com/cabinetoffice/Government-Grants-Information-System-Metadata
     </caseValues>
     <fields>
         <help><!-- This value shows if the target mapped to field is a multi picklist value or a single picklist vlaue --></help>

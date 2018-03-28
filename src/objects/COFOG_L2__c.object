@@ -55,6 +55,7 @@
     <externalSharingModel>ReadWrite</externalSharingModel>
     <fields>
         <fullName>COFOG_L0_Long_Name__c</fullName>
+<<<<<<< HEAD
         <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>COFOG L0 Long Name</label>
@@ -78,6 +79,28 @@
     <fields>
         <fullName>COFOG_L2_Long_Name__c</fullName>
         <encrypted>false</encrypted>
+=======
+        <externalId>false</externalId>
+        <label>COFOG L0 Long Name</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>COFOG_L1_Long_Name__c</fullName>
+        <externalId>false</externalId>
+        <label>COFOG L1 Long Name</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>COFOG_L2_Long_Name__c</fullName>
+>>>>>>> branch 'master' of https://github.com/cabinetoffice/Government-Grants-Information-System-Metadata
         <externalId>false</externalId>
         <label>COFOG L2 Long Name</label>
         <length>255</length>

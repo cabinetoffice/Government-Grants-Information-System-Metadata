@@ -39,6 +39,7 @@ private class CSVUploadProcessorTest {
 
 	@isTest
 	static void testCreateNewGrantAwardFull(){
+<<<<<<< HEAD
 	    /**
 		initData();
 		TestDataFactory testFactory = new TestDataFactory();
@@ -121,6 +122,341 @@ private class CSVUploadProcessorTest {
 
 			List<Attachment> errorFiles = [SELECT Body FROM Attachment WHERE ParentId = :newUpload.Id];
 			//System.assertEquals();
+=======
+<<<<<<< HEAD
+	    /**
+		initData();
+		TestDataFactory testFactory = new TestDataFactory();
+		User testSuperUser = testFactory.setupBasicUser(testDepartment, 'Super User 1', Constant.PROFILE_COMMUNITY_SUPER_USER);
+		System.runAs(testSuperUser){
+			List<List<String>> allGrantAwardData = testFactory.createDefaultGrantAwardDataParsedCSV();
+			CSVDocument csvDocumentToUse = new CSVDocument(allGrantAwardData);
+			System.assertEquals(0, [SELECT COUNT() FROM Grant_Award__c]);
+			System.assertEquals(0, [SELECT COUNT() FROM Account WHERE Name = 'This is a new recepient!']);
+			System.assertEquals(0, [SELECT COUNT() FROM Intermediary__c]);
+			System.assertEquals(0, [SELECT COUNT() FROM CSV_Upload__c]);
+			CSVDocument documentToUpload = new CSVDocument(allGrantAwardData);
+			CSV_Upload__c csvUpload = testFactory.createOrganisationGrantAwardCSVUpload(Constant.CSV_UPLOAD_CREATE_AWARD_TYPE);
+			CSVUploadProcessor processor = new CSVUploadProcessor(documentToUpload, CSVUploadSObjectFactory.newInstance(csvUpload));
+			Test.startTest();
+				Database.executeBatch(processor, 1);
+			Test.stopTest();
+			List<CSV_Upload__c> createdCSVUpload = [SELECT Records_Created_Count__c, Records_Updated_Count__c, Processing_Status__c, Total_Records_Failed__c FROM CSV_Upload__c];
+			System.assertEquals(1, createdCSVUpload.size());
+			System.assertEquals(Constant.CSV_UPLOAD_PT_FINISHED, createdCSVUpload[0].Processing_Status__c);
+			System.assertEquals(1, createdCSVUpload[0].Records_Created_Count__c);
+			System.assertEquals(0, createdCSVUpload[0].Records_Updated_Count__c);
+			
+			System.assertEquals(1, [SELECT COUNT() FROM Account WHERE Name = 'This is a new recepient!']);
+			System.assertEquals(1, [SELECT COUNT() FROM Grant_Award__c]);
+			System.assertEquals(1, [
+				SELECT COUNT() 
+				FROM Intermediary__c 
+				WHERE Intermediary_Organisation__r.Name = :TestDataFactory.NEW_INTERMEDIARY_1_NAME 
+				AND Role__c = :TestDataFactory.NEW_INTERMEDIARY_1_ROLE 
+				AND Intermediary_Organisation__r.VAT_Reg_no__c = :TestDataFactory.NEW_INTERMEDIARY_1_ORGANISATION_ID
+			]);
+			System.assertEquals(1, [
+				SELECT COUNT() 
+				FROM Intermediary__c 
+				WHERE Intermediary_Organisation__r.Name = :TestDataFactory.NEW_INTERMEDIARY_2_NAME
+				AND Role__c = :TestDataFactory.NEW_INTERMEDIARY_2_ROLE 
+				AND Intermediary_Organisation__r.VAT_Reg_no__c = :TestDataFactory.NEW_INTERMEDIARY_2_ORGANISATION_ID
+			]);
+		}
+		**/
+	}
+
+
+	@isTest
+	static void testInvalidInsertGrantAwardNoNameAndRecepientId(){
+		initData();
+		TestDataFactory testFactory = new TestDataFactory();
+		User testSuperUser = testFactory.setupBasicUser(testDepartment, 'Super User 1', Constant.PROFILE_COMMUNITY_SUPER_USER);
+		System.runAs(testSuperUser){
+		
+			TestDataFactory.DEFAULT_GRANT_AWARD_DATA_PARSED.put(TestDataFactory.TEST_GRANT_AWARD_NAME_COLUMN, '');
+			TestDataFactory.DEFAULT_GRANT_AWARD_DATA_PARSED.put(TestDataFactory.TEST_RECEPIENT_ID_COLUMN, '');
+			List<List<String>> allGrantAwardData = testFactory.createDefaultGrantAwardDataParsedCSV();
+
+			System.assertEquals(0, [SELECT COUNT() FROM Account WHERE Name = 'This is a new recepient!']);
+			System.assertEquals(0, [SELECT COUNT() FROM Grant_Award__c]);
+			System.assertEquals(0, [SELECT COUNT() FROM Intermediary__c]);
+
+			CSVDocument documentToUpload = new CSVDocument(allGrantAwardData);
+			CSV_Upload__c csvUpload = testFactory.createOrganisationGrantAwardCSVUpload(Constant.CSV_UPLOAD_CREATE_AWARD_TYPE);
+			CSVUploadProcessor processor = new CSVUploadProcessor(documentToUpload, CSVUploadSObjectFactory.newInstance(csvUpload));
+			System.assertEquals(0, [SELECT COUNT() FROM CSV_Upload__c]);
+			Test.startTest();
+				CSV_Upload__c newUpload = testFactory.createOrganisationGrantAwardCSVUpload(Constant.CSV_UPLOAD_CREATE_AWARD_TYPE);
+				newUpload.Total_Records_Failed__c = 0;
+				newUpload.Total_Records_To_Be_Processed__c = 1;
+				newUpload.Apex_Batch_Id__c = Id.valueOf(Database.executeBatch(processor, 1));
+				newUpload.Processing_Status__c = Constant.CSV_UPLOAD_PT_QUEUED;
+				insert newUpload;
+				System.assertEquals(0, [SELECT COUNT() FROM Attachment WHERE ParentId = :newUpload.Id]);
+			Test.stopTest();
+
+			List<CSV_Upload__c> createdCSVUpload = [SELECT Records_Created_Count__c, Records_Updated_Count__c, Processing_Status__c, Total_Records_Failed__c FROM CSV_Upload__c];
+			System.assertEquals(1, createdCSVUpload.size());
+			System.assertEquals(Constant.CSV_UPLOAD_PT_FINISHED, createdCSVUpload[0].Processing_Status__c);
+			System.assertEquals(0, createdCSVUpload[0].Records_Created_Count__c);
+			System.assertEquals(0, createdCSVUpload[0].Records_Updated_Count__c);
+			System.assertEquals(1, createdCSVUpload[0].Total_Records_Failed__c);
+
+			List<Attachment> errorFiles = [SELECT Body FROM Attachment WHERE ParentId = :newUpload.Id];
+			//System.assertEquals();
+=======
+<<<<<<< HEAD
+	    /**
+		initData();
+		TestDataFactory testFactory = new TestDataFactory();
+		User testSuperUser = testFactory.setupBasicUser(testDepartment, 'Super User 1', Constant.PROFILE_COMMUNITY_SUPER_USER);
+		System.runAs(testSuperUser){
+			List<List<String>> allGrantAwardData = testFactory.createDefaultGrantAwardDataParsedCSV();
+			CSVDocument csvDocumentToUse = new CSVDocument(allGrantAwardData);
+			System.assertEquals(0, [SELECT COUNT() FROM Grant_Award__c]);
+			System.assertEquals(0, [SELECT COUNT() FROM Account WHERE Name = 'This is a new recepient!']);
+			System.assertEquals(0, [SELECT COUNT() FROM Intermediary__c]);
+			System.assertEquals(0, [SELECT COUNT() FROM CSV_Upload__c]);
+			CSVDocument documentToUpload = new CSVDocument(allGrantAwardData);
+			CSV_Upload__c csvUpload = testFactory.createOrganisationGrantAwardCSVUpload(Constant.CSV_UPLOAD_CREATE_AWARD_TYPE);
+			CSVUploadProcessor processor = new CSVUploadProcessor(documentToUpload, CSVUploadSObjectFactory.newInstance(csvUpload));
+			Test.startTest();
+				Database.executeBatch(processor, 1);
+			Test.stopTest();
+			List<CSV_Upload__c> createdCSVUpload = [SELECT Records_Created_Count__c, Records_Updated_Count__c, Processing_Status__c, Total_Records_Failed__c FROM CSV_Upload__c];
+			System.assertEquals(1, createdCSVUpload.size());
+			System.assertEquals(Constant.CSV_UPLOAD_PT_FINISHED, createdCSVUpload[0].Processing_Status__c);
+			System.assertEquals(1, createdCSVUpload[0].Records_Created_Count__c);
+			System.assertEquals(0, createdCSVUpload[0].Records_Updated_Count__c);
+			
+			System.assertEquals(1, [SELECT COUNT() FROM Account WHERE Name = 'This is a new recepient!']);
+			System.assertEquals(1, [SELECT COUNT() FROM Grant_Award__c]);
+			System.assertEquals(1, [
+				SELECT COUNT() 
+				FROM Intermediary__c 
+				WHERE Intermediary_Organisation__r.Name = :TestDataFactory.NEW_INTERMEDIARY_1_NAME 
+				AND Role__c = :TestDataFactory.NEW_INTERMEDIARY_1_ROLE 
+				AND Intermediary_Organisation__r.VAT_Reg_no__c = :TestDataFactory.NEW_INTERMEDIARY_1_ORGANISATION_ID
+			]);
+			System.assertEquals(1, [
+				SELECT COUNT() 
+				FROM Intermediary__c 
+				WHERE Intermediary_Organisation__r.Name = :TestDataFactory.NEW_INTERMEDIARY_2_NAME
+				AND Role__c = :TestDataFactory.NEW_INTERMEDIARY_2_ROLE 
+				AND Intermediary_Organisation__r.VAT_Reg_no__c = :TestDataFactory.NEW_INTERMEDIARY_2_ORGANISATION_ID
+			]);
+		}
+		**/
+	}
+
+
+	@isTest
+	static void testInvalidInsertGrantAwardNoNameAndRecepientId(){
+		initData();
+		TestDataFactory testFactory = new TestDataFactory();
+		User testSuperUser = testFactory.setupBasicUser(testDepartment, 'Super User 1', Constant.PROFILE_COMMUNITY_SUPER_USER);
+		System.runAs(testSuperUser){
+		
+			TestDataFactory.DEFAULT_GRANT_AWARD_DATA_PARSED.put(TestDataFactory.TEST_GRANT_AWARD_NAME_COLUMN, '');
+			TestDataFactory.DEFAULT_GRANT_AWARD_DATA_PARSED.put(TestDataFactory.TEST_RECEPIENT_ID_COLUMN, '');
+			List<List<String>> allGrantAwardData = testFactory.createDefaultGrantAwardDataParsedCSV();
+
+			System.assertEquals(0, [SELECT COUNT() FROM Account WHERE Name = 'This is a new recepient!']);
+			System.assertEquals(0, [SELECT COUNT() FROM Grant_Award__c]);
+			System.assertEquals(0, [SELECT COUNT() FROM Intermediary__c]);
+
+			CSVDocument documentToUpload = new CSVDocument(allGrantAwardData);
+			CSV_Upload__c csvUpload = testFactory.createOrganisationGrantAwardCSVUpload(Constant.CSV_UPLOAD_CREATE_AWARD_TYPE);
+			CSVUploadProcessor processor = new CSVUploadProcessor(documentToUpload, CSVUploadSObjectFactory.newInstance(csvUpload));
+			System.assertEquals(0, [SELECT COUNT() FROM CSV_Upload__c]);
+			Test.startTest();
+				CSV_Upload__c newUpload = testFactory.createOrganisationGrantAwardCSVUpload(Constant.CSV_UPLOAD_CREATE_AWARD_TYPE);
+				newUpload.Total_Records_Failed__c = 0;
+				newUpload.Total_Records_To_Be_Processed__c = 1;
+				newUpload.Apex_Batch_Id__c = Id.valueOf(Database.executeBatch(processor, 1));
+				newUpload.Processing_Status__c = Constant.CSV_UPLOAD_PT_QUEUED;
+				insert newUpload;
+				System.assertEquals(0, [SELECT COUNT() FROM Attachment WHERE ParentId = :newUpload.Id]);
+			Test.stopTest();
+
+			List<CSV_Upload__c> createdCSVUpload = [SELECT Records_Created_Count__c, Records_Updated_Count__c, Processing_Status__c, Total_Records_Failed__c FROM CSV_Upload__c];
+			System.assertEquals(1, createdCSVUpload.size());
+			System.assertEquals(Constant.CSV_UPLOAD_PT_FINISHED, createdCSVUpload[0].Processing_Status__c);
+			System.assertEquals(0, createdCSVUpload[0].Records_Created_Count__c);
+			System.assertEquals(0, createdCSVUpload[0].Records_Updated_Count__c);
+			System.assertEquals(1, createdCSVUpload[0].Total_Records_Failed__c);
+
+			List<Attachment> errorFiles = [SELECT Body FROM Attachment WHERE ParentId = :newUpload.Id];
+			//System.assertEquals();
+=======
+<<<<<<< HEAD
+	    /**
+		initData();
+		TestDataFactory testFactory = new TestDataFactory();
+		User testSuperUser = testFactory.setupBasicUser(testDepartment, 'Super User 1', Constant.PROFILE_COMMUNITY_SUPER_USER);
+		System.runAs(testSuperUser){
+			List<List<String>> allGrantAwardData = testFactory.createDefaultGrantAwardDataParsedCSV();
+			CSVDocument csvDocumentToUse = new CSVDocument(allGrantAwardData);
+			System.assertEquals(0, [SELECT COUNT() FROM Grant_Award__c]);
+			System.assertEquals(0, [SELECT COUNT() FROM Account WHERE Name = 'This is a new recepient!']);
+			System.assertEquals(0, [SELECT COUNT() FROM Intermediary__c]);
+			System.assertEquals(0, [SELECT COUNT() FROM CSV_Upload__c]);
+			CSVDocument documentToUpload = new CSVDocument(allGrantAwardData);
+			CSV_Upload__c csvUpload = testFactory.createOrganisationGrantAwardCSVUpload(Constant.CSV_UPLOAD_CREATE_AWARD_TYPE);
+			CSVUploadProcessor processor = new CSVUploadProcessor(documentToUpload, CSVUploadSObjectFactory.newInstance(csvUpload));
+			Test.startTest();
+				Database.executeBatch(processor, 1);
+			Test.stopTest();
+			List<CSV_Upload__c> createdCSVUpload = [SELECT Records_Created_Count__c, Records_Updated_Count__c, Processing_Status__c, Total_Records_Failed__c FROM CSV_Upload__c];
+			System.assertEquals(1, createdCSVUpload.size());
+			System.assertEquals(Constant.CSV_UPLOAD_PT_FINISHED, createdCSVUpload[0].Processing_Status__c);
+			System.assertEquals(1, createdCSVUpload[0].Records_Created_Count__c);
+			System.assertEquals(0, createdCSVUpload[0].Records_Updated_Count__c);
+			
+			System.assertEquals(1, [SELECT COUNT() FROM Account WHERE Name = 'This is a new recepient!']);
+			System.assertEquals(1, [SELECT COUNT() FROM Grant_Award__c]);
+			System.assertEquals(1, [
+				SELECT COUNT() 
+				FROM Intermediary__c 
+				WHERE Intermediary_Organisation__r.Name = :TestDataFactory.NEW_INTERMEDIARY_1_NAME 
+				AND Role__c = :TestDataFactory.NEW_INTERMEDIARY_1_ROLE 
+				AND Intermediary_Organisation__r.VAT_Reg_no__c = :TestDataFactory.NEW_INTERMEDIARY_1_ORGANISATION_ID
+			]);
+			System.assertEquals(1, [
+				SELECT COUNT() 
+				FROM Intermediary__c 
+				WHERE Intermediary_Organisation__r.Name = :TestDataFactory.NEW_INTERMEDIARY_2_NAME
+				AND Role__c = :TestDataFactory.NEW_INTERMEDIARY_2_ROLE 
+				AND Intermediary_Organisation__r.VAT_Reg_no__c = :TestDataFactory.NEW_INTERMEDIARY_2_ORGANISATION_ID
+			]);
+		}
+		**/
+	}
+
+
+	@isTest
+	static void testInvalidInsertGrantAwardNoNameAndRecepientId(){
+		initData();
+		TestDataFactory testFactory = new TestDataFactory();
+		User testSuperUser = testFactory.setupBasicUser(testDepartment, 'Super User 1', Constant.PROFILE_COMMUNITY_SUPER_USER);
+		System.runAs(testSuperUser){
+		
+			TestDataFactory.DEFAULT_GRANT_AWARD_DATA_PARSED.put(TestDataFactory.TEST_GRANT_AWARD_NAME_COLUMN, '');
+			TestDataFactory.DEFAULT_GRANT_AWARD_DATA_PARSED.put(TestDataFactory.TEST_RECEPIENT_ID_COLUMN, '');
+			List<List<String>> allGrantAwardData = testFactory.createDefaultGrantAwardDataParsedCSV();
+
+			System.assertEquals(0, [SELECT COUNT() FROM Account WHERE Name = 'This is a new recepient!']);
+			System.assertEquals(0, [SELECT COUNT() FROM Grant_Award__c]);
+			System.assertEquals(0, [SELECT COUNT() FROM Intermediary__c]);
+
+			CSVDocument documentToUpload = new CSVDocument(allGrantAwardData);
+			CSV_Upload__c csvUpload = testFactory.createOrganisationGrantAwardCSVUpload(Constant.CSV_UPLOAD_CREATE_AWARD_TYPE);
+			CSVUploadProcessor processor = new CSVUploadProcessor(documentToUpload, CSVUploadSObjectFactory.newInstance(csvUpload));
+			System.assertEquals(0, [SELECT COUNT() FROM CSV_Upload__c]);
+			Test.startTest();
+				CSV_Upload__c newUpload = testFactory.createOrganisationGrantAwardCSVUpload(Constant.CSV_UPLOAD_CREATE_AWARD_TYPE);
+				newUpload.Total_Records_Failed__c = 0;
+				newUpload.Total_Records_To_Be_Processed__c = 1;
+				newUpload.Apex_Batch_Id__c = Id.valueOf(Database.executeBatch(processor, 1));
+				newUpload.Processing_Status__c = Constant.CSV_UPLOAD_PT_QUEUED;
+				insert newUpload;
+				System.assertEquals(0, [SELECT COUNT() FROM Attachment WHERE ParentId = :newUpload.Id]);
+			Test.stopTest();
+
+			List<CSV_Upload__c> createdCSVUpload = [SELECT Records_Created_Count__c, Records_Updated_Count__c, Processing_Status__c, Total_Records_Failed__c FROM CSV_Upload__c];
+			System.assertEquals(1, createdCSVUpload.size());
+			System.assertEquals(Constant.CSV_UPLOAD_PT_FINISHED, createdCSVUpload[0].Processing_Status__c);
+			System.assertEquals(0, createdCSVUpload[0].Records_Created_Count__c);
+			System.assertEquals(0, createdCSVUpload[0].Records_Updated_Count__c);
+			System.assertEquals(1, createdCSVUpload[0].Total_Records_Failed__c);
+
+			List<Attachment> errorFiles = [SELECT Body FROM Attachment WHERE ParentId = :newUpload.Id];
+			//System.assertEquals();
+=======
+		initData();
+		TestDataFactory testFactory = new TestDataFactory();
+		User testSuperUser = testFactory.setupBasicUser(testDepartment, 'Super User 1', Constant.PROFILE_COMMUNITY_SUPER_USER);
+		System.runAs(testSuperUser){
+			List<List<String>> allGrantAwardData = testFactory.createDefaultGrantAwardDataParsedCSV();
+			System.assertEquals(0, [SELECT COUNT() FROM Grant_Award__c]);
+			System.assertEquals(0, [SELECT COUNT() FROM Account WHERE Name = 'This is a new recepient!']);
+			System.assertEquals(0, [SELECT COUNT() FROM Intermediary__c]);
+			System.assertEquals(0, [SELECT COUNT() FROM CSV_Upload__c]);
+			CSVDocument documentToUpload = new CSVDocument(allGrantAwardData);
+			CSV_Upload__c csvUpload = testFactory.createOrganisationGrantAwardCSVUpload(Constant.CSV_UPLOAD_CREATE_AWARD_TYPE);
+			CSVUploadProcessor processor = new CSVUploadProcessor(documentToUpload, CSVUploadSObjectFactory.newInstance(csvUpload));
+			Test.startTest();
+				Database.executeBatch(processor, 1);
+			Test.stopTest();
+			List<CSV_Upload__c> createdCSVUpload = [SELECT Records_Created_Count__c, Records_Updated_Count__c, Processing_Status__c, Total_Records_Failed__c FROM CSV_Upload__c];
+			System.assertEquals(1, createdCSVUpload.size());
+			System.assertEquals(Constant.CSV_UPLOAD_PT_FINISHED, createdCSVUpload[0].Processing_Status__c);
+			System.assertEquals(1, createdCSVUpload[0].Records_Created_Count__c);
+			System.assertEquals(0, createdCSVUpload[0].Records_Updated_Count__c);
+			System.assertEquals(0, createdCSVUpload[0].Total_Records_Failed__c);
+
+			System.assertEquals(1, [SELECT COUNT() FROM Account WHERE Name = 'This is a new recepient!']);
+			System.assertEquals(1, [SELECT COUNT() FROM Grant_Award__c]);
+			System.assertEquals(1, [
+				SELECT COUNT() 
+				FROM Intermediary__c 
+				WHERE Intermediary_Organisation__r.Name = :TestDataFactory.NEW_INTERMEDIARY_1_NAME 
+				AND Role__c = :TestDataFactory.NEW_INTERMEDIARY_1_ROLE 
+				AND Intermediary_Organisation__r.VAT_Reg_no__c = :TestDataFactory.NEW_INTERMEDIARY_1_ORGANISATION_ID
+			]);
+			System.assertEquals(1, [
+				SELECT COUNT() 
+				FROM Intermediary__c 
+				WHERE Intermediary_Organisation__r.Name = :TestDataFactory.NEW_INTERMEDIARY_2_NAME
+				AND Role__c = :TestDataFactory.NEW_INTERMEDIARY_2_ROLE 
+				AND Intermediary_Organisation__r.VAT_Reg_no__c = :TestDataFactory.NEW_INTERMEDIARY_2_ORGANISATION_ID
+			]);
+		}
+	}
+
+	@isTest
+	static void testInvalidInsertGrantAwardNoNameAndRecepientId(){
+		initData();
+		TestDataFactory testFactory = new TestDataFactory();
+		User testSuperUser = testFactory.setupBasicUser(testDepartment, 'Super User 1', Constant.PROFILE_COMMUNITY_SUPER_USER);
+		System.runAs(testSuperUser){
+		
+			TestDataFactory.DEFAULT_GRANT_AWARD_DATA_PARSED.put(TestDataFactory.TEST_GRANT_AWARD_NAME_COLUMN, '');
+			TestDataFactory.DEFAULT_GRANT_AWARD_DATA_PARSED.put(TestDataFactory.TEST_RECEPIENT_ID_COLUMN, '');
+			List<List<String>> allGrantAwardData = testFactory.createDefaultGrantAwardDataParsedCSV();
+
+			System.assertEquals(0, [SELECT COUNT() FROM Account WHERE Name = 'This is a new recepient!']);
+			System.assertEquals(0, [SELECT COUNT() FROM Grant_Award__c]);
+			System.assertEquals(0, [SELECT COUNT() FROM Intermediary__c]);
+
+			CSVDocument documentToUpload = new CSVDocument(allGrantAwardData);
+			CSV_Upload__c csvUpload = testFactory.createOrganisationGrantAwardCSVUpload(Constant.CSV_UPLOAD_CREATE_AWARD_TYPE);
+			CSVUploadProcessor processor = new CSVUploadProcessor(documentToUpload, CSVUploadSObjectFactory.newInstance(csvUpload));
+			System.assertEquals(0, [SELECT COUNT() FROM CSV_Upload__c]);
+			Test.startTest();
+				CSV_Upload__c newUpload = testFactory.createOrganisationGrantAwardCSVUpload(Constant.CSV_UPLOAD_CREATE_AWARD_TYPE);
+				newUpload.Total_Records_Failed__c = 0;
+				newUpload.Total_Records_To_Be_Processed__c = 1;
+				newUpload.Apex_Batch_Id__c = Id.valueOf(Database.executeBatch(processor, 1));
+				newUpload.Processing_Status__c = Constant.CSV_UPLOAD_PT_QUEUED;
+				insert newUpload;
+				System.assertEquals(0, [SELECT COUNT() FROM Attachment WHERE ParentId = :newUpload.Id]);
+			Test.stopTest();
+
+			List<CSV_Upload__c> createdCSVUpload = [SELECT Records_Created_Count__c, Records_Updated_Count__c, Processing_Status__c, Total_Records_Failed__c FROM CSV_Upload__c];
+			System.assertEquals(1, createdCSVUpload.size());
+			System.assertEquals(Constant.CSV_UPLOAD_PT_FINISHED, createdCSVUpload[0].Processing_Status__c);
+			System.assertEquals(0, createdCSVUpload[0].Records_Created_Count__c);
+			System.assertEquals(0, createdCSVUpload[0].Records_Updated_Count__c);
+			System.assertEquals(1, createdCSVUpload[0].Total_Records_Failed__c);
+
+			List<Attachment> errorFiles = [SELECT Body FROM Attachment WHERE ParentId = :newUpload.Id];
+>>>>>>> refs/remotes/origin/master
+>>>>>>> branch 'master' of https://github.com/cabinetoffice/Government-Grants-Information-System-Metadata
+>>>>>>> branch 'master' of https://github.com/cabinetoffice/Government-Grants-Information-System-Metadata
+>>>>>>> branch 'master' of https://github.com/cabinetoffice/Government-Grants-Information-System-Metadata
 			System.assertEquals(1, errorFiles.size());
 			System.assertEquals(true, errorFiles[0].Body.toString().containsIgnoreCase('[Grant Award Name, Recipient ID]'));
 			System.assertEquals(0, [SELECT COUNT() FROM Account WHERE Name = 'This is a new recepient!']);

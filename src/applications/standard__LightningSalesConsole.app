@@ -10,6 +10,10 @@
     <tab>standard-Campaign</tab>
     <tab>standard-Task</tab>
     <tab>standard-Event</tab>
+<<<<<<< HEAD
+=======
+    <tab>standard-ContentNote</tab>
+>>>>>>> branch 'master' of https://github.com/cabinetoffice/Government-Grants-Information-System-Metadata
     <tab>standard-report</tab>
     <tab>standard-Dashboard</tab>
     <tab>standard-Feed</tab>

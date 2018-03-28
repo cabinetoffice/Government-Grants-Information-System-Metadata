@@ -10,6 +10,7 @@
                 <behavior>Required</behavior>
                 <field>User_Type__c</field>
             </layoutItems>
+<<<<<<< HEAD
         </layoutColumns>
         <layoutColumns>
             <layoutItems>
@@ -17,6 +18,22 @@
                 <field>User_has_Grant_Schemes__c</field>
             </layoutItems>
         </layoutColumns>
+=======
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Last_Review_Reminder_Email__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>Next_Review_Reminder_Email__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>User_has_Grant_Schemes__c</field>
+            </layoutItems>
+        </layoutColumns>
+        <layoutColumns/>
+>>>>>>> branch 'master' of https://github.com/cabinetoffice/Government-Grants-Information-System-Metadata
         <style>TwoColumnsLeftToRight</style>
     </layoutSections>
     <layoutSections>

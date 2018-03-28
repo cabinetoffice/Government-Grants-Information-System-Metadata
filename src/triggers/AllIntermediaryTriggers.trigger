@@ -16,7 +16,23 @@ trigger AllIntermediaryTriggers on Intermediary__c (before insert,
         return;
     }
 
+<<<<<<< HEAD
     if (Trigger.isBefore &Trigger.isDelete) {
+=======
+<<<<<<< HEAD
+    if (Trigger.isBefore &Trigger.isDelete) {
+=======
+<<<<<<< HEAD
+    if (Trigger.isBefore &Trigger.isDelete) {
+=======
+<<<<<<< HEAD
+    if (Trigger.isBefore &Trigger.isDelete) {
+=======
+    if (Trigger.isBefore && Trigger.isDelete) {
+>>>>>>> refs/remotes/origin/master
+>>>>>>> branch 'master' of https://github.com/cabinetoffice/Government-Grants-Information-System-Metadata
+>>>>>>> branch 'master' of https://github.com/cabinetoffice/Government-Grants-Information-System-Metadata
+>>>>>>> branch 'master' of https://github.com/cabinetoffice/Government-Grants-Information-System-Metadata
         AllIntermediaryTriggersHandler.handleBeforeDelete(Trigger.oldMap);
     }
 

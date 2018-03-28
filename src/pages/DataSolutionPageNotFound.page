@@ -1,3 +1,23 @@
+<<<<<<< HEAD
 <apex:page showHeader="true">
     <apex:pageMessage severity="WARNING" strength="3" title="404" summary="Page Not Found: {!$Site.OriginalUrl}"/>
+=======
+<<<<<<< HEAD
+<apex:page showHeader="true">
+    <apex:pageMessage severity="WARNING" strength="3" title="404" summary="Page Not Found: {!$Site.OriginalUrl}"/>
+=======
+<<<<<<< HEAD
+<apex:page showHeader="true">
+    <apex:pageMessage severity="WARNING" strength="3" title="404" summary="Page Not Found: {!$Site.OriginalUrl}"/>
+=======
+<<<<<<< HEAD
+<apex:page showHeader="true">
+    <apex:pageMessage severity="WARNING" strength="3" title="404" summary="Page Not Found: {!$Site.OriginalUrl}"/>
+=======
+<apex:page showHeader="true">
+    <apex:pageMessage severity="WARNING" strength="3" title="404" summary="Page Not Found: {!$Site.OriginalUrl}"/>
+>>>>>>> refs/remotes/origin/master
+>>>>>>> branch 'master' of https://github.com/cabinetoffice/Government-Grants-Information-System-Metadata
+>>>>>>> branch 'master' of https://github.com/cabinetoffice/Government-Grants-Information-System-Metadata
+>>>>>>> branch 'master' of https://github.com/cabinetoffice/Government-Grants-Information-System-Metadata
 </apex:page>

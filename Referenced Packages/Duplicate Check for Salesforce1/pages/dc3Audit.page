@@ -1,0 +1,2 @@
+<apex:page docType="html-5.0" sidebar="true" controller="dupcheck.dc3ControllerAudit" title="Audit - Duplicate Check for Salesforce" action="{!directSetup}" tabstyle="dc3Search__tab">
+</apex:page>

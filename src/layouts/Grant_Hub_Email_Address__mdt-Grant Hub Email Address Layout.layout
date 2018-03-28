@@ -51,12 +51,18 @@
         <style>TwoColumnsTopToBottom</style>
     </layoutSections>
     <layoutSections>
+<<<<<<< HEAD
         <customLabel>true</customLabel>
         <detailHeading>true</detailHeading>
         <editHeading>false</editHeading>
         <label>Custom Links</label>
         <layoutColumns/>
         <layoutColumns/>
+=======
+        <customLabel>false</customLabel>
+        <detailHeading>false</detailHeading>
+        <editHeading>false</editHeading>
+>>>>>>> branch 'master' of https://github.com/cabinetoffice/Government-Grants-Information-System-Metadata
         <layoutColumns/>
         <style>CustomLinks</style>
     </layoutSections>

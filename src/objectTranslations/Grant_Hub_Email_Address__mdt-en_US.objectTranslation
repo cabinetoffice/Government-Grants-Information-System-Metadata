@@ -12,6 +12,7 @@
         <label><!-- Email --></label>
         <name>Email__c</name>
     </fields>
+<<<<<<< HEAD
     <layouts>
         <layout>Grant Hub Email Address Layout</layout>
         <sections>
@@ -19,5 +20,7 @@
             <section>Custom Links</section>
         </sections>
     </layouts>
+=======
+>>>>>>> branch 'master' of https://github.com/cabinetoffice/Government-Grants-Information-System-Metadata
     <startsWith>Consonant</startsWith>
 </CustomObjectTranslation>

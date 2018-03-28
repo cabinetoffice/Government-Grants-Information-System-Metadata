@@ -55,6 +55,7 @@
     <externalSharingModel>ReadWrite</externalSharingModel>
     <fields>
         <fullName>Account_L1_Long_Name__c</fullName>
+<<<<<<< HEAD
         <encrypted>false</encrypted>
         <externalId>false</externalId>
         <label>Account L1 Long Name</label>
@@ -111,6 +112,58 @@
     <fields>
         <fullName>Account_L5_Long_Name__c</fullName>
         <encrypted>false</encrypted>
+=======
+        <externalId>false</externalId>
+        <label>Account L1 Long Name</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Account_L2_Long_Name__c</fullName>
+        <externalId>false</externalId>
+        <label>Account L2 Long Name</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Account_L3_Long_Name__c</fullName>
+        <externalId>false</externalId>
+        <label>Account L3 Long Name</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Account_L4_Long_Name__c</fullName>
+        <externalId>false</externalId>
+        <label>Account L4 Long Name</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Account_L5_Description__c</fullName>
+        <externalId>false</externalId>
+        <label>Account L5 Description</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Account_L5_Long_Name__c</fullName>
+>>>>>>> branch 'master' of https://github.com/cabinetoffice/Government-Grants-Information-System-Metadata
         <externalId>false</externalId>
         <label>Account L5 Long Name</label>
         <length>255</length>

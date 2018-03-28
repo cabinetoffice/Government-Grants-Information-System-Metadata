@@ -59,6 +59,7 @@
     <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
     <enableEnhancedLookup>true</enableEnhancedLookup>
     <enableFeeds>true</enableFeeds>
+<<<<<<< HEAD
     <externalSharingModel>Private</externalSharingModel>
     <fields>
         <fullName>Last_Review_Reminder_Email__c</fullName>
@@ -154,6 +155,114 @@ NOT(ISBLANK( User_has_Grant_Schemes__c ))
         <required>false</required>
         <trackFeedHistory>false</trackFeedHistory>
         <type>Date</type>
+=======
+    <externalSharingModel>Read</externalSharingModel>
+    <fields>
+        <fullName>Last_Review_Reminder_Email__c</fullName>
+        <description>The date the last review reminder emails were sent to the user</description>
+        <externalId>false</externalId>
+        <label>Last Review Reminder Email</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>ManagerId</fullName>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Hierarchy</type>
+    </fields>
+    <fields>
+        <fullName>Next_Review_Reminder_Email__c</fullName>
+        <description>The date the next review reminder email will be sent to the user</description>
+        <externalId>false</externalId>
+        <formula>IF(
+NOT(ISBLANK( User_has_Grant_Schemes__c ))
+, IF(
+  ISBLANK( Last_Review_Reminder_Email__c )
+  , DATE(
+     CASE(MONTH(User_has_Grant_Schemes__c + 243), 12, YEAR(User_has_Grant_Schemes__c + 243) + 1, YEAR(User_has_Grant_Schemes__c + 243)),
+     CASE(MONTH(User_has_Grant_Schemes__c + 243), 12, 1, MONTH(User_has_Grant_Schemes__c + 243) +1),
+     1
+    ) - 1
+  , DATE(
+     CASE(MONTH( Last_Review_Reminder_Email__c ), 11, YEAR(Last_Review_Reminder_Email__c ) + 1, 12, YEAR(Last_Review_Reminder_Email__c ) + 1, YEAR(Last_Review_Reminder_Email__c )),
+     CASE(MONTH( Last_Review_Reminder_Email__c ), 11, 1, 12, 2, MONTH( Last_Review_Reminder_Email__c ) +2),
+     1
+    ) -1
+  )
+, null
+)</formula>
+        <label>Next Review Reminder Email</label>
+        <required>false</required>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>SendGrantReminder__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>This flag is used to trigger a workflow which sends the &apos;Incomplete Grants&apos; monthly email to the related user. The flag is checked by a scheduled apex job based on business rules.</description>
+        <externalId>false</externalId>
+        <label>Send Incomplete Grant Reminder</label>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>SendInactiveUserEmail__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <inlineHelpText>This flag is used to send reminder email to Admin user notifying the list of Inactive users with Grants</inlineHelpText>
+        <label>Send Inactive User Email</label>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>User_Type__c</fullName>
+        <description>This is the picklist value which will be shown for reports on Users.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>This is the picklist value which will be shown for reports on Users.</inlineHelpText>
+        <label>User Type</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>System User</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Super User</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Central User</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Standard User</fullName>
+                    <default>false</default>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>User_has_Grant_Schemes__c</fullName>
+        <description>Date of the first Grant Scheme created by the user</description>
+        <externalId>false</externalId>
+        <label>User has Grant Schemes</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>dupcheck__dc3DisableDuplicateCheck__c</fullName>
+        <defaultValue>false</defaultValue>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Disable Duplicate Check</label>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Checkbox</type>
+>>>>>>> branch 'master' of https://github.com/cabinetoffice/Government-Grants-Information-System-Metadata
     </fields>
     <listViews>
         <fullName>ActiveUsers</fullName>

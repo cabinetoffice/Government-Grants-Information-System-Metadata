@@ -2,7 +2,11 @@ Dear {!User.Name},
 <br/>
 <p>You have created the following grant schemes 12 months ago and as best practice, you are due to review all your grants every year. Can you please review your schemes by choosing one of the options in the "Review outcome" field and adding any necessary details in the "Review outcome details" field. These fields are in the section called "Review/ Evaluation Details"</p>
 
+<<<<<<< HEAD
 <p><a href="https://cabinetoffice.my.salesforce.com/00O24000004hse1"> My Grants 12 Month Review Outcome Report </a></P>
+=======
+<p><a href="https://cabinetofficeidp--dev.cs81.my.salesforce.com/00O26000000PdXQ"> My Grants 12 Month Review Outcome Report </a></P>
+>>>>>>> branch 'master' of https://github.com/cabinetoffice/Government-Grants-Information-System-Metadata
 
 Regards,<br>
 GGIS Team

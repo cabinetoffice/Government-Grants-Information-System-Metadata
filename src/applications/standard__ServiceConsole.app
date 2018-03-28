@@ -175,7 +175,15 @@
     <tab>standard-Lead</tab>
     <tab>standard-Knowledge</tab>
     <tab>standard-Document</tab>
+<<<<<<< HEAD
     <workspaceMappings>
+=======
+    <tab>Authority_Act__c</tab>
+    <workspaceMappings>
+        <mapping>
+            <tab>Authority_Act__c</tab>
+        </mapping>
+>>>>>>> branch 'master' of https://github.com/cabinetoffice/Government-Grants-Information-System-Metadata
         <mapping>
             <tab>standard-Account</tab>
         </mapping>

@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<<<<<<< HEAD
 <Workflow xmlns="http://soap.sforce.com/2006/04/metadata">
     <fieldUpdates>
         <fullName>X01Ri0000000TXpP</fullName>
@@ -36,3 +37,7 @@
         <triggerType>onCreateOrTriggeringUpdate</triggerType>
     </rules>
 </Workflow>
+=======
+<Workflow xmlns="http://soap.sforce.com/2006/04/metadata"/>
+
+>>>>>>> branch 'master' of https://github.com/cabinetoffice/Government-Grants-Information-System-Metadata

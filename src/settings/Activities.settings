@@ -18,4 +18,8 @@
     <showEventDetailsMultiUserCalendar>false</showEventDetailsMultiUserCalendar>
     <showHomePageHoverLinksForEvents>true</showHomePageHoverLinksForEvents>
     <showMyTasksHoverLinks>true</showMyTasksHoverLinks>
+<<<<<<< HEAD
+=======
+    <showRequestedMeetingsOnHomePage>true</showRequestedMeetingsOnHomePage>
+>>>>>>> branch 'master' of https://github.com/cabinetoffice/Government-Grants-Information-System-Metadata
 </ActivitiesSettings>

@@ -5,6 +5,7 @@
         <backgroundColor2>#FFFFFF</backgroundColor2>
         <backgroundFadeDir>Diagonal</backgroundFadeDir>
         <chartSummaries>
+<<<<<<< HEAD
             <aggregate>Sum</aggregate>
             <axisBinding>y</axisBinding>
             <column>Grant_Scheme__c.Grant_Awards__r$Total_amount_per_year__c</column>
@@ -82,5 +83,48 @@
     <timeFrameFilter>
         <dateColumn>Grant_Scheme__c.Grant_Awards__r$Award_Start_Date__c</dateColumn>
         <interval>INTERVAL_CUSTOM</interval>
+=======
+            <axisBinding>y</axisBinding>
+            <column>RowCount</column>
+        </chartSummaries>
+        <chartType>VerticalColumn</chartType>
+        <enableHoverLabels>false</enableHoverLabels>
+        <expandOthers>true</expandOthers>
+        <groupingColumn>Grant_Scheme__c$Target_Location__c</groupingColumn>
+        <location>CHART_TOP</location>
+        <showAxisLabels>true</showAxisLabels>
+        <showPercentage>false</showPercentage>
+        <showTotal>false</showTotal>
+        <showValues>false</showValues>
+        <size>Medium</size>
+        <summaryAxisRange>Auto</summaryAxisRange>
+        <textColor>#000000</textColor>
+        <textSize>12</textSize>
+        <titleColor>#000000</titleColor>
+        <titleSize>18</titleSize>
+    </chart>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>Grant_Scheme__c.Grant_Awards__r$Total_Amount_in_funding_agreement__c</field>
+    </columns>
+    <description>Target location Dashboard 3</description>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>Grant_Scheme__c$Target_Location__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>Award values by target location this FY</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Grant_Scheme_with_Grant_Awards__c</reportType>
+    <scope>organization</scope>
+    <showDetails>false</showDetails>
+    <timeFrameFilter>
+        <dateColumn>Grant_Scheme__c.Grant_Awards__r$Award_Start_Date__c</dateColumn>
+        <interval>INTERVAL_CURFY</interval>
+>>>>>>> branch 'master' of https://github.com/cabinetoffice/Government-Grants-Information-System-Metadata
     </timeFrameFilter>
 </Report>

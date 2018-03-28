@@ -106,6 +106,7 @@
         <fullName>Headline</fullName>
     </fields>
     <fields>
+<<<<<<< HEAD
         <fullName>HiddenById</fullName>
         <type>Lookup</type>
     </fields>
@@ -269,6 +270,162 @@
         <searchResultsAdditionalFields>Parent</searchResultsAdditionalFields>
         <searchResultsAdditionalFields>ReviewedStatus</searchResultsAdditionalFields>
         <searchResultsAdditionalFields>Notes</searchResultsAdditionalFields>
+=======
+        <fullName>InboundLinkCount</fullName>
+    </fields>
+    <fields>
+        <fullName>IsOutbound</fullName>
+    </fields>
+    <fields>
+        <fullName>KeywordGroupName</fullName>
+    </fields>
+    <fields>
+        <fullName>Language</fullName>
+    </fields>
+    <fields>
+        <fullName>LikedBy</fullName>
+    </fields>
+    <fields>
+        <fullName>LikesAndVotes</fullName>
+    </fields>
+    <fields>
+        <fullName>MediaProvider</fullName>
+    </fields>
+    <fields>
+        <fullName>MediaType</fullName>
+    </fields>
+    <fields>
+        <fullName>MessageType</fullName>
+    </fields>
+    <fields>
+        <fullName>Name</fullName>
+    </fields>
+    <fields>
+        <fullName>OutboundSocialAccountId</fullName>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>OwnerId</fullName>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>ParentId</fullName>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>PersonaId</fullName>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>PostPriority</fullName>
+    </fields>
+    <fields>
+        <fullName>PostTags</fullName>
+    </fields>
+    <fields>
+        <fullName>PostUrl</fullName>
+    </fields>
+    <fields>
+        <fullName>Posted</fullName>
+    </fields>
+    <fields>
+        <fullName>Provider</fullName>
+    </fields>
+    <fields>
+        <fullName>R6PostId</fullName>
+    </fields>
+    <fields>
+        <fullName>R6SourceId</fullName>
+    </fields>
+    <fields>
+        <fullName>R6TopicId</fullName>
+    </fields>
+    <fields>
+        <fullName>Recipient</fullName>
+    </fields>
+    <fields>
+        <fullName>RecipientType</fullName>
+    </fields>
+    <fields>
+        <fullName>ReplyToId</fullName>
+        <type>Hierarchy</type>
+    </fields>
+    <fields>
+        <fullName>ResponseContextExternalId</fullName>
+    </fields>
+    <fields>
+        <fullName>ReviewScale</fullName>
+    </fields>
+    <fields>
+        <fullName>ReviewScore</fullName>
+    </fields>
+    <fields>
+        <fullName>ReviewedStatus</fullName>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Sentiment</fullName>
+    </fields>
+    <fields>
+        <fullName>Shares</fullName>
+    </fields>
+    <fields>
+        <fullName>SourceTags</fullName>
+    </fields>
+    <fields>
+        <fullName>SpamRating</fullName>
+    </fields>
+    <fields>
+        <fullName>Status</fullName>
+    </fields>
+    <fields>
+        <fullName>StatusMessage</fullName>
+    </fields>
+    <fields>
+        <fullName>ThreadSize</fullName>
+    </fields>
+    <fields>
+        <fullName>TopicProfileName</fullName>
+    </fields>
+    <fields>
+        <fullName>TopicType</fullName>
+    </fields>
+    <fields>
+        <fullName>TruncatedContent</fullName>
+    </fields>
+    <fields>
+        <fullName>UniqueCommentors</fullName>
+    </fields>
+    <fields>
+        <fullName>ViewCount</fullName>
+    </fields>
+    <fields>
+        <fullName>WhoId</fullName>
+        <type>Lookup</type>
+    </fields>
+    <listViews>
+        <fullName>AllSocialPosts</fullName>
+        <columns>Name</columns>
+        <columns>Persona</columns>
+        <columns>Content</columns>
+        <columns>Posted</columns>
+        <columns>Parent</columns>
+        <columns>ReviewedStatus</columns>
+        <filterScope>Everything</filterScope>
+        <label>All social posts</label>
+    </listViews>
+    <searchLayouts>
+        <customTabListAdditionalFields>Persona</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Content</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Posted</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Parent</customTabListAdditionalFields>
+        <customTabListAdditionalFields>ReviewedStatus</customTabListAdditionalFields>
+        <searchResultsAdditionalFields>Persona</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Content</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Posted</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Parent</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>ReviewedStatus</searchResultsAdditionalFields>
+>>>>>>> branch 'master' of https://github.com/cabinetoffice/Government-Grants-Information-System-Metadata
     </searchLayouts>
     <sharingModel>ReadWrite</sharingModel>
 </CustomObject>

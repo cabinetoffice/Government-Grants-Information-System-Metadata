@@ -289,6 +289,7 @@
         <startsWith>Vowel</startsWith>
     </fields>
     <fields>
+<<<<<<< HEAD
         <label><!-- Business Area --></label>
         <name>Business_Area__c</name>
         <picklistValues>
@@ -364,5 +365,162 @@
     <webLinks>
         <label><!-- YahooWeather --></label>
         <name>YahooWeather</name>
+=======
+        <caseValues>
+            <plural>false</plural>
+            <value>Forename</value>
+        </caseValues>
+        <name>first_name_contact</name>
+        <startsWith>Vowel</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>Forename (Local)</value>
+        </caseValues>
+        <name>first_name_local_contact</name>
+        <startsWith>Vowel</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>Surname</value>
+        </caseValues>
+        <name>last_name_contact</name>
+        <startsWith>Vowel</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>Surname (Local)</value>
+        </caseValues>
+        <name>last_name_local_contact</name>
+        <startsWith>Vowel</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>Reports To Forename</value>
+        </caseValues>
+        <name>reports_to_first_name_contact</name>
+        <startsWith>Vowel</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>Reports To Forename (Local)</value>
+        </caseValues>
+        <name>reports_to_first_name_local_contact</name>
+        <startsWith>Vowel</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>Reports To Surname</value>
+        </caseValues>
+        <name>reports_to_last_name_contact</name>
+        <startsWith>Vowel</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>Reports To Surname (Local)</value>
+        </caseValues>
+        <name>reports_to_last_name_local_contact</name>
+        <startsWith>Vowel</startsWith>
+    </fields>
+    <fields>
+        <label><!-- Business Area --></label>
+        <name>Business_Area__c</name>
+        <picklistValues>
+            <masterLabel>Commercial</masterLabel>
+            <translation><!-- Commercial --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Finance</masterLabel>
+            <translation><!-- Finance --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Grants</masterLabel>
+            <translation><!-- Grants --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Policy</masterLabel>
+            <translation><!-- Policy --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Procurement</masterLabel>
+            <translation><!-- Procurement --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- User Organisation Type --></label>
+        <name>User_Organisation_Type__c</name>
+        <picklistValues>
+            <masterLabel>Government Department</masterLabel>
+            <translation><!-- Government Department --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intermediary</masterLabel>
+            <translation><!-- Intermediary --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Local Authority</masterLabel>
+            <translation><!-- Local Authority --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- User Role --></label>
+        <name>User_Role__c</name>
+        <picklistValues>
+            <masterLabel>Central User</masterLabel>
+            <translation><!-- Central User --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Standard User</masterLabel>
+            <translation><!-- Standard User --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Super User</masterLabel>
+            <translation><!-- Super User --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Disable Duplicate Check --></label>
+        <name>dupcheck__dc3DisableDuplicateCheck__c</name>
+    </fields>
+    <fields>
+        <label><!-- Duplicate Check Index --></label>
+        <name>dupcheck__dc3Index__c</name>
+    </fields>
+    <startsWith>Vowel</startsWith>
+    <webLinks>
+        <label><!-- GoogleMaps --></label>
+        <name>GoogleMaps</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- GoogleSearch --></label>
+        <name>GoogleSearch</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- SendGmail --></label>
+        <name>SendGmail</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- YahooMaps --></label>
+        <name>YahooMaps</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- YahooWeather --></label>
+        <name>YahooWeather</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- dc3Check --></label>
+        <name>dupcheck__dc3Check</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- dc3Merge --></label>
+        <name>dupcheck__dc3Merge</name>
+>>>>>>> branch 'master' of https://github.com/cabinetoffice/Government-Grants-Information-System-Metadata
     </webLinks>
 </CustomObjectTranslation>

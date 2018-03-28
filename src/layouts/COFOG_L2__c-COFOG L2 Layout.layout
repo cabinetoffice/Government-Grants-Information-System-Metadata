@@ -71,6 +71,10 @@
     <relatedLists>
         <fields>NAME</fields>
         <fields>Scheme_Reference_No__c</fields>
+<<<<<<< HEAD
+=======
+        <fields>RECORDTYPE</fields>
+>>>>>>> branch 'master' of https://github.com/cabinetoffice/Government-Grants-Information-System-Metadata
         <fields>Grant_Scheme_Name_Link__c</fields>
         <fields>Scheme_Value__c</fields>
         <fields>Start_Date__c</fields>

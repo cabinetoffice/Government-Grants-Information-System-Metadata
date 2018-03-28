@@ -32,7 +32,14 @@
             <type>Alert</type>
         </actions>
         <active>true</active>
+<<<<<<< HEAD
         <formula>AND(  NOT( $Setup.Bypass__c.Workflow_Rules__c )  , NOT(ISPICKVAL( $User.User_Type__c, &apos;System User&apos;)) )</formula>
+=======
+        <formula>AND(
+ NOT( $Setup.Bypass__c.Workflow_Rules__c )
+ , NOT(ISPICKVAL( $User.User_Type__c, &apos;System User&apos;))
+)</formula>
+>>>>>>> branch 'master' of https://github.com/cabinetoffice/Government-Grants-Information-System-Metadata
         <triggerType>onCreateOnly</triggerType>
     </rules>
 </Workflow>

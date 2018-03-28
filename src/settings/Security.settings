@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <SecuritySettings xmlns="http://soap.sforce.com/2006/04/metadata">
+<<<<<<< HEAD
     <networkAccess>
         <ipRanges>
             <end>185.57.93.18</end>
@@ -15,6 +16,9 @@
             <start>10.214.169.102</start>
         </ipRanges>
     </networkAccess>
+=======
+    <networkAccess/>
+>>>>>>> branch 'master' of https://github.com/cabinetoffice/Government-Grants-Information-System-Metadata
     <passwordPolicies>
         <complexity>AlphaNumeric</complexity>
         <expiration>Never</expiration>

@@ -114,6 +114,25 @@
                 <behavior>Edit</behavior>
                 <field>SuppliedEmail</field>
             </layoutItems>
+<<<<<<< HEAD
+=======
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Grant_Award__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Grant_Programme__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Grant_Scheme__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Organisation__c</field>
+            </layoutItems>
+>>>>>>> branch 'master' of https://github.com/cabinetoffice/Government-Grants-Information-System-Metadata
         </layoutColumns>
         <layoutColumns/>
         <style>TwoColumnsLeftToRight</style>

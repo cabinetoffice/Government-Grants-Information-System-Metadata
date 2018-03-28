@@ -59,6 +59,7 @@
     <fields>
         <fullName>Description__c</fullName>
         <description>Description of the programme</description>
+<<<<<<< HEAD
         <encrypted>false</encrypted>
         <externalId>false</externalId>
         <inlineHelpText>A freetext field for departments to fill in any description of the Grant Programme they may have.</inlineHelpText>
@@ -109,6 +110,56 @@
         <fullName>Programme_Reference_Number__c</fullName>
         <description>This is the reference number for this program</description>
         <encrypted>false</encrypted>
+=======
+        <externalId>false</externalId>
+        <inlineHelpText>A freetext field for departments to fill in any description of the Grant Programme they may have.</inlineHelpText>
+        <label>Description</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Is_My_Department_Data__c</fullName>
+        <externalId>false</externalId>
+        <formula>LEFT(
+ Owner:User.UserRole.Name , 
+ IF(
+  RIGHT(Owner:User.UserRole.Name , 8) == &apos; Manager&apos;
+  , LEN(Owner:User.UserRole.Name ) - 8
+  , LEN(Owner:User.UserRole.Name ) - 5
+ )
+) == LEFT(
+ $UserRole.Name, 
+ IF(
+  RIGHT($UserRole.Name, 8) == &apos; Manager&apos;
+  , LEN($UserRole.Name) - 8
+  , LEN($UserRole.Name) - 5
+ )
+)</formula>
+        <label>Is My Department Data</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Portal_User_Cannot_Delete_This_Record__c</fullName>
+        <externalId>false</externalId>
+        <formula>AND( 
+ NOT($Setup.Bypass__c.Validation_Rules__c) 
+ , NOT($Setup.Bypass__c.Business_Rules_for_Edit_and_Delete__c)
+ , ISPICKVAL($Profile.UserType, &apos;PowerCustomerSuccess&apos;) 
+ , (TODAY() - DATEVALUE(CreatedDate) ) &gt; 2 
+)</formula>
+        <label>Portal User Cannot Delete This Record</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Programme_Reference_Number__c</fullName>
+        <description>This is the reference number for this program</description>
+>>>>>>> branch 'master' of https://github.com/cabinetoffice/Government-Grants-Information-System-Metadata
         <externalId>true</externalId>
         <inlineHelpText>This is a reference number that can be given from a department&apos;s own internal system, should you wish to. It is optional &amp; will help reconciliation between GGIS &amp; your own system, but you don&apos;t have to include one.</inlineHelpText>
         <label>Programme Reference Number</label>

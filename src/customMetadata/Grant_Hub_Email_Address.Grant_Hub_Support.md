@@ -4,6 +4,10 @@
     <protected>false</protected>
     <values>
         <field>Email__c</field>
+<<<<<<< HEAD
         <value xsi:type="xsd:string">grantshubsupport@cabinetoffice.gov.uk</value>
+=======
+        <value xsi:type="xsd:string">bhushan.k.sukumar@accenture.com</value>
+>>>>>>> branch 'master' of https://github.com/cabinetoffice/Government-Grants-Information-System-Metadata
     </values>
 </CustomMetadata>

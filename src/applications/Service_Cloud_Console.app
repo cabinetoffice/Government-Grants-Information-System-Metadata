@@ -179,7 +179,15 @@
     <tab>standard-Dashboard</tab>
     <tab>standard-Contact</tab>
     <tab>standard-report</tab>
+<<<<<<< HEAD
     <workspaceMappings>
+=======
+    <tab>Authority_Act__c</tab>
+    <workspaceMappings>
+        <mapping>
+            <tab>Authority_Act__c</tab>
+        </mapping>
+>>>>>>> branch 'master' of https://github.com/cabinetoffice/Government-Grants-Information-System-Metadata
         <mapping>
             <tab>Getting_Started</tab>
         </mapping>

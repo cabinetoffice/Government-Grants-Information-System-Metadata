@@ -1,0 +1,2 @@
+<apex:page docType="html-5.0" controller="dupcheck.dc3ControllerLicense" cache="false" Title="License - Duplicate Check for Salesforce" sidebar="false" action="{!directSetup}" tabstyle="dc3Setup__tab">
+</apex:page>

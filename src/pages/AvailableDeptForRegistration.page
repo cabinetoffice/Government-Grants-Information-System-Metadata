@@ -1,3 +1,23 @@
+<<<<<<< HEAD
 <apex:page controller="AvailableDeptForRegistrationCtrl" contentType="application/x-JavaScript; charset=utf-8" showHeader="false" standardStylesheets="false" sidebar="false">
 	{!JSON}
+=======
+<<<<<<< HEAD
+<apex:page controller="AvailableDeptForRegistrationCtrl" contentType="application/x-JavaScript; charset=utf-8" showHeader="false" standardStylesheets="false" sidebar="false">
+	{!JSON}
+=======
+<<<<<<< HEAD
+<apex:page controller="AvailableDeptForRegistrationCtrl" contentType="application/x-JavaScript; charset=utf-8" showHeader="false" standardStylesheets="false" sidebar="false">
+	{!JSON}
+=======
+<<<<<<< HEAD
+<apex:page controller="AvailableDeptForRegistrationCtrl" contentType="application/x-JavaScript; charset=utf-8" showHeader="false" standardStylesheets="false" sidebar="false">
+	{!JSON}
+=======
+<apex:page controller="AvailableDeptForRegistrationCtrl" contentType="application/x-JavaScript; charset=utf-8" showHeader="false" standardStylesheets="false" sidebar="false">
+	{!JSON}
+>>>>>>> refs/remotes/origin/master
+>>>>>>> branch 'master' of https://github.com/cabinetoffice/Government-Grants-Information-System-Metadata
+>>>>>>> branch 'master' of https://github.com/cabinetoffice/Government-Grants-Information-System-Metadata
+>>>>>>> branch 'master' of https://github.com/cabinetoffice/Government-Grants-Information-System-Metadata
 </apex:page>

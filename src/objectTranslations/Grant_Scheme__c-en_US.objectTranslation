@@ -13,6 +13,7 @@
         <name>Advice_from_NGAP__c</name>
     </fields>
     <fields>
+<<<<<<< HEAD
         <label><!-- Sch allocation method competed --></label>
         <name>Allocation_Method_Competed__c</name>
     </fields>
@@ -1006,6 +1007,915 @@
     <validationRules>
         <errorMessage><!-- Public funding source is a mandatory field. Please select a value for this field. --></errorMessage>
         <name>Public_funding_source_is_mandatory</name>
+=======
+        <label><!-- Allocation Method Competed --></label>
+        <name>Allocation_Method_Competed__c</name>
+    </fields>
+    <fields>
+        <label><!-- Allocation Method Criteria --></label>
+        <name>Allocation_Method_Criteria__c</name>
+    </fields>
+    <fields>
+        <label><!-- Allocation Method Formula --></label>
+        <name>Allocation_Method_Formula__c</name>
+    </fields>
+    <fields>
+        <label><!-- Allocation Method Un-Competed --></label>
+        <name>Allocation_Method_UnCompeted__c</name>
+    </fields>
+    <fields>
+        <help><!-- The method by which the grant was allocated. This can be either competed, formula, un-competed or criteria based. Definitions of each are given in the Data and System Glossary of Terms, found on the Home page. --></help>
+        <label><!-- Allocation Method --></label>
+        <name>Allocation_Method__c</name>
+        <picklistValues>
+            <masterLabel>Formula</masterLabel>
+            <translation><!-- Formula --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Formula - Criteria Based</masterLabel>
+            <translation><!-- Formula - Criteria Based --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>General Grants - Competed</masterLabel>
+            <translation><!-- General Grants - Competed --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>General Grants - Criteria Based</masterLabel>
+            <translation><!-- General Grants - Criteria Based --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>General Grants - Un-competed</masterLabel>
+            <translation><!-- General Grants - Un-competed --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Grant in Aid</masterLabel>
+            <translation><!-- Grant in Aid --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Application and Assessment (£) --></label>
+        <name>Application_And_Assessment__c</name>
+    </fields>
+    <fields>
+        <help><!-- The Authority Act is the legal power that allows a department to give a grant. This can be found in the business case form that departments complete when they are considering a grant. If you cannot find your Act, please get in touch with us. --></help>
+        <label><!-- Authority Act --></label>
+        <name>Authority_Act__c</name>
+        <relationshipLabel><!-- Grant Schemes --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Award &amp; Agree Terms of Grant Payment (£) --></label>
+        <name>Award_And_Agree_Terms_Of_Grant_Payment__c</name>
+    </fields>
+    <fields>
+        <help><!-- Classification of the Functions of Government - values, levels 1 and 2, are taken from the United Nations Statistics Division classification published at unstats.un.org --></help>
+        <label><!-- COFOG L2 --></label>
+        <name>COFOG_L2__c</name>
+        <relationshipLabel><!-- Grant Schemes --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- COFOG Level 1 Name --></label>
+        <name>COFOG_Level_1_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- COFOG Level 2 Name --></label>
+        <name>COFOG_Level_2_Name__c</name>
+    </fields>
+    <fields>
+        <help><!-- As schemes could have both capital and resource funding within them, the user can select one of the 3 options: Capital; Resource; Mixed. Definitions of each are given in the Data and System Glossary of Terms, found on the Home page. --></help>
+        <label><!-- Capital/ Resource --></label>
+        <name>Capital_Resource__c</name>
+        <picklistValues>
+            <masterLabel>Capital</masterLabel>
+            <translation><!-- Capital --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Mixed</masterLabel>
+            <translation><!-- Mixed --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Resource</masterLabel>
+            <translation><!-- Resource --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- The New Grants Advice Panel meets regularly to provide advice and challenge to departments on any grant schemes being planned across government and to improve the strategic coordination of government grants. --></help>
+        <label><!-- Considered by NGAP? --></label>
+        <name>Considered_by_the_Grants_Advice_Panel__c</name>
+        <picklistValues>
+            <masterLabel>No</masterLabel>
+            <translation><!-- No --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Yes</masterLabel>
+            <translation><!-- Yes --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- This is the person in a department/ ALB in charge of administering the grant within government that will know more about the grant and can be contacted for further details, either by other departments or internally. --></help>
+        <label><!-- Internal Grant Administrator email --></label>
+        <name>Contact_email_address__c</name>
+    </fields>
+    <fields>
+        <label><!-- Department referring to NGAP? --></label>
+        <name>Department_referring_to_NGAP__c</name>
+        <picklistValues>
+            <masterLabel>No</masterLabel>
+            <translation><!-- No --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Yes</masterLabel>
+            <translation><!-- Yes --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Design and Development (£) --></label>
+        <name>Design_And_Development_Admin_Cost__c</name>
+    </fields>
+    <fields>
+        <label><!-- Duration Numeric --></label>
+        <name>Duration_Numeric__c</name>
+    </fields>
+    <fields>
+        <help><!-- How long the scheme will run for. The duration is from the scheme opening to the last grants ending. --></help>
+        <label><!-- Duration (years) --></label>
+        <name>Duration__c</name>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>10</masterLabel>
+            <translation><!-- 10 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>11</masterLabel>
+            <translation><!-- 11 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>12</masterLabel>
+            <translation><!-- 12 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>13</masterLabel>
+            <translation><!-- 13 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>14</masterLabel>
+            <translation><!-- 14 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>15</masterLabel>
+            <translation><!-- 15 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>16</masterLabel>
+            <translation><!-- 16 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>17</masterLabel>
+            <translation><!-- 17 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>18</masterLabel>
+            <translation><!-- 18 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>19</masterLabel>
+            <translation><!-- 19 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>20</masterLabel>
+            <translation><!-- 20 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>3</masterLabel>
+            <translation><!-- 3 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>4</masterLabel>
+            <translation><!-- 4 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>5</masterLabel>
+            <translation><!-- 5 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>6</masterLabel>
+            <translation><!-- 6 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>7</masterLabel>
+            <translation><!-- 7 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>8</masterLabel>
+            <translation><!-- 8 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>9</masterLabel>
+            <translation><!-- 9 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- The specific EU Fund that the funding comes from. Please choose one of the options in the list or get in touch with us if yours is missing, we can add it to the system. --></help>
+        <label><!-- EU Fund name --></label>
+        <name>EU_Fund_name__c</name>
+        <picklistValues>
+            <masterLabel>Cohesion Fund (CF)</masterLabel>
+            <translation><!-- Cohesion Fund (CF) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>EU Agricultural Fund - Rural Development</masterLabel>
+            <translation><!-- EU Agricultural Fund - Rural Development --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>EU Agricultural Guarantee Fund</masterLabel>
+            <translation><!-- EU Agricultural Guarantee Fund --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>EU Creative Europe Fund</masterLabel>
+            <translation><!-- EU Creative Europe Fund --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>EU Life Programme</masterLabel>
+            <translation><!-- EU Life Programme --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>EU Maritime &amp; Fisheries Fund</masterLabel>
+            <translation><!-- EU Maritime &amp; Fisheries Fund --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>EU Regional Development Fund (ERDF)</masterLabel>
+            <translation><!-- EU Regional Development Fund (ERDF) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>EU Social Fund (ESF)</masterLabel>
+            <translation><!-- EU Social Fund (ESF) --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- This field is auto-calculated based on the start date and the duration. Needed when running reports. --></help>
+        <label><!-- End Date --></label>
+        <name>End_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Evaluation Modified Date by Portal User --></label>
+        <name>Evaluation_Modified_Date_by_Portal_User__c</name>
+    </fields>
+    <fields>
+        <label><!-- Evaluation (£) --></label>
+        <name>Evaluation__c</name>
+    </fields>
+    <fields>
+        <label><!-- Financial Year --></label>
+        <name>Financial_Year_Multi__c</name>
+    </fields>
+    <fields>
+        <label><!-- Financial Year --></label>
+        <name>Financial_Year__c</name>
+    </fields>
+    <fields>
+        <help><!-- The entity that is funding the grant scheme (this is in most cases, a government department where the funds start) --></help>
+        <label><!-- Funder --></label>
+        <name>Funder__c</name>
+        <relationshipLabel><!-- Grant Schemes (Funder) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Grant Scheme Name Link --></label>
+        <name>Grant_Scheme_Name_Link__c</name>
+    </fields>
+    <fields>
+        <help><!-- If you want to withdraw your Proposed Grant Scheme, please tick this box --></help>
+        <label><!-- Grant Scheme Withdrawn --></label>
+        <name>Grant_Scheme_Withdrawn__c</name>
+    </fields>
+    <fields>
+        <help><!-- If you have chosen No in the above field, then you need to provide an explanation why the Scheme Evaluation hasn&apos;t been done (choose from a picklist of pre-populated reasons) --></help>
+        <label><!-- If &apos;No&apos;, Reasons --></label>
+        <name>If_No_Reasons__c</name>
+        <picklistValues>
+            <masterLabel>Disproportionate cost of evaluation</masterLabel>
+            <translation><!-- Disproportionate cost of evaluation --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Evaluation not applicable</masterLabel>
+            <translation><!-- Evaluation not applicable --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Grant not ended yet</masterLabel>
+            <translation><!-- Grant not ended yet --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Low risk</masterLabel>
+            <translation><!-- Low risk --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- This field is asking if the grant scheme will be run with the help of an intermediary or not. Even if you don&apos;t know who the intermediary will be, you can add it to the scheme later, but you should know if it&apos;s going to be intermediated or not. --></help>
+        <label><!-- Intermediated --></label>
+        <name>Intermediated__c</name>
+    </fields>
+    <fields>
+        <label><!-- Is My Department Data --></label>
+        <name>Is_My_Department_Data__c</name>
+    </fields>
+    <fields>
+        <label><!-- Issues and questions for NGAP --></label>
+        <name>Issues_and_questions_for_NGAP__c</name>
+    </fields>
+    <fields>
+        <label><!-- Market Engagement and Application (£) --></label>
+        <name>Market_Engagement_And_Application__c</name>
+    </fields>
+    <fields>
+        <label><!-- Max Grant Award End Date --></label>
+        <name>Max_Grant_Award_End_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Monitoring &amp; Performance Management (£) --></label>
+        <name>Monitoring_And_Performance_Management__c</name>
+    </fields>
+    <fields>
+        <label><!-- Other Activity 1 Cost (£) --></label>
+        <name>Other_Activity_1_Cost__c</name>
+    </fields>
+    <fields>
+        <label><!-- Other Activity 1 --></label>
+        <name>Other_Activity_1__c</name>
+    </fields>
+    <fields>
+        <label><!-- Other Activity 2 Cost (£) --></label>
+        <name>Other_Activity_2_Cost__c</name>
+    </fields>
+    <fields>
+        <label><!-- Other Activity 2 --></label>
+        <name>Other_Activity_2__c</name>
+    </fields>
+    <fields>
+        <help><!-- If there are secondary related Authority Acts, or needed Authority Act does not show up in our list above, then this freetext field can be used. --></help>
+        <label><!-- Other Authority Act --></label>
+        <name>Other_Authority_Act__c</name>
+    </fields>
+    <fields>
+        <help><!-- If &quot;Other&quot; is selected in the &quot;Public funding source&quot; above, then you have to include more information about your public funding source here. --></help>
+        <label><!-- Other public funding source --></label>
+        <name>Other_public_funding_source__c</name>
+    </fields>
+    <fields>
+        <label><!-- Parent Grant Name --></label>
+        <name>Parent_Grant_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Parent Grant Scheme --></label>
+        <name>Parent_Grant_Scheme__c</name>
+        <relationshipLabel><!-- Grant Schemes --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Portal User Cannot Delete This Record --></label>
+        <name>Portal_User_Cannot_Delete_This_Record__c</name>
+    </fields>
+    <fields>
+        <help><!-- The purpose that the grant is being paid out for. 5 mutually exclusive purposes have been identified. Definitions of each are given in the Data and System Glossary of Terms, found on the Home page. If no option suits, choose None of the above. --></help>
+        <label><!-- Primary Purpose --></label>
+        <name>Primary_Purpose__c</name>
+        <picklistValues>
+            <masterLabel>Financial Assistance / Support</masterLabel>
+            <translation><!-- Financial Assistance / Support --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>None of the above</masterLabel>
+            <translation><!-- None of the above --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Research &amp; Innovation</masterLabel>
+            <translation><!-- Research &amp; Innovation --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Subscriptions and pension payments</masterLabel>
+            <translation><!-- Subscriptions and pension payments --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Supporting delivery of a public policy</masterLabel>
+            <translation><!-- Supporting delivery of a public policy --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Supporting delivery of a public service</masterLabel>
+            <translation><!-- Supporting delivery of a public service --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- This is a reference number that can be given from a department&apos;s own internal system, when creating the Programme, but it is optional. If this is blank, then it means you haven&apos;t provided one when you created the Programme. --></help>
+        <label><!-- Programme Reference Number --></label>
+        <name>Programme_Reference_Number__c</name>
+    </fields>
+    <fields>
+        <help><!-- In order to be able to choose a Programme (Name) when you create a Scheme, you need to have created the Programme first, from the Programme tab. --></help>
+        <label><!-- Programme --></label>
+        <name>Programme__c</name>
+        <relationshipLabel><!-- Grant Schemes --></relationshipLabel>
+    </fields>
+    <fields>
+        <help><!-- The source of funding for the grant scheme. This could be from the UK Exchequer,  EU Funding, both, Lottery Funding, NATO or other type. --></help>
+        <label><!-- Public funding source --></label>
+        <name>Public_funding_source__c</name>
+        <picklistValues>
+            <masterLabel>EU Funding</masterLabel>
+            <translation><!-- EU Funding --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Lottery funding</masterLabel>
+            <translation><!-- Lottery funding --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NATO</masterLabel>
+            <translation><!-- NATO --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Other</masterLabel>
+            <translation><!-- Other --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>UK + EU funding</masterLabel>
+            <translation><!-- UK + EU funding --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>UK Exchequer</masterLabel>
+            <translation><!-- UK Exchequer --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- If None of the Above is selected as an option in Primary purpose, then this is a freetext field to be populated and cannot be left blank. If a particular grant doesn&apos;t fit into any of the categories, an explanation should be provided. --></help>
+        <label><!-- Purpose explanation --></label>
+        <name>Purpose_explanation__c</name>
+    </fields>
+    <fields>
+        <help><!-- Freetext field to explain reasons for scheme achieving/not achieving objectives. --></help>
+        <label><!-- State the reason for your answer above --></label>
+        <name>Reason_for_Given_Answer__c</name>
+    </fields>
+    <fields>
+        <label><!-- Rec sector Central Government --></label>
+        <name>Rec_sector_Central_Government__c</name>
+    </fields>
+    <fields>
+        <label><!-- Rec sector Civil Society --></label>
+        <name>Rec_sector_Civil_Society__c</name>
+    </fields>
+    <fields>
+        <label><!-- Rec sector Individuals --></label>
+        <name>Rec_sector_Individuals__c</name>
+    </fields>
+    <fields>
+        <label><!-- Rec sector International --></label>
+        <name>Rec_sector_International__c</name>
+    </fields>
+    <fields>
+        <label><!-- Rec sector Local Government --></label>
+        <name>Rec_sector_Local_Government__c</name>
+    </fields>
+    <fields>
+        <label><!-- Rec sector NDPB --></label>
+        <name>Rec_sector_NDPB__c</name>
+    </fields>
+    <fields>
+        <label><!-- Rec sector Private --></label>
+        <name>Rec_sector_Private__c</name>
+    </fields>
+    <fields>
+        <label><!-- Rec sector Public Organisations --></label>
+        <name>Rec_sector_Public_Organisations__c</name>
+    </fields>
+    <fields>
+        <help><!-- Civil Society (Charities, Community Groups, Social enterprise, Communities - Universities are formally charities, so would come under here) - Public Organisations (schools, police, hospitals, libraries) --></help>
+        <label><!-- Recipient Sector --></label>
+        <name>Recipient_Sector__c</name>
+        <picklistValues>
+            <masterLabel>Central Government</masterLabel>
+            <translation><!-- Central Government --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Civil Society</masterLabel>
+            <translation><!-- Civil Society --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Individuals</masterLabel>
+            <translation><!-- Individuals --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>International</masterLabel>
+            <translation><!-- International --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Local Government</masterLabel>
+            <translation><!-- Local Government --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Non-Departmental Public Bodies</masterLabel>
+            <translation><!-- Non-Departmental Public Bodies --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Private</masterLabel>
+            <translation><!-- Private --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Public Organisations</masterLabel>
+            <translation><!-- Public Organisations --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- The name of the policy that the scheme was created to assist. --></help>
+        <label><!-- Related policy name --></label>
+        <name>Related_policy_name__c</name>
+    </fields>
+    <fields>
+        <help><!-- The objective of the policy that the scheme was created to assist. --></help>
+        <label><!-- Scheme&apos;s aims and objectives --></label>
+        <name>Related_policy_objective__c</name>
+    </fields>
+    <fields>
+        <help><!-- In line with the minimum grants standards, an annual review should to be undertaken on each grant scheme. Please record the outcome of the review here. --></help>
+        <label><!-- Annual review outcome --></label>
+        <name>Review_outcome__c</name>
+        <picklistValues>
+            <masterLabel>Amend</masterLabel>
+            <translation><!-- Amend --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Continue</masterLabel>
+            <translation><!-- Continue --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Stop</masterLabel>
+            <translation><!-- Stop --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Review outcome details --></label>
+        <name>Review_outcome_details__c</name>
+    </fields>
+    <fields>
+        <help><!-- A explanation of this field can be found in our Glossary of Terms. This can be downloaded from the front page --></help>
+        <label><!-- Risk Profile --></label>
+        <name>Risk_Profile__c</name>
+        <picklistValues>
+            <masterLabel>High</masterLabel>
+            <translation><!-- High --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Low</masterLabel>
+            <translation><!-- Low --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Medium</masterLabel>
+            <translation><!-- Medium --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- Yes/No question. Please ensure you have evidence (if requested) of the Evaluation being done if you choose Yes to this question. --></help>
+        <label><!-- Completed end of scheme evaluation? --></label>
+        <name>Scheme_Evalution_Completed__c</name>
+        <picklistValues>
+            <masterLabel>No</masterLabel>
+            <translation><!-- No --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Yes</masterLabel>
+            <translation><!-- Yes --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- The name of the Grant Scheme, which is a level down from Programme in the data model. This is central to the GGIS and every department should have Grant Schemes created in the system first, in order to have Grant Awards under them. --></help>
+        <label><!-- Scheme Name --></label>
+        <name>Scheme_Name__c</name>
+    </fields>
+    <fields>
+        <help><!-- Yes/No question. This refers to evaluation of the scheme as a whole. It should NOT be confused with evaluation of grant awards or recipients. --></help>
+        <label><!-- Has the scheme achieved its objectives? --></label>
+        <name>Scheme_Objective__c</name>
+        <picklistValues>
+            <masterLabel>N/A</masterLabel>
+            <translation><!-- N/A --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>No</masterLabel>
+            <translation><!-- No --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Partially</masterLabel>
+            <translation><!-- Partially --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Yes</masterLabel>
+            <translation><!-- Yes --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Scheme Parent / Child --></label>
+        <name>Scheme_Parent_Child__c</name>
+        <picklistValues>
+            <masterLabel>Child</masterLabel>
+            <translation><!-- Child --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>N/A</masterLabel>
+            <translation><!-- N/A --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Parent</masterLabel>
+            <translation><!-- Parent --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- This is a reference number that can be given from a department&apos;s own internal system, should you wish to. It is optional &amp; will help reconciliation between GGIS &amp; your own system, but you don&apos;t have to include one. --></help>
+        <label><!-- Scheme Reference No --></label>
+        <name>Scheme_Reference_No__c</name>
+    </fields>
+    <fields>
+        <help><!-- The total value of the scheme (budgeted). If the scheme has a multiple year duration, the scheme value should include all years. If scheme value is not known for multiple years, please create 1 separate scheme per year, with 1 year scheme value only. --></help>
+        <label><!-- Scheme Value --></label>
+        <name>Scheme_Value__c</name>
+    </fields>
+    <fields>
+        <help><!-- This is the same definition as the Primary purpose, but if you believe your grant has a secondary purpose and you would like to record this one, please include here. --></help>
+        <label><!-- Secondary Purpose --></label>
+        <name>Secondary_Purpose__c</name>
+        <picklistValues>
+            <masterLabel>Financial Assistance / Support</masterLabel>
+            <translation><!-- Financial Assistance / Support --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>None of the above</masterLabel>
+            <translation><!-- None of the above --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Research &amp; Innovation</masterLabel>
+            <translation><!-- Research &amp; Innovation --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Subscriptions and pension payments</masterLabel>
+            <translation><!-- Subscriptions and pension payments --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Supporting delivery of a public policy</masterLabel>
+            <translation><!-- Supporting delivery of a public policy --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Supporting delivery of a public service</masterLabel>
+            <translation><!-- Supporting delivery of a public service --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Senior Responsible Officer - Full Name --></label>
+        <name>Senior_Responsible_Officer_Full_Name__c</name>
+    </fields>
+    <fields>
+        <help><!-- The date the Grant Scheme commences --></help>
+        <label><!-- Start Date --></label>
+        <name>Start_Date__c</name>
+    </fields>
+    <fields>
+        <help><!-- The geographical area that the scheme will cover --></help>
+        <label><!-- Target Location --></label>
+        <name>Target_Location__c</name>
+        <picklistValues>
+            <masterLabel>England</masterLabel>
+            <translation><!-- England --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Northern Ireland</masterLabel>
+            <translation><!-- Northern Ireland --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Overseas</masterLabel>
+            <translation><!-- Overseas --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Scotland</masterLabel>
+            <translation><!-- Scotland --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>UK Wide</masterLabel>
+            <translation><!-- UK Wide --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Wales</masterLabel>
+            <translation><!-- Wales --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Total Administration Costs (£) --></label>
+        <name>Total_Administration_Costs__c</name>
+    </fields>
+    <layouts>
+        <layout>Approved Grant Scheme Layout</layout>
+        <sections>
+            <label><!-- Administration Costs --></label>
+            <section>Administration Costs</section>
+        </sections>
+        <sections>
+            <label><!-- COFOG Details --></label>
+            <section>COFOG Details</section>
+        </sections>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Policy/ Scheme Objectives --></label>
+            <section>Policy/ Scheme Objectives</section>
+        </sections>
+        <sections>
+            <label><!-- Public Funding Details --></label>
+            <section>Public Funding Details</section>
+        </sections>
+        <sections>
+            <label><!-- Review/ Evaluation Details --></label>
+            <section>Review/ Evaluation Details</section>
+        </sections>
+        <sections>
+            <label><!-- Scheme Purpose --></label>
+            <section>Scheme Purpose</section>
+        </sections>
+        <sections>
+            <label><!-- Warning --></label>
+            <section>Warning</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Proposed Grant Scheme Layout</layout>
+        <sections>
+            <label><!-- COFOG Details --></label>
+            <section>COFOG Details</section>
+        </sections>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- NGAP Details --></label>
+            <section>NGAP Details</section>
+        </sections>
+        <sections>
+            <label><!-- Policy/ Scheme Objectives --></label>
+            <section>Policy/ Scheme Objectives</section>
+        </sections>
+        <sections>
+            <label><!-- Public Funding Details --></label>
+            <section>Public Funding Details</section>
+        </sections>
+        <sections>
+            <label><!-- Scheme Purpose --></label>
+            <section>Scheme Purpose</section>
+        </sections>
+        <sections>
+            <label><!-- Warning --></label>
+            <section>Warning</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Withdrawn Grant Scheme Layout</layout>
+        <sections>
+            <label><!-- COFOG Details --></label>
+            <section>COFOG Details</section>
+        </sections>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- NGAP Details --></label>
+            <section>NGAP Details</section>
+        </sections>
+        <sections>
+            <label><!-- Policy/ Scheme Objectives --></label>
+            <section>Policy/ Scheme Objectives</section>
+        </sections>
+        <sections>
+            <label><!-- Public Funding Details --></label>
+            <section>Public Funding Details</section>
+        </sections>
+        <sections>
+            <label><!-- Scheme Purpose --></label>
+            <section>Scheme Purpose</section>
+        </sections>
+        <sections>
+            <label><!-- Warning --></label>
+            <section>Warning</section>
+        </sections>
+    </layouts>
+    <recordTypes>
+        <label><!-- Approved Grant Scheme --></label>
+        <name>Approved_Grant_Scheme</name>
+    </recordTypes>
+    <recordTypes>
+        <label><!-- Proposed Grant Scheme --></label>
+        <name>Proposed_Grant_Scheme</name>
+    </recordTypes>
+    <recordTypes>
+        <label><!-- Withdrawn Grant Scheme --></label>
+        <name>Withdrawn_Grant_Scheme</name>
+    </recordTypes>
+    <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage><!-- This record is locked. Please create a case or contact the grants hub support in order to modify this record. --></errorMessage>
+        <name>All_Fields_Are_Locked_Apart_From_Eval</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Allocation Method field is mandatory. --></errorMessage>
+        <name>Allocation_Method_field_is_mandatory</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Approved Grant Schemes cannot be updated to a different Record Type --></errorMessage>
+        <name>Approved_Cannot_change_Record_Type</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Authority Act field is mandatory --></errorMessage>
+        <name>Authority_Act_field_mandatory</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Grant Scheme must have at least Public funding source or Other public funding source. --></errorMessage>
+        <name>Award_must_have_atLeast_1_FundingOrOther</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- COFOG L2 field is mandatory --></errorMessage>
+        <name>COFOG_L2_field_mandatory</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Please provide a value for the &quot;Capital/ Resource&quot; field. --></errorMessage>
+        <name>Capital_Resource_Mandatory</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- A Grant Scheme with a &quot;Scheme Parent / Child&quot; value of Child must have a Parent Grant Scheme --></errorMessage>
+        <name>Child_Scheme_must_have_a_Parent</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- This field is mandatory. --></errorMessage>
+        <name>Concidered_Grants_Advice_Panel_mandatory</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- &apos;Considered by the Grants Advice Panel&apos; field is mandatory. --></errorMessage>
+        <name>Considered_by_the_Grants_Is_Mandatory</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- You don&apos;t have update privilege on the related Programme record. --></errorMessage>
+        <name>Department_Check_on_create</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- You don&apos;t have update privilege on this record. --></errorMessage>
+        <name>Department_Check_on_update</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Duration field is mandatory. --></errorMessage>
+        <name>Duration_field_is_mandatatory</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- If EU Funding chosen, then this cannot be blank --></errorMessage>
+        <name>EU_Fund_name_is_mandatory_for_EU_source</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- EU Fund name should blank because funding source is not an EU source. --></errorMessage>
+        <name>EU_Fund_name_should_be_blank_for_UK_src</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Evaluation fields cannot be modified. Please create a case or contact the grants hub support in order to modify this record. --></errorMessage>
+        <name>Evaluation_fields_are_locked</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Value does not exist or does not match validation rule. --></errorMessage>
+        <name>Funder_field_mandatory_asFieldCriteria</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- &apos;Issues and questions for NGAP&quot; field is mandatory if &apos;Department referring to NGAP is equal to &quot;Yes&quot; --></errorMessage>
+        <name>Issues_and_questions_field_is_mandatory</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- &apos;Other Authority Act&apos; field is mandatory if &apos;Authority Act&apos; field value is equal to &quot;Other Value&quot;. --></errorMessage>
+        <name>Other_Authority_Act_is_mandatory</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- &apos;Other Authority Act&apos; field should be blank if &apos;Authority Act&apos; field value is NOT equal to &quot;Other Value&quot;. --></errorMessage>
+        <name>Other_Authority_Act_should_be_blank</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Please either select &quot;Other&quot; in the &quot;Public funding source&quot; field and populate this freetext or select any other option and leave this field blank. --></errorMessage>
+        <name>Other_public_funding_source_is_mandatory</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- A Grant Scheme with a &quot;Scheme Parent / Child&quot; value of Parent or N/A can not have a Parent Grant Scheme --></errorMessage>
+        <name>Parent_Scheme_can_not_have_a_Parent</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Primary Purpose field is mandatory. --></errorMessage>
+        <name>Primary_Purpose_is_mandatory</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- If None of the Above is selected in the Primary Purpose field then a purpose explanation needs to be provided as to why your grant doesn&apos;t fit in any of the other primary purpose options --></errorMessage>
+        <name>Primary_purpose_check_for_explanation</name>
+>>>>>>> branch 'master' of https://github.com/cabinetoffice/Government-Grants-Information-System-Metadata
     </validationRules>
     <validationRules>
         <errorMessage><!-- &apos;If No, Reason&quot; field is mandatory if &apos;Has the scheme validation been done&apos; is equal to &quot;No&quot;. --></errorMessage>
