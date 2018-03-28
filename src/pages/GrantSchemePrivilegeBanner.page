@@ -1,0 +1,32 @@
+<apex:page standardController="Grant_Scheme__c" showHeader="false" sidebar="false" extensions="GrantSchemePrivilegeBannerExt" > 
+    <apex:pageMessage rendered="{!NOT(Grant_Scheme__c.Is_My_Department_Data__c)}" summary="{!$Label.Record_Privilege_Warning_Message}" severity="warning" strength="2"/>
+    <apex:pageMessage rendered="{!
+        AND(
+            Grant_Scheme__c.Is_My_Department_Data__c
+            , Grant_Scheme__c.Intermediated__c
+            , (countOfRelatedIntermediaries == 0)
+        )}" summary="{!$Label.Scheme_IntermediatedWarnMsg}" severity="warning" strength="2"/>
+    <apex:pageMessage rendered="{!
+        AND(
+            Grant_Scheme__c.Is_My_Department_Data__c
+            , Grant_Scheme__c.Intermediated__c == FALSE
+            , (countOfRelatedIntermediaries > 0)
+        )}" summary="{!$Label.Scheme_InvalidIntermediatedWarnMsg}" severity="warning" strength="2"/>  
+          
+    <apex:pageMessage rendered="{!
+          AND(
+              Grant_Scheme__c.Is_My_Department_Data__c
+              , Grant_Scheme__c.RecordType.DeveloperName == 'Proposed_Grant_Scheme'
+              , Grant_Scheme__c.Department_referring_to_NGAP__c != 'Yes'
+              , OR(Grant_Scheme__c.Risk_Profile__c == 'High', Grant_Scheme__c.Risk_Profile__c == 'Medium') 
+          )}" summary="{!$Label.Scheme_RiskProfileWarnMsg}" severity="warning" strength="2"/>
+          
+    <apex:pageMessage rendered="{!
+    AND(
+      Grant_Scheme__c.Is_My_Department_Data__c
+      , Grant_Scheme__c.RecordType.DeveloperName == 'Approved_Grant_Scheme'
+      , Grant_Scheme__c.Considered_by_the_Grants_Advice_Panel__c != 'Yes'
+      , OR(Grant_Scheme__c.Risk_Profile__c == 'High', Grant_Scheme__c.Risk_Profile__c == 'Medium') 
+    )}" summary="{!$Label.Scheme_RiskProfileWarnMsg}" severity="warning" strength="2"/>
+    
+</apex:page>

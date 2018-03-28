@@ -1,0 +1,4390 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <content>GrantSchemeConfirmDelete</content>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Visualforce</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <enableActivities>false</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableEnhancedLookup>true</enableEnhancedLookup>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <externalSharingModel>ReadWrite</externalSharingModel>
+    <fields>
+        <fullName>Advice_from_NGAP__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>Advice from NGAP</label>
+        <length>4000</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Allocation_Method_Competed__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF(INCLUDES(Allocation_Method__c, &quot;Competed&quot;), Scheme_Value__c/( 
+
+IF(INCLUDES( Allocation_Method__c ,&quot;Un-competed&quot;),1,0) + 
+IF(INCLUDES( Allocation_Method__c ,&quot;Competed&quot;),1,0) + 
+IF(INCLUDES( Allocation_Method__c ,&quot;Formula&quot;),1,0) + 
+IF(INCLUDES( Allocation_Method__c,&quot;Criteria Based&quot;),1,0) 
+
+) ,0)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Sch allocation method competed</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Allocation_Method_Criteria__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF(INCLUDES(Allocation_Method__c, &quot;Criteria Based&quot;), Scheme_Value__c/( 
+
+IF(INCLUDES( Allocation_Method__c ,&quot;Un-competed&quot;),1,0) + 
+IF(INCLUDES( Allocation_Method__c ,&quot;Competed&quot;),1,0) + 
+IF(INCLUDES( Allocation_Method__c ,&quot;Formula&quot;),1,0) + 
+IF(INCLUDES( Allocation_Method__c,&quot;Criteria Based&quot;),1,0) 
+
+) ,0)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Sch allocation method criteria</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Allocation_Method_Formula__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF(INCLUDES(Allocation_Method__c, &quot;Formula&quot;), Scheme_Value__c/( 
+
+IF(INCLUDES( Allocation_Method__c ,&quot;Un-competed&quot;),1,0) + 
+IF(INCLUDES( Allocation_Method__c ,&quot;Competed&quot;),1,0) + 
+IF(INCLUDES( Allocation_Method__c ,&quot;Formula&quot;),1,0) + 
+IF(INCLUDES( Allocation_Method__c,&quot;Criteria Based&quot;),1,0) 
+
+) ,0)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Sch allocation method formula</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Allocation_Method_Grant_in_Aid__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF(INCLUDES(Allocation_Method__c, &quot;Grant in Aid&quot;), Scheme_Value_per_year__c/( 
+
+IF(INCLUDES( Allocation_Method__c ,&quot;General Grants - Un-competed&quot;),1,0) + 
+IF(INCLUDES( Allocation_Method__c ,&quot;General Grants - Competed&quot;),1,0) + 
+IF(INCLUDES( Allocation_Method__c ,&quot;Formula&quot;),1,0) + 
+IF(INCLUDES( Allocation_Method__c,&quot;General Grants - Criteria Based&quot;),1,0)+ 
+IF(INCLUDES( Allocation_Method__c,&quot;Grant in Aid&quot;),1,0) 
+
+
+
+) ,0)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Sch allocation method grant in aid</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Allocation_Method_UnCompeted__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF(INCLUDES(Allocation_Method__c, &quot;Un-competed&quot;), Scheme_Value__c/( 
+
+IF(INCLUDES( Allocation_Method__c ,&quot;Un-competed&quot;),1,0) + 
+IF(INCLUDES( Allocation_Method__c ,&quot;Competed&quot;),1,0) + 
+IF(INCLUDES( Allocation_Method__c ,&quot;Formula&quot;),1,0) + 
+IF(INCLUDES( Allocation_Method__c,&quot;Criteria Based&quot;),1,0) 
+
+) ,0)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Sch allocation method un-competed</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Allocation_Method__c</fullName>
+        <description>Competed	- e.g. application based
+Un-competed 	- e.g. where a charity writes to a Minister about an initiative they have and this aligns with the departmental objectives, so they get given a grant to make that initiative real
+Formula 	- where the means by which the money is allocated is calculated through a formula
+Criteria Based 	- where there is qualifying criteria in order to receive money, but as long as they qualify, the recipient gets the money, as there is no competition e.g. floods</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The method by which the grant was allocated. This can be either competed, formula, un-competed or criteria based. Definitions of each are given in the Data and System Glossary of Terms, found on the Home page.</inlineHelpText>
+        <label>Scheme allocation method</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MultiselectPicklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>General Grants - Competed</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>General Grants - Un-competed</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>General Grants - Criteria Based</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Formula</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Formula - Criteria Based</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Grant in Aid</fullName>
+                    <default>false</default>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+        <visibleLines>4</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Application_And_Assessment__c</fullName>
+        <externalId>false</externalId>
+        <label>Application and Assessment (£)</label>
+        <precision>16</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Authority_Act__c</fullName>
+        <deleteConstraint>Restrict</deleteConstraint>
+        <externalId>false</externalId>
+        <inlineHelpText>The Authority Act is the legal power that allows a department to give a grant. This can be found in the business case form that departments complete when they are considering a grant. If you cannot find your Act, please get in touch with us.</inlineHelpText>
+        <label>Authority Act</label>
+        <lookupFilter>
+            <active>true</active>
+            <filterItems>
+                <field>Authority_Act__c.Is_Active__c</field>
+                <operation>equals</operation>
+                <value>True</value>
+            </filterItems>
+            <isOptional>false</isOptional>
+        </lookupFilter>
+        <referenceTo>Authority_Act__c</referenceTo>
+        <relationshipLabel>Grant Schemes</relationshipLabel>
+        <relationshipName>Grant_Schemes</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Award_And_Agree_Terms_Of_Grant_Payment__c</fullName>
+        <externalId>false</externalId>
+        <label>Award &amp; Agree Terms of Grant Payment (£)</label>
+        <precision>16</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>COFOG_L2__c</fullName>
+        <deleteConstraint>Restrict</deleteConstraint>
+        <description>This is the related COFOG L2 Code for this Scheme.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Classification of the Functions of Government - values, levels 1 and 2, are taken from the United Nations Statistics Division classification published at unstats.un.org</inlineHelpText>
+        <label>COFOG L2</label>
+        <referenceTo>COFOG_L2__c</referenceTo>
+        <relationshipLabel>Grant Schemes</relationshipLabel>
+        <relationshipName>Grant_Schemes</relationshipName>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>COFOG_Level_1_Name__c</fullName>
+        <description>This is COFOG Level 1 Long name</description>
+        <externalId>false</externalId>
+        <formula>COFOG_L2__r.COFOG_L1_Long_Name__c</formula>
+        <label>COFOG Level 1 Name</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>COFOG_Level_2_Name__c</fullName>
+        <description>This is COFOG Level 2 Long name</description>
+        <externalId>false</externalId>
+        <formula>COFOG_L2__r.COFOG_L2_Long_Name__c</formula>
+        <label>COFOG Level 2 Name</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Capital_Resource__c</fullName>
+        <description>This field indicates if the scheme needs to be used as Capital, Resource or mixed</description>
+        <externalId>false</externalId>
+        <inlineHelpText>As schemes could have both capital and resource funding within them, the user can select one of the 3 options: Capital; Resource; Mixed. Definitions of each are given in the Data and System Glossary of Terms, found on the Home page.</inlineHelpText>
+        <label>Capital/ Resource</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Capital</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Resource</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Mixed</fullName>
+                    <default>false</default>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Considered_by_the_Grants_Advice_Panel__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>The New Grants Advice Panel meets regularly to provide advice and challenge to departments on any grant schemes being planned across government and to improve the strategic coordination of government grants.</inlineHelpText>
+        <label>Considered by the Grants Advice Panel?</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>No</fullName>
+                    <default>true</default>
+                </value>
+                <value>
+                    <fullName>Yes</fullName>
+                    <default>false</default>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Contact_email_address__c</fullName>
+        <description>This is the email of the System administrator.</description>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <inlineHelpText>This is the person in a department/ ALB in charge of administering the grant within government that will know more about the grant and can be contacted for further details, either by other departments or internally.</inlineHelpText>
+        <label>Internal Grant Administrator email</label>
+        <required>true</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Email</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Department_referring_to_NGAP__c</fullName>
+        <externalId>false</externalId>
+        <label>Department referring to NGAP?</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Yes</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>No</fullName>
+                    <default>false</default>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Design_And_Development_Admin_Cost__c</fullName>
+        <externalId>false</externalId>
+        <label>Design and Development (£)</label>
+        <precision>16</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Duration_Numeric__c</fullName>
+        <description>JM 13/02/2107 - Formula that converts the Duration in years picklist to a numeric field</description>
+        <externalId>false</externalId>
+        <formula>VALUE(TEXT( Duration__c ))</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Duration Numeric</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Duration__c</fullName>
+        <description>The Scheme&apos;s duration</description>
+        <externalId>false</externalId>
+        <inlineHelpText>How long the scheme will run for. The duration is from the scheme opening to the last grants ending.</inlineHelpText>
+        <label>Duration (years)</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>1</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>2</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>3</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>4</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>5</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>6</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>7</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>8</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>9</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>10</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>11</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>12</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>13</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>14</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>15</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>16</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>17</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>18</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>19</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>20</fullName>
+                    <default>false</default>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Duration_number__c</fullName>
+        <externalId>false</externalId>
+        <formula>CASE(Duration__c, &quot;1&quot;, 1, &quot;2&quot;, 2,&quot;3&quot;, 3,&quot;4&quot;, 4,&quot;5&quot;, 5,&quot;6&quot;, 6,&quot;7&quot;, 7,&quot;8&quot;, 8, &quot;9&quot;, 9,&quot;10&quot;, 10,&quot;11&quot;, 11,&quot;12&quot;, 12,&quot;13&quot;, 13,&quot;14&quot;, 14,&quot;15&quot;, 15,&quot;16&quot;, 16,&quot;17&quot;, 17,&quot;18&quot;, 18,&quot;19&quot;, 19,&quot;20&quot;, 20,0)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Duration(number)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>EU_Fund_name__c</fullName>
+        <description>If the public funding source is EU funding then a value should be selected for this picklist</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The specific EU Fund that the funding comes from. Please choose one of the options in the list or get in touch with us if yours is missing, we can add it to the system.</inlineHelpText>
+        <label>EU Fund name</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MultiselectPicklist</type>
+        <valueSet>
+            <controllingField>Public_funding_source__c</controllingField>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Asylum Migration and Integration Fund (AMIF)</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Cohesion Fund (CF)</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>EU Agricultural Fund - Rural Development</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>EU Agricultural Guarantee Fund</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>EU Creative Europe Fund</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>EU Life Programme</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>EU Maritime &amp; Fisheries Fund</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>EU Regional Development Fund (ERDF)</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>EU Social Fund (ESF)</fullName>
+                    <default>false</default>
+                </value>
+            </valueSetDefinition>
+            <valueSettings>
+                <controllingFieldValue>EU Funding</controllingFieldValue>
+                <controllingFieldValue>UK + EU funding</controllingFieldValue>
+                <valueName>Asylum Migration and Integration Fund (AMIF)</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>EU Funding</controllingFieldValue>
+                <controllingFieldValue>UK + EU funding</controllingFieldValue>
+                <valueName>Cohesion Fund (CF)</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>EU Funding</controllingFieldValue>
+                <controllingFieldValue>UK + EU funding</controllingFieldValue>
+                <valueName>EU Agricultural Fund - Rural Development</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>EU Funding</controllingFieldValue>
+                <controllingFieldValue>UK + EU funding</controllingFieldValue>
+                <valueName>EU Agricultural Guarantee Fund</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>EU Funding</controllingFieldValue>
+                <controllingFieldValue>UK + EU funding</controllingFieldValue>
+                <valueName>EU Creative Europe Fund</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>EU Funding</controllingFieldValue>
+                <valueName>EU Life Programme</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>EU Funding</controllingFieldValue>
+                <controllingFieldValue>UK + EU funding</controllingFieldValue>
+                <valueName>EU Maritime &amp; Fisheries Fund</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>EU Funding</controllingFieldValue>
+                <controllingFieldValue>UK + EU funding</controllingFieldValue>
+                <valueName>EU Regional Development Fund (ERDF)</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>EU Funding</controllingFieldValue>
+                <controllingFieldValue>UK + EU funding</controllingFieldValue>
+                <valueName>EU Social Fund (ESF)</valueName>
+            </valueSettings>
+        </valueSet>
+        <visibleLines>4</visibleLines>
+    </fields>
+    <fields>
+        <fullName>End_Date__c</fullName>
+        <externalId>false</externalId>
+        <formula>DATE(YEAR(Start_Date__c) + VALUE(TEXT(Duration__c)),MONTH(Start_Date__c),DAY(Start_Date__c))-1</formula>
+        <inlineHelpText>This field is auto-calculated based on the start date and the duration. Needed when running reports.</inlineHelpText>
+        <label>Scheme end date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Evaluation_Modified_Date_by_Portal_User__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>Evaluation Modified Date by Portal User</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>Evaluation__c</fullName>
+        <externalId>false</externalId>
+        <label>Evaluation (£)</label>
+        <precision>16</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Financial_Year_Multi__c</fullName>
+        <externalId>false</externalId>
+        <label>Scheme financial year</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MultiselectPicklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetName>Financial_Year</valueSetName>
+        </valueSet>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Funder__c</fullName>
+        <deleteConstraint>Restrict</deleteConstraint>
+        <description>This is the funder organisation lookup</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The entity that is funding the grant scheme (this is in most cases, a government department where the funds start)</inlineHelpText>
+        <label>Funder</label>
+        <lookupFilter>
+            <active>true</active>
+            <filterItems>
+                <field>Account.Is_Funder__c</field>
+                <operation>equals</operation>
+                <value>True</value>
+            </filterItems>
+            <isOptional>false</isOptional>
+        </lookupFilter>
+        <referenceTo>Account</referenceTo>
+        <relationshipLabel>Grant Schemes (Funder)</relationshipLabel>
+        <relationshipName>Grant_Schemes</relationshipName>
+        <required>true</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>GS_Do_not_publish__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Do not publish</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>GS_Explanation_for_not_publishing__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>Explanation for not publishing</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>GS_Reason_for_not_publishing__c</fullName>
+        <externalId>false</externalId>
+        <label>Reason for not publishing</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>National security</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Sensitive</fullName>
+                    <default>false</default>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Grant_Scheme_Name_Link__c</fullName>
+        <externalId>false</externalId>
+        <formula>HYPERLINK(
+ IF(
+  ISPICKVAL($Profile.UserType, &apos;PowerCustomerSuccess&apos;), 
+  &apos;/datasolution/&apos;, &apos;/&apos;
+  ) &amp;  Id, 
+  Scheme_Name__c , &apos;_self&apos;
+)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Grant Scheme Name Link</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Grant_Scheme_Withdrawn__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <inlineHelpText>If you want to withdraw your Proposed Grant Scheme, please tick this box</inlineHelpText>
+        <label>Grant Scheme Withdrawn</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>If_No_Reasons__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>If you have chosen No in the above field, then you need to provide an explanation why the Scheme Evaluation hasn&apos;t been done (choose from a picklist of pre-populated reasons)</inlineHelpText>
+        <label>If &apos;No&apos;, Reasons</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <controllingField>Scheme_Evalution_Completed__c</controllingField>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Evaluation not applicable</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Disproportionate cost of evaluation</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Low risk</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Grant not ended yet</fullName>
+                    <default>false</default>
+                </value>
+            </valueSetDefinition>
+            <valueSettings>
+                <controllingFieldValue>No</controllingFieldValue>
+                <valueName>Evaluation not applicable</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>No</controllingFieldValue>
+                <valueName>Disproportionate cost of evaluation</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>No</controllingFieldValue>
+                <valueName>Low risk</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>No</controllingFieldValue>
+                <valueName>Grant not ended yet</valueName>
+            </valueSettings>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Intermediated__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>This field indicates if the Grant Scheme has been intermediated through intermediary organisations. This is used when the use know that the Grant Scheme has been intermediated but doesn&apos;t have enough information about the intermediary organisation to create the connection.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>This field is asking if the grant scheme will be run with the help of an intermediary or not. Even if you don&apos;t know who the intermediary will be, you can add it to the scheme later, but you should know if it&apos;s going to be intermediated or not.</inlineHelpText>
+        <label>Intermediated</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Is_My_Department_Data__c</fullName>
+        <description>The user needs to have a default list view filtered for their own department, but they can change this</description>
+        <externalId>false</externalId>
+        <formula>LEFT(
+ Owner:User.UserRole.Name , 
+ IF(
+  RIGHT(Owner:User.UserRole.Name, 8) == &apos; Manager&apos;
+  , LEN(Owner:User.UserRole.Name) - 8
+  , LEN(Owner:User.UserRole.Name) - 5
+ )
+)== LEFT(
+ $UserRole.Name, 
+ IF(
+  RIGHT($UserRole.Name, 8) == &apos; Manager&apos;
+  , LEN($UserRole.Name) - 8
+  , LEN($UserRole.Name) - 5
+ )
+)</formula>
+        <label>Is My Department Data</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Issues_and_questions_for_NGAP__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>Issues and questions for NGAP</label>
+        <length>4000</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Market_Engagement_And_Application__c</fullName>
+        <externalId>false</externalId>
+        <label>Market Engagement and Application (£)</label>
+        <precision>16</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Max_Grant_Award_End_Date__c</fullName>
+        <externalId>false</externalId>
+        <label>Max Grant Award End Date</label>
+        <summarizedField>Grant_Award__c.Award_End_Date__c</summarizedField>
+        <summaryForeignKey>Grant_Award__c.Grant_Scheme__c</summaryForeignKey>
+        <summaryOperation>max</summaryOperation>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>Monitoring_And_Performance_Management__c</fullName>
+        <externalId>false</externalId>
+        <label>Monitoring &amp; Performance Management (£)</label>
+        <precision>16</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Other_Activity_1_Cost__c</fullName>
+        <externalId>false</externalId>
+        <label>Other Activity 1 Cost (£)</label>
+        <precision>16</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Other_Activity_1__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>Other Activity 1</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Other_Activity_2_Cost__c</fullName>
+        <externalId>false</externalId>
+        <label>Other Activity 2 Cost (£)</label>
+        <precision>16</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Other_Activity_2__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>Other Activity 2</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Other_Authority_Act__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <inlineHelpText>If there are secondary related Authority Acts, or needed Authority Act does not show up in our list above, then this freetext field can be used.</inlineHelpText>
+        <label>Other Authority Act</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Other_public_funding_source__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <inlineHelpText>If &quot;Other&quot; is selected in the &quot;Public funding source&quot; above, then you have to include more information about your public funding source here.</inlineHelpText>
+        <label>Other public funding source</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Parent_Grant_Name__c</fullName>
+        <description>JM 13/02/2107 - Parent Grant Scheme Name</description>
+        <externalId>false</externalId>
+        <formula>Parent_Grant_Scheme__r.Scheme_Name__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>This is an automatically populated field which shows which parent a scheme is linked to.</inlineHelpText>
+        <label>Parent Grant Name</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Parent_Grant_Scheme__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>JM 13/02/2107 - Link to a Grant Schemes parent scheme record to support.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>If a scheme is defined as a child then it needs to be linked to parent. Use this search box to search for the correct scheme to link to.</inlineHelpText>
+        <label>Parent Grant Scheme</label>
+        <lookupFilter>
+            <active>true</active>
+            <filterItems>
+                <field>Grant_Scheme__c.Programme__c</field>
+                <operation>equals</operation>
+                <valueField>$Source.Programme__c</valueField>
+            </filterItems>
+            <filterItems>
+                <field>Grant_Scheme__c.Id</field>
+                <operation>notEqual</operation>
+                <valueField>$Source.Id</valueField>
+            </filterItems>
+            <filterItems>
+                <field>Grant_Scheme__c.Parent_Grant_Name__c</field>
+                <operation>equals</operation>
+                <value></value>
+            </filterItems>
+            <isOptional>true</isOptional>
+        </lookupFilter>
+        <referenceTo>Grant_Scheme__c</referenceTo>
+        <relationshipLabel>Grant Schemes</relationshipLabel>
+        <relationshipName>Grant_Schemes</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Portal_User_Cannot_Delete_This_Record__c</fullName>
+        <externalId>false</externalId>
+        <formula>AND( 
+NOT($Setup.Bypass__c.Validation_Rules__c) 
+, NOT($Setup.Bypass__c.Business_Rules_for_Edit_and_Delete__c) 
+, OR($Profile.Name = &apos;Data Solution Portal - Centre User&apos;, $Profile.Name = &apos;Data Solution Portal - User&apos;)
+)</formula>
+        <label>Portal User Cannot Delete This Record</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Primary_Purpose__c</fullName>
+        <description>details can be found on : https://docs.google.com/spreadsheets/d/1Hb7iIacx-Koy2lIrXoqSyzdTf0bh-1TRvCyR8Jwtif8/edit#gid=488764022</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The purpose that the grant is being paid out for. 5 mutually exclusive purposes have been identified. Definitions of each are given in the Data and System Glossary of Terms, found on the Home page. If no option suits, choose None of the above.</inlineHelpText>
+        <label>Primary Purpose</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Supporting delivery of a public service</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Supporting delivery of a public policy</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Research &amp; Innovation</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Financial Assistance / Support</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Subscriptions and pension payments</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>None of the above</fullName>
+                    <default>false</default>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Programme_Reference_Number__c</fullName>
+        <externalId>false</externalId>
+        <formula>Programme__r.Programme_Reference_Number__c</formula>
+        <inlineHelpText>This is a reference number that can be given from a department&apos;s own internal system, when creating the Programme, but it is optional. If this is blank, then it means you haven&apos;t provided one when you created the Programme.</inlineHelpText>
+        <label>Programme Reference Number</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Programme__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>This is the parent Grant Programe</description>
+        <externalId>false</externalId>
+        <inlineHelpText>In order to be able to choose a Programme (Name) when you create a Scheme, you need to have created the Programme first, from the Programme tab.</inlineHelpText>
+        <label>Programme</label>
+        <referenceTo>Programme__c</referenceTo>
+        <relationshipLabel>Grant Schemes</relationshipLabel>
+        <relationshipName>Grant_Schemes</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Public_funding_source__c</fullName>
+        <description>the source of public funding</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The source of funding for the grant scheme. This could be from the UK Exchequer,  EU Funding, both, Lottery Funding, NATO or other type.</inlineHelpText>
+        <label>Public funding source</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>UK Exchequer</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>EU Funding</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>UK + EU funding</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Lottery funding</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>NATO</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Other</fullName>
+                    <default>false</default>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Purpose_explanation__c</fullName>
+        <description>This is the purpose explanation for this Scheme</description>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <inlineHelpText>If None of the Above is selected as an option in Primary purpose, then this is a freetext field to be populated and cannot be left blank. If a particular grant doesn&apos;t fit into any of the categories, an explanation should be provided.</inlineHelpText>
+        <label>Purpose explanation</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Reason_for_Given_Answer__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <inlineHelpText>Freetext field to explain reasons for scheme achieving/not achieving objectives.</inlineHelpText>
+        <label>State the reason for your answer above</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Rec_sector_Central_Government__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF(INCLUDES(Recipient_Sector__c, &quot;Central Government&quot;), Scheme_Value_per_year__c/( 
+
+IF(INCLUDES( Recipient_Sector__c ,&quot;Central Government&quot;),1,0) + 
+IF(INCLUDES( Recipient_Sector__c ,&quot;Civil Society&quot;),1,0) + 
+IF(INCLUDES( Recipient_Sector__c ,&quot;Local Government&quot;),1,0) + 
+IF(INCLUDES( Recipient_Sector__c ,&quot;Public Organisations&quot;),1,0) + 
+IF(INCLUDES( Recipient_Sector__c ,&quot;Non-Departmental Public Bodies&quot;),1,0) + 
+IF(INCLUDES( Recipient_Sector__c ,&quot;Private&quot;),1,0) + 
+IF(INCLUDES( Recipient_Sector__c ,&quot;Individuals&quot;),1,0) + 
+IF(INCLUDES( Recipient_Sector__c ,&quot;International&quot;),1,0) 
+
+
+
+) ,0)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Rec sector Central Government</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Rec_sector_Civil_Society__c</fullName>
+        <description>checks if Recipient Sector field contains the Civil Society words, then it returns the value of the scheme
+
+IF(INCLUDES(Recipient_Sector__c, &quot;Civil Society&quot;), Scheme_Value__c/ (LEN(Recipient_Sector__c)-LEN(SUBSTITUTE(Recipient_Sector__c,&quot;;&quot;,&quot;&quot;)+1)) ,0)
+
+
+Central Government
+Local Government
+Civil Society
+Public Organisations
+Non-Departmental Public Bodies
+Private
+Individuals
+International</description>
+        <externalId>false</externalId>
+        <formula>IF(INCLUDES(Recipient_Sector__c, &quot;Civil Society&quot;), Scheme_Value_per_year__c/(
+
+IF(INCLUDES( Recipient_Sector__c ,&quot;Central Government&quot;),1,0) + 
+IF(INCLUDES( Recipient_Sector__c ,&quot;Civil Society&quot;),1,0) + 
+IF(INCLUDES( Recipient_Sector__c ,&quot;Local Government&quot;),1,0) + 
+IF(INCLUDES( Recipient_Sector__c ,&quot;Public Organisations&quot;),1,0) + 
+IF(INCLUDES( Recipient_Sector__c ,&quot;Non-Departmental Public Bodies&quot;),1,0) + 
+IF(INCLUDES( Recipient_Sector__c ,&quot;Private&quot;),1,0) + 
+IF(INCLUDES( Recipient_Sector__c ,&quot;Individuals&quot;),1,0) + 
+IF(INCLUDES( Recipient_Sector__c ,&quot;International&quot;),1,0) 
+
+
+
+) ,0)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Rec sector Civil Society</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Rec_sector_Individuals__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF(INCLUDES(Recipient_Sector__c, &quot;Individuals&quot;), Scheme_Value_per_year__c/( 
+
+IF(INCLUDES( Recipient_Sector__c ,&quot;Central Government&quot;),1,0) + 
+IF(INCLUDES( Recipient_Sector__c ,&quot;Civil Society&quot;),1,0) + 
+IF(INCLUDES( Recipient_Sector__c ,&quot;Local Government&quot;),1,0) + 
+IF(INCLUDES( Recipient_Sector__c ,&quot;Public Organisations&quot;),1,0) + 
+IF(INCLUDES( Recipient_Sector__c ,&quot;Non-Departmental Public Bodies&quot;),1,0) + 
+IF(INCLUDES( Recipient_Sector__c ,&quot;Private&quot;),1,0) + 
+IF(INCLUDES( Recipient_Sector__c ,&quot;Individuals&quot;),1,0) + 
+IF(INCLUDES( Recipient_Sector__c ,&quot;International&quot;),1,0) 
+
+
+) ,0)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Rec sector Individuals</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Rec_sector_International__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF(INCLUDES(Recipient_Sector__c, &quot;International&quot;), Scheme_Value_per_year__c/( 
+
+IF(INCLUDES( Recipient_Sector__c ,&quot;Central Government&quot;),1,0) + 
+IF(INCLUDES( Recipient_Sector__c ,&quot;Civil Society&quot;),1,0) + 
+IF(INCLUDES( Recipient_Sector__c ,&quot;Local Government&quot;),1,0) + 
+IF(INCLUDES( Recipient_Sector__c ,&quot;Public Organisations&quot;),1,0) + 
+IF(INCLUDES( Recipient_Sector__c ,&quot;Non-Departmental Public Bodies&quot;),1,0) + 
+IF(INCLUDES( Recipient_Sector__c ,&quot;Private&quot;),1,0) + 
+IF(INCLUDES( Recipient_Sector__c ,&quot;Individuals&quot;),1,0) + 
+IF(INCLUDES( Recipient_Sector__c ,&quot;International&quot;),1,0) 
+
+
+) ,0)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Rec sector International</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Rec_sector_Local_Government__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF(INCLUDES(Recipient_Sector__c, &quot;Local Government&quot;), Scheme_Value_per_year__c/( 
+
+IF(INCLUDES( Recipient_Sector__c ,&quot;Central Government&quot;),1,0) + 
+IF(INCLUDES( Recipient_Sector__c ,&quot;Civil Society&quot;),1,0) + 
+IF(INCLUDES( Recipient_Sector__c ,&quot;Local Government&quot;),1,0) + 
+IF(INCLUDES( Recipient_Sector__c ,&quot;Public Organisations&quot;),1,0) + 
+IF(INCLUDES( Recipient_Sector__c ,&quot;Non-Departmental Public Bodies&quot;),1,0) + 
+IF(INCLUDES( Recipient_Sector__c ,&quot;Private&quot;),1,0) + 
+IF(INCLUDES( Recipient_Sector__c ,&quot;Individuals&quot;),1,0) + 
+IF(INCLUDES( Recipient_Sector__c ,&quot;International&quot;),1,0) 
+
+
+) ,0)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Rec sector Local Government</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Rec_sector_NDPB__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF(INCLUDES(Recipient_Sector__c, &quot;Non-Departmental Public Bodies&quot;), Scheme_Value_per_year__c/( 
+
+IF(INCLUDES( Recipient_Sector__c ,&quot;Central Government&quot;),1,0) + 
+IF(INCLUDES( Recipient_Sector__c ,&quot;Civil Society&quot;),1,0) + 
+IF(INCLUDES( Recipient_Sector__c ,&quot;Local Government&quot;),1,0) + 
+IF(INCLUDES( Recipient_Sector__c ,&quot;Public Organisations&quot;),1,0) + 
+IF(INCLUDES( Recipient_Sector__c ,&quot;Non-Departmental Public Bodies&quot;),1,0) + 
+IF(INCLUDES( Recipient_Sector__c ,&quot;Private&quot;),1,0) + 
+IF(INCLUDES( Recipient_Sector__c ,&quot;Individuals&quot;),1,0) + 
+IF(INCLUDES( Recipient_Sector__c ,&quot;International&quot;),1,0) 
+
+
+) ,0)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Rec sector NDPB</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Rec_sector_Private__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF(INCLUDES(Recipient_Sector__c, &quot;Private&quot;), Scheme_Value_per_year__c/( 
+
+IF(INCLUDES( Recipient_Sector__c ,&quot;Central Government&quot;),1,0) + 
+IF(INCLUDES( Recipient_Sector__c ,&quot;Civil Society&quot;),1,0) + 
+IF(INCLUDES( Recipient_Sector__c ,&quot;Local Government&quot;),1,0) + 
+IF(INCLUDES( Recipient_Sector__c ,&quot;Public Organisations&quot;),1,0) + 
+IF(INCLUDES( Recipient_Sector__c ,&quot;Non-Departmental Public Bodies&quot;),1,0) + 
+IF(INCLUDES( Recipient_Sector__c ,&quot;Private&quot;),1,0) + 
+IF(INCLUDES( Recipient_Sector__c ,&quot;Individuals&quot;),1,0) + 
+IF(INCLUDES( Recipient_Sector__c ,&quot;International&quot;),1,0) 
+
+
+) ,0)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Rec sector Private</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Rec_sector_Public_Organisations__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF(INCLUDES(Recipient_Sector__c, &quot;Public Organisations&quot;), Scheme_Value_per_year__c/( 
+
+IF(INCLUDES( Recipient_Sector__c ,&quot;Central Government&quot;),1,0) + 
+IF(INCLUDES( Recipient_Sector__c ,&quot;Civil Society&quot;),1,0) + 
+IF(INCLUDES( Recipient_Sector__c ,&quot;Local Government&quot;),1,0) + 
+IF(INCLUDES( Recipient_Sector__c ,&quot;Public Organisations&quot;),1,0) + 
+IF(INCLUDES( Recipient_Sector__c ,&quot;Non-Departmental Public Bodies&quot;),1,0) + 
+IF(INCLUDES( Recipient_Sector__c ,&quot;Private&quot;),1,0) + 
+IF(INCLUDES( Recipient_Sector__c ,&quot;Individuals&quot;),1,0) + 
+IF(INCLUDES( Recipient_Sector__c ,&quot;International&quot;),1,0) 
+
+
+) ,0)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Rec sector Public Organisations</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Recipient_Sector__c</fullName>
+        <description>This is the Scheme&apos;s recipient sector</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Civil Society (Charities, Community Groups, Social enterprise, Communities - Universities are formally charities, so would come under here) - Public Organisations (schools, police, hospitals, libraries)</inlineHelpText>
+        <label>Recipient Sector</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MultiselectPicklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Central Government</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Local Government</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Civil Society</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Public Organisations</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Non-Departmental Public Bodies</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Private</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Individuals</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>International</fullName>
+                    <default>false</default>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+        <visibleLines>4</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Related_policy_name__c</fullName>
+        <description>This is the related policy name for this scheme</description>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <inlineHelpText>The name of the policy that the scheme was created to assist.</inlineHelpText>
+        <label>Related policy name</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Related_policy_objective__c</fullName>
+        <description>The policy objectives</description>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <inlineHelpText>The objective of the policy that the scheme was created to assist.</inlineHelpText>
+        <label>Scheme aims and objectives</label>
+        <length>4000</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Review_outcome__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>In line with the minimum grants standards, an annual review should to be undertaken on each grant scheme. Please record the outcome of the review here.</inlineHelpText>
+        <label>Scheme annual review outcome</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Continue</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Stop</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Amend</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Completed</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                </value>
+                <value>
+                    <fullName>Extended</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                </value>
+                <value>
+                    <fullName>Terminated Early</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Review_outcome_details__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>Scheme review outcome details</label>
+        <length>4000</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Risk_Profile__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>A explanation of this field can be found in our Glossary of Terms. This can be downloaded from the front page</inlineHelpText>
+        <label>Scheme risk profile</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>High</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Medium</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Low</fullName>
+                    <default>false</default>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Scheme_Evalution_Completed__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Yes/No question. Please ensure you have evidence (if requested) of the Evaluation being done if you choose Yes to this question.</inlineHelpText>
+        <label>Has the scheme evaluation been done?</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Yes</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>No</fullName>
+                    <default>false</default>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Scheme_Name__c</fullName>
+        <description>This is the name for this grant scheme</description>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <inlineHelpText>The name of the Grant Scheme, which is a level down from Programme in the data model. This is central to the GGIS and every department should have Grant Schemes created in the system first, in order to have Grant Awards under them.</inlineHelpText>
+        <label>Scheme Name</label>
+        <required>true</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Scheme_Objective__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Yes/No question. This refers to evaluation of the scheme as a whole. It should NOT be confused with evaluation of grant awards or recipients.</inlineHelpText>
+        <label>Has the scheme achieved its objectives?</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Yes</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>No</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Partially</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>N/A</fullName>
+                    <default>false</default>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Scheme_Parent_Child__c</fullName>
+        <description>JM 21/02/2107 - Determines if the Grant Scheme Name is a Parent, Child or N/A (Standalone Grant Scheme)</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Used to link schemes that run over multiple years but are input onto the system separately each year. The first scheme in the series is the parent. The subsequent schemes are the children. Select N/A if this does not apply to the scheme.</inlineHelpText>
+        <label>Scheme Parent / Child</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Parent</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Child</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>N/A</fullName>
+                    <default>false</default>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Scheme_Reference_No__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>true</externalId>
+        <inlineHelpText>This is a reference number that can be given from a department&apos;s own internal system, should you wish to. It is optional &amp; will help reconciliation between GGIS &amp; your own system, but you don&apos;t have to include one.</inlineHelpText>
+        <label>Scheme Reference No</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Scheme_Value__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>The total value of the scheme (budgeted). If the scheme has a multiple year duration, the scheme value should include all years. If scheme value is not known for multiple years, please create 1 separate scheme per year, with 1 year scheme value only.</inlineHelpText>
+        <label>Scheme Value</label>
+        <precision>16</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Scheme_Value_per_year__c</fullName>
+        <externalId>false</externalId>
+        <formula>Scheme_Value__c  /  Duration_number__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Scheme Value per year</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Secondary_Purpose__c</fullName>
+        <description>details can be found on : https://docs.google.com/spreadsheets/d/1Hb7iIacx-Koy2lIrXoqSyzdTf0bh-1TRvCyR8Jwtif8/edit#gid=488764022</description>
+        <externalId>false</externalId>
+        <inlineHelpText>This is the same definition as the Primary purpose, but if you believe your grant has a secondary purpose and you would like to record this one, please include here.</inlineHelpText>
+        <label>Secondary Purpose</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Supporting delivery of a public service</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Supporting delivery of a public policy</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Research &amp; Innovation</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Financial Assistance / Support</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Subscriptions and pension payments</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>None of the above</fullName>
+                    <default>false</default>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Senior_Responsible_Officer_Full_Name__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>Senior Responsible Officer - Full Name</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Senior_Responsible_Officer_GGS__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF( Senior_Responsible_Officer_Full_Name__c =&quot;.&quot;,False, IF(ISBLANK(Senior_Responsible_Officer_Full_Name__c),False,True))</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Senior Responsible Officer - GGS</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Start_Date__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <inlineHelpText>The date the Grant Scheme commences</inlineHelpText>
+        <label>Scheme start date</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Target_Location__c</fullName>
+        <description>This is the target region location for this Scheme</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The geographical area that the scheme will cover</inlineHelpText>
+        <label>Target Location</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MultiselectPicklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>England</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Scotland</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Northern Ireland</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Wales</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>UK Wide</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Overseas</fullName>
+                    <default>false</default>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+        <visibleLines>4</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Total_Administration_Costs__c</fullName>
+        <externalId>false</externalId>
+        <formula>Design_And_Development_Admin_Cost__c + Market_Engagement_And_Application__c +  Application_And_Assessment__c +  Award_And_Agree_Terms_Of_Grant_Payment__c +  Monitoring_And_Performance_Management__c +  Evaluation__c +  Other_Activity_1_Cost__c + Other_Activity_2_Cost__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Total Administration Costs (£)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>record_type_formula__c</fullName>
+        <externalId>false</externalId>
+        <formula>RecordType.Name</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>record type formula</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <label>Grant Scheme</label>
+    <listViews>
+        <fullName>All</fullName>
+        <columns>NAME</columns>
+        <columns>Scheme_Reference_No__c</columns>
+        <columns>Grant_Scheme_Name_Link__c</columns>
+        <columns>Scheme_Value__c</columns>
+        <columns>Start_Date__c</columns>
+        <columns>Funder__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
+    <listViews>
+        <fullName>My_Department_s_Data</fullName>
+        <columns>NAME</columns>
+        <columns>Scheme_Reference_No__c</columns>
+        <columns>Grant_Scheme_Name_Link__c</columns>
+        <columns>Scheme_Value__c</columns>
+        <columns>Start_Date__c</columns>
+        <columns>Funder__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Is_My_Department_Data__c</field>
+            <operation>equals</operation>
+            <value>1</value>
+        </filters>
+        <label>My Department&apos;s Data</label>
+        <sharedTo>
+            <allCustomerPortalUsers></allCustomerPortalUsers>
+        </sharedTo>
+    </listViews>
+    <nameField>
+        <displayFormat>SCH-{000000000}</displayFormat>
+        <label>System Scheme Reference No</label>
+        <trackHistory>false</trackHistory>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>Grant Schemes</pluralLabel>
+    <recordTypeTrackHistory>true</recordTypeTrackHistory>
+    <recordTypes>
+        <fullName>Approved_Grant_Scheme</fullName>
+        <active>true</active>
+        <description>When creating a new scheme, choose this if your grant has gone through the appropriate governance structures and has received final approval to go live.</description>
+        <label>Approved Grant Scheme</label>
+        <picklistValues>
+            <picklist>Allocation_Method__c</picklist>
+            <values>
+                <fullName>Formula</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>General Grants - Competed</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>General Grants - Criteria Based</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>General Grants - Un-competed</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Grant in Aid</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Capital_Resource__c</picklist>
+            <values>
+                <fullName>Capital</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Mixed</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Resource</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Considered_by_the_Grants_Advice_Panel__c</picklist>
+            <values>
+                <fullName>No</fullName>
+                <default>true</default>
+            </values>
+            <values>
+                <fullName>Yes</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Department_referring_to_NGAP__c</picklist>
+            <values>
+                <fullName>No</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Yes</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Duration__c</picklist>
+            <values>
+                <fullName>1</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>10</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>11</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>12</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>13</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>14</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>15</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>16</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>17</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>18</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>19</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>2</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>20</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>3</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>4</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>5</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>6</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>7</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>8</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>9</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>EU_Fund_name__c</picklist>
+            <values>
+                <fullName>Asylum Migration and Integration Fund %28AMIF%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Cohesion Fund %28CF%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EU Agricultural Fund - Rural Development</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EU Agricultural Guarantee Fund</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EU Creative Europe Fund</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EU Life Programme</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EU Maritime %26 Fisheries Fund</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EU Regional Development Fund %28ERDF%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EU Social Fund %28ESF%29</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Financial_Year</picklist>
+            <values>
+                <fullName>FY 0%2F1</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FY 1%2F2</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FY 10%2F11</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FY 11%2F12</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FY 12%2F13</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FY 13%2F14</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FY 14%2F15</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FY 15%2F16</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FY 16%2F17</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FY 17%2F18</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FY 18%2F19</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FY 19%2F20</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FY 2%2F3</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FY 20%2F21</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FY 21%2F22</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FY 22%2F23</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FY 23%2F24</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FY 24%2F25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FY 25%2F26</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FY 26%2F27</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FY 27%2F28</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FY 28%2F29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FY 29%2F30</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FY 3%2F4</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FY 30%2F31</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FY 31%2F32</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FY 32%2F33</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FY 33%2F34</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FY 34%2F35</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FY 35%2F36</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FY 36%2F37</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FY 37%2F38</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FY 38%2F39</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FY 39%2F40</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FY 4%2F5</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FY 40%2F41</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FY 41%2F42</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FY 42%2F43</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FY 43%2F44</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FY 44%2F45</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FY 45%2F46</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FY 46%2F47</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FY 47%2F48</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FY 48%2F49</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FY 49%2F50</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FY 5%2F6</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FY 6%2F7</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FY 7%2F8</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FY 8%2F9</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FY 86%2F87</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FY 87%2F88</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FY 88%2F89</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FY 89%2F90</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FY 9%2F10</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FY 90%2F91</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FY 91%2F92</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FY 92%2F93</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FY 93%2F94</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FY 94%2F95</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FY 95%2F96</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FY 96%2F97</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FY 97%2F98</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FY 98%2F99</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FY 99%2F00</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>GS_Reason_for_not_publishing__c</picklist>
+            <values>
+                <fullName>National security</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Sensitive</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>If_No_Reasons__c</picklist>
+            <values>
+                <fullName>Disproportionate cost of evaluation</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Evaluation not applicable</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Grant not ended yet</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Low risk</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Primary_Purpose__c</picklist>
+            <values>
+                <fullName>Financial Assistance %2F Support</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>None of the above</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Research %26 Innovation</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Subscriptions and pension payments</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Supporting delivery of a public policy</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Supporting delivery of a public service</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Public_funding_source__c</picklist>
+            <values>
+                <fullName>EU Funding</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Lottery funding</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>NATO</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Other</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>UK %2B EU funding</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>UK Exchequer</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Recipient_Sector__c</picklist>
+            <values>
+                <fullName>Central Government</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Civil Society</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Individuals</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>International</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Local Government</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Non-Departmental Public Bodies</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Private</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Public Organisations</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Review_outcome__c</picklist>
+            <values>
+                <fullName>Amend</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Continue</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Stop</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Risk_Profile__c</picklist>
+            <values>
+                <fullName>High</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Low</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Medium</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Scheme_Evalution_Completed__c</picklist>
+            <values>
+                <fullName>No</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Yes</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Scheme_Objective__c</picklist>
+            <values>
+                <fullName>N%2FA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>No</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Partially</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Yes</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Scheme_Parent_Child__c</picklist>
+            <values>
+                <fullName>Child</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>N%2FA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Parent</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Secondary_Purpose__c</picklist>
+            <values>
+                <fullName>Financial Assistance %2F Support</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>None of the above</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Research %26 Innovation</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Subscriptions and pension payments</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Supporting delivery of a public policy</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Supporting delivery of a public service</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Target_Location__c</picklist>
+            <values>
+                <fullName>England</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Northern Ireland</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Overseas</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Scotland</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>UK Wide</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Wales</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <recordTypes>
+        <fullName>Proposed_Grant_Scheme</fullName>
+        <active>true</active>
+        <description>When creating a new scheme, choose this if your grant is being developed and has not yet received final approval to go live.</description>
+        <label>Proposed Grant Scheme</label>
+        <picklistValues>
+            <picklist>Allocation_Method__c</picklist>
+            <values>
+                <fullName>Formula</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>General Grants - Competed</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>General Grants - Criteria Based</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>General Grants - Un-competed</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Grant in Aid</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Capital_Resource__c</picklist>
+            <values>
+                <fullName>Capital</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Mixed</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Resource</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Considered_by_the_Grants_Advice_Panel__c</picklist>
+            <values>
+                <fullName>No</fullName>
+                <default>true</default>
+            </values>
+            <values>
+                <fullName>Yes</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Department_referring_to_NGAP__c</picklist>
+            <values>
+                <fullName>No</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Yes</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Duration__c</picklist>
+            <values>
+                <fullName>1</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>10</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>11</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>12</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>13</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>14</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>15</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>16</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>17</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>18</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>19</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>2</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>20</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>3</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>4</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>5</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>6</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>7</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>8</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>9</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>EU_Fund_name__c</picklist>
+            <values>
+                <fullName>Asylum Migration and Integration Fund %28AMIF%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Cohesion Fund %28CF%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EU Agricultural Fund - Rural Development</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EU Agricultural Guarantee Fund</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EU Creative Europe Fund</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EU Life Programme</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EU Maritime %26 Fisheries Fund</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EU Regional Development Fund %28ERDF%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EU Social Fund %28ESF%29</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Financial_Year</picklist>
+            <values>
+                <fullName>FY 0%2F1</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FY 1%2F2</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FY 10%2F11</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FY 11%2F12</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FY 12%2F13</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FY 13%2F14</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FY 14%2F15</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FY 15%2F16</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FY 16%2F17</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FY 17%2F18</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FY 18%2F19</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FY 19%2F20</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FY 2%2F3</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FY 20%2F21</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FY 21%2F22</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FY 22%2F23</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FY 23%2F24</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FY 24%2F25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FY 25%2F26</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FY 26%2F27</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FY 27%2F28</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FY 28%2F29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FY 29%2F30</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FY 3%2F4</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FY 30%2F31</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FY 31%2F32</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FY 32%2F33</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FY 33%2F34</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FY 34%2F35</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FY 35%2F36</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FY 36%2F37</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FY 37%2F38</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FY 38%2F39</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FY 39%2F40</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FY 4%2F5</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FY 40%2F41</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FY 41%2F42</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FY 42%2F43</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FY 43%2F44</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FY 44%2F45</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FY 45%2F46</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FY 46%2F47</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FY 47%2F48</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FY 48%2F49</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FY 49%2F50</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FY 5%2F6</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FY 6%2F7</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FY 7%2F8</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FY 8%2F9</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FY 86%2F87</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FY 87%2F88</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FY 88%2F89</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FY 89%2F90</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FY 9%2F10</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FY 90%2F91</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FY 91%2F92</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FY 92%2F93</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FY 93%2F94</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FY 94%2F95</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FY 95%2F96</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FY 96%2F97</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FY 97%2F98</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FY 98%2F99</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FY 99%2F00</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>GS_Reason_for_not_publishing__c</picklist>
+            <values>
+                <fullName>National security</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Sensitive</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>If_No_Reasons__c</picklist>
+            <values>
+                <fullName>Disproportionate cost of evaluation</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Evaluation not applicable</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Grant not ended yet</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Low risk</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Primary_Purpose__c</picklist>
+            <values>
+                <fullName>Financial Assistance %2F Support</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>None of the above</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Research %26 Innovation</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Subscriptions and pension payments</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Supporting delivery of a public policy</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Supporting delivery of a public service</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Public_funding_source__c</picklist>
+            <values>
+                <fullName>EU Funding</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Lottery funding</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>NATO</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Other</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>UK %2B EU funding</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>UK Exchequer</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Recipient_Sector__c</picklist>
+            <values>
+                <fullName>Central Government</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Civil Society</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Individuals</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>International</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Local Government</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Non-Departmental Public Bodies</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Private</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Public Organisations</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Review_outcome__c</picklist>
+            <values>
+                <fullName>Amend</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Continue</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Stop</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Risk_Profile__c</picklist>
+            <values>
+                <fullName>High</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Low</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Medium</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Scheme_Evalution_Completed__c</picklist>
+            <values>
+                <fullName>No</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Yes</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Scheme_Objective__c</picklist>
+            <values>
+                <fullName>N%2FA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>No</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Partially</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Yes</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Scheme_Parent_Child__c</picklist>
+            <values>
+                <fullName>Child</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>N%2FA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Parent</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Secondary_Purpose__c</picklist>
+            <values>
+                <fullName>Financial Assistance %2F Support</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>None of the above</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Research %26 Innovation</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Subscriptions and pension payments</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Supporting delivery of a public policy</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Supporting delivery of a public service</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Target_Location__c</picklist>
+            <values>
+                <fullName>England</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Northern Ireland</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Overseas</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Scotland</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>UK Wide</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Wales</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <recordTypes>
+        <fullName>Withdrawn_Grant_Scheme</fullName>
+        <active>true</active>
+        <description>Proposed Grant Schemes that have been Withdrawn</description>
+        <label>Withdrawn Grant Scheme</label>
+        <picklistValues>
+            <picklist>Allocation_Method__c</picklist>
+            <values>
+                <fullName>Formula</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>General Grants - Competed</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>General Grants - Criteria Based</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>General Grants - Un-competed</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Grant in Aid</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Capital_Resource__c</picklist>
+            <values>
+                <fullName>Capital</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Mixed</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Resource</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Considered_by_the_Grants_Advice_Panel__c</picklist>
+            <values>
+                <fullName>No</fullName>
+                <default>true</default>
+            </values>
+            <values>
+                <fullName>Yes</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Department_referring_to_NGAP__c</picklist>
+            <values>
+                <fullName>No</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Yes</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Duration__c</picklist>
+            <values>
+                <fullName>1</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>10</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>11</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>12</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>13</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>14</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>15</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>16</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>17</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>18</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>19</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>2</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>20</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>3</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>4</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>5</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>6</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>7</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>8</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>9</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>EU_Fund_name__c</picklist>
+            <values>
+                <fullName>Asylum Migration and Integration Fund %28AMIF%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Cohesion Fund %28CF%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EU Agricultural Fund - Rural Development</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EU Agricultural Guarantee Fund</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EU Creative Europe Fund</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EU Life Programme</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EU Maritime %26 Fisheries Fund</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EU Regional Development Fund %28ERDF%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EU Social Fund %28ESF%29</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Financial_Year</picklist>
+            <values>
+                <fullName>FY 0%2F1</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FY 1%2F2</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FY 10%2F11</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FY 11%2F12</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FY 12%2F13</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FY 13%2F14</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FY 14%2F15</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FY 15%2F16</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FY 16%2F17</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FY 17%2F18</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FY 18%2F19</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FY 19%2F20</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FY 2%2F3</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FY 20%2F21</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FY 21%2F22</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FY 22%2F23</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FY 23%2F24</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FY 24%2F25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FY 25%2F26</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FY 26%2F27</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FY 27%2F28</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FY 28%2F29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FY 29%2F30</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FY 3%2F4</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FY 30%2F31</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FY 31%2F32</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FY 32%2F33</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FY 33%2F34</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FY 34%2F35</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FY 35%2F36</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FY 36%2F37</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FY 37%2F38</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FY 38%2F39</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FY 39%2F40</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FY 4%2F5</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FY 40%2F41</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FY 41%2F42</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FY 42%2F43</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FY 43%2F44</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FY 44%2F45</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FY 45%2F46</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FY 46%2F47</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FY 47%2F48</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FY 48%2F49</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FY 49%2F50</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FY 5%2F6</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FY 6%2F7</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FY 7%2F8</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FY 8%2F9</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FY 86%2F87</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FY 87%2F88</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FY 88%2F89</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FY 89%2F90</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FY 9%2F10</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FY 90%2F91</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FY 91%2F92</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FY 92%2F93</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FY 93%2F94</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FY 94%2F95</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FY 95%2F96</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FY 96%2F97</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FY 97%2F98</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FY 98%2F99</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FY 99%2F00</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>GS_Reason_for_not_publishing__c</picklist>
+            <values>
+                <fullName>National security</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Sensitive</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>If_No_Reasons__c</picklist>
+            <values>
+                <fullName>Disproportionate cost of evaluation</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Evaluation not applicable</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Grant not ended yet</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Low risk</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Primary_Purpose__c</picklist>
+            <values>
+                <fullName>Financial Assistance %2F Support</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>None of the above</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Research %26 Innovation</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Subscriptions and pension payments</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Supporting delivery of a public policy</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Supporting delivery of a public service</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Public_funding_source__c</picklist>
+            <values>
+                <fullName>EU Funding</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Lottery funding</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>NATO</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Other</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>UK %2B EU funding</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>UK Exchequer</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Recipient_Sector__c</picklist>
+            <values>
+                <fullName>Central Government</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Civil Society</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Individuals</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>International</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Local Government</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Non-Departmental Public Bodies</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Private</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Public Organisations</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Review_outcome__c</picklist>
+            <values>
+                <fullName>Amend</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Continue</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Stop</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Risk_Profile__c</picklist>
+            <values>
+                <fullName>High</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Low</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Medium</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Scheme_Evalution_Completed__c</picklist>
+            <values>
+                <fullName>No</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Yes</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Scheme_Objective__c</picklist>
+            <values>
+                <fullName>N%2FA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>No</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Partially</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Yes</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Scheme_Parent_Child__c</picklist>
+            <values>
+                <fullName>Child</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>N%2FA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Parent</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Secondary_Purpose__c</picklist>
+            <values>
+                <fullName>Financial Assistance %2F Support</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>None of the above</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Research %26 Innovation</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Subscriptions and pension payments</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Supporting delivery of a public policy</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Supporting delivery of a public service</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Target_Location__c</picklist>
+            <values>
+                <fullName>England</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Northern Ireland</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Overseas</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Scotland</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>UK Wide</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Wales</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <searchLayouts>
+        <customTabListAdditionalFields>Scheme_Reference_No__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Grant_Scheme_Name_Link__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Scheme_Value__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Start_Date__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Funder__c</customTabListAdditionalFields>
+        <excludedStandardButtons>Accept</excludedStandardButtons>
+        <excludedStandardButtons>ChangeOwner</excludedStandardButtons>
+        <lookupDialogsAdditionalFields>Scheme_Name__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Funder__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>COFOG_L2__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>COFOG_Level_1_Name__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>COFOG_Level_2_Name__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Programme__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Start_Date__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>CREATEDBY_USER</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>CREATED_DATE</lookupDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>Scheme_Name__c</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>Funder__c</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>COFOG_L2__c</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>COFOG_Level_1_Name__c</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>COFOG_Level_2_Name__c</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>Programme__c</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>Start_Date__c</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>CREATEDBY_USER</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>CREATED_DATE</lookupPhoneDialogsAdditionalFields>
+        <searchFilterFields>NAME</searchFilterFields>
+        <searchFilterFields>Funder__c</searchFilterFields>
+        <searchFilterFields>Allocation_Method__c</searchFilterFields>
+        <searchFilterFields>COFOG_L2__c</searchFilterFields>
+        <searchFilterFields>COFOG_Level_1_Name__c</searchFilterFields>
+        <searchFilterFields>COFOG_Level_2_Name__c</searchFilterFields>
+        <searchFilterFields>Programme__c</searchFilterFields>
+        <searchFilterFields>Scheme_Name__c</searchFilterFields>
+        <searchFilterFields>CREATEDBY_USER</searchFilterFields>
+        <searchFilterFields>CREATED_DATE</searchFilterFields>
+        <searchResultsAdditionalFields>Scheme_Reference_No__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Grant_Scheme_Name_Link__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Scheme_Value__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Start_Date__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Funder__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>RECORDTYPE</searchResultsAdditionalFields>
+    </searchLayouts>
+    <sharingModel>ReadWrite</sharingModel>
+    <validationRules>
+        <fullName>All_Fields_Are_Locked_Apart_From_Eval</fullName>
+        <active>false</active>
+        <errorConditionFormula>AND(
+ NOT($Setup.Bypass__c.Validation_Rules__c)
+ , NOT( $Profile.Name = &apos;System Administrator&apos;) ,NOT($Setup.Bypass__c.Business_Rules_for_Edit_and_Delete__c)
+ , RecordType.DeveloperName = &quot;Approved_Grant_Scheme&quot;
+ , ISPICKVAL($Profile.UserType, &apos;PowerCustomerSuccess&apos;)
+ , NOT(ISNEW())
+ , OR(
+  AND(
+   ISBLANK(Max_Grant_Award_End_Date__c)
+   , NOT(ISBLANK(TEXT(Duration__c)))
+   , NOT(ISPICKVAL(Duration__c, &apos;Unknown&apos;))
+   , ISBLANK(Max_Grant_Award_End_Date__c)
+   , (TODAY() - End_Date__c ) &gt; 365
+  )
+  , (TODAY() - Max_Grant_Award_End_Date__c) &gt; 365
+ )
+ , NOT(ISCHANGED(Scheme_Evalution_Completed__c ))
+ , NOT(ISCHANGED(If_No_Reasons__c))
+ , NOT(ISCHANGED(Scheme_Objective__c))
+ , NOT(ISCHANGED(Reason_for_Given_Answer__c))
+)</errorConditionFormula>
+        <errorMessage>This record is locked. Please create a case or contact the grants hub support in order to modify this record.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Allocation_Method_field_is_mandatory</fullName>
+        <active>true</active>
+        <description>Allocation Method field is mandatory</description>
+        <errorConditionFormula>AND(
+  NOT($Setup.Bypass__c.Validation_Rules__c)
+ , RecordType.DeveloperName = &quot;Approved_Grant_Scheme&quot;
+ , ISBLANK(Allocation_Method__c )
+)</errorConditionFormula>
+        <errorDisplayField>Allocation_Method__c</errorDisplayField>
+        <errorMessage>Allocation Method field is mandatory.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Approved_Cannot_change_Record_Type</fullName>
+        <active>true</active>
+        <errorConditionFormula>AND(
+  NOT($Setup.Bypass__c.Validation_Rules__c)
+ , PRIORVALUE(RecordTypeId) = &quot;01224000000FMOQ&quot;
+ , ISCHANGED(RecordTypeId)
+)</errorConditionFormula>
+        <errorMessage>Approved Grant Schemes cannot be updated to a different Record Type</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Authority_Act_field_mandatory</fullName>
+        <active>true</active>
+        <errorConditionFormula>AND(
+ NOT($Setup.Bypass__c.Validation_Rules__c)
+ , RecordType.DeveloperName = &quot;Approved_Grant_Scheme&quot; 
+ , NOT( Authority_Act__r.Is_Active__c )
+)</errorConditionFormula>
+        <errorDisplayField>Authority_Act__c</errorDisplayField>
+        <errorMessage>Authority Act field is mandatory</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Award_must_have_atLeast_1_FundingOrOther</fullName>
+        <active>true</active>
+        <errorConditionFormula>AND(
+ NOT($Setup.Bypass__c.Validation_Rules__c) 
+ , RecordType.DeveloperName = &quot;Approved_Grant_Scheme&quot;
+ , ISBLANK(TEXT( Public_funding_source__c ) )
+ , ISBLANK(Other_public_funding_source__c )
+)</errorConditionFormula>
+        <errorMessage>Grant Scheme must have at least Public funding source or Other public funding source.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>COFOG_L2_field_mandatory</fullName>
+        <active>true</active>
+        <description>COFOG L2 field is mandatory</description>
+        <errorConditionFormula>AND(
+ NOT($Setup.Bypass__c.Validation_Rules__c)
+ , RecordType.DeveloperName = &quot;Approved_Grant_Scheme&quot; 
+ , ISBLANK(COFOG_L2__c)
+)</errorConditionFormula>
+        <errorDisplayField>COFOG_L2__c</errorDisplayField>
+        <errorMessage>COFOG L2 field is mandatory</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Capital_Resource_Mandatory</fullName>
+        <active>true</active>
+        <description>Capital Resource is mandatory</description>
+        <errorConditionFormula>AND(
+  NOT($Setup.Bypass__c.Validation_Rules__c) 
+ , RecordType.DeveloperName = &quot;Approved_Grant_Scheme&quot;
+ ,ISBLANK(TEXT(Capital_Resource__c))
+)</errorConditionFormula>
+        <errorDisplayField>Capital_Resource__c</errorDisplayField>
+        <errorMessage>Please provide a value for the &quot;Capital/ Resource&quot; field.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Child_Scheme_must_have_a_Parent</fullName>
+        <active>true</active>
+        <description>JM 17/02/2107 -A Grant Scheme classified as a Child must have a Parent Scheme</description>
+        <errorConditionFormula>AND( 
+NOT($Setup.Bypass__c.Validation_Rules__c) 
+,OR 
+(ISPICKVAL( Scheme_Parent_Child__c , &quot;Child&quot;))
+,(ISBLANK( Parent_Grant_Scheme__c ) )
+)</errorConditionFormula>
+        <errorMessage>A Grant Scheme with a &quot;Scheme Parent / Child&quot; value of Child must have a Parent Grant Scheme</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Concidered_Grants_Advice_Panel_mandatory</fullName>
+        <active>false</active>
+        <errorConditionFormula>AND( 
+NOT($Setup.Bypass__c.Validation_Rules__c) 
+, RecordType.DeveloperName = &quot;Approved_Grant_Scheme&quot;
+, ISBLANK(TEXT(Considered_by_the_Grants_Advice_Panel__c)) 
+)</errorConditionFormula>
+        <errorDisplayField>Considered_by_the_Grants_Advice_Panel__c</errorDisplayField>
+        <errorMessage>This field is mandatory.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Considered_by_the_Grants_Is_Mandatory</fullName>
+        <active>true</active>
+        <description>Considered_by_the_Grants_Advice_Panel__c field is mandatory</description>
+        <errorConditionFormula>AND(
+  NOT($Setup.Bypass__c.Validation_Rules__c)
+ , RecordType.DeveloperName = &quot;Approved_Grant_Scheme&quot; 
+ , ISBLANK(TEXT(Considered_by_the_Grants_Advice_Panel__c))
+)</errorConditionFormula>
+        <errorDisplayField>Considered_by_the_Grants_Advice_Panel__c</errorDisplayField>
+        <errorMessage>&apos;Considered by the Grants Advice Panel&apos; field is mandatory.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Department_Check_on_create</fullName>
+        <active>true</active>
+        <description>This is a global validation rule to stop users from updating other department&apos;s record.</description>
+        <errorConditionFormula>AND ( 
+ NOT($Setup.Bypass__c.Validation_Rules__c) 
+ , ISPICKVAL($Profile.UserType, &apos;PowerCustomerSuccess&apos;)
+ , ISNEW()
+ , NOT(ISBLANK(Programme__c))
+ , NOT(  Programme__r.Is_My_Department_Data__c),
+NOT( $Profile.Name = &apos;System Administrator&apos;) 
+)</errorConditionFormula>
+        <errorDisplayField>Programme__c</errorDisplayField>
+        <errorMessage>You don&apos;t have update privilege on the related Programme record.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Department_Check_on_update</fullName>
+        <active>true</active>
+        <description>This is a global validation rule to stop users from updating other department&apos;s record.</description>
+        <errorConditionFormula>AND ( 
+ NOT($Setup.Bypass__c.Validation_Rules__c) 
+ , ISPICKVAL($Profile.UserType, &apos;PowerCustomerSuccess&apos;)
+ , NOT(ISNEW())
+ , Owner:User.UserRoleId &lt;&gt;  $User.UserRoleId ,
+NOT( $Profile.Name = &apos;System Administrator&apos;) 
+)</errorConditionFormula>
+        <errorMessage>You don&apos;t have update privilege on this record.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Duration_field_is_mandatatory</fullName>
+        <active>true</active>
+        <description>Duration field is mandatory.</description>
+        <errorConditionFormula>AND( 
+NOT($Setup.Bypass__c.Validation_Rules__c)
+, RecordType.DeveloperName = &quot;Approved_Grant_Scheme&quot;  
+, ISBLANK(TEXT(Duration__c)) 
+)</errorConditionFormula>
+        <errorDisplayField>Duration__c</errorDisplayField>
+        <errorMessage>Duration field is mandatory.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>EU_Fund_name_is_mandatory_for_EU_source</fullName>
+        <active>true</active>
+        <description>If EU Funding chosen, then this cannot be blank</description>
+        <errorConditionFormula>AND(
+ NOT($Setup.Bypass__c.Validation_Rules__c) 
+ , OR(
+  ISPICKVAL( Public_funding_source__c , &quot;EU Funding&quot;)
+  , ISPICKVAL( Public_funding_source__c , &quot;UK + EU funding&quot;)
+ )
+ ,ISBLANK( EU_Fund_name__c )
+)</errorConditionFormula>
+        <errorDisplayField>EU_Fund_name__c</errorDisplayField>
+        <errorMessage>If EU Funding chosen, then this cannot be blank</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>EU_Fund_name_should_be_blank_for_UK_src</fullName>
+        <active>true</active>
+        <description>This is to prevent users from adding invalid data into the system.</description>
+        <errorConditionFormula>AND( 
+ NOT($Setup.Bypass__c.Validation_Rules__c) 
+ , ISPICKVAL( Public_funding_source__c , &quot;UK Exchequer&quot;) 
+ ,NOT(ISBLANK( EU_Fund_name__c ))
+)</errorConditionFormula>
+        <errorDisplayField>EU_Fund_name__c</errorDisplayField>
+        <errorMessage>EU Fund name should blank because funding source is not an EU source.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Evaluation_fields_are_locked</fullName>
+        <active>true</active>
+        <errorConditionFormula>AND(
+ NOT($Setup.Bypass__c.Validation_Rules__c)
+ , NOT($Setup.Bypass__c.Business_Rules_for_Edit_and_Delete__c)
+ , ISPICKVAL($Profile.UserType, &apos;PowerCustomerSuccess&apos;)
+ , NOT(ISNEW())
+ , AND( 
+    NOT(ISBLANK(TEXT(Duration__c))) 
+    , NOT(ISPICKVAL(Duration__c, &apos;Unknown&apos;)) 
+   ) 
+ , OR((TODAY() - DATEVALUE(Evaluation_Modified_Date_by_Portal_User__c)) = 0         
+, (TODAY() - DATEVALUE(Evaluation_Modified_Date_by_Portal_User__c)) &gt; 2)
+ , OR(
+   ISCHANGED( Scheme_Objective__c )
+   , ISCHANGED( If_No_Reasons__c )
+   , ISCHANGED( Scheme_Evalution_Completed__c )
+   , ISCHANGED( Reason_for_Given_Answer__c )
+ )
+)</errorConditionFormula>
+        <errorMessage>Evaluation fields cannot be modified. Please create a case or contact the grants hub support in order to modify this record.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Funder_field_mandatory_asFieldCriteria</fullName>
+        <active>true</active>
+        <errorConditionFormula>AND(
+ NOT($Setup.Bypass__c.Validation_Rules__c)
+ , NOT(Funder__r.Is_Funder__c)
+)</errorConditionFormula>
+        <errorDisplayField>Funder__c</errorDisplayField>
+        <errorMessage>Value does not exist or does not match validation rule.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>GS_Do_not_publish_if_checked</fullName>
+        <active>true</active>
+        <description>This validation rule makes it so that when Do not publish is checked, Reason for not publishing or Explanation for not publishing has to be populated</description>
+        <errorConditionFormula>AND(  GS_Do_not_publish__c  = true,
+ISPICKVAL(  GS_Reason_for_not_publishing__c , &apos;&apos;),
+(ISBLANK(  GS_Explanation_for_not_publishing__c  )))</errorConditionFormula>
+        <errorMessage>If Do not publish is checked, then either Reason for not publishing or Explanation for not publishing has to be populated</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>GS_Do_not_publish_must_be_checked</fullName>
+        <active>true</active>
+        <description>This validation rule is for allowing to have Do not publish checked before Reason for not publishing or Explanation for not publishing can be populated</description>
+        <errorConditionFormula>and( GS_Do_not_publish__c = false,
+OR(NOT(isblank(TEXT( GS_Reason_for_not_publishing__c))),
+NOT(isblank( GS_Explanation_for_not_publishing__c ))))</errorConditionFormula>
+        <errorMessage>Do not publish must be checked before Reason for not publishing or Explanation for not publishing can be populated</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Issues_and_questions_field_is_mandatory</fullName>
+        <active>true</active>
+        <description>&apos;Issues and questions for NGAP&quot; field is mandatory if and only if &apos;Department referring to NGAP is equal to &quot;Yes&quot;.</description>
+        <errorConditionFormula>AND( 
+   NOT($Setup.Bypass__c.Validation_Rules__c) 
+ , RecordType.DeveloperName = &quot;Proposed_Grant_Scheme&quot;
+ , ISPICKVAL( Department_referring_to_NGAP__c , &apos;Yes&apos;)
+ , ISBLANK( Issues_and_questions_for_NGAP__c ) 
+)</errorConditionFormula>
+        <errorDisplayField>Issues_and_questions_for_NGAP__c</errorDisplayField>
+        <errorMessage>&apos;Issues and questions for NGAP&quot; field is mandatory if &apos;Department referring to NGAP is equal to &quot;Yes&quot;</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Other_Authority_Act_is_mandatory</fullName>
+        <active>true</active>
+        <description>Other Authority Act field is mandatory if and only if &quot;Authority Act&quot; field value is equal to &quot;Other Value&quot;.</description>
+        <errorConditionFormula>AND( 
+NOT($Setup.Bypass__c.Validation_Rules__c) 
+, Authority_Act__r.Name  = &apos;Other Value&apos; 
+, ISBLANK(Other_Authority_Act__c) 
+)</errorConditionFormula>
+        <errorDisplayField>Other_Authority_Act__c</errorDisplayField>
+        <errorMessage>&apos;Other Authority Act&apos; field is mandatory if &apos;Authority Act&apos; field value is equal to &quot;Other Value&quot;.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Other_Authority_Act_should_be_blank</fullName>
+        <active>true</active>
+        <description>&quot;Other Authority Act&quot; field should be blank if and only if &quot;Authority Act&quot; field value is NOT equal to &quot;Other Value&quot;.</description>
+        <errorConditionFormula>AND( 
+NOT($Setup.Bypass__c.Validation_Rules__c) 
+,  Authority_Act__r.Name  &lt;&gt;  &apos;Other Value&apos;
+, NOT(ISBLANK( Other_Authority_Act__c  )) 
+)</errorConditionFormula>
+        <errorDisplayField>Other_Authority_Act__c</errorDisplayField>
+        <errorMessage>&apos;Other Authority Act&apos; field should be blank if &apos;Authority Act&apos; field value is NOT equal to &quot;Other Value&quot;.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Other_public_funding_source_is_mandatory</fullName>
+        <active>true</active>
+        <errorConditionFormula>AND(
+ NOT($Setup.Bypass__c.Validation_Rules__c) 
+ , IF( ISBLANK(Other_public_funding_source__c )
+      ,IF(TEXT( Public_funding_source__c ) == &quot;Other&quot;, true,false )
+      ,IF(TEXT( Public_funding_source__c ) == &quot;Other&quot;, false,true )
+      )
+)</errorConditionFormula>
+        <errorDisplayField>Other_public_funding_source__c</errorDisplayField>
+        <errorMessage>Please either select &quot;Other&quot; in the &quot;Public funding source&quot; field and populate this freetext or select any other option and leave this field blank.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Parent_Scheme_can_not_have_a_Parent</fullName>
+        <active>true</active>
+        <description>JM 13/02/2107 -A Grant Scheme classified as a Parent or N/A can&apos;t have a Parent Scheme</description>
+        <errorConditionFormula>AND(
+NOT($Setup.Bypass__c.Validation_Rules__c) 
+,OR
+(ISPICKVAL( Scheme_Parent_Child__c  , &quot;Parent&quot;), ISPICKVAL( Scheme_Parent_Child__c  , &quot;N/A&quot;))
+,NOT(ISBLANK( Parent_Grant_Scheme__c ))
+)</errorConditionFormula>
+        <errorMessage>A Grant Scheme with a &quot;Scheme Parent / Child&quot; value of Parent or N/A can not have a Parent Grant Scheme</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Primary_Purpose_is_mandatory</fullName>
+        <active>true</active>
+        <description>Primary Purpose field is mandatory</description>
+        <errorConditionFormula>AND(
+ NOT($Setup.Bypass__c.Validation_Rules__c) 
+ , ISBLANK(  TEXT( Primary_Purpose__c  ) )
+)</errorConditionFormula>
+        <errorDisplayField>Primary_Purpose__c</errorDisplayField>
+        <errorMessage>Primary Purpose field is mandatory.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Primary_purpose_check_for_explanation</fullName>
+        <active>true</active>
+        <description>If None of the Above is selected in the Primary Purpose field then a purpose explanation needs to be provided as to why your grant doesn&apos;t fit in any of the other primary purpose options.</description>
+        <errorConditionFormula>AND(
+ NOT($Setup.Bypass__c.Validation_Rules__c) 
+ , ISPICKVAL(Primary_Purpose__c , &quot;None of the above&quot;)
+ , ISBLANK( Purpose_explanation__c )
+)</errorConditionFormula>
+        <errorDisplayField>Purpose_explanation__c</errorDisplayField>
+        <errorMessage>If None of the Above is selected in the Primary Purpose field then a purpose explanation needs to be provided as to why your grant doesn&apos;t fit in any of the other primary purpose options</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Public_funding_source_is_mandatory</fullName>
+        <active>false</active>
+        <description>Public funding source field is mandatory</description>
+        <errorConditionFormula>AND(
+ NOT($Setup.Bypass__c.Validation_Rules__c) 
+ , ISBLANK(  TEXT(Public_funding_source__c ) )
+)</errorConditionFormula>
+        <errorDisplayField>Public_funding_source__c</errorDisplayField>
+        <errorMessage>Public funding source is a mandatory field. Please select a value for this field.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Reason_field_is_mandatory</fullName>
+        <active>true</active>
+        <description>&apos;If No, Reason&quot; field is mandatory if and only if &quot;Has the scheme validation been done&quot; is equal to &quot;No&quot;.</description>
+        <errorConditionFormula>AND( 
+ NOT($Setup.Bypass__c.Validation_Rules__c) 
+ , ISPICKVAL(  Scheme_Evalution_Completed__c , &apos;No&apos;)
+ , ISBLANK(TEXT( If_No_Reasons__c )) 
+)</errorConditionFormula>
+        <errorDisplayField>If_No_Reasons__c</errorDisplayField>
+        <errorMessage>&apos;If No, Reason&quot; field is mandatory if &apos;Has the scheme validation been done&apos; is equal to &quot;No&quot;.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Recipient_Sector_field_is_mandatory</fullName>
+        <active>true</active>
+        <description>Recipient Sector field is mandatory</description>
+        <errorConditionFormula>AND(
+ NOT($Setup.Bypass__c.Validation_Rules__c) 
+ , RecordType.DeveloperName = &quot;Approved_Grant_Scheme&quot; 
+ , ISBLANK( Recipient_Sector__c )
+)</errorConditionFormula>
+        <errorDisplayField>Recipient_Sector__c</errorDisplayField>
+        <errorMessage>Recipient Sector field is mandatory.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Risk_Profile_Is_Mandatory</fullName>
+        <active>true</active>
+        <description>Risk Profile field is mandatory</description>
+        <errorConditionFormula>AND(
+ NOT($Setup.Bypass__c.Validation_Rules__c) 
+ , ISBLANK(TEXT(Risk_Profile__c))
+)</errorConditionFormula>
+        <errorDisplayField>Risk_Profile__c</errorDisplayField>
+        <errorMessage>Risk Profile field is mandatory</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Scheme_Value_is_mandatory</fullName>
+        <active>true</active>
+        <description>Scheme Value field is mandatory</description>
+        <errorConditionFormula>AND( 
+NOT($Setup.Bypass__c.Validation_Rules__c) 
+, RecordType.DeveloperName = &quot;Approved_Grant_Scheme&quot; 
+, ISBLANK(Scheme_Value__c) 
+)</errorConditionFormula>
+        <errorDisplayField>Scheme_Value__c</errorDisplayField>
+        <errorMessage>Scheme Value field is mandatory</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Sr_Responsible_Officer_is_mandatory</fullName>
+        <active>true</active>
+        <description>Senior Responsible Officer field is mandatory</description>
+        <errorConditionFormula>AND( 
+NOT($Setup.Bypass__c.Validation_Rules__c) 
+, ISBLANK(Senior_Responsible_Officer_Full_Name__c) 
+)</errorConditionFormula>
+        <errorDisplayField>Senior_Responsible_Officer_Full_Name__c</errorDisplayField>
+        <errorMessage>Senior Responsible Officer field is mandatory</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Start_Date_field_is_mandatory</fullName>
+        <active>true</active>
+        <description>Start Date field is mandatory.</description>
+        <errorConditionFormula>AND( 
+NOT($Setup.Bypass__c.Validation_Rules__c) 
+, RecordType.DeveloperName = &quot;Approved_Grant_Scheme&quot; 
+, ISBLANK(Start_Date__c) 
+)</errorConditionFormula>
+        <errorDisplayField>Start_Date__c</errorDisplayField>
+        <errorMessage>Start Date field is mandatory.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Target_Location_Is_Mandatory</fullName>
+        <active>true</active>
+        <description>Target Location field is mandatory</description>
+        <errorConditionFormula>AND(
+ NOT($Setup.Bypass__c.Validation_Rules__c) 
+ , RecordType.DeveloperName = &quot;Approved_Grant_Scheme&quot; 
+ , ISBLANK(Target_Location__c)
+)</errorConditionFormula>
+        <errorDisplayField>Target_Location__c</errorDisplayField>
+        <errorMessage>Target Location field is mandatory</errorMessage>
+    </validationRules>
+</CustomObject>

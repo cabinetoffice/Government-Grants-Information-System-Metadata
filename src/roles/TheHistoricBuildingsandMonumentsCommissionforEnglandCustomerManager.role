@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Role xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseAccessLevel>None</caseAccessLevel>
+    <contactAccessLevel>Edit</contactAccessLevel>
+    <description>The Historic Buildings and Monuments Commission for England Customer Manager</description>
+    <mayForecastManagerShare>false</mayForecastManagerShare>
+    <name>The Historic Buildings and Monuments Commission for England Customer Manager</name>
+    <opportunityAccessLevel>None</opportunityAccessLevel>
+    <parentRole>SVP_Customer_Experience</parentRole>
+</Role>

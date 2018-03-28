@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ConnectedApp xmlns="http://soap.sforce.com/2006/04/metadata">
+    <contactEmail>hamed.izadpanah@cloudsherpas.com</contactEmail>
+    <label>GCOE Grants Hub</label>
+    <samlConfig>
+        <acsUrl>https://gcoe.civilservice.gov.uk/</acsUrl>
+        <encryptionType>AES_128</encryptionType>
+        <entityUrl>https://gcoe.civilservice.gov.uk/wp-content/plugins/miniorange-saml-20-single-sign-on/</entityUrl>
+        <issuer>https://cabinetoffice.my.salesforce.com</issuer>
+        <samlNameIdFormat>EmailAddress</samlNameIdFormat>
+        <samlSubjectType>Username</samlSubjectType>
+    </samlConfig>
+    <startUrl>https://gcoe.civilservice.gov.uk/</startUrl>
+</ConnectedApp>

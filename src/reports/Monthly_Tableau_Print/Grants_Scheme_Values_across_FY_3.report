@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>Grant_Scheme__c.Funder__c</field>
+    </columns>
+    <columns>
+        <field>CUST_NAME</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>Grant_Scheme__c.Scheme_Value_per_year__c</field>
+    </columns>
+    <filter>
+        <criteriaItems>
+            <column>Grant_Scheme__c.Financial_Year_Multi__c</column>
+            <isUnlocked>true</isUnlocked>
+            <operator>includes</operator>
+            <value>FY 16/17</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Grant_Scheme__c.Allocation_Method__c</column>
+            <isUnlocked>true</isUnlocked>
+            <operator>excludes</operator>
+            <value>Grant in Aid</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>CUST_RECORDTYPE</column>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Grant_Scheme__c.Approved_Grant_Scheme</value>
+        </criteriaItems>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>Grant_Scheme__c.Financial_Year_Multi__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>Grants Scheme Values across FY 16-17</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>CustomEntity$Grant_Scheme__c</reportType>
+    <scope>organization</scope>
+    <showDetails>false</showDetails>
+    <timeFrameFilter>
+        <dateColumn>Grant_Scheme__c.Start_Date__c</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ReportType xmlns="http://soap.sforce.com/2006/04/metadata">
+    <baseObject></baseObject>
+    <category>cases</category>
+    <deployed>true</deployed>
+    <description>Knowledge Articles Votes</description>
+    <label>Knowledge Articles Votes</label>
+    <sections>
+        <masterLabel>Knowledge Article Votes</masterLabel>
+    </sections>
+</ReportType>

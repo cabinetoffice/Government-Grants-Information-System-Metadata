@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Companies House Interface</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Companies House Interfaces</value>
+    </caseValues>
+    <fields>
+        <label><!-- Company Number Field --></label>
+        <name>CH_Company_Number_Field__c</name>
+    </fields>
+    <fields>
+        <label><!-- Method --></label>
+        <name>CH_Method__c</name>
+    </fields>
+    <fields>
+        <label><!-- Primary Address 1 Field --></label>
+        <name>CH_Primary_Address_1_Field__c</name>
+    </fields>
+    <fields>
+        <label><!-- Primary City Field --></label>
+        <name>CH_Primary_City_Field__c</name>
+    </fields>
+    <fields>
+        <label><!-- Primary Country Field --></label>
+        <name>CH_Primary_Country_Field__c</name>
+    </fields>
+    <fields>
+        <label><!-- Primary Postal Code Field --></label>
+        <name>CH_Primary_Postal_Code_Field__c</name>
+    </fields>
+    <fields>
+        <label><!-- Resource --></label>
+        <name>CH_Resource__c</name>
+    </fields>
+    <fields>
+        <label><!-- Token --></label>
+        <name>CH_Token__c</name>
+    </fields>
+    <fields>
+        <label><!-- URL --></label>
+        <name>CH_URL__c</name>
+    </fields>
+    <fields>
+        <label><!-- User Email --></label>
+        <name>CH_User_Email__c</name>
+    </fields>
+    <layouts>
+        <layout>Companies House Interface Layout</layout>
+        <sections>
+            <label><!-- API Details --></label>
+            <section>API Details</section>
+        </sections>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Org Details --></label>
+            <section>Org Details</section>
+        </sections>
+        <sections>
+            <label><!-- User Detals --></label>
+            <section>User Detals</section>
+        </sections>
+    </layouts>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

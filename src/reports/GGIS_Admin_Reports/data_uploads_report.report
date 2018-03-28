@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>CSV_Upload__c$Name</field>
+    </columns>
+    <columns>
+        <field>CSV_Upload__c$CreatedBy</field>
+    </columns>
+    <columns>
+        <field>CSV_Upload__c$Upload_Status__c</field>
+    </columns>
+    <columns>
+        <field>CSV_Upload__c$CreatedDate</field>
+    </columns>
+    <format>Summary</format>
+    <groupingsDown>
+        <aggregateType>RowCount</aggregateType>
+        <dateGranularity>Day</dateGranularity>
+        <field>CSV_Upload__c$CreatedBy.Account</field>
+        <sortByName>RowCount</sortByName>
+        <sortOrder>Desc</sortOrder>
+        <sortType>Aggregate</sortType>
+    </groupingsDown>
+    <name>Data Uploads by dept</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>CSV_Uploads__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <timeFrameFilter>
+        <dateColumn>CSV_Upload__c$CreatedDate</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

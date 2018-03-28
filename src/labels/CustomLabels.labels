@@ -1,0 +1,602 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomLabels xmlns="http://soap.sforce.com/2006/04/metadata">
+    <labels>
+        <fullName>App_Launcher_GCOE_Text</fullName>
+        <categories>Data Solution, App Launcher GCOE Text</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>App Launcher GCOE Text</shortDescription>
+        <value>&lt;p style=&quot;text-align:justify;&quot;&gt;
+To access best practice guidance, documentation, toolkits and other resources for administering grants please select the &lt;b&gt;Grants Centre of Expertise (GCOE)&lt;/b&gt; icon.
+&lt;/p&gt;</value>
+    </labels>
+    <labels>
+        <fullName>App_Launcher_GGIS_Label</fullName>
+        <categories>Data Solution, App Launcher, GGIS</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>App Launcher GGIS Label</shortDescription>
+        <value>GGIS</value>
+    </labels>
+    <labels>
+        <fullName>App_Launcher_GGIS_Text</fullName>
+        <categories>Data Solution, App Launcher GGIS Text</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>App Launcher GGIS Text</shortDescription>
+        <value>&lt;p style=&quot;text-align:justify;&quot;&gt;
+For viewing, managing and reporting on grants data, please select the &lt;b&gt;Government Grants Information System (GGIS)&lt;/b&gt; icon.
+&lt;/p&gt;</value>
+    </labels>
+    <labels>
+        <fullName>App_Launcher_Text</fullName>
+        <categories>Data Solution, App Launcher Text</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>App Launcher Text</shortDescription>
+        <value>&lt;h3 style=&quot;text-align:center;font-size:26px;font-weight:bold;&quot;&gt;
+    Welcome to the Government Grants Hub
+&lt;/h3&gt;</value>
+    </labels>
+    <labels>
+        <fullName>App_Launcher_The_Grants_Hub_Label</fullName>
+        <categories>Data Solution, App Launcher, The Grants Hub</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>App Launcher The Grants Hub Label</shortDescription>
+        <value>GCOE</value>
+    </labels>
+    <labels>
+        <fullName>AwardPostalCodeHeatMapAllConstituenciesLabel</fullName>
+        <categories>HeatMap, Grant Award</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>AwardPostalCodeHeatMapAllConstituenciesLabel</shortDescription>
+        <value>All Constituencies</value>
+    </labels>
+    <labels>
+        <fullName>AwardPostalCodeHeatMapAllRegionsLabel</fullName>
+        <categories>HeatMap, Grant Award</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>AwardPostalCodeHeatMapAllRegionsLabel</shortDescription>
+        <value>All Regions</value>
+    </labels>
+    <labels>
+        <fullName>CH_Organisation_Help_Direction</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Organisation Help/Direction</shortDescription>
+        <value>When creating a new organisation please click on the Companies House link below to identify if the organisation is on the Companies House database. If it is not on the Companies House database then please click on the Other Organisation link.</value>
+    </labels>
+    <labels>
+        <fullName>CSV_Upload_Amend_Grant_Award_Not_Found_Error_Message</fullName>
+        <categories>CSV Upload</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>CSV Upload Amend Grant Award Not Found Error Message</shortDescription>
+        <value>The provided Award Reference Number is invalid. Please ensure you have created the grant award first and that you are using the correct Reference number in the correct column (i.e. using a Grant Award Reference Number in the System Award Reference No column)</value>
+    </labels>
+    <labels>
+        <fullName>CSV_Upload_Grant_Scheme_Id_Column</fullName>
+        <categories>CSV Upload</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>CSV Upload Grant Scheme Id Column</shortDescription>
+        <value>Scheme Reference No or System Scheme Reference No</value>
+    </labels>
+    <labels>
+        <fullName>CSV_Upload_Help_Text</fullName>
+        <categories>CSV Upload</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>CSV Upload Help Text</shortDescription>
+        <value>Please download the &apos;How to Guide&apos; to understand the process to go through to upload data onto the system.</value>
+    </labels>
+    <labels>
+        <fullName>CSV_Upload_Invalid_File_Extension_Error_Message</fullName>
+        <categories>CSV Upload</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>CSV Upload Invalid File Extension Error Message</shortDescription>
+        <value>Uploaded file is not a CSV file. Please upload a CSV file.</value>
+    </labels>
+    <labels>
+        <fullName>CSV_Upload_String_Too_Long_Error_Message</fullName>
+        <categories>CSV Upload</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>CSV Upload String Too Long Error Message</shortDescription>
+        <value>The content of the input file is too large to be processed. Please review the how to guide and try again.</value>
+    </labels>
+    <labels>
+        <fullName>DT_App_Launcher_URL</fullName>
+        <categories>DataSolution, Login, App Launcher</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>DT_App_Launcher_URL</shortDescription>
+        <value>/apex/AppLauncher</value>
+    </labels>
+    <labels>
+        <fullName>DT_Community_Home_URL</fullName>
+        <categories>DataSolution, Login</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>DT - Community Home URL</shortDescription>
+        <value>/datasolution/home/home.jsp</value>
+    </labels>
+    <labels>
+        <fullName>DT_Forgot_Password_2_URL</fullName>
+        <categories>DataSolution, ForgotPassword</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>DT_Forgot_Password_2_URL</shortDescription>
+        <value>/datasolution/DataSolutionForgotPasswordConfirm</value>
+    </labels>
+    <labels>
+        <fullName>DT_Forgot_Password_Text</fullName>
+        <categories>DataSolution, Login</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>DT - Forgot Password Text</shortDescription>
+        <value>Forgot Password?</value>
+    </labels>
+    <labels>
+        <fullName>DT_Forgot_Password_URL</fullName>
+        <categories>DataSolution, Login</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>DT - Forgot Password URL</shortDescription>
+        <value>/datasolution/DataSolutionForgotPassword</value>
+    </labels>
+    <labels>
+        <fullName>DT_New_User_Registration_Text</fullName>
+        <categories>Data Solution, Login, New User Registration</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>DT New User Registration Text</shortDescription>
+        <value>New User?</value>
+    </labels>
+    <labels>
+        <fullName>DT_New_User_Registration_URL</fullName>
+        <categories>Data Solution, Login, New User Registration</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>DT New User Registration URL</shortDescription>
+        <value>/datasolution/DataSolutionRegistration</value>
+    </labels>
+    <labels>
+        <fullName>DT_User_Registration_Internal_Error_Message</fullName>
+        <categories>Data Solution, Login, New User Registration</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>DT User Registration Internal Error Message</shortDescription>
+        <value>Internal Error occurred</value>
+    </labels>
+    <labels>
+        <fullName>DT_User_Registration_No_Business_Area_Error_Message</fullName>
+        <categories>Data Solution, Login, New User Registration</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>DT User Registration No Business Area Error Message</shortDescription>
+        <value>Select a valid Business Area value.</value>
+    </labels>
+    <labels>
+        <fullName>DT_User_Registration_No_Organisation_Error_Message</fullName>
+        <categories>Data Solution, Login, New User Registration</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>DT User Registration No Organisation Error Message</shortDescription>
+        <value>You need to choose a valid department from the available list!</value>
+    </labels>
+    <labels>
+        <fullName>DT_User_Registration_No_User_Type_Error_Message</fullName>
+        <categories>Data Solution, Login, New User Registration</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>DT User Registration No User Type Error Message</shortDescription>
+        <value>Select a valid User Type value.</value>
+    </labels>
+    <labels>
+        <fullName>DT_User_Registration_Text</fullName>
+        <categories>Data Solution, Login, New User Registration</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>DT User Registration Text</shortDescription>
+        <value>&lt;br/&gt; 
+&lt;h3 style=&quot;text-align:center;font-size:26px;&quot;&gt; 
+Government Grants Hub
+&lt;/h3&gt; 
+&lt;br/&gt; 
+&lt;p style=&quot;text-align:justify;&quot;&gt; 
+This page allows you to register for the Government Grants Hub. Once registration is approved you will have access to the Grants Centre of Expertise (GCOE) and the Government Grants Information System (GGIS). Please complete the fields and submit.
+&lt;br/&gt; &lt;br/&gt; 
+There are three different user types. Please read the below definitions to allow you to select the correct one.
+&lt;/p&gt;</value>
+    </labels>
+    <labels>
+        <fullName>DT_User_Registration_Text_2</fullName>
+        <categories>Data Solution, Login, New User Registration</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>DT User Registration Text 2</shortDescription>
+        <value>&lt;p style=&quot;text-align:justify;&quot;&gt; 
+&lt;b&gt;Standard User&lt;/b&gt; - Provides access to the GCOE and allows you view data and reports on the GGIS. This role is mainly for a departmental user who wants to just view grants data, rather than create or modify it. 
+&lt;br/&gt;&lt;br/&gt;
+&lt;b&gt;Super User&lt;/b&gt; - Provides access to the GCOE and allows you to view all data and reports as a Standard User as well as create, edit and delete your department&apos;s data on the GGIS.
+&lt;/p&gt;</value>
+    </labels>
+    <labels>
+        <fullName>DT_User_Registration_Text_Email</fullName>
+        <categories>Data Solution, Login, New User Registration</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>DT User Registration Text Email</shortDescription>
+        <value>&lt;p style=&quot;text-align:justify;&quot;&gt; 
+Please be aware the GGIS system is still being developed and departments are in the process of uploading their data. If you have any questions or would like access please contact &lt;a href=&quot;mailto:grantshubsupport@cabinetoffice.gov.uk&quot; target=&quot;_top&quot;&gt;grantshubsupport@cabinetoffice.gov.uk&lt;/a&gt;. 
+&lt;/p&gt;</value>
+    </labels>
+    <labels>
+        <fullName>DataSolutionRegistrationSuccessMessage</fullName>
+        <categories>Data Solution, Registration, success message</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>DataSolutionRegistrationSuccessMessage</shortDescription>
+        <value>&lt;br/&gt;
+Your request to register onto the Grants Hub has been successful and will be forwarded to your system admin.
+&lt;br/&gt;
+&lt;br/&gt;
+A follow up email will be sent to you once your request has been approved.
+&lt;br/&gt;
+&lt;br/&gt;</value>
+    </labels>
+    <labels>
+        <fullName>Data_Solution_Forgot_Password_Confirm_Link_Text</fullName>
+        <categories>DataSolution, ForgotPassword</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Data Solution Forgot Password Confirm Link Text</shortDescription>
+        <value>email sent to you again</value>
+    </labels>
+    <labels>
+        <fullName>Data_Solution_Forgot_Password_Confirm_Text</fullName>
+        <categories>DataSolution, ForgotPassword</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Data Solution Forgot Password Confirm Text</shortDescription>
+        <value>&lt;h3 style=&quot;text-align:center;font-size:26px;&quot;&gt; 
+Check your email
+&lt;/h3&gt; 
+&lt;br/&gt; 
+&lt;p style=&quot;text-align:justify;&quot;&gt; 
+We&apos;ve sent you an email with a link to finish resetting your password.
+&lt;/p&gt;
+&lt;p style=&quot;text-align:justify;&quot;&gt;
+Can&apos;t find the email? Try checking your spam folder or make sure you&apos;re put in the right email address as your username.
+&lt;/p&gt;</value>
+    </labels>
+    <labels>
+        <fullName>Data_Solution_Forgot_Password_Confirm_Text_2</fullName>
+        <categories>DataSolution, ForgotPassword</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Data Solution Forgot Password Confirm Text 2</shortDescription>
+        <value>&lt;p style=&quot;text-align:justify;&quot;&gt;
+If you still can&apos;t log in, have the</value>
+    </labels>
+    <labels>
+        <fullName>Data_Solution_Forgot_Password_Confirm_Text_3</fullName>
+        <categories>DataSolution, ForgotPassword</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Data Solution Forgot Password Confirm Text 3</shortDescription>
+        <value>or contact us on &lt;a href=&quot;mailto:grantshubsupport@cabinetoffice.gov.uk&quot;&gt;grantshubsupport@cabinetoffice.gov.uk&lt;/a&gt; 
+&lt;/p&gt;</value>
+    </labels>
+    <labels>
+        <fullName>Data_Solution_Forgot_Password_Text</fullName>
+        <categories>DataSolution, ForgotPassword</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Data Solution Forgot Password Text</shortDescription>
+        <value>&lt;br/&gt; 
+&lt;h3 style=&quot;text-align:center;font-size:26px;&quot;&gt; 
+Forgot Your Password
+&lt;/h3&gt; 
+&lt;br/&gt; 
+&lt;p style=&quot;text-align:justify;&quot;&gt; 
+If you have forgotten your password, please enter your username here. Your username is your email address. You will receive an automatic email to reset your password in your inbox in a few minutes.
+&lt;/p&gt;</value>
+    </labels>
+    <labels>
+        <fullName>Data_Solution_Forgot_Password_Text_2</fullName>
+        <categories>DataSolution, ForgotPassword</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Data Solution Forgot Password Text 2</shortDescription>
+        <value>&lt;p style=&quot;text-align:justify;&quot;&gt; 
+Please ensure you type in the correct email address and if you don&apos;t receive any emails, this could be because the email that you typed in doesn&apos;t exist in our system. Only already registered users will be able to reset their password. If you need to create a username, please go to our registration page.
+&lt;/p&gt;
+&lt;p style=&quot;text-align:justify;&quot;&gt; 
+Please contact the system administrator if you experience any difficulties: &lt;a href=&quot;mailto:grantshubsupport@cabinetoffice.gov.uk&quot;&gt;grantshubsupport@cabinetoffice.gov.uk&lt;/a&gt;
+&lt;/p&gt;</value>
+    </labels>
+    <labels>
+        <fullName>Data_Solution_Home_Page_Text</fullName>
+        <categories>DataSolution, Portal</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Data Solution Home Page Text</shortDescription>
+        <value>&lt;p&gt;Welcome to the Government Grants Information System (GGIS). This service facilitates the recording and reporting of grant information across government. It provides the data to enable departments to manage grants efficiently and effectively while actively reducing the risk of fraud. The GGIS is still in development and we will be adding data fields and improving functionality as the project progresses. 
+
+We have produced a &apos;How to Guide&apos; to help you understand how to use the system and a &apos;Glossary of Terms&apos; that explains the grants data we want to collect. 
+&lt;br/&gt;
+&lt;b&gt;If you require any assistance, please create a case from the Cases tab or email us on us: grantshubsupport@cabinetoffice.gov.uk&lt;/b&gt;
+&lt;/p&gt;</value>
+    </labels>
+    <labels>
+        <fullName>Data_Solution_Login_Footer_Text</fullName>
+        <categories>DataSolution, Login</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Data Solution Login Footer Text</shortDescription>
+        <value>Copyright © 2015 gov.uk. All rights reserved.</value>
+    </labels>
+    <labels>
+        <fullName>Data_Solution_Login_Text</fullName>
+        <categories>DataSolution, Login</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Data Solution Login Text</shortDescription>
+        <value>&lt;br/&gt;
+&lt;h3 style=&quot;text-align:center;font-size:26px;&quot;&gt;
+    Government Grants Hub
+&lt;/h3&gt;
+&lt;br/&gt;
+&lt;p style=&quot;text-align:justify;&quot;&gt;
+Welcome to the Government Grant Hub where you access the Grants Centre of Expertise (GCOE) and the Government Grants Information System (GGIS).
+&lt;/p&gt;</value>
+    </labels>
+    <labels>
+        <fullName>Data_Solution_Login_Text_2</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Data Solution Login Text 2</shortDescription>
+        <value>&lt;p style=&quot;text-align:justify;&quot;&gt;
+The &lt;b&gt;GCOE&lt;/b&gt; provides central government departments with a rich blend of best practice guidance and resources coupled with forums and groups to allow cross government collaboration on key topics of interest in administering grants.  The &lt;b&gt;GGIS&lt;/b&gt; facilitates the recording and reporting of grant information across government, providing accurate data to enable departments to manage grants efficiently and effectively, while actively reducing the risk of fraud.
+&lt;/p&gt;</value>
+    </labels>
+    <labels>
+        <fullName>Data_Solution_Login_Text_Email</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Data Solution Login Text Email</shortDescription>
+        <value>&lt;p style=&quot;text-align:justify;&quot;&gt;
+Please be aware the GGIS system is still being developed and departments are in the process of uploading their data. If you have any questions please contact &lt;a href=&quot;mailto:grantshubsupport@cabinetoffice.gov.uk&quot; target=&quot;_top&quot;&gt;grantshubsupport@cabinetoffice.gov.uk&lt;/a&gt;.
+&lt;/p&gt;</value>
+    </labels>
+    <labels>
+        <fullName>Data_Solution_Portal_500_Error_Message</fullName>
+        <categories>DataSolution, Error</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Data Solution Portal 500 Error Message</shortDescription>
+        <value>The page you&apos;re visiting had a server problem that prevented the page from displaying, Please try again in a few minutes. If the problem persists please contact your system administrator.</value>
+    </labels>
+    <labels>
+        <fullName>Deletion_Notification</fullName>
+        <categories>NotifyGrantDeletion	Deletion Notification Email Sender</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Deletion Notification Email Sender</shortDescription>
+        <value>Grant Admin</value>
+    </labels>
+    <labels>
+        <fullName>Deletion_Notification_Email_Body</fullName>
+        <categories>NotifyGrantDeletion</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Deletion Notification Email Body</shortDescription>
+        <value>&lt;p&gt;This email contains details about deleted records from GGIS. Please DO NOT DELETE this email - as the purpose is to keep this for auditing purposes about what records have been deleted from GGIS and when. &lt;/p&gt;
+
+&lt;p&gt;There are csv files attached which contain all of the fields on a scheme and all of the fields for all grant awards associated with them. &lt;/p&gt;
+
+&lt;p&gt;The column names are not field labels (what you see in the UI on system), but the database back end field names. &lt;/p
+
+&lt;p&gt;This has been implemented as a temporary solution to keeping records that are deleted and will be looked at again in the future stages of development. &lt;/p&gt;
+
+&lt;p&gt;Regards,&lt;/p&gt;
+&lt;p&gt;GGIS Team&lt;/p&gt;</value>
+    </labels>
+    <labels>
+        <fullName>Deletion_Notification_Email_Subject</fullName>
+        <categories>NotifyGrantDeletion</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Deletion Notification Email Subject</shortDescription>
+        <value>Grant Record Deletion Notification</value>
+    </labels>
+    <labels>
+        <fullName>Glossary_of_Terms_URL_Text</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Glossary of Terms URL Text</shortDescription>
+        <value>Click here to download Data and System Glossary of Terms</value>
+    </labels>
+    <labels>
+        <fullName>Grant_Award_Delete_Validation_Error_Message</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Grant Award Delete Validation Error Message</shortDescription>
+        <value>You cannot delete this record. Please create a case if you believe this record should be deleted.</value>
+    </labels>
+    <labels>
+        <fullName>Grant_Award_Update_Exception_Msg</fullName>
+        <categories>AllGrantAwardTriggersHandler</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Grant Award Update Exception Msg</shortDescription>
+        <value>Error occured when updating Grant Award for scheme</value>
+    </labels>
+    <labels>
+        <fullName>Grant_Intermediary_Delete_Validation_Error_Message</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Grant Intermediary Delete Validation Error Message</shortDescription>
+        <value>You cannot delete this record. Please create a case if you believe this record should be deleted.</value>
+    </labels>
+    <labels>
+        <fullName>Grant_Programme_Delete_Validation_Error_Message</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Grant Programme Delete Validation Error Message</shortDescription>
+        <value>You cannot delete this record. Please create a case if you believe this record should be deleted.</value>
+    </labels>
+    <labels>
+        <fullName>Grant_Scheme_Delete_Validation_Error_Message</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Grant Scheme Delete Validation Error Message</shortDescription>
+        <value>You cannot delete this record. Please create a case if you believe this record should be deleted.</value>
+    </labels>
+    <labels>
+        <fullName>Heatmap_Query_Reached_Limit_Error_Message</fullName>
+        <categories>HeatMap, Grant Award</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Heatmap Query Reached Limit Error Message</shortDescription>
+        <value>You have reached the report query. Please filter the report.</value>
+    </labels>
+    <labels>
+        <fullName>How_to_Guide_URL_Text</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>How to Guide URL Text</shortDescription>
+        <value>Click here to download How to Guide</value>
+    </labels>
+    <labels>
+        <fullName>Invalid_Grant_Ref_Num_Error</fullName>
+        <categories>CSVUploadSObjectFactory</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Invalid Grant Reference Number Error</shortDescription>
+        <value>The provided &quot;Grant Award Reference Number&quot; is invalid. Please ensure you have created the grant award first and that you are not using the &quot;System Award Reference No&quot; instead.</value>
+    </labels>
+    <labels>
+        <fullName>Invalid_Grant_Sys_Ref_Num_Error</fullName>
+        <categories>CSVUploadSObjectFactory</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Invalid Grant System Reference Error</shortDescription>
+        <value>The provided &quot;System Award Reference No&quot; is invalid. Please ensure you have created the grant award first and that you are not using the &quot;Grant Award Reference Number&quot; instead.</value>
+    </labels>
+    <labels>
+        <fullName>Invalid_Postal_Code_Error_Message</fullName>
+        <categories>Postal Code, Invalid, Error Message</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Invalid Postal Code Error Message</shortDescription>
+        <value>Invalid post code value.</value>
+    </labels>
+    <labels>
+        <fullName>Organisation_Has_Child_Delete_Error_Message</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Organisation Has Child Delete Error Message</shortDescription>
+        <value>You cannot delete this organisation because it has child organisation.</value>
+    </labels>
+    <labels>
+        <fullName>Organisation_Related_Grants_Delete_Error_Message</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Organisation Related Grants Delete Error Message</shortDescription>
+        <value>You cannot delete this organisation. Please reparent any related Grant Award(s), Grant Scheme(s) and Intermediary records before deleting this organisation.</value>
+    </labels>
+    <labels>
+        <fullName>PostCodesIO_Base_URL</fullName>
+        <categories>PostCodesIO</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>PostCodesIO Base URL</shortDescription>
+        <value>http://api.postcodes.io</value>
+    </labels>
+    <labels>
+        <fullName>Record_Privilege_Warning_Message</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Record Privilege Warning Message</shortDescription>
+        <value>This record does not belong to your department so you cannot edit or delete it.</value>
+    </labels>
+    <labels>
+        <fullName>Required_Field_Values_Missing_Error_Message</fullName>
+        <categories>CSV Upload</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Required Field Values Missing Error Message</shortDescription>
+        <value>Your file is missing required values for the following columns[__REQUIRED_FIELDS_LABELS__].</value>
+    </labels>
+    <labels>
+        <fullName>Required_Fields_Missing_Error_Message</fullName>
+        <categories>Data Access, Error Message</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Required Fields Missing Error Message</shortDescription>
+        <value>Your file is missing a required column [__REQUIRED_FIELDS_LABELS__] - please ensure that you are uploading the correct CSV template against the correct Upload Settings type and Recipient type.</value>
+    </labels>
+    <labels>
+        <fullName>Scheme_IntermediatedWarnMsg</fullName>
+        <categories>GrantSchemePrivilegeBanner</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Scheme Intermediated Warning Message</shortDescription>
+        <value>You have marked this scheme as Intermediated. Please now go to add the Intermediary information by scrolling down the page and clicking the New Intermediary button. The Intermediary has to be created in the system already as an organisation in order for you to be able to choose them</value>
+    </labels>
+    <labels>
+        <fullName>Scheme_InvalidIntermediatedWarnMsg</fullName>
+        <categories>GrantSchemePrivilegeBanner</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Invalid Scheme Intermediated Warn Msg</shortDescription>
+        <value>You have marked this scheme as not being Intermediated, but there is still an Intermediary organisation on this scheme. Please either check the Intermediated tickbox or remove the Intermediary on this scheme by scrolling down the page and clicking delete under the Intermediary section.</value>
+    </labels>
+    <labels>
+        <fullName>Scheme_RiskProfileWarnMsg</fullName>
+        <categories>GrantSchemePrivilegeBanner</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Scheme NGAP Risk Profile Warning Message</shortDescription>
+        <value>Due to the risk profile you selected, please consider referring the scheme to the New Grants Advice Panel</value>
+    </labels>
+    <labels>
+        <fullName>The_Grants_Centre_of_Expertise_Text</fullName>
+        <categories>Data Solution, Home Page, The Grants Centre of Expertise</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>The Grants Centre of Expertise Text</shortDescription>
+        <value>Grants Centre of Expertise</value>
+    </labels>
+    <labels>
+        <fullName>The_Grants_Centre_of_Expertise_URL</fullName>
+        <categories>Data Solution, Home Page, The Grants Centre of Expertise</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>The Grants Centre of Expertise URL</shortDescription>
+        <value>https://gcoe.civilservice.gov.uk/</value>
+    </labels>
+    <labels>
+        <fullName>The_Grants_Hub_Home_URL</fullName>
+        <categories>Data Solution, App Launcher, The Grants Hub</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>The Grants Hub Home URL</shortDescription>
+        <value>https://gcoe.civilservice.gov.uk/</value>
+    </labels>
+    <labels>
+        <fullName>User_Delete_Access_Error_Msg</fullName>
+        <categories>Data Access, Error Message</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>User Delete Access Error Msg</shortDescription>
+        <value>You don&apos;t have delete privilege on this record.</value>
+    </labels>
+</CustomLabels>

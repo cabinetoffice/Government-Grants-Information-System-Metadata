@@ -1,0 +1,31 @@
+public without sharing class AvailableDeptForRegistrationCtrl {
+    public String getJSON(){
+        List<AccountWrapper> allFoundAccounts = new List<AccountWrapper>();
+        set<string> uniqueName= new    set<string>();
+        for(Account departmentToAdd : [
+            SELECT Id, Name
+            FROM Account 
+            WHERE CPID_from_OSCAR__c != null 
+            
+        ]){
+         
+           
+               if(!uniqueName.contains(departmentToAdd.Name))
+               {
+                    allFoundAccounts.add(new AccountWrapper(departmentToAdd));
+                     uniqueName.add(departmentToAdd.Name);
+               }
+           
+        }
+        return JSON.serialize(allFoundAccounts);
+    }
+
+    public class AccountWrapper{
+        public String id;
+        public String name;
+        public AccountWrapper(Account accountToUse){
+            id = accountToUse.Id;
+            name = accountToUse.Name;
+        }
+    }
+}

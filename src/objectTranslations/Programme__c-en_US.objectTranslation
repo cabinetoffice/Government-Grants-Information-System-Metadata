@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Grant Programme</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Grant Programmes</value>
+    </caseValues>
+    <fields>
+        <help><!-- A freetext field for departments to fill in any description of the Grant Programme they may have. --></help>
+        <label><!-- Description --></label>
+        <name>Description__c</name>
+    </fields>
+    <fields>
+        <label><!-- Is My Department Data --></label>
+        <name>Is_My_Department_Data__c</name>
+    </fields>
+    <fields>
+        <label><!-- Portal User Cannot Delete This Record --></label>
+        <name>Portal_User_Cannot_Delete_This_Record__c</name>
+    </fields>
+    <fields>
+        <help><!-- This is a reference number that can be given from a department&apos;s own internal system, should you wish to. It is optional &amp; will help reconciliation between GGIS &amp; your own system, but you don&apos;t have to include one. --></help>
+        <label><!-- Programme Reference Number --></label>
+        <name>Programme_Reference_Number__c</name>
+    </fields>
+    <layouts>
+        <layout>Programme Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Warning --></label>
+            <section>Warning</section>
+        </sections>
+    </layouts>
+    <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage><!-- You don&apos;t have update privilege on this record. --></errorMessage>
+        <name>Department_Check_on_update</name>
+    </validationRules>
+</CustomObjectTranslation>

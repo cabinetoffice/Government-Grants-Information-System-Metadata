@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>Grant_Scheme__c$Scheme_Value_per_year__c</field>
+    </columns>
+    <description>just of list of dept with scheme values</description>
+    <filter>
+        <criteriaItems>
+            <column>Grant_Scheme__c$Financial_Year_Multi__c</column>
+            <isUnlocked>true</isUnlocked>
+            <operator>includes</operator>
+            <value>FY 17/18</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Grant_Scheme__c$RecordType</column>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Grant_Scheme__c.Approved_Grant_Scheme</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Grant_Scheme__c$Allocation_Method__c</column>
+            <isUnlocked>true</isUnlocked>
+            <operator>excludes</operator>
+            <value>Grant in Aid</value>
+        </criteriaItems>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>Grant_Scheme__c$Funder__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>17/18 Schemes by Funder - summary</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Grant_Scheme_with_Grant_Awards__c</reportType>
+    <scope>organization</scope>
+    <showDetails>false</showDetails>
+    <timeFrameFilter>
+        <dateColumn>Grant_Scheme__c$CreatedDate</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>
